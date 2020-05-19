@@ -10,6 +10,7 @@ public class controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Heloooooo");
         movePoint.parent = null;
     }
 
