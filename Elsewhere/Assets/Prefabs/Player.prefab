@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8393223244648442302}
   - component: {fileID: 8393223244648442296}
   m_Layer: 8
-  m_Name: PLayer
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,11 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cbe396576cba214b96c9d58b469f1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moving: 0
+  move: 2
   moveSpeed: 5
-  movePoint: {fileID: 8393223244714897987}
   whatStopsMovement:
     serializedVersion: 2
     m_Bits: 256
+  gridPosition: {x: 0, y: 0}
 --- !u!114 &8393223244648442296
 MonoBehaviour:
   m_ObjectHideFlags: 0
