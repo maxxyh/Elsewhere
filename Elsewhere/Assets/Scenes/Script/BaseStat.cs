@@ -4,33 +4,56 @@ using UnityEngine;
 
 public class BaseStat
 {
-    public List<StatBonus> StatBonuses { get; set; }
-    public int BaseValue { get; set; }
-    public string StatName { get; set; }
-    public string StatDescription { get; set; }
-    public int FinalValue { get; set; }
+    // public List<StatBonus> StatBonuses { get; set; }
+    // public int BaseValue { get; set; }
+    // public string StatName { get; set; }
+    // public string StatDescription { get; set; }
+    // public int FinalValue { get; set; }
 
-    public BaseStat(int BaseValue, string StatName, string StatDescription) 
+    // public BaseStat(int BaseValue, string StatName, string StatDescription) 
+    // {
+    //     this.StatBonuses = new List<StatBonus>();
+    //     this.BaseValue = BaseValue;
+    //     this.StatName = StatName;
+    //     this.StatDescription = StatDescription;
+    // }
+
+    // public void AddStatBonus(StatBonus statBonus)
+    // {
+    //     this.StatBonuses.Add(statBonus);
+    // }
+
+    // public void RemoveStatBonus(StatBonus statBonus)
+    // {
+    //     this.StatBonuses.Remove(statBonus);
+    // }
+
+    // public int GetFinalStatValue() {
+    //     this.StatBonuses.ForEach (x => this.FinalValue += x.BonusValue);
+    //     this.FinalValue += this.BaseValue;
+    //     return FinalValue;
+    // }
+
+    public int baseValue;
+    private List<int> modifiers = new List<int>();
+    public int GetValue() 
     {
-        this.StatBonuses = new List<StatBonus>();
-        this.BaseValue = BaseValue;
-        this.StatName = StatName;
-        this.StatDescription = StatDescription;
+        int finalValue = baseValue;
+        modifiers.ForEach(x => finalValue += x);
+        return finalValue;
     }
 
-    public void AddStatBonus(StatBonus statBonus)
+    public void AddModifier(int modifier) 
     {
-        this.StatBonuses.Add(statBonus);
+        if (modifier != 0) {
+            modifiers.Add(modifier);
+        }
     }
 
-    public void RemoveStatBonus(StatBonus statBonus)
+    public void RemoveModifier(int modifier) 
     {
-        this.StatBonuses.Remove(statBonus);
-    }
-
-    public int GetFinalStatValue() {
-        this.StatBonuses.ForEach (x => this.FinalValue += x.BonusValue);
-        this.FinalValue += this.BaseValue;
-        return FinalValue;
+        if (modifier != 0) {
+            modifiers.Remove(modifier);
+        }
     }
 }

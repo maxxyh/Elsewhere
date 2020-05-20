@@ -9,7 +9,8 @@ public class controller : MonoBehaviour
     public LayerMask whatStopsMovement;
     // Start is called before the first frame update
     void Start()
-    {
+    {  
+        Debug.Log("MOVE");
         movePoint.parent = null;
     }
 
