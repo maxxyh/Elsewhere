@@ -30,17 +30,17 @@ public class Tile : MonoBehaviour
         if (current)
         {
             // Magenta
-            GetComponent<Renderer>().material.color = new Color(1,0,1,0.3f);
+            GetComponent<Renderer>().material.color = new Color(1,1,0,0.2f);
         }
         else if (target)
         {
             // Green
-            GetComponent<Renderer>().material.color = new Color(0,1,0,0.3f);
+            GetComponent<Renderer>().material.color = new Color(0,1,0,0.2f);
         }
         else if (selectable)
         {
             // Red
-            GetComponent<Renderer>().material.color = new Color(1,0,0,0.3f);
+            GetComponent<Renderer>().material.color = new Color(0,0.8f,0.8f,0.3f);
         }
         else
         {
@@ -50,7 +50,7 @@ public class Tile : MonoBehaviour
     }
 
 
-    // TODO move this to another layer perhaps? 
+    // TODO move this to another layer perhaps?
     void OnMouseEnter()
     {
         GetComponent<Renderer>().material.color = new Color(0.43f,0.76f,0.86f,0.3f);
