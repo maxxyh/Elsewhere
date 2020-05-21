@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TacticsMove : MonoBehaviour
 {
+    public bool takingTurn = false;
+
     List<Tile> selectableTiles = new List<Tile>();
     GameObject[] tiles;
 
@@ -21,6 +23,8 @@ public class TacticsMove : MonoBehaviour
     protected void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("tile");
+
+        TurnManager.AddUnit(this);
     }
 
     public void GetCurrentTile()
@@ -84,7 +88,9 @@ public class TacticsMove : MonoBehaviour
         }
     }
 
-    public void MoveToTile(Tile target)
+
+    // Generates the path to the tile
+    public void GeneratePathToTile(Tile target)
     {
         path.Clear();
         target.target = true;
@@ -98,6 +104,7 @@ public class TacticsMove : MonoBehaviour
         }
     }
 
+    // Actually move to the tile
     public void Move()
     {
         if (path.Count > 0)
@@ -128,6 +135,8 @@ public class TacticsMove : MonoBehaviour
             RemoveSelectedTiles();
             moving = false;
 
+            TurnManager.EndTurn();
+            // TODO only EndTurn after taking an action e.g. attack, wait, defend etc.
         }
     }
 
@@ -156,7 +165,17 @@ public class TacticsMove : MonoBehaviour
     void SetHorizontalVelocity()
     {
         velocity = heading * moveSpeed;
+    }
 
+    // TODO these helper functions can be used for more processing
+    public void BeginTurn()
+    {
+        takingTurn = true;
+    }
+
+    public void EndTurn()
+    {
+        takingTurn = false;
     }
 
 }

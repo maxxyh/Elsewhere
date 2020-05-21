@@ -18,6 +18,11 @@ public class Player : TacticsMove
     // Update is called once per frame
     void Update()
     {
+        if (!takingTurn)
+        {
+            return;
+        }
+
         if (!moving)
         {
             FindSelectableTiles();
@@ -44,7 +49,7 @@ public class Player : TacticsMove
 
                     if (t.selectable)
                     {
-                        MoveToTile(t);
+                        GeneratePathToTile(t);
                     }
                 }
 

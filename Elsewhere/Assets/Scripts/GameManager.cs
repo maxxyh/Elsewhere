@@ -49,9 +49,16 @@ public class GameManager : MonoBehaviour
 
     void generatePlayers() {
         players = new List<Player>();
-        Player player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0f,-0.5f, 0),
+        Player player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0,0, 0),
             Quaternion.Euler(new Vector3()))).GetComponent<Player>();
         player.gridPosition = new Vector2(mapSize/2,mapSize/2);
+        player.tag = "player";
+        players.Add(player);
+
+        player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(-mapSize/2+1,-mapSize/2+1, 0),
+            Quaternion.Euler(new Vector3()))).GetComponent<Player>();
+        player.gridPosition = new Vector2(0,0);
+        player.tag = "enemy";
         players.Add(player);
     }
 }
