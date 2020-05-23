@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8393223244648442303}
   - component: {fileID: 8393223244648442302}
-  - component: {fileID: 8393223244648442296}
+  - component: {fileID: -7330252653359339032}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -135,7 +135,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   gridPosition: {x: 0, y: 0}
---- !u!114 &8393223244648442296
+--- !u!114 &-7330252653359339032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,13 +144,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 8393223244648442301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70a4fa5ef1194904b9b4c819ca41bdb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2de2f2ca4683e334e8cdeec115da059c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Cute
-  maxHealth: 100
-  currentHealth: 100
-  damage: 50
+  characterName: 
+  attackDamage:
+    baseValue: 0
+  magicDamage:
+    baseValue: 0
+  HP:
+    baseValue: 0
+  defence:
+    baseValue: 0
+  movementRange:
+    baseValue: 0
+  attackRange:
+    baseValue: 0
 --- !u!1 &8393223244714897986
 GameObject:
   m_ObjectHideFlags: 0
