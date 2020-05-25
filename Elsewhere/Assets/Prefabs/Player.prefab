@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 8393223244648442303}
   - component: {fileID: 8393223244648442302}
   - component: {fileID: -7330252653359339032}
+  - component: {fileID: 2752818850899612005}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -129,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takingTurn: 0
   moving: 0
-  move: 2
+  movementRange: 3
   moveSpeed: 5
   whatStopsMovement:
     serializedVersion: 2
@@ -144,13 +145,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8393223244648442301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2de2f2ca4683e334e8cdeec115da059c, type: 3}
+  m_Script: {fileID: 11500000, guid: ca9eda03bfb19194bbae45bdff2fa7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Panel: {fileID: 0}
   characterName: 
   attackDamage:
     baseValue: 0
   magicDamage:
+    baseValue: 0
+  mana:
     baseValue: 0
   HP:
     baseValue: 0
@@ -160,6 +164,25 @@ MonoBehaviour:
     baseValue: 0
   attackRange:
     baseValue: 0
+  isDead: 0
+  currHP: 0
+  selectedUnit: {fileID: 0}
+--- !u!70 &2752818850899612005
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8393223244648442301}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &8393223244714897986
 GameObject:
   m_ObjectHideFlags: 0

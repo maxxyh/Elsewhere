@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerPrefab;
     public int mapSize = 8;
     List<List<Tile>> map;
-    List<Player> players;
+    List<PlayerMovement> players;
 
     public int currentPlayerIndex = 0;
 
@@ -48,15 +48,15 @@ public class GameManager : MonoBehaviour
     }
 
     void generatePlayers() {
-        players = new List<Player>();
-        Player player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0,0, 0),
-            Quaternion.Euler(new Vector3()))).GetComponent<Player>();
+        players = new List<PlayerMovement>();
+        PlayerMovement player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0,0,0),
+            Quaternion.Euler(new Vector3()))).GetComponent<PlayerMovement>();
         player.gridPosition = new Vector2(mapSize/2,mapSize/2);
         player.tag = "player";
         players.Add(player);
 
-        player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(-mapSize/2+1,-mapSize/2+1, 0),
-            Quaternion.Euler(new Vector3()))).GetComponent<Player>();
+        player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(-mapSize/2+1,-mapSize/2+1,0),
+            Quaternion.Euler(new Vector3()))).GetComponent<PlayerMovement>();
         player.gridPosition = new Vector2(0,0);
         player.tag = "enemy";
         players.Add(player);

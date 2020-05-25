@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : TacticsMove
+public class PlayerMovement : TacticsMove
 {
     //public float moveSpeed = 5f;
 

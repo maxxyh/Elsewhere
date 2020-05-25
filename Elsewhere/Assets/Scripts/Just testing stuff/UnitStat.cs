@@ -3,7 +3,7 @@ using System;
 using System.Collections.ObjectModel;
 
 [Serializable]
-public class CharacterStat 
+public class UnitStat 
 {
     public float baseValue;
     protected readonly List<StatModifier> statModifiers;
@@ -27,12 +27,12 @@ public class CharacterStat
     //holds most recent calculation that we did
     protected float _value;
 
-    public CharacterStat() {
+    public UnitStat() {
         this.statModifiers = new List<StatModifier>();
         this.StatModifiers_readonly = statModifiers.AsReadOnly();
     }
     
-    public CharacterStat(float baseValue) : this()
+    public UnitStat(float baseValue) : this()
     {
         this.baseValue = baseValue;
     }
@@ -69,7 +69,7 @@ public class CharacterStat
         return false;
     }
 
-    protected virtual float CalculateFinalValue() 
+    public virtual float CalculateFinalValue() 
     {
         float finalValue = baseValue;
         float sumPercentAdd = 0;

@@ -6,7 +6,7 @@ public class Item
 {
     StatModifier mod1, mod2;
 
-    public void Equip(Character c) 
+    public void Equip(PlayerUnit c) 
     {
         mod1 = new StatModifier(10, StatModType.Flat, this);
         mod2 = new StatModifier(0.1f, StatModType.PercentMult, this);
@@ -14,7 +14,7 @@ public class Item
         c.attackDamage.AddModifier(mod2);
     }
 
-    public void UnEquip(Character c) 
+    public void UnEquip(PlayerUnit c) 
     {
         c.attackDamage.RemoveAllModifiersFromSource(this);
     }

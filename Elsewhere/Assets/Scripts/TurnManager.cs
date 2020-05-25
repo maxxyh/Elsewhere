@@ -26,6 +26,7 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+    // add the next team into the turn queue
     static void InitTeamTurnQueue()
     {
         List<TacticsMove> teamList = units[turnKey.Peek()];

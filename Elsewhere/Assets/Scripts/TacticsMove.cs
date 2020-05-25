@@ -13,7 +13,7 @@ public class TacticsMove : MonoBehaviour
     Tile currentTile;
 
     public bool moving = false;
-    public int move = 2;
+    public int movementRange = 2;
     public float moveSpeed = 2;
     // TODO think about jumpheight & movement cost
 
@@ -72,7 +72,7 @@ public class TacticsMove : MonoBehaviour
             Tile temp = processing.Dequeue();
             selectableTiles.Add(temp);
             temp.selectable = true;
-            if (temp.distance < move)
+            if (temp.distance < movementRange)
             {
                 foreach (Tile neighbour in temp.adjacencyList)
                 {
@@ -134,7 +134,6 @@ public class TacticsMove : MonoBehaviour
         {
             RemoveSelectedTiles();
             moving = false;
-
             TurnManager.EndTurn();
             // TODO only EndTurn after taking an action e.g. attack, wait, defend etc.
         }
