@@ -13,7 +13,7 @@ public class Map : MonoBehaviour
     [SerializeField] public Tilemap obstacles;
     public int mapSize = 8;
 
-    public List<List<Tile>> map = new List<List<Tile>>();
+    public List<List<Tile>> tileList = new List<List<Tile>>();
     /*
     public JObject temp = JObject.Parse(File.ReadAllText(@"Config.json"));
     public Dictionary<string, int> movementCostList = JsonConvert.DeserializeObject<Dictionary<string, int>>(temp.ToString());
@@ -39,23 +39,24 @@ public class Map : MonoBehaviour
             List<Tile> row = new List<Tile>();
             for (int j = 0; j < mapSize; j++)
             {
-                Tile tile = ((GameObject)Instantiate(TilePrefab, new Vector3(i - mapSize / 2 + 1, j - mapSize / 2 + 1, 0),
-                    Quaternion.Euler(new Vector3()))).GetComponent<Tile>();
-                tile.gridPosition = new Vector2(i, j);
+                GameObject go = Instantiate(TilePrefab, new Vector3(i - mapSize / 2, j - mapSize / 2 + 1, 0),
+                    Quaternion.identity);
+                go.transform.parent = gameObject.transform;
+                Tile tile = go.GetComponent<Tile>();
+                tile.gridPosition = new Vector2Int(i, j);
 
                 int movementCost = 1;
                 bool walkable = true;
 
                 Vector2 origin = new Vector2(tile.transform.position.x, tile.transform.position.y);
-                if (plants.GetTile(Vector3Int.RoundToInt(tile.transform.position)) != null)
+                Vector3 hitPoint = new Vector3(tile.transform.position.x, tile.transform.position.y, 0); 
+                if (plants.GetTile(Vector3Int.RoundToInt(hitPoint)) != null)
                 {
-                    Debug.Log("position " + origin.x + ", " + origin.y + " hit plants");
                     movementCost = 2;
                 }
-                if (obstacles.GetTile(Vector3Int.RoundToInt(tile.transform.position)) != null)
+                if (obstacles.GetTile(Vector3Int.RoundToInt(hitPoint)) != null)
                 {
-                    Debug.Log("hit obstacles");
-                    movementCost = (int)1e9;
+                    movementCost = -1;
                     walkable = false;
                 }
 
@@ -106,7 +107,7 @@ public class Map : MonoBehaviour
                 
                 row.Add(tile);
             }
-            map.Add(row);
+            tileList.Add(row);
         }
     }
     void OnMouseClick()

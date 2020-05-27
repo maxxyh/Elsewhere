@@ -7,6 +7,7 @@ TagManager:
   - tile
   - player
   - enemy
+  - map
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - stopMovement
   - plants
   - grass
-  - 
+  - map
   - 
   - 
   - 
@@ -43,4 +44,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 903345677
+    locked: 0
+  - name: UI
+    uniqueID: 3603597407
+    locked: 0
+  - name: Character
+    uniqueID: 2392530115
     locked: 0

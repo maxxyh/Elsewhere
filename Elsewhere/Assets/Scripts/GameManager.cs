@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public int currentPlayerIndex = 0;
 
+    public Camera worldCamera;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //players[currentPlayerIndex].ExecuteTurn();
     }
 
@@ -40,7 +43,7 @@ public class GameManager : MonoBehaviour
             for (int j = 0 ; j < mapSize ; j++) {
                 Tile tile = ((GameObject)Instantiate(TilePrefab, new Vector3(i - mapSize/2 + 1, j - mapSize/2 + 1, 0),
                     Quaternion.Euler(new Vector3()) )).GetComponent<Tile>();
-                tile.gridPosition = new Vector2(i,j);
+                tile.gridPosition = new Vector2Int(i,j);
                 row.Add(tile);
             }
             map.Add(row);

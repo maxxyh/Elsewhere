@@ -13,13 +13,16 @@ public class PlayerMovement : TacticsMove
     void Start()
     {
         Init();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (!takingTurn)
         {
+            UpdatePosition();
             return;
         }
 
@@ -33,6 +36,7 @@ public class PlayerMovement : TacticsMove
         {
             Move();
         }
+        
     }
 
     void CheckMouse()

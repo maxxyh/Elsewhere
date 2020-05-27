@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +7,16 @@ public class TacticsMove : MonoBehaviour
 {
     public bool takingTurn = false;
 
-    List<Tile> selectableTiles = new List<Tile>();
-    GameObject[] tiles;
+    HashSet<Tile> selectableTiles = new HashSet<Tile>();
+    List<Tile> tiles = new List<Tile>();
+    Map map;
 
     Stack<Tile> path = new Stack<Tile>();
     Tile currentTile;
 
     public bool moving = false;
-    public int movementRange = 2;
-    public float moveSpeed = 2;
+    public int movementRange;
+    public float moveSpeed;
     // TODO think about jumpheight & movement cost
 
     Vector3 heading = new Vector3();
@@ -22,24 +24,28 @@ public class TacticsMove : MonoBehaviour
 
     protected void Init()
     {
-        tiles = GameObject.FindGameObjectsWithTag("tile");
-
+        map =  GameObject.FindObjectOfType<Map>();
+        foreach (List<Tile> row in map.tileList)
+        {   
+            foreach (Tile tile in row)
+            {
+                tiles.Add(tile);
+            }
+        }
         TurnManager.AddUnit(this);
     }
 
-    public void GetCurrentTile()
+    public Tile GetCurrentTile()
     {
-        currentTile = GetTargetTile(gameObject);
+        return GetTargetTile(gameObject);
     }
 
 
     // pick a tile that a player/enemy object is sitting on
     public Tile GetTargetTile(GameObject target)
     {
-        RaycastHit hit;
         Tile tile = null;
-
-        if (Physics.Raycast(target.transform.position + Vector3.back, Vector3.forward, out hit, 2))
+        if (Physics.Raycast(target.transform.position + Vector3.back, Vector3.forward, out RaycastHit hit, Mathf.Infinity, ~LayerMask.GetMask("stopMovement")));
         {
             //Debug.Log("Found the current tile");
             tile = hit.collider.GetComponent<Tile>();
@@ -49,45 +55,64 @@ public class TacticsMove : MonoBehaviour
 
     public void ComputeAdjacencyList()
     {
-        foreach(GameObject tile in tiles)
+        foreach(Tile tile in tiles)
         {
-            Tile t = tile.GetComponent<Tile>();
-            t.FindNeighbours();
+            tile.FindNeighbours();
         }
+            
     }
 
     public void FindSelectableTiles()
     {
-        ComputeAdjacencyList();
-        GetCurrentTile();
+        ComputeAdjacencyList(); // working
+        currentTile = GetCurrentTile(); // working
         currentTile.current = true;
+        currentTile.occupied = true;
 
-        Queue<Tile> processing = new Queue<Tile>();
-
-        processing.Enqueue(currentTile);
-        currentTile.visited = true;
-
-        while (processing.Count > 0 )
+        // init Dijkstra
+        PriorityQueue<TileDistancePair> processing = new PriorityQueue<TileDistancePair>();
+        foreach(Tile tile in tiles)
         {
-            Tile temp = processing.Dequeue();
-            selectableTiles.Add(temp);
-            temp.selectable = true;
-            if (temp.distance < movementRange)
+            tile.distance = int.MaxValue;
+        }
+        currentTile.distance = 0;
+        currentTile.selectable = true;
+        
+        processing.Enqueue(new TileDistancePair(0, currentTile));
+
+
+        // relax edges with minimum SP estimate
+        while (processing.Count() > 0)
+        {
+            TileDistancePair temp = processing.Dequeue();
+            int distanceEstimate = temp.d;
+            Tile node = temp.t;
+            if (distanceEstimate == node.distance)
             {
-                foreach (Tile neighbour in temp.adjacencyList)
+                foreach (Tile neighbour in node.adjacencyList)
                 {
-                    if (!neighbour.visited)
+                    int newEstimate = node.distance + neighbour.movementCost;
+                    
+                    if (neighbour.walkable && neighbour.distance > newEstimate && newEstimate <= movementRange)
                     {
-                        neighbour.visited = true;
-                        neighbour.parent = temp;
-                        neighbour.distance = temp.distance +1;
-                        processing.Enqueue(neighbour);
+                        neighbour.selectable = true;
+                        // TODO remove selectableTiles
+                        selectableTiles.Add(neighbour);
+                        neighbour.distance = newEstimate;
+                        neighbour.parent = node;
+                        processing.Enqueue(new TileDistancePair(newEstimate, neighbour));
                     }
                 }
             }
         }
+        
     }
 
+    public void UpdatePosition()
+    {
+        Tile current = GetCurrentTile();
+        current.occupied = true;
+    }
 
     // Generates the path to the tile
     public void GeneratePathToTile(Tile target)
@@ -132,6 +157,7 @@ public class TacticsMove : MonoBehaviour
         }
         else
         {
+            currentTile.occupied = false;
             RemoveSelectedTiles();
             moving = false;
             TurnManager.EndTurn();
@@ -141,13 +167,13 @@ public class TacticsMove : MonoBehaviour
 
     protected void RemoveSelectedTiles()
     {
-        if (currentTile != null )
+        if (currentTile != null)
         {
             currentTile.current = false;
             currentTile = null;
         }
 
-        foreach(Tile t in selectableTiles)
+        foreach (Tile t in selectableTiles)
         {
             t.Reset();
         }
@@ -177,4 +203,22 @@ public class TacticsMove : MonoBehaviour
         takingTurn = false;
     }
 
+}
+
+class TileDistancePair : IComparable<TileDistancePair>
+{
+
+    public int d;
+    public Tile t;
+
+    public TileDistancePair(int d, Tile t)
+    {
+        this.t = t;
+        this.d = d;
+    }
+
+    public int CompareTo(TileDistancePair other)
+    {
+        return this.d - other.d;
+    }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,14 +9,17 @@ public class Tile : MonoBehaviour
     public bool walkable = true;
     public int movementCost;
 
+    public bool occupied = false;
+    
+
     // For BFS
     public bool visited = false;
     public Tile parent = null;
-    public int distance = 0;
+    public int distance = int.MaxValue;
 
     public List<Tile> adjacencyList = new List<Tile>();
 
-    public Vector2 gridPosition = Vector2.zero;
+    public Vector2Int gridPosition = Vector2Int.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -27,24 +29,24 @@ public class Tile : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {         
         if (current)
         {
             // Magenta
-            GetComponent<Renderer>().material.color = new Color(1,1,0,0.2f);
+            GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.2f);
         }
         else if (target)
         {
-            GetComponent<Renderer>().material.color = new Color(0,0.8f,0.8f,0.3f);
+            GetComponent<Renderer>().material.color = new Color(0, 0.8f, 0.8f, 0.3f);
         }
         else if (selectable)
         {
-            GetComponent<Renderer>().material.color = new Color(0,1,0,0.3f);
+            GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.3f);
         }
         else
         {
             // transparent nothing
-            GetComponent<Renderer>().material.color = new Color(1f,1f,1f,0f);
+            GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0f);
         }
     }
 
@@ -52,8 +54,9 @@ public class Tile : MonoBehaviour
     // TODO move this to another layer perhaps?
     void OnMouseEnter()
     {
-        GetComponent<Renderer>().material.color = new Color(0.43f,0.76f,0.86f,0.3f);
-        Debug.Log("Walkable: " + walkable + ", movementCost: " + movementCost);
+        GetComponent<Renderer>().material.color = new Color(0.43f, 0.76f, 0.86f, 0.3f);
+        //Debug.Log("Distance: " + distance);
+        //Debug.Log("Walkable: " + walkable + ", movementCost: " + movementCost);
         //transform.renderer.material
 
         //Debug.Log("Current position: " + gridPosition.x + ", " + gridPosition.y);
@@ -61,12 +64,12 @@ public class Tile : MonoBehaviour
 
     void OnMouseExit()
     {
-        GetComponent<Renderer>().material.color = new Color(1f,1f,1f,0f);
+        GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0f);
     }
 
     void OnMouseButtonDown()
     {
-
+        
     }
 
     // every turn the tile variables need to be reset
@@ -77,12 +80,12 @@ public class Tile : MonoBehaviour
         current = false;
         target = false;
         selectable = false;
-        walkable = true;
 
         // For BFS
         visited = false;
         parent = null;
-        distance = 0;
+        //distance = 0;
+        distance = int.MaxValue;
     }
 
     public void FindNeighbours()
@@ -104,20 +107,46 @@ public class Tile : MonoBehaviour
         {
             Tile tile = item.GetComponent<Tile>();
             //Debug.Log("Processing " + tile.gridPosition.x + tile.gridPosition.y);
-            if (!(tile == null) && tile.walkable)
+            if (!(tile == null) && tile.walkable && !tile.occupied)
             {
                 adjacencyList.Add(tile);
 
-                // REVIEW does not work because of tilemap
-                /*
-                RaycastHit hit;
-                if (!Physics.Raycast(tile.transform.position + Vector3.back, Vector3.forward, out hit, 2))
-                {
-                    Debug.Log("Found adjacent tile");
-                    adjacencyList.Add(tile);
+                /* Not working for some reason
+                Vector2 origin = new Vector2(tile.transform.position.x, tile.transform.position.y);
+                RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("stopsMovement"));
+                if (hit.collider != null && hit.collider.CompareTag("enemy") || hit.collider != null && hit.collider.CompareTag("player"))
+                { 
+                    {
+                        Debug.Log("Found character on tile");
+                        //adjacencyList.Add(tile);
+                    }
                 }
                 */
             }
         }
     }
 }
+
+
+    /*
+    public int CompareTo(Tile other)
+    {
+        if (this.walkable && other.walkable)
+        {
+            return this.movementCost - other.movementCost;
+        }
+        else if (this.walkable && !other.walkable)
+        {
+            return -1;
+        } 
+        else if (!this.walkable && other.walkable)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    */
+
