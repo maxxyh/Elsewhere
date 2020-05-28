@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     public bool target = false;
     public bool selectable = false;
     public bool walkable = true;
+    public int movementCost;
 
     // For BFS
     public bool visited = false;
@@ -52,6 +53,7 @@ public class Tile : MonoBehaviour
     void OnMouseEnter()
     {
         GetComponent<Renderer>().material.color = new Color(0.43f,0.76f,0.86f,0.3f);
+        Debug.Log("Walkable: " + walkable + ", movementCost: " + movementCost);
         //transform.renderer.material
 
         //Debug.Log("Current position: " + gridPosition.x + ", " + gridPosition.y);
