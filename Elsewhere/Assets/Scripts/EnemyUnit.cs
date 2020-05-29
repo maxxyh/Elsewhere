@@ -20,21 +20,17 @@ public class EnemyUnit : Unit
     }
     */
 
-    // Start is called before the first frame update
-    new void Start()
-    {
-        base.Start();
-    }
-
     // Update is called once per frame
     new void Update()
     {
-        base.Update();
 
         // simply update currentTile if not taking turn
         if (!takingTurn)
         {
-            //currentTile = map.GetCurrentTile(transform.position);
+            if (currentTile == null && map != null)
+            {
+                currentTile = map.GetCurrentTile(transform.position);
+            }
             return;
         }
 
@@ -46,7 +42,6 @@ public class EnemyUnit : Unit
 
         if (!moving && !attackingPhase)
         {
-            // map.FindSelectableTiles(currentTile,this.stats["movementRange"].baseValue);
             CheckMoveMouse();
         }
         // select tile during turn within movement range and move to that tile

@@ -52,12 +52,12 @@ MonoBehaviour:
   isDead: 0
   takingTurn: 0
   moving: 0
-  movementRange: 0
-  moveSpeed: 0
+  moveSpeed: 5
   attackingPhase: 0
   isAttacking: 0
   Panel: {fileID: 0}
   attackingTargetUnit: {fileID: 0}
+  map: {fileID: 0}
   currentTile: {fileID: 0}
 --- !u!70 &9163119695721405245
 CapsuleCollider2D:
@@ -174,7 +174,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: bcaeadd3682d2104bbe0de2190f9d67e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

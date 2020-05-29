@@ -7,21 +7,18 @@ public class PlayerUnit : Unit
 
     public Vector2 gridPosition = Vector2.zero;
 
-    // Start is called before the first frame update
-    new void Start()
-    {
-        base.Start();
-    }
 
     // Update is called once per frame
     new void Update()
     {
-        base.Update();
         
         // simply update currentTile if not taking turn
         if (!takingTurn)
         {
-            currentTile = map.GetCurrentTile(Vector3Int.RoundToInt(transform.position));
+            if (currentTile == null && map != null)
+            {
+                currentTile = map.GetCurrentTile(transform.position);
+            }
             return;
         }
 
@@ -33,13 +30,12 @@ public class PlayerUnit : Unit
 
         if (!moving && !attackingPhase)
         {
-            // map.FindSelectableTiles(currentTile,this.stats["movementRange"].baseValue);
             CheckMoveMouse();
         }
         // select tile during turn within movement range and move to that tile
         else if (!moving && attackingPhase)
         {
-            CheckAttackMouse();
+            //CheckAttackMouse();
         }
         else 
         {
@@ -69,6 +65,7 @@ public class PlayerUnit : Unit
         }
     }
 
+    // KIV 
     void CheckAttackMouse()
     {
         if (Input.GetMouseButtonDown(0))

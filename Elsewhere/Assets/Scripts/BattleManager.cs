@@ -8,19 +8,15 @@ public class BattleManager : MonoBehaviour
     {
         TurnScheduler turnScheduler = FindObjectOfType<TurnScheduler>();
 
-        if (!recipient.isDead) 
+        if (!recipient.isDead()) 
         {
             attacker.BasicAttack();
         } 
         
-        if (recipient.isDead)
+        if (recipient.isDead())
         {
             turnScheduler.RemoveUnit(recipient);
         } 
     }
 
-    public bool CheckIfDead(Unit unit) 
-    {
-        return (unit.currHP <= 0);
-    }
 }

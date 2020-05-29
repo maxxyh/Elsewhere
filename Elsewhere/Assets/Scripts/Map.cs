@@ -16,8 +16,9 @@ public class Map : MonoBehaviour
 
     public List<List<Tile>> tileList = new List<List<Tile>>();
 
-    // For Dijkstra
+    // For UI
     HashSet<Tile> selectableTiles = new HashSet<Tile>();
+    HashSet<Tile> attackableTiles = new HashSet<Tile>();
 
 
     // Start is called before the first frame update
@@ -103,8 +104,10 @@ public class Map : MonoBehaviour
     {
         foreach (List<Tile> row in tileList)
         {
-            foreach(Tile tile in row)
-            tile.FindNeighbours();
+            foreach (Tile tile in row)
+            {
+                tile.FindNeighbours();
+            }
         }
 
     }
@@ -126,6 +129,7 @@ public class Map : MonoBehaviour
         }
         startTile.distance = 0;
         startTile.selectable = true;
+        selectableTiles.Add(startTile);
 
         processing.Enqueue(new TileDistancePair(0, startTile));
 
@@ -156,7 +160,7 @@ public class Map : MonoBehaviour
         }
     }
 
-    public void RemoveSelectedTiles(Tile currentTile)
+    public void RemoveSelectedTiles(Tile currentTile, bool destructive = true)
     {
         currentTile.isStartPoint = false;
 
@@ -164,7 +168,54 @@ public class Map : MonoBehaviour
         {
             t.Reset();
         }
-        selectableTiles.Clear();
+        if (destructive)
+        {
+            selectableTiles.Clear();
+        }
+    }
+
+    public void FindAttackableTiles(Tile startTile, float attackRange)
+    {
+        int[] hor = { -1, 0, 1, 0 };
+        int[] vert = { 0, 1, 0, -1 };
+
+        int currX = startTile.gridPosition.x, currY = startTile.gridPosition.y;
+
+        bool[] passable = new bool[4];
+        for (int i = 0; i < 4; i++)
+        {
+            passable[i] = true;
+        }
+
+        for (int i = 1; i <= attackRange; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                int newX = currX + i * hor[j];
+                int newY = currY + i * vert[j];
+
+                if (newX >= 0 && newX < mapSize && newY >= 0 && newY < mapSize)
+                {
+                    if (tileList[newX][newY].walkable && passable[j])
+                    {
+                        tileList[newX][newY].attackable = true;
+                        attackableTiles.Add(tileList[newX][newY]);
+                    }
+                    else
+                    {
+                        passable[j] = false;
+                    }
+                }
+            }
+        }
+    }
+
+    public void RemoveAttackableTiles()
+    {
+        foreach(Tile t in attackableTiles)
+        {
+            t.attackable = false;
+        }
     }
 }
 

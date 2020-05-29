@@ -73,26 +73,45 @@ public class GameManager : MonoBehaviour
         defaultStats.Add("HP", 10);
         defaultStats.Add("defence", 5);
         defaultStats.Add("movementRange", 4);
-        defaultStats.Add("attackRange", 1);
+        defaultStats.Add("attackRange", 2);
     
-        PlayerUnit player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0,0,0),
+        // PLAYERS
+
+        PlayerUnit player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0, 0, 0),
             Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
         //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
         player.tag = "player";
         player.AssignStats(defaultStats);
         player.AssignMap(map);
         players.Add(player);
-        
+
+        PlayerUnit player2 = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0, 2, 0),
+            Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
+        //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
+        player2.tag = "player";
+        player2.AssignStats(defaultStats);
+        player2.AssignMap(map);
+        players.Add(player2);
+
+
+
+        // ENEMIES
 
         // TODO DOESN'T ACTUALLY INITIATE A VALID ENEMY
-        EnemyUnit enemy = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-map.mapSize/2+1,-map.mapSize/2+1,0),
+        EnemyUnit enemy = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-map.mapSize / 2 + 1, -map.mapSize / 2 + 1, 0),
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
-        //player.gridPosition = new Vector2(0,0);
-
+        //enemy.gridPosition = new Vector2(0,0);
         enemy.tag = "enemy";
         enemy.AssignStats(defaultStats);
         enemy.AssignMap(map);
         enemies.Add(enemy);
 
+        EnemyUnit enemy2 = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-1 -map.mapSize / 2 + 1, -map.mapSize / 2 + 1, 0),
+            Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
+        //enemy.gridPosition = new Vector2(0,0);
+        enemy2.tag = "enemy";
+        enemy2.AssignStats(defaultStats);
+        enemy2.AssignMap(map);
+        enemies.Add(enemy2);
     }
 }

@@ -18,7 +18,7 @@ public class AttackAction : Action
             }
         }
         */
-        StartCoroutine(currUnit.CheckForAttacking());
+        //currUnit.WaitForAttacking();
         BattleManager.Battle(currUnit, currUnit.attackingTargetUnit);
         return new EndAction(actionID + 1, currUnit);
 

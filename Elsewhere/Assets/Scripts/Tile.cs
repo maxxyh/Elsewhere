@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -7,6 +8,8 @@ public class Tile : MonoBehaviour
     public bool target = false;
     public bool selectable = false;
     public bool walkable = true;
+    public bool attackable = true;
+    public bool hover = false;
     public int movementCost;
 
     public bool occupied = false;
@@ -30,10 +33,18 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {         
-        if (isStartPoint)
+        if (hover && walkable)
+        {
+            GetComponent<Renderer>().material.color = new Color(0.43f, 0.76f, 0.86f, 0.3f);
+        }
+        else if (isStartPoint)
         {
             // Magenta
             GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.2f);
+        }
+        else if (attackable)
+        {
+            GetComponent<Renderer>().material.color = new Color(0.65f, 0.17f, 0.17f, 0.3f);
         }
         else if (target)
         {
@@ -54,7 +65,7 @@ public class Tile : MonoBehaviour
     // TODO move this to another layer perhaps?
     void OnMouseEnter()
     {
-        GetComponent<Renderer>().material.color = new Color(0.43f, 0.76f, 0.86f, 0.3f);
+        hover = true;
         //Debug.Log("Distance: " + distance);
         //Debug.Log("Walkable: " + walkable + ", movementCost: " + movementCost);
         //transform.renderer.material
@@ -65,6 +76,7 @@ public class Tile : MonoBehaviour
     void OnMouseExit()
     {
         GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0f);
+        hover = false;
     }
 
     void OnMouseButtonDown()
@@ -80,6 +92,7 @@ public class Tile : MonoBehaviour
         isStartPoint = false;
         target = false;
         selectable = false;
+        attackable = false;
 
         // For BFS
         visited = false;

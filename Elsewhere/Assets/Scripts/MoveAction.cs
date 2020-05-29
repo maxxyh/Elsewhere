@@ -20,7 +20,7 @@ public class MoveAction : Action
             }
         }
         */
-        currUnit.WaitForAttackOrEndTurn();
+        //currUnit.WaitForAttackOrEndTurn();
         if (!currUnit.takingTurn)
         {
             return new EndAction(actionID + 1, currUnit);

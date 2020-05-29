@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,12 +13,14 @@ public class TurnScheduler : MonoBehaviour
     PriorityQueue<Action> actionsOfPlayerTeam = new PriorityQueue<Action>();
     PriorityQueue<Action> actionsOfEnemyTeam = new PriorityQueue<Action>();
 
+    Queue<Unit> currTeamQueue = new Queue<Unit>();
+
     PriorityQueue<Event> playerEvents = new PriorityQueue<Event>();
     PriorityQueue<Event> enemyEvents = new PriorityQueue<Event>();
 
     public Map map;
-    private int currNoOfPlayersAlive;
-    private int currNoOfEnemiesAlive;
+    private int numPlayersAlive;
+    private int numEnemiesAlive;
     private Turn currTurn;
     //private Dictionary<string, List<Unit>> AliveList;
     Unit currUnit;
@@ -25,8 +28,8 @@ public class TurnScheduler : MonoBehaviour
 
     public void InitialNo() 
     {
-        currNoOfEnemiesAlive = enemies.Count;
-        currNoOfPlayersAlive = players.Count;
+        numEnemiesAlive = enemies.Count;
+        numPlayersAlive = players.Count;
     }
 
     public void Init(List<PlayerUnit> players, List<EnemyUnit> enemies)
@@ -38,17 +41,237 @@ public class TurnScheduler : MonoBehaviour
         UnitIdCounter = 0;
         currTurn = Turn.PLAYER_TURN;
         // Enqueue start events
-        EnqueueTeams();
+        // EnqueueTeams();
+        EnqueueTeams("player");
         // Get count of players & enemies alive
         InitialNo();
         // Start the scheduler
         //Schedule();
-        StartCoroutine(ScheduleNew());
+        //StartCoroutine(ScheduleNew());
+        NextTurn(Turn.PLAYER_TURN);
     }
+
+    public void PlayerEndTurn()
+    {
+        map.RemoveSelectedTiles(currUnit.currentTile);
+        currUnit.takingTurn = false;
+        currUnit.isAttacking = false;
+        currUnit.attackingPhase = false;
+
+        // check whether there are still players in the queue -> if have then it should start the next player.
+        if (currTeamQueue.Count > 0)
+        {
+            NextTurn(Turn.PLAYER_TURN);
+        }
+        else
+        {
+            NextTurn(Turn.ENEMY_TURN);
+        }
+       
+    }
+
+    public void EnemyEndTurn()
+    {
+        map.RemoveSelectedTiles(currUnit.currentTile);
+        currUnit.takingTurn = false;
+        currUnit.isAttacking = false;
+        currUnit.attackingPhase = false;
+
+        // check whether there are still enemies in the queue -> if have then it should start the next enemies.
+        if (currTeamQueue.Count > 0)
+        {
+            NextTurn(Turn.ENEMY_TURN);
+        }
+        else
+        {
+            NextTurn(Turn.PLAYER_TURN);
+        }
+
+    }
+
+
+    // function that checks if there are still players alive on each team. If there are, it continues with the turn provided.
+    public void NextTurn(Turn turn)
+    { 
+        // check if game has been won.
+        if (numPlayersAlive == 0)
+        {
+            print("Battle lost. The memories are lost. Try again!");
+            return;
+        }
+        else if (numEnemiesAlive == 0 )
+        {
+            print("Battle won! The memories are safe...for now.");
+            return;
+        }
+
+        // there are still players alive. Check if the current queue still has players if not have to requeue.
+        if (turn == Turn.ENEMY_TURN)
+        {
+            if (currTeamQueue.Count == 0)
+            {
+                EnqueueTeams("enemy");
+            }
+            currTurn = Turn.ENEMY_TURN;
+            currUnit = currTeamQueue.Dequeue();
+            StartEnemyTurn();
+        }
+        else
+        {
+            if (currTeamQueue.Count == 0)
+            {
+                EnqueueTeams("player");
+            }
+            currTurn = Turn.PLAYER_TURN;
+            currUnit = currTeamQueue.Dequeue();
+            StartPlayerTurn();
+        }
+    }
+
+    // currUnit.startTurn() -> update current tile + updates booleans
+    // find selectable tiles 
+    public void StartPlayerTurn()
+    {
+        currUnit.StartTurn();
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
+    }
+
+
+    // Draft 
+    public void StartEnemyTurn()
+    {
+        currUnit.StartTurn();
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
+
+        // call it's own movement and attack functions
+    }
+
+    //Draft 
+    public void OnEndTurnButton()
+    {
+        if (currTurn == Turn.PLAYER_TURN)
+        {
+            PlayerEndTurn();
+        }
+        else
+        {
+            EnemyEndTurn();
+        }
+    }
+
+    // Draft for now 
+    public void OnAttackButton()
+    {
+        map.RemoveSelectedTiles(currUnit.currentTile, false);
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
+        // should display the attacking tiles.
+
+        currUnit.attackingPhase = true;
+
+        if (currTurn == Turn.PLAYER_TURN)
+        {
+            Debug.Log("starting player attack");
+            StartCoroutine(PlayerAttack());
+        }
+        else
+        {
+            Debug.Log("starting enemy attack");
+            StartCoroutine(EnemyAttack());
+        }
+        
+    }
+
+    IEnumerator PlayerAttack()
+    {
+        Unit targetUnit = null;
+        // wait for player to click on a valid target
+        yield return new WaitUntil(() =>
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Unit[] units = GameObject.FindObjectsOfType<Unit>();
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.CompareTag("tile"))
+                    {
+                        Tile t = hit.collider.GetComponent<Tile>();
+                        Debug.Log("hit a tile");
+                        Debug.Log("occupied = " + t.occupied);
+                        Debug.Log("attackable = " + t.attackable);
+                        if (t.occupied && t.attackable)
+                        {
+                            foreach (Unit unit in units)
+                            {
+                                if (unit.gameObject.CompareTag("enemy") && unit.currentTile == t)
+                                {
+                                    Debug.Log("enemy found");
+                                    targetUnit = unit;
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        });
+        Debug.Log("valid attack target found");
+        Debug.Log("Attacking enemy. 6 damage done.");
+
+        map.RemoveAttackableTiles();
+        // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
+        currUnit.StartAttack(targetUnit);
+        BattleManager.Battle(currUnit, targetUnit);
+        
+    }
+
+    IEnumerator EnemyAttack()
+    {
+        Unit targetUnit = null;
+        // wait for player to click on a valid target
+        yield return new WaitUntil(() =>
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Unit[] units = GameObject.FindObjectsOfType<Unit>();
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.CompareTag("tile"))
+                    {
+                        Tile t = hit.collider.GetComponent<Tile>();
+                        if (t.occupied && t.attackable)
+                        {
+                            foreach (Unit unit in units)
+                            {
+                                if (unit.gameObject.CompareTag("player") && unit.currentTile == t)
+                                {
+                                    targetUnit = unit;
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        });
+        Debug.Log("valid attack target found");
+        Debug.Log("Attacking player. 6 damage done.");
+
+        map.RemoveAttackableTiles();
+        // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
+        currUnit.StartAttack(targetUnit);
+        BattleManager.Battle(currUnit, targetUnit);
+    }
+
 
     IEnumerator ScheduleNew()
     {
-        while (currNoOfPlayersAlive > 0 && currNoOfEnemiesAlive > 0)
+        while (numPlayersAlive > 0 && numEnemiesAlive > 0)
         {
             if (currTurn == Turn.PLAYER_TURN)
             {
@@ -98,7 +321,7 @@ public class TurnScheduler : MonoBehaviour
                 currTurn = Turn.ENEMY_TURN;
             }
 
-
+            
             else if (currTurn == Turn.ENEMY_TURN)
             {
                 while (enemyEvents.Count() > 0)
@@ -146,20 +369,21 @@ public class TurnScheduler : MonoBehaviour
                 EnqueueTeams("enemy");
                 currTurn = Turn.PLAYER_TURN;
             }
+            
         }
 
-        if (currNoOfEnemiesAlive == 0)
+        if (numEnemiesAlive == 0)
         {
             print("You won!");
         }
-        if (currNoOfPlayersAlive == 0)
+        if (numPlayersAlive == 0)
         {
             print("You lost...");
         }
     }
 
 
-
+    /*
     public void Schedule()
     {
         while (currNoOfPlayersAlive > 0 && currNoOfEnemiesAlive > 0)
@@ -209,7 +433,7 @@ public class TurnScheduler : MonoBehaviour
             print("You lost...");
         }
     }
-
+    */
     public void EnqueueTeams(string team = "both") 
     {
 
@@ -221,6 +445,7 @@ public class TurnScheduler : MonoBehaviour
                 unit.unitID = UnitIdCounter++;
                 actionsOfPlayerTeam.Enqueue(new StartAction(unit));
                 playerEvents.Enqueue(new Event(unit, EventType.START));
+                currTeamQueue.Enqueue(unit);
             }
         }
 
@@ -232,6 +457,7 @@ public class TurnScheduler : MonoBehaviour
                 unit.unitID = UnitIdCounter++;
                 actionsOfEnemyTeam.Enqueue(new StartAction(unit));
                 enemyEvents.Enqueue(new Event(unit, EventType.START));
+                currTeamQueue.Enqueue(unit);
             }
         }
 
@@ -267,13 +493,16 @@ public class TurnScheduler : MonoBehaviour
 
     public void RemoveUnit(Unit deadUnit)
     {
-        if (players.Remove((PlayerUnit) deadUnit))
-        {
-            currNoOfPlayersAlive--;
+        deadUnit.currentTile.occupied = false;
+        var toRemove = deadUnit as PlayerUnit;
+
+        if (toRemove != null) {
+            players.Remove((PlayerUnit)deadUnit);
+            numPlayersAlive--;
         }
-        else if (enemies.Remove((EnemyUnit) deadUnit))
-        {
-            currNoOfEnemiesAlive--;
+        else {
+            enemies.Remove((EnemyUnit)deadUnit);
+            numEnemiesAlive--;
         }
         Destroy(deadUnit.gameObject);
     }

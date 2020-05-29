@@ -30,10 +30,8 @@ public class Unit : MonoBehaviour
     public float currHP;
 
     [Header("States")]
-    public bool isDead = false;
     public bool takingTurn = false;
     public bool moving = false;
-    public int movementRange;
     public float moveSpeed;
     public bool attackingPhase = false;
     public bool isAttacking = false;
@@ -43,7 +41,7 @@ public class Unit : MonoBehaviour
     public Unit attackingTargetUnit;
 
     // Movement Variables
-    protected Map map;
+    public Map map;
     
     Stack<Tile> path = new Stack<Tile>();
     public Tile currentTile;
@@ -74,36 +72,15 @@ public class Unit : MonoBehaviour
 
     public void Update()
     {
-        if (currHP <= 0) {
-            isDead = true;
-            currHP = 0;
-        }
     }
 
-    public bool WaitForAttackOrEndTurn()
+    // draft
+    public bool isDead()
     {
-        StartCoroutine(CheckForAttackOrEndTurn());
-        return true;
+        return currHP <= 0;
     }
 
-    public IEnumerator CheckForAttackOrEndTurn()
-    {
-        yield return new WaitUntil(() => !takingTurn || attackingPhase);
-
-    }
-    public bool WaitForAttacking()
-    {
-        StartCoroutine(CheckForAttacking());
-        return true;
-    }
-
-    public IEnumerator CheckForAttacking()
-    {
-        yield return new WaitUntil(() => isAttacking);
-
-    }
-
-
+    // sets the currentTile 
     public void StartTurn()
     {
         currentTile = map.GetCurrentTile(transform.position);
@@ -198,6 +175,7 @@ public class Unit : MonoBehaviour
             currentTile.isStartPoint = false;
             currentTile.occupied = false;
             currentTile.selectable = true;
+            currentTile.target = false;
             
             moving = false;
 
