@@ -72,8 +72,14 @@ public class Map : MonoBehaviour
     }
     public Tile GetCurrentTile(Vector3 currentPos)
     {
-        Tile current = GetTargetTile(currentPos);
-        current.occupied = true;
+        Vector3Int currCoor = Vector3Int.RoundToInt(currentPos);
+        Tile current = tileList[currCoor.x + mapSize / 2][currCoor.y + mapSize / 2 - 1];
+        
+        //Tile current = GetTargetTile(Vector3Int.RoundToInt(currentPos));
+        if (current != null)
+        {
+            current.occupied = true;
+        }
         return current;
     }
 
@@ -81,10 +87,14 @@ public class Map : MonoBehaviour
     public static Tile GetTargetTile(Vector3 targetPosition)
     {
         Tile tile = null;
-        if (Physics.Raycast(targetPosition + Vector3.back, Vector3.forward, out RaycastHit hit, Mathf.Infinity))//, LayerMask.NameToLayer("map")))
+        if (Physics.Raycast(targetPosition, Vector3.back, out RaycastHit hit, Mathf.Infinity))
         {
             //Debug.Log("Found the current tile");
             tile = hit.collider.GetComponent<Tile>();
+            if (tile != null)
+            {
+                Debug.Log("found tile");
+            }
         }
         return tile;
     }

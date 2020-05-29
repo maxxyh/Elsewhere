@@ -106,10 +106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8c72d6fc09a9747a11d99d1165cf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current: 0
+  isStartPoint: 0
   target: 0
   selectable: 0
   walkable: 1
+  movementCost: 0
+  occupied: 0
   visited: 0
   parent: {fileID: 0}
   distance: 0

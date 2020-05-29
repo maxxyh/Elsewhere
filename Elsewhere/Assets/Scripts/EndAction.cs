@@ -10,6 +10,8 @@ public class EndAction : Action
     public override Action GenerateNextAction() 
     {
         map.RemoveSelectedTiles(currUnit.currentTile);
+        currUnit.isAttacking = false;
+        currUnit.attackingPhase = false;
         return null;
     }
 }

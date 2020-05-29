@@ -21,7 +21,7 @@ public class PlayerUnit : Unit
         // simply update currentTile if not taking turn
         if (!takingTurn)
         {
-            currentTile = map.GetCurrentTile(transform.position);
+            currentTile = map.GetCurrentTile(Vector3Int.RoundToInt(transform.position));
             return;
         }
 

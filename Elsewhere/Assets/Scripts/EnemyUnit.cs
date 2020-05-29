@@ -34,7 +34,7 @@ public class EnemyUnit : Unit
         // simply update currentTile if not taking turn
         if (!takingTurn)
         {
-            currentTile = map.GetCurrentTile(transform.position);
+            //currentTile = map.GetCurrentTile(transform.position);
             return;
         }
 

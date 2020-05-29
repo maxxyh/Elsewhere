@@ -8,8 +8,11 @@ public class GameManager : MonoBehaviour
     public GameObject TilePrefab;
     public GameObject PlayerPrefab;
     public GameObject EnemyPrefab;
-    private Map map;
-    private TurnScheduler turnScheduler;
+    public Map map;
+    public TurnScheduler turnScheduler;
+    public List<PlayerUnit> players = new List<PlayerUnit>();
+    public List<EnemyUnit> enemies = new List<EnemyUnit>();
+
 
     //private int currentPlayerIndex = 0;
 
@@ -19,15 +22,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        map = FindObjectOfType<Map>();
-        turnScheduler = FindObjectOfType<TurnScheduler>();
+        //map = FindObjectOfType<Map>();
+        //turnScheduler = FindObjectOfType<TurnScheduler>();
     }
     // Start is called before the first frame update
     void Start()
     {
         map.generateMap();
         generatePlayers();
-        turnScheduler.Init();
+        turnScheduler.Init(players, enemies);
     }
 
     // Update is called once per frame
@@ -77,14 +80,19 @@ public class GameManager : MonoBehaviour
         //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
         player.tag = "player";
         player.AssignStats(defaultStats);
+        player.AssignMap(map);
+        players.Add(player);
         
 
         // TODO DOESN'T ACTUALLY INITIATE A VALID ENEMY
-        PlayerUnit enemy = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-map.mapSize/2+1,-map.mapSize/2+1,0),
-            Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
+        EnemyUnit enemy = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-map.mapSize/2+1,-map.mapSize/2+1,0),
+            Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
         //player.gridPosition = new Vector2(0,0);
+
         enemy.tag = "enemy";
         enemy.AssignStats(defaultStats);
+        enemy.AssignMap(map);
+        enemies.Add(enemy);
 
     }
 }

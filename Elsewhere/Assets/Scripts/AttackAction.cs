@@ -8,6 +8,7 @@ public class AttackAction : Action
     }
     public override Action GenerateNextAction() 
     {
+        /*
         while (true)
         {
             if (currUnit.isAttacking)
@@ -16,6 +17,10 @@ public class AttackAction : Action
                 return new EndAction(actionID + 1, currUnit);
             }
         }
-        
+        */
+        StartCoroutine(currUnit.CheckForAttacking());
+        BattleManager.Battle(currUnit, currUnit.attackingTargetUnit);
+        return new EndAction(actionID + 1, currUnit);
+
     }
 }

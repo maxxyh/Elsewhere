@@ -4,6 +4,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -61,9 +62,14 @@ public class Unit : MonoBehaviour
         currHP = this.stats["HP"].CalculateFinalValue();
     }
 
+    public void AssignMap(Map map)
+    {
+        this.map = map;
+    }
+
     public void Start()
     {
-        map = FindObjectOfType<Map>();
+        //map = FindObjectOfType<Map>();
     }
 
     public void Update()
@@ -73,6 +79,30 @@ public class Unit : MonoBehaviour
             currHP = 0;
         }
     }
+
+    public bool WaitForAttackOrEndTurn()
+    {
+        StartCoroutine(CheckForAttackOrEndTurn());
+        return true;
+    }
+
+    public IEnumerator CheckForAttackOrEndTurn()
+    {
+        yield return new WaitUntil(() => !takingTurn || attackingPhase);
+
+    }
+    public bool WaitForAttacking()
+    {
+        StartCoroutine(CheckForAttacking());
+        return true;
+    }
+
+    public IEnumerator CheckForAttacking()
+    {
+        yield return new WaitUntil(() => isAttacking);
+
+    }
+
 
     public void StartTurn()
     {
