@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public bool current = false;
+    public bool isStartPoint = false;
     public bool target = false;
     public bool selectable = false;
     public bool walkable = true;
@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {         
-        if (current)
+        if (isStartPoint)
         {
             // Magenta
             GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.2f);
@@ -77,15 +77,16 @@ public class Tile : MonoBehaviour
     {
         adjacencyList.Clear();
 
-        current = false;
+        isStartPoint = false;
         target = false;
         selectable = false;
 
         // For BFS
         visited = false;
         parent = null;
-        //distance = 0;
         distance = int.MaxValue;
+
+        // distance = 0; BFS NOT IN USE
     }
 
     public void FindNeighbours()

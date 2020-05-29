@@ -27,7 +27,7 @@ public class UnitStat
     //holds most recent calculation that we did
     protected float _value;
 
-    public UnitStat() {
+    private UnitStat() {
         this.statModifiers = new List<StatModifier>();
         this.StatModifiers_readonly = statModifiers.AsReadOnly();
     }

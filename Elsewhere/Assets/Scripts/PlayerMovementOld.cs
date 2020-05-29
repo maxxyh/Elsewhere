@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerMovement : TacticsMove
+/*
+public class PlayerMovementOld : TacticsMove
 {
     //public float moveSpeed = 5f;
 
@@ -22,7 +22,7 @@ public class PlayerMovement : TacticsMove
         
         if (!takingTurn)
         {
-            UpdatePosition();
+            map.GetCurrentTile(transform.position);
             return;
         }
 
@@ -53,7 +53,7 @@ public class PlayerMovement : TacticsMove
 
                     if (t.selectable)
                     {
-                        GeneratePathToTile(t);
+                        GetPathToTile(t);
                     }
                 }
 
@@ -62,7 +62,7 @@ public class PlayerMovement : TacticsMove
         }
     }
 }
-
+*/
 
 /* Deprecated movement controls
 

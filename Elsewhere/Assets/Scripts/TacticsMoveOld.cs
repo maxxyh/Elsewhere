@@ -62,7 +62,7 @@ public class TacticsMoveOld: MonoBehaviour
     {
         ComputeAdjacencyList();
         GetCurrentTile();
-        currentTile.current = true;
+        currentTile.isStartPoint = true;
 
         Queue<Tile> processing = new Queue<Tile>();
 
@@ -145,7 +145,7 @@ public class TacticsMoveOld: MonoBehaviour
     {
         if (currentTile != null )
         {
-            currentTile.current = false;
+            currentTile.isStartPoint = false;
             currentTile = null;
         }
 

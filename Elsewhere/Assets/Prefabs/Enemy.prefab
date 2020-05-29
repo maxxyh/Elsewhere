@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5146792886332154845}
   - component: {fileID: 3091777223207755070}
+  - component: {fileID: 9163119695721405245}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: enemy
@@ -45,25 +46,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4456a8e92b4a64fa81fa3d154ef044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
+  unitID: 0
   characterName: 
-  attackDamage:
-    baseValue: 2
-  magicDamage:
-    baseValue: 0
-  mana:
-    baseValue: 0
-  HP:
-    baseValue: 100
-  defence:
-    baseValue: 0
-  movementRange:
-    baseValue: 0
-  attackRange:
-    baseValue: 0
-  isDead: 0
   currHP: 100
-  selectedUnit: {fileID: 0}
+  isDead: 0
+  takingTurn: 0
+  moving: 0
+  movementRange: 0
+  moveSpeed: 0
+  attackingPhase: 0
+  isAttacking: 0
+  Panel: {fileID: 0}
+  attackingTargetUnit: {fileID: 0}
+  currentTile: {fileID: 0}
+--- !u!70 &9163119695721405245
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992599822804663191}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &4142008206978280636
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class TacticsMove : MonoBehaviour
 
     HashSet<Tile> selectableTiles = new HashSet<Tile>();
     List<Tile> tiles = new List<Tile>();
-    Map map;
+    protected Map map;
 
     Stack<Tile> path = new Stack<Tile>();
     Tile currentTile;
@@ -35,6 +35,7 @@ public class TacticsMove : MonoBehaviour
         TurnManager.AddUnit(this);
     }
 
+    /*
     public Tile GetCurrentTile()
     {
         return GetTargetTile(gameObject);
@@ -107,15 +108,17 @@ public class TacticsMove : MonoBehaviour
         }
         
     }
-
+    
     public void UpdatePosition()
     {
         Tile current = GetCurrentTile();
         current.occupied = true;
     }
 
+    */ 
+
     // Generates the path to the tile
-    public void GeneratePathToTile(Tile target)
+    public void GetPathToTile(Tile target)
     {
         path.Clear();
         target.target = true;
@@ -146,7 +149,6 @@ public class TacticsMove : MonoBehaviour
                 //transform.up = heading;
                 // TODO use or REMOVE heading. doesn't seem to be required yet.
                 transform.position += velocity * Time.deltaTime;
-                // TODO character not moving to desired location.
             }
             else
             {
@@ -169,7 +171,7 @@ public class TacticsMove : MonoBehaviour
     {
         if (currentTile != null)
         {
-            currentTile.current = false;
+            currentTile.isStartPoint = false;
             currentTile = null;
         }
 
@@ -205,6 +207,7 @@ public class TacticsMove : MonoBehaviour
 
 }
 
+/*
 class TileDistancePair : IComparable<TileDistancePair>
 {
 
@@ -222,3 +225,4 @@ class TileDistancePair : IComparable<TileDistancePair>
         return this.d - other.d;
     }
 }
+*/
