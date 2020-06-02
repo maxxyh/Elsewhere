@@ -7,13 +7,18 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
+    [Header("UI")]
+    public GameObject panel;
+
     [Header("Identifiers")]
     public int unitID;  
     public string characterName;
 
+    public Animator anim;
     /* All stats: 
      * attackDamage;
      * magicDamage;
@@ -22,8 +27,6 @@ public class Unit : MonoBehaviour
      * defence;
      * movementRange;
      * attackRange;
-     
-
     */
     [Header("Player Stats")]
     public Dictionary<string, UnitStat> stats;
@@ -48,6 +51,9 @@ public class Unit : MonoBehaviour
 
     Vector3 heading = new Vector3();
     Vector3 velocity = new Vector3();
+    private Vector2 lastMove;
+
+    public Rigidbody2D rb;
 
     // Dictionary style constructor 
     public void AssignStats(Dictionary<string,float> input)
@@ -70,10 +76,16 @@ public class Unit : MonoBehaviour
         //map = FindObjectOfType<Map>();
     }
 
+    // same as Update but update frame in a fixed time 50 times/s
     public void Update()
     {
+
     }
 
+    void FixedUpdate()
+    {
+         
+    }
     // draft
     public bool isDead()
     {
@@ -152,10 +164,13 @@ public class Unit : MonoBehaviour
             Tile t = path.Peek();
             Vector3 target = t.transform.position;
 
-            // check if not reached yet
+            // check if not reached yet - actual movement
             if (Vector3.Distance(transform.position, target) >= 0.02f)
             {
+                print("heading: " + heading);
+                print("target: " + target);
                 CalculateHeading(target);
+                MovementAnimation();
                 SetHorizontalVelocity();
 
                 //transform.up = heading;
@@ -167,6 +182,7 @@ public class Unit : MonoBehaviour
                 // Tile center reached
                 transform.position = target;
                 path.Pop();
+                anim.SetFloat("moveSpeed", 0);
             }
         }
         else
@@ -187,6 +203,9 @@ public class Unit : MonoBehaviour
             // TODO only EndTurn after taking an action e.g. attack, wait, defend etc.
         }
     }
+    // Vector3Int.RoundToInt() 
+    // get closer to the certain input - tolerance of 0.8
+    // treat heading as arrow keys :")
 
     void CalculateHeading(Vector3 target)
     {
@@ -200,4 +219,76 @@ public class Unit : MonoBehaviour
         velocity = heading * moveSpeed;
     }
 
+    // only works with character thats in the scene b4 runtime
+    // need to integrate with the turn manager
+    public void OnMouseDown()
+    {
+        if (panel != null)
+        {
+            if (!panel.activeSelf)
+            {
+                panel.SetActive(true);
+            } 
+            else
+            {
+                panel.SetActive(false);
+            }
+        }
+    }
+
+    public void MovementAnimation()
+    {
+        /*
+        float horizontalMove = heading.x * moveSpeed;
+        float verticalMove = moveSpeed;
+        if ((heading.x == -1 || heading.x == 1) && heading.y == 0)
+        {
+            anim.SetFloat("moveSpeed", Mathf.Abs(horizontalMove));
+        } 
+        else if ((heading.y == -1 || heading.y == 1) && heading.x == 0)
+        {
+            anim.SetFloat("moveSpeed", verticalMove);
+        }
+        */
+        
+        //rb.velocity = heading * moveSpeed;
+        if (moving)
+        {
+            /*
+            anim.SetFloat("moveSpeed", moveSpeed);
+            
+            // move up
+            if (heading.y == 1)
+            {
+                anim.SetBool("isFacingLeft", false);
+                anim.SetBool("isFacingUp", true);
+            }
+            
+            // move down
+            else if (heading.y == -1)
+            {
+                anim.SetBool("isFacingLeft", false);
+                anim.SetBool("isFacingUp", false);
+            }
+            else if (heading.x == 1 || heading.x == -1)
+            {
+                anim.SetBool("isFacingLeft", true);
+                
+            } 
+            */
+            anim.SetFloat("moveSpeed", moveSpeed);
+            anim.SetFloat("Horizontal", heading.x);
+            anim.SetFloat("Vertical", heading.y);
+            if (heading.x == 1 || heading.x == -1)
+            {
+                lastMove = new Vector2(heading.x, 0f);
+            }    
+            else if (heading.y == 1 || heading.y == -1)
+            {
+                lastMove = new Vector2(0f, heading.y);
+            }
+            anim.SetFloat("lastMoveX", lastMove.x);
+            anim.SetFloat("lastMoveY", lastMove.y);
+        }
+    }
 }
