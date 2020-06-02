@@ -115,19 +115,13 @@ public class Map : MonoBehaviour
     // Finds selectable tiles and updates currentTile as current, occupied
     public void FindSelectableTiles(Tile startTile, float movementRange)
     {
-        // Initialise AdjacencyList again to account for updates to player movement
-        ComputeAdjacencyList(); 
-
         // init Dijkstra
         PriorityQueue<TileDistancePair> processing = new PriorityQueue<TileDistancePair>();
-        foreach (List<Tile> row in tileList)
-        {
-            foreach (Tile tile in row)
-            {
-                tile.distance = int.MaxValue;
-            }
-        }
-        startTile.distance = 0;
+
+        
+        // Compute Adjacency List and reset all distances.
+        InitPathFinding(startTile);
+
         startTile.selectable = true;
         selectableTiles.Add(startTile);
 
@@ -138,15 +132,15 @@ public class Map : MonoBehaviour
         while (processing.Count() > 0)
         {
             TileDistancePair temp = processing.Dequeue();
-            int distanceEstimate = temp.d;
+            float distanceEstimate = temp.d;
             Tile node = temp.t;
-            if (distanceEstimate == node.distance)
+            if ((int) Math.Round(distanceEstimate) == node.distance)
             {
                 foreach (Tile neighbour in node.adjacencyList)
                 {
                     int newEstimate = node.distance + neighbour.movementCost;
 
-                    if (neighbour.walkable && neighbour.distance > newEstimate && newEstimate <= movementRange)
+                    if (neighbour.walkable && !neighbour.occupied && neighbour.distance > newEstimate && newEstimate <= movementRange)
                     {
                         neighbour.selectable = true;
                         // TODO remove selectableTiles
@@ -158,6 +152,22 @@ public class Map : MonoBehaviour
                 }
             }
         }
+    }
+
+    // To be called whenever a pathfinding event is done. Re-computes adjacency list and resets tile distances.
+    public void InitPathFinding(Tile startTile)
+    {
+        // Initialise AdjacencyList again to account for updates to tiles e.g. destroyed 
+        ComputeAdjacencyList();
+
+        foreach (List<Tile> row in tileList)
+        {
+            foreach (Tile tile in row)
+            {
+                tile.distance = int.MaxValue;
+            }
+        }
+        startTile.distance = 0;
     }
 
     public void RemoveSelectedTiles(Tile currentTile, bool destructive = true)
@@ -216,6 +226,7 @@ public class Map : MonoBehaviour
         {
             t.attackable = false;
         }
+        attackableTiles.Clear();
     }
 }
 
@@ -223,10 +234,10 @@ public class Map : MonoBehaviour
 class TileDistancePair : IComparable<TileDistancePair>
 {
 
-    public int d;
+    public float d;
     public Tile t;
 
-    public TileDistancePair(int d, Tile t)
+    public TileDistancePair(float d, Tile t)
     {
         this.t = t;
         this.d = d;
@@ -234,6 +245,18 @@ class TileDistancePair : IComparable<TileDistancePair>
 
     public int CompareTo(TileDistancePair other)
     {
-        return this.d - other.d;
+        if (this.d > other.d)
+        {
+            return 1;
+        }
+        else if (other.d > this.d)
+        {
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }
+

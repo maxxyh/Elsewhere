@@ -8,7 +8,7 @@ public class Tile : MonoBehaviour
     public bool target = false;
     public bool selectable = false;
     public bool walkable = true;
-    public bool attackable = true;
+    public bool attackable = false;
     public bool hover = false;
     public int movementCost;
 
@@ -104,7 +104,8 @@ public class Tile : MonoBehaviour
 
     public void FindNeighbours()
     {
-        Reset();
+        //Reset();
+        adjacencyList.Clear();
 
         CheckTile(Vector3.left);
         CheckTile(Vector3.right);
@@ -121,7 +122,7 @@ public class Tile : MonoBehaviour
         {
             Tile tile = item.GetComponent<Tile>();
             //Debug.Log("Processing " + tile.gridPosition.x + tile.gridPosition.y);
-            if (!(tile == null) && tile.walkable && !tile.occupied)
+            if (tile != null)// && tile.walkable && !tile.occupied)
             {
                 adjacencyList.Add(tile);
 

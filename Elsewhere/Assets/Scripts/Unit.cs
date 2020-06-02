@@ -144,6 +144,7 @@ public class Unit : MonoBehaviour
     // Generates the path to the tile
     public void GetPathToTile(Tile target)
     {
+        AStarSearch.GeneratePath(map, currentTile, target, true);
         path.Clear();
         target.target = true;
         moving = true;
@@ -167,8 +168,8 @@ public class Unit : MonoBehaviour
             // check if not reached yet - actual movement
             if (Vector3.Distance(transform.position, target) >= 0.02f)
             {
-                print("heading: " + heading);
-                print("target: " + target);
+                //print("heading: " + heading);
+                //print("target: " + target);
                 CalculateHeading(target);
                 MovementAnimation();
                 SetHorizontalVelocity();
@@ -203,9 +204,7 @@ public class Unit : MonoBehaviour
             // TODO only EndTurn after taking an action e.g. attack, wait, defend etc.
         }
     }
-    // Vector3Int.RoundToInt() 
-    // get closer to the certain input - tolerance of 0.8
-    // treat heading as arrow keys :")
+
 
     void CalculateHeading(Vector3 target)
     {

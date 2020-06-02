@@ -111,6 +111,8 @@ MonoBehaviour:
   target: 0
   selectable: 0
   walkable: 1
+  attackable: 0
+  hover: 0
   movementCost: 0
   occupied: 0
   visited: 0
