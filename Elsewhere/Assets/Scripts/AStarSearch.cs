@@ -12,7 +12,7 @@ public class AStarSearch
         return Math.Abs(a.gridPosition.x - b.gridPosition.x) + Math.Abs(a.gridPosition.y - b.gridPosition.y);
     }
 
-    public static void GeneratePath(Map map, Tile start, Tile goal, bool selectable = false)
+    public static void GeneratePath(Map map, Tile start, Tile goal, bool selectable = false, bool playerTargeting = false)
     { 
         var frontier = new PriorityQueue<TileDistancePair>();
 
@@ -34,13 +34,20 @@ public class AStarSearch
             {
                 int newEstimate = current.distance + neighbour.movementCost;
 
-                if (neighbour.walkable && !neighbour.occupied && neighbour.distance > newEstimate)
+                if (neighbour.walkable && neighbour.distance > newEstimate)
                 {
                     // check if neighbour is selectable if setting is activated
                     if (selectable && !neighbour.selectable)
                     {
                         continue;
                     }
+
+                    // check if is used for selecting enemy targets
+                    if (!playerTargeting && neighbour.occupied)
+                    {
+                        continue;
+                    }
+
                     neighbour.distance = newEstimate;
                     neighbour.parent = current;
                     float priority = newEstimate + Heuristic(neighbour, goal);

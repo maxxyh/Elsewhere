@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Serialization;
 using UnityEditor;
 using UnityEngine;
 
@@ -143,7 +142,47 @@ public class TurnScheduler : MonoBehaviour
         currUnit.StartTurn();
         map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
 
+        // StartCoroutine(EnemyMovement());
+        
+        
         // call it's own movement and attack functions
+    }
+
+    IEnumerator EnemyMovement()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        
+        // use distance to determine closest player
+        int minDistance = int.MaxValue;
+        Unit targetPlayer = players[0];
+        foreach (Unit player in players)
+        {
+            AStarSearch.GeneratePath(map, currUnit.currentTile, player.currentTile, false, true);
+            if (player.currentTile.distance < minDistance)
+            {
+                minDistance = player.currentTile.distance;
+                targetPlayer = player;
+            }
+        }
+
+        Tile targetTile = targetPlayer.currentTile;
+        Debug.Log(targetTile.transform.position);
+        AStarSearch.GeneratePath(map, currUnit.currentTile, targetPlayer.currentTile, false, true);
+        // get target tile by subtracting the attackRange
+        int attackRange = (int) currUnit.stats["attackRange"].baseValue;
+        for (int i = 0; i < attackRange; i++)
+        {
+            if (targetTile == currUnit.currentTile)
+            {
+                break;
+            }
+            else
+            {
+                targetTile = targetTile.parent;
+            }                
+        }
+        // A star movement towards the target 
+        currUnit.GetPathToTile(targetTile);
     }
 
     //Draft 

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,14 +43,17 @@ public class EnemyUnit : Unit
         if (!moving && !attackingPhase)
         {
             CheckMoveMouse();
+            // this won't be required
         }
         // select tile during turn within movement range and move to that tile
         else if (!moving && attackingPhase)
         {
             CheckAttackMouse();
+            // this also not required
         }
         else
         {
+            // only need to check if moving Move()
             Move();
         }
     }
@@ -72,7 +75,6 @@ public class EnemyUnit : Unit
                         GetPathToTile(t);
                     }
                 }
-
             }
         }
     }
