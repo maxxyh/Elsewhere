@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     public List<PlayerUnit> players = new List<PlayerUnit>();
     public List<EnemyUnit> enemies = new List<EnemyUnit>();
 
-
     //private int currentPlayerIndex = 0;
 
     public Camera worldCamera;
@@ -71,7 +70,8 @@ public class GameManager : MonoBehaviour
         defaultStats.Add("magicDamage", 3);
         defaultStats.Add("mana", 20);
         defaultStats.Add("HP", 10);
-        defaultStats.Add("defence", 5);
+        defaultStats.Add("armor", 5);
+        defaultStats.Add("magicRes", 5);
         defaultStats.Add("movementRange", 4);
         defaultStats.Add("attackRange", 2);
     
@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
         player.tag = "player";
         player.AssignStats(defaultStats);
         player.AssignMap(map);
+        player.UpdateUI();
         players.Add(player);
 
         PlayerUnit player2 = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0, 2, 0),
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
         player2.tag = "player";
         player2.AssignStats(defaultStats);
         player2.AssignMap(map);
+        player2.UpdateUI();
         players.Add(player2);
 
 
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviour
         enemy.tag = "enemy";
         enemy.AssignStats(defaultStats);
         enemy.AssignMap(map);
+        enemy.UpdateUI();
         enemies.Add(enemy);
 
         EnemyUnit enemy2 = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-1 -map.mapSize / 2 + 1, -map.mapSize / 2 + 1, 0),
@@ -112,6 +115,7 @@ public class GameManager : MonoBehaviour
         enemy2.tag = "enemy";
         enemy2.AssignStats(defaultStats);
         enemy2.AssignMap(map);
+        enemy2.UpdateUI();
         enemies.Add(enemy2);
     }
 }

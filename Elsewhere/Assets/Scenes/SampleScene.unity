@@ -2088,6 +2088,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 0}
+  unitName: {fileID: 0}
+  unitHP: {fileID: 0}
+  unitMana: {fileID: 0}
+  unitAttackDamage: {fileID: 0}
+  unitMagicDamage: {fileID: 0}
+  unitArmor: {fileID: 0}
+  unitMagicRes: {fileID: 0}
+  unitMovementRange: {fileID: 0}
+  unitAttackRange: {fileID: 0}
   unitID: 0
   characterName: Healer
   anim: {fileID: 0}
@@ -5712,12 +5721,12 @@ PrefabInstance:
     - target: {fileID: 416879107944360291, guid: a1d2ead808d979840a01e8247102a2fe,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -93.25
+      value: -70.899994
       objectReference: {fileID: 0}
     - target: {fileID: 416879107944360291, guid: a1d2ead808d979840a01e8247102a2fe,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 40.5
+      value: -2.100006
       objectReference: {fileID: 0}
     - target: {fileID: 416879107944360291, guid: a1d2ead808d979840a01e8247102a2fe,
         type: 3}
@@ -6002,6 +6011,18 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 1993327612}
+    - target: {fileID: 3618772693588316119, guid: 1d7992d04b29ebb42a58c20955daa7c1,
+        type: 3}
+      propertyPath: EnemyPrefab
+      value: 
+      objectReference: {fileID: 7932095835135505431, guid: e3c45417ce49adc489ac2cd7b61439ec,
+        type: 3}
+    - target: {fileID: 3618772693588316119, guid: 1d7992d04b29ebb42a58c20955daa7c1,
+        type: 3}
+      propertyPath: PlayerPrefab
+      value: 
+      objectReference: {fileID: 1457603474559478528, guid: 648b967801f2e1d48be5c8641532ea6e,
+        type: 3}
     - target: {fileID: 6366620930320398853, guid: 1d7992d04b29ebb42a58c20955daa7c1,
         type: 3}
       propertyPath: m_Name

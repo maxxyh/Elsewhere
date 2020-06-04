@@ -305,6 +305,7 @@ public class TurnScheduler : MonoBehaviour
         // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
         currUnit.StartAttack(targetUnit);
         BattleManager.Battle(currUnit, targetUnit);
+        targetUnit.UpdateUI();
     }
 
 

@@ -3,7 +3,23 @@ guid: fd15699354d0cfb4fa318476348fce37
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - panel: {fileID: 416879107944360316, guid: a1d2ead808d979840a01e8247102a2fe, type: 3}
+  - unitName: {instanceID: 0}
+  - unitHP: {instanceID: 0}
+  - unitMana: {instanceID: 0}
+  - unitAttackDamage: {instanceID: 0}
+  - unitMagicDamage: {instanceID: 0}
+  - unitArmor: {instanceID: 0}
+  - unitMagicRes: {instanceID: 0}
+  - unitMovementRange: {instanceID: 0}
+  - unitAttackRange: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - Panel: {instanceID: 0}
+  - attackingTargetUnit: {instanceID: 0}
+  - map: {instanceID: 0}
+  - currentTile: {instanceID: 0}
+  - rb: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 2752818850899612005}
   - component: {fileID: 4750492365653279962}
   m_Layer: 8
-  m_Name: Player
+  m_Name: Swordsman
   m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c14c17b5337fd04b9b5e5664385f4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
+  panel: {fileID: 8632271840112275264, guid: bc63a8b10a3db674eb67c5f1c5d5af20, type: 3}
+  unitName: {fileID: 0}
+  unitHP: {fileID: 0}
+  unitMana: {fileID: 0}
+  unitAttackDamage: {fileID: 0}
+  unitMagicDamage: {fileID: 0}
+  unitArmor: {fileID: 0}
+  unitMagicRes: {fileID: 0}
+  unitMovementRange: {fileID: 0}
+  unitAttackRange: {fileID: 0}
   unitID: 0
   characterName: 
   anim: {fileID: 950430317}

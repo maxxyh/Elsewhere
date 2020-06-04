@@ -45,8 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TilePrefab: {fileID: 7842217359672464155, guid: bab4188df0fb02445848cbc25e2698a1,
     type: 3}
-  PlayerPrefab: {fileID: 8393223244648442301, guid: fe8d5df54798187468aa6c2855e2353f,
+  PlayerPrefab: {fileID: 5432346895658925072, guid: 5b39c98a33dd4864e84c33f132d502b6,
     type: 3}
   EnemyPrefab: {fileID: 1992599822804663191, guid: aba4f8b58f322fb4ba90405ce2482c1b,
     type: 3}
+  map: {fileID: 0}
+  turnScheduler: {fileID: 0}
+  players: []
+  enemies: []
   worldCamera: {fileID: 0}

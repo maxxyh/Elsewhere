@@ -13,6 +13,15 @@ public class Unit : MonoBehaviour
 {
     [Header("UI")]
     public GameObject panel;
+    public Text unitName;
+    public Text unitHP;
+    public Text unitMana;
+    public Text unitAttackDamage;
+    public Text unitMagicDamage;
+    public Text unitArmor;
+    public Text unitMagicRes;
+    public Text unitMovementRange;
+    public Text unitAttackRange;
 
     [Header("Identifiers")]
     public int unitID;  
@@ -64,6 +73,19 @@ public class Unit : MonoBehaviour
             this.stats[pair.Key] = new UnitStat(pair.Value);
         }
         currHP = this.stats["HP"].CalculateFinalValue();
+    }
+    
+    public void UpdateUI()
+    {
+        unitName.text = this.characterName;
+        unitHP.text = this.currHP.ToString();
+        unitMana.text = this.stats["mana"].baseValue.ToString();
+        unitAttackDamage.text = this.stats["attackDamage"].baseValue.ToString();
+        unitMagicDamage.text = this.stats["magicDamage"].baseValue.ToString();
+        unitArmor.text = this.stats["armor"].baseValue.ToString();
+        unitMagicRes.text = this.stats["magicRes"].baseValue.ToString();
+        unitMovementRange.text = this.stats["movementRange"].baseValue.ToString();
+        unitAttackRange.text = this.stats["attackRange"].baseValue.ToString();
     }
 
     public void AssignMap(Map map)
@@ -289,5 +311,17 @@ public class Unit : MonoBehaviour
             anim.SetFloat("lastMoveX", lastMove.x);
             anim.SetFloat("lastMoveY", lastMove.y);
         }
+    }
+
+    private void OnMouseOver()
+    {
+        Debug.Log("MouseOver: " + this.panel.activeSelf);
+        this.panel.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        Debug.Log("MouseExit: " + this.panel.activeSelf);
+        this.panel.SetActive(false);
     }
 }
