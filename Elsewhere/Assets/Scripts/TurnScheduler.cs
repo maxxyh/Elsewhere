@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class TurnScheduler : MonoBehaviour
     PriorityQueue<Action> actionsOfEnemyTeam = new PriorityQueue<Action>();
 
     Queue<Unit> currTeamQueue = new Queue<Unit>();
+
+    public GameObject playerPanel;
 
     PriorityQueue<Event> playerEvents = new PriorityQueue<Event>();
     PriorityQueue<Event> enemyEvents = new PriorityQueue<Event>();
@@ -57,6 +60,9 @@ public class TurnScheduler : MonoBehaviour
         currUnit.isAttacking = false;
         currUnit.attackingPhase = false;
 
+        currUnit.statPanel.SetActive(false);
+        playerPanel.SetActive(false);
+
         // check whether there are still players in the queue -> if have then it should start the next player.
         if (currTeamQueue.Count > 0)
         {
@@ -75,6 +81,8 @@ public class TurnScheduler : MonoBehaviour
         currUnit.takingTurn = false;
         currUnit.isAttacking = false;
         currUnit.attackingPhase = false;
+        
+        currUnit.statPanel.SetActive(false);
 
         // check whether there are still enemies in the queue -> if have then it should start the next enemies.
         if (currTeamQueue.Count > 0)
@@ -132,6 +140,7 @@ public class TurnScheduler : MonoBehaviour
     public void StartPlayerTurn()
     {
         currUnit.StartTurn();
+        playerPanel.SetActive(true);
         map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
     }
 
@@ -142,7 +151,7 @@ public class TurnScheduler : MonoBehaviour
         currUnit.StartTurn();
         map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
 
-        // StartCoroutine(EnemyMovement());
+        StartCoroutine(EnemyMovement());
         
         
         // call it's own movement and attack functions
@@ -150,7 +159,7 @@ public class TurnScheduler : MonoBehaviour
 
     IEnumerator EnemyMovement()
     {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(0.75f);
         
         // use distance to determine closest player
         int minDistance = int.MaxValue;
@@ -168,6 +177,14 @@ public class TurnScheduler : MonoBehaviour
         Tile targetTile = targetPlayer.currentTile;
         Debug.Log(targetTile.transform.position);
         AStarSearch.GeneratePath(map, currUnit.currentTile, targetPlayer.currentTile, false, true);
+        
+        // check if target tile is selectable 
+        while (!targetTile.selectable)
+        {
+            targetTile = targetTile.parent;
+        }
+
+        /*
         // get target tile by subtracting the attackRange
         int attackRange = (int) currUnit.stats["attackRange"].baseValue;
         for (int i = 0; i < attackRange; i++)
@@ -181,8 +198,21 @@ public class TurnScheduler : MonoBehaviour
                 targetTile = targetTile.parent;
             }                
         }
+        */
         // A star movement towards the target 
         currUnit.GetPathToTile(targetTile);
+
+        yield return new WaitUntil(() => !currUnit.moving);
+
+        // check if there are players in range
+        if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats["attackRange"].baseValue, targetPlayer))
+        {
+            StartCoroutine(AutoEnemyAttack(targetPlayer));
+        }
+        else
+        {
+            EnemyEndTurn();
+        }
     }
 
     //Draft 
@@ -218,6 +248,20 @@ public class TurnScheduler : MonoBehaviour
             StartCoroutine(EnemyAttack());
         }
         
+    }
+
+    IEnumerator AttackAnimation(Unit targetUnit)
+    {
+        targetUnit.statPanel.SetActive(true);
+        yield return StartCoroutine(currUnit.AttackAnimation());
+        TraumaInducer camShakeInducer = GetComponent<TraumaInducer>();
+        yield return StartCoroutine(camShakeInducer.Shake());
+        
+        // targetUnit not destroyed yet
+        if (targetUnit != null) 
+        {
+            targetUnit.statPanel.SetActive(false);
+        }
     }
 
     IEnumerator PlayerAttack()
@@ -263,9 +307,32 @@ public class TurnScheduler : MonoBehaviour
         // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
         currUnit.StartAttack(targetUnit);
         BattleManager.Battle(currUnit, targetUnit);
+
+        yield return StartCoroutine(AttackAnimation(targetUnit));
         
+
+        PlayerEndTurn();
     }
 
+    IEnumerator AutoEnemyAttack(Unit targetPlayer)
+    {
+        map.RemoveSelectedTiles(currUnit.currentTile, false);
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
+        // should display the attacking tiles.
+
+        yield return new WaitForSecondsRealtime(1);
+
+        map.RemoveAttackableTiles();
+        // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
+        currUnit.StartAttack(targetPlayer);
+        BattleManager.Battle(currUnit, targetPlayer);
+
+        yield return StartCoroutine(AttackAnimation(targetPlayer));
+
+        EnemyEndTurn();
+    }
+
+    // out of use.
     IEnumerator EnemyAttack()
     {
         Unit targetUnit = null;
@@ -305,7 +372,8 @@ public class TurnScheduler : MonoBehaviour
         // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
         currUnit.StartAttack(targetUnit);
         BattleManager.Battle(currUnit, targetUnit);
-        targetUnit.UpdateUI();
+        TraumaInducer camShakeInducer = GetComponent<TraumaInducer>();
+        StartCoroutine(camShakeInducer.Shake());
     }
 
 
@@ -531,8 +599,9 @@ public class TurnScheduler : MonoBehaviour
         currUnit.EndTurn();
     }
 
-    public void RemoveUnit(Unit deadUnit)
+    public IEnumerator RemoveUnit(Unit deadUnit)
     {
+        yield return new WaitForSecondsRealtime(0.3f);
         deadUnit.currentTile.occupied = false;
         var toRemove = deadUnit as PlayerUnit;
 

@@ -2,9 +2,9 @@
  * 
  */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class Unit : MonoBehaviour
 {
     [Header("UI")]
-    public GameObject panel;
+    public GameObject statPanel;
     public Text unitName;
     public Text unitHP;
     public Text unitMana;
@@ -95,13 +95,10 @@ public class Unit : MonoBehaviour
 
     public void Start()
     {
-        //map = FindObjectOfType<Map>();
-    }
-
-    // same as Update but update frame in a fixed time 50 times/s
-    public void Update()
-    {
-
+        if (!takingTurn)
+        {
+            statPanel.SetActive(false);
+        }
     }
 
     void FixedUpdate()
@@ -120,6 +117,7 @@ public class Unit : MonoBehaviour
         currentTile = map.GetCurrentTile(transform.position);
         currentTile.isStartPoint = true;
         takingTurn = true;
+        this.statPanel.SetActive(true);
     }
 
     public void EndTurn()
@@ -134,6 +132,14 @@ public class Unit : MonoBehaviour
         moving = false;
         isAttacking = true;
         attackingTargetUnit = unit;
+        // StartCoroutine(AttackAnimation());
+    }
+
+    public IEnumerator AttackAnimation()
+    {
+        anim.SetBool("isAttacking", true);
+        yield return new WaitForSecondsRealtime(0.4f);
+        anim.SetBool("isAttacking", false);
     }
 
     public void TakeDamage(float damage) {
@@ -188,12 +194,14 @@ public class Unit : MonoBehaviour
             Vector3 target = t.transform.position;
 
             // check if not reached yet - actual movement
-            if (Vector3.Distance(transform.position, target) >= 0.02f)
+            if (Vector3.Distance(transform.position, target) >= 0.08f)
             {
-                //print("heading: " + heading);
-                //print("target: " + target);
+                Vector3 lastHeading = heading;
                 CalculateHeading(target);
-                MovementAnimation();
+                if (heading != lastHeading)
+                {
+                    MovementAnimation();
+                }
                 SetHorizontalVelocity();
 
                 //transform.up = heading;
@@ -244,15 +252,15 @@ public class Unit : MonoBehaviour
     // need to integrate with the turn manager
     public void OnMouseDown()
     {
-        if (panel != null)
+        if (statPanel != null)
         {
-            if (!panel.activeSelf)
+            if (!statPanel.activeSelf)
             {
-                panel.SetActive(true);
+                statPanel.SetActive(true);
             } 
             else
             {
-                panel.SetActive(false);
+                statPanel.SetActive(false);
             }
         }
     }
@@ -313,15 +321,18 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void OnMouseOver()
+    private void OnMouseEnter()
     {
-        Debug.Log("MouseOver: " + this.panel.activeSelf);
-        this.panel.SetActive(true);
+        //Debug.Log("MouseOver: " + this.statPanel.activeSelf);
+        this.statPanel.SetActive(true);
     }
 
     private void OnMouseExit()
     {
-        Debug.Log("MouseExit: " + this.panel.activeSelf);
-        this.panel.SetActive(false);
+        //Debug.Log("MouseExit: " + this.statPanel.activeSelf);
+        if (!takingTurn)
+        {
+            this.statPanel.SetActive(false);
+        }
     }
 }

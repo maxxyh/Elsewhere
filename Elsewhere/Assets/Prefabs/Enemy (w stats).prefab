@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4456a8e92b4a64fa81fa3d154ef044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 450884464316955552}
+  statPanel: {fileID: 450884464316955552}
   unitName: {fileID: 450884465373382163}
   unitHP: {fileID: 450884465757693618}
   unitMana: {fileID: 450884465891745066}

@@ -15,8 +15,12 @@ public class BattleManager : MonoBehaviour
         
         if (recipient.isDead())
         {
-            turnScheduler.RemoveUnit(recipient);
+            turnScheduler.StartCoroutine(turnScheduler.RemoveUnit(recipient));
         } 
+        else
+        {
+            recipient.UpdateUI();
+        }
     }
 
 }

@@ -220,6 +220,47 @@ public class Map : MonoBehaviour
         }
     }
 
+    public bool PlayerTargetInRange(Tile startTile, float attackRange, Unit player)
+    {
+        int[] hor = { -1, 0, 1, 0 };
+        int[] vert = { 0, 1, 0, -1 };
+
+        int currX = startTile.gridPosition.x, currY = startTile.gridPosition.y;
+
+        bool[] passable = new bool[4];
+
+        for (int i = 0; i < 4; i++)
+        {
+            passable[i] = true;
+        }
+
+        for (int i = 1; i <= attackRange; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                int newX = currX + i * hor[j];
+                int newY = currY + i * vert[j];
+
+                if (newX >= 0 && newX < mapSize && newY >= 0 && newY < mapSize)
+                {
+                    Tile newTile = tileList[newX][newY];
+                    if (newTile.walkable && passable[j])
+                    {
+                        if (newTile == player.currentTile)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        passable[j] = false;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     public void RemoveAttackableTiles()
     {
         foreach(Tile t in attackableTiles)

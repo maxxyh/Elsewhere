@@ -34,16 +34,10 @@ public class AStarSearch
             {
                 int newEstimate = current.distance + neighbour.movementCost;
 
-                if (neighbour.walkable && neighbour.distance > newEstimate)
+                if (neighbour.walkable && neighbour.distance > newEstimate && (!neighbour.occupied || (playerTargeting && neighbour == goal)) )
                 {
                     // check if neighbour is selectable if setting is activated
                     if (selectable && !neighbour.selectable)
-                    {
-                        continue;
-                    }
-
-                    // check if is used for selecting enemy targets
-                    if (!playerTargeting && neighbour.occupied)
                     {
                         continue;
                     }

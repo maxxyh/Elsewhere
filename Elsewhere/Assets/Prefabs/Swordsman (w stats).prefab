@@ -169,8 +169,9 @@ GameObject:
   - component: {fileID: 1457603474559478530}
   - component: {fileID: 5076454641474114520}
   - component: {fileID: 2426852039474824807}
+  - component: {fileID: 738654797104634884}
   m_Layer: 8
-  m_Name: Swordsman (w stats) 1
+  m_Name: Swordsman (w stats)
   m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c14c17b5337fd04b9b5e5664385f4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 8632271840112275264, guid: bc63a8b10a3db674eb67c5f1c5d5af20, type: 3}
+  statPanel: {fileID: 2715519480604235490}
   unitName: {fileID: 2715519481232249650}
   unitHP: {fileID: 2715519480578613880}
   unitMana: {fileID: 2715519481608105983}
@@ -246,6 +247,25 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   rb: {fileID: 0}
   gridPosition: {x: 0, y: 0}
+--- !u!95 &738654797104634884
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457603474559478528}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5230764867103163703
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +744,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc63a8b10a3db674eb67c5f1c5d5af20, type: 3}
+--- !u!1 &2715519480604235490 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8632271840112275264, guid: bc63a8b10a3db674eb67c5f1c5d5af20,
+    type: 3}
+  m_PrefabInstance: {fileID: 5937023127810636194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2715519480604235491 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8632271840112275265, guid: bc63a8b10a3db674eb67c5f1c5d5af20,
