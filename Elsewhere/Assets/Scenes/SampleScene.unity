@@ -2114,6 +2114,7 @@ GameObject:
   - component: {fileID: 852694232}
   - component: {fileID: 852694234}
   - component: {fileID: 852694233}
+  - component: {fileID: 852694235}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -2205,6 +2206,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &852694235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852694231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47051e8f64b513c47ab50d292a35200b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfDamagePopUp: {fileID: 5763456026689798542, guid: 32f34e4b29d1bcb47b3b6ba0b857d416,
+    type: 3}
 --- !u!1 &884549585 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5323341924538777091, guid: 4c3382c93e72b044490938e580df6bb7,
@@ -5743,7 +5758,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

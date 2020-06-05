@@ -160,15 +160,24 @@ public class Unit : MonoBehaviour
 
     public void BasicAttack()
     {
+        // check if critical hit
+        float attackDamage = this.stats["attackDamage"].baseValue;
+        attackingTargetUnit.TakeDamage(attackDamage);
+        DamagePopUp.Create(attackingTargetUnit.transform.position, (int) attackDamage);
+
+        // no need to check this here 
+        /*
         float distance = Vector3.Distance(transform.position, attackingTargetUnit.transform.position);
         if (distance <= this.stats["attackRange"].baseValue)
         {
+            float attackDamage = this.stats["attackDamage"].baseValue;
             attackingTargetUnit.TakeDamage(this.stats["attackDamage"].baseValue);
         }
         else
         {
             print("Enemy not in range");
         }
+        */
         // https://www.youtube.com/watch?v=Hp765p29YtE
     }
 

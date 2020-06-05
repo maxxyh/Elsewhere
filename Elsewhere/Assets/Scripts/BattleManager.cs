@@ -10,7 +10,8 @@ public class BattleManager : MonoBehaviour
 
         if (!recipient.isDead()) 
         {
-            attacker.BasicAttack();
+            attacker.BasicAttack(); 
+            // probably shouldn't be done this way
         } 
         
         if (recipient.isDead())
