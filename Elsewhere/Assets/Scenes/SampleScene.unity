@@ -2214,42 +2214,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 416879109340735955}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &911899565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911899562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db4456a8e92b4a64fa81fa3d154ef044, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 0}
-  unitName: {fileID: 0}
-  unitHP: {fileID: 0}
-  unitMana: {fileID: 0}
-  unitAttackDamage: {fileID: 0}
-  unitMagicDamage: {fileID: 0}
-  unitArmor: {fileID: 0}
-  unitMagicRes: {fileID: 0}
-  unitMovementRange: {fileID: 0}
-  unitAttackRange: {fileID: 0}
-  unitID: 0
-  characterName: Healer
-  anim: {fileID: 0}
-  currHP: 100
-  takingTurn: 0
-  moving: 0
-  moveSpeed: 0
-  attackingPhase: 0
-  isAttacking: 0
-  Panel: {fileID: 0}
-  attackingTargetUnit: {fileID: 0}
-  map: {fileID: 0}
-  currentTile: {fileID: 0}
-  rb: {fileID: 0}
 --- !u!4 &930839368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5323341924538777100, guid: 4c3382c93e72b044490938e580df6bb7,
@@ -5925,7 +5889,7 @@ PrefabInstance:
     - target: {fileID: 416879107944360316, guid: a1d2ead808d979840a01e8247102a2fe,
         type: 3}
       propertyPath: m_Name
-      value: Panel
+      value: PlayerActionPanel
       objectReference: {fileID: 0}
     - target: {fileID: 416879107944360316, guid: a1d2ead808d979840a01e8247102a2fe,
         type: 3}
@@ -6126,6 +6090,16 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 1993327612}
+    - target: {fileID: 5323341924538777101, guid: 4c3382c93e72b044490938e580df6bb7,
+        type: 3}
+      propertyPath: PlayerPanel
+      value: 
+      objectReference: {fileID: 911899562}
+    - target: {fileID: 5323341924538777101, guid: 4c3382c93e72b044490938e580df6bb7,
+        type: 3}
+      propertyPath: playerPanel
+      value: 
+      objectReference: {fileID: 911899562}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c3382c93e72b044490938e580df6bb7, type: 3}
 --- !u!1001 &6366620930806630265
