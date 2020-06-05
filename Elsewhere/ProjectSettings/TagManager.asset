@@ -8,6 +8,7 @@ TagManager:
   - player
   - enemy
   - map
+  - crystal
   layers:
   - Default
   - TransparentFX

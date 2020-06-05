@@ -62,7 +62,8 @@ public class Unit : MonoBehaviour
     Vector3 velocity = new Vector3();
     private Vector2 lastMove;
 
-    public Rigidbody2D rb;
+    [Header("For collision")]
+    public Transform sparkle;
 
     // Dictionary style constructor 
     public void AssignStats(Dictionary<string,float> input)
@@ -78,14 +79,14 @@ public class Unit : MonoBehaviour
     public void UpdateUI()
     {
         unitName.text = this.characterName;
-        unitHP.text = this.currHP.ToString();
+        unitHP.text = this.currHP.ToString() + "/" + this.stats["HP"].baseValue.ToString();
         unitMana.text = this.stats["mana"].baseValue.ToString();
-        unitAttackDamage.text = this.stats["attackDamage"].baseValue.ToString();
-        unitMagicDamage.text = this.stats["magicDamage"].baseValue.ToString();
-        unitArmor.text = this.stats["armor"].baseValue.ToString();
-        unitMagicRes.text = this.stats["magicRes"].baseValue.ToString();
-        unitMovementRange.text = this.stats["movementRange"].baseValue.ToString();
-        unitAttackRange.text = this.stats["attackRange"].baseValue.ToString();
+        unitAttackDamage.text = this.stats["attackDamage"].CalculateFinalValue().ToString();
+        unitMagicDamage.text = this.stats["magicDamage"].CalculateFinalValue().ToString();
+        unitArmor.text = this.stats["armor"].CalculateFinalValue().ToString();
+        unitMagicRes.text = this.stats["magicRes"].CalculateFinalValue().ToString();
+        unitMovementRange.text = this.stats["movementRange"].CalculateFinalValue().ToString();
+        unitAttackRange.text = this.stats["attackRange"].CalculateFinalValue().ToString();
     }
 
     public void AssignMap(Map map)
@@ -95,6 +96,8 @@ public class Unit : MonoBehaviour
 
     public void Start()
     {
+        sparkle.GetComponent<ParticleSystem>().enableEmission = false;
+
         if (!takingTurn)
         {
             statPanel.SetActive(false);
@@ -334,5 +337,26 @@ public class Unit : MonoBehaviour
         {
             this.statPanel.SetActive(false);
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("crystal"))
+        {
+            sparkle.GetComponent<ParticleSystem>().enableEmission = true;
+            Debug.Log(sparkle.GetComponent<ParticleSystem>().enableEmission);
+            StartCoroutine(stopSparkle());
+            Destroy(collision.gameObject);
+            if (this.gameObject.CompareTag("enemy"))
+            {
+                this.stats["attackDamage"].AddModifier(new StatModifier(3, StatModType.Flat));
+                UpdateUI();
+            }
+        }
+    }
+
+    IEnumerator stopSparkle()
+    {
+        yield return new WaitForSeconds(0.4f);
+        sparkle.GetComponent<ParticleSystem>().enableEmission = false;
     }
 }
