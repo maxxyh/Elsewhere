@@ -24,7 +24,7 @@ public class Unit : MonoBehaviour
     public Text unitAttackRange;
 
     [Header("Identifiers")]
-    public int unitID;  
+    public int unitID;
     public string characterName;
 
     public Animator anim;
@@ -42,6 +42,14 @@ public class Unit : MonoBehaviour
     public float currHP;
 
     [Header("States")]
+    private UnitState _currState = UnitState.ENDTURN;
+    public UnitState currState
+    {
+        get { return _currState; }
+
+        set { _currState = value;  }
+    }
+
     public bool takingTurn = false;
     public bool moving = false;
     public float moveSpeed;
@@ -98,17 +106,12 @@ public class Unit : MonoBehaviour
     {
         sparkle.GetComponent<ParticleSystem>().enableEmission = false;
 
-        if (!takingTurn)
+        if (currState == UnitState.ENDTURN)
         {
             statPanel.SetActive(false);
         }
     }
 
-    void FixedUpdate()
-    {
-         
-    }
-    // draft
     public bool isDead()
     {
         return currHP <= 0;
@@ -119,23 +122,20 @@ public class Unit : MonoBehaviour
     {
         currentTile = map.GetCurrentTile(transform.position);
         currentTile.isStartPoint = true;
-        takingTurn = true;
+        currState = UnitState.IDLING;
         this.statPanel.SetActive(true);
     }
 
     public void EndTurn()
     {
-        //map.RemoveSelectedTiles(currentTile); HANDLED IN ENDACTION...
-        takingTurn = false;
+        currState = UnitState.ENDTURN;
     }
     
 
     public void StartAttack(Unit unit)
     {
-        moving = false;
-        isAttacking = true;
+        currState = UnitState.ATTACKING;
         attackingTargetUnit = unit;
-        // StartCoroutine(AttackAnimation());
     }
 
     public IEnumerator AttackAnimation()
@@ -148,14 +148,6 @@ public class Unit : MonoBehaviour
     public void TakeDamage(float damage) {
         stats["HP"].baseValue -= damage;
         currHP = stats["HP"].CalculateFinalValue();
-        
-        // print ("damage done: " +  damage);
-        // print ("my HP: " + currHP);
-        // if (this.HP.baseValue <= 0) {
-        //     isDead = true;
-        //     this.gameObject.tag = "DeadPlayerUnit";
-        //     Destroy(this.gameObject);
-        // }
     }
 
     public void BasicAttack()
@@ -163,22 +155,7 @@ public class Unit : MonoBehaviour
         // check if critical hit
         float attackDamage = this.stats["attackDamage"].baseValue;
         attackingTargetUnit.TakeDamage(attackDamage);
-        DamagePopUp.Create(attackingTargetUnit.transform.position, (int) attackDamage);
-
-        // no need to check this here 
-        /*
-        float distance = Vector3.Distance(transform.position, attackingTargetUnit.transform.position);
-        if (distance <= this.stats["attackRange"].baseValue)
-        {
-            float attackDamage = this.stats["attackDamage"].baseValue;
-            attackingTargetUnit.TakeDamage(this.stats["attackDamage"].baseValue);
-        }
-        else
-        {
-            print("Enemy not in range");
-        }
-        */
-        // https://www.youtube.com/watch?v=Hp765p29YtE
+        DamagePopUp.Create(attackingTargetUnit.transform.position, (int)attackDamage);
     }
 
     // Generates the path to the tile
@@ -187,7 +164,7 @@ public class Unit : MonoBehaviour
         AStarSearch.GeneratePath(map, currentTile, target, true);
         path.Clear();
         target.target = true;
-        moving = true;
+        currState = UnitState.MOVING;
 
         Tile next = target;
         while (next != null)
@@ -216,8 +193,6 @@ public class Unit : MonoBehaviour
                 }
                 SetHorizontalVelocity();
 
-                //transform.up = heading;
-                // TODO use or REMOVE heading. doesn't seem to be required yet.
                 transform.position += velocity * Time.deltaTime;
             }
             else
@@ -235,8 +210,8 @@ public class Unit : MonoBehaviour
             currentTile.occupied = false;
             currentTile.selectable = true;
             currentTile.target = false;
-            
-            moving = false;
+
+            currState = UnitState.IDLING;
 
             // update currentTile
             currentTile = map.GetCurrentTile(transform.position);
@@ -279,44 +254,8 @@ public class Unit : MonoBehaviour
 
     public void MovementAnimation()
     {
-        /*
-        float horizontalMove = heading.x * moveSpeed;
-        float verticalMove = moveSpeed;
-        if ((heading.x == -1 || heading.x == 1) && heading.y == 0)
+        if (currState == UnitState.MOVING)
         {
-            anim.SetFloat("moveSpeed", Mathf.Abs(horizontalMove));
-        } 
-        else if ((heading.y == -1 || heading.y == 1) && heading.x == 0)
-        {
-            anim.SetFloat("moveSpeed", verticalMove);
-        }
-        */
-        
-        //rb.velocity = heading * moveSpeed;
-        if (moving)
-        {
-            /*
-            anim.SetFloat("moveSpeed", moveSpeed);
-            
-            // move up
-            if (heading.y == 1)
-            {
-                anim.SetBool("isFacingLeft", false);
-                anim.SetBool("isFacingUp", true);
-            }
-            
-            // move down
-            else if (heading.y == -1)
-            {
-                anim.SetBool("isFacingLeft", false);
-                anim.SetBool("isFacingUp", false);
-            }
-            else if (heading.x == 1 || heading.x == -1)
-            {
-                anim.SetBool("isFacingLeft", true);
-                
-            } 
-            */
             anim.SetFloat("moveSpeed", moveSpeed);
             anim.SetFloat("Horizontal", heading.x);
             anim.SetFloat("Vertical", heading.y);
@@ -335,13 +274,11 @@ public class Unit : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        //Debug.Log("MouseOver: " + this.statPanel.activeSelf);
         this.statPanel.SetActive(true);
     }
 
     private void OnMouseExit()
     {
-        //Debug.Log("MouseExit: " + this.statPanel.activeSelf);
         if (!takingTurn)
         {
             this.statPanel.SetActive(false);
@@ -368,4 +305,14 @@ public class Unit : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         sparkle.GetComponent<ParticleSystem>().enableEmission = false;
     }
+}
+
+
+public enum UnitState
+{
+    IDLING,
+    MOVING,
+    TARGETING,
+    ATTACKING,
+    ENDTURN
 }

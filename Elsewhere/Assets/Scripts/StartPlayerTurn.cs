@@ -1,0 +1,38 @@
+﻿/** currUnit.startTurn() -> update current tile + updates booleans
+ * Find selectable tiles 
+ */
+
+/*
+using UnityEngine;
+using System.Collections;
+
+public class StartPlayerTurn : State
+{
+    public StartPlayerTurn(TurnScheduler turnScheduler) : base(turnScheduler) { }
+
+    public override IEnumerator Execute()
+    {
+        currUnit.StartTurn();
+        turnScheduler.playerActionPanel.SetActive(true);
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
+
+        // menu will be available for viewing...
+
+        yield break;
+    }
+
+    public override IEnumerator Attack()
+    {
+        if (currUnit.currState == UnitState.IDLING) 
+        {
+            map.RemoveSelectedTiles(currUnit.currentTile, false);
+            map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
+            // should display the attacking tiles.
+            currUnit.currState = UnitState.TARGETING;
+            Debug.Log("starting player attack");
+            turnScheduler.SetState(new PlayerAttack(turnScheduler));
+        }
+        yield break;
+    }
+}
+*/

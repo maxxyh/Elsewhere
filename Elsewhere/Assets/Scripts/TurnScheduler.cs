@@ -25,7 +25,7 @@ public class TurnScheduler : MonoBehaviour
     private int numEnemiesAlive;
     private Turn currTurn;
     //private Dictionary<string, List<Unit>> AliveList;
-    Unit currUnit;
+    public Unit currUnit;
     private static int UnitIdCounter;
 
     public void InitialNo() 
@@ -56,9 +56,7 @@ public class TurnScheduler : MonoBehaviour
     public void PlayerEndTurn()
     {
         map.RemoveSelectedTiles(currUnit.currentTile);
-        currUnit.takingTurn = false;
-        currUnit.isAttacking = false;
-        currUnit.attackingPhase = false;
+        currUnit.EndTurn();
 
         currUnit.statPanel.SetActive(false);
         playerPanel.SetActive(false);
@@ -78,10 +76,8 @@ public class TurnScheduler : MonoBehaviour
     public void EnemyEndTurn()
     {
         map.RemoveSelectedTiles(currUnit.currentTile);
-        currUnit.takingTurn = false;
-        currUnit.isAttacking = false;
-        currUnit.attackingPhase = false;
-        
+        currUnit.EndTurn();
+
         currUnit.statPanel.SetActive(false);
 
         // check whether there are still enemies in the queue -> if have then it should start the next enemies.
@@ -202,7 +198,7 @@ public class TurnScheduler : MonoBehaviour
         // A star movement towards the target 
         currUnit.GetPathToTile(targetTile);
 
-        yield return new WaitUntil(() => !currUnit.moving);
+        yield return new WaitUntil(() => currUnit.currState == UnitState.IDLING);
 
         // check if there are players in range
         if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats["attackRange"].baseValue, targetPlayer))
@@ -235,7 +231,7 @@ public class TurnScheduler : MonoBehaviour
         map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
         // should display the attacking tiles.
 
-        currUnit.attackingPhase = true;
+        currUnit.currState = UnitState.TARGETING;
 
         if (currTurn == Turn.PLAYER_TURN)
         {
