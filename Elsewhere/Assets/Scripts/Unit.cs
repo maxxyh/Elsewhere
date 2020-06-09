@@ -27,6 +27,7 @@ public class Unit : MonoBehaviour
 
     [Header("Abilities")]
     public List<Ability> abilities = new List<Ability>();
+    public Ability chosenAbility;
 
     [Header("Identifiers")]
     public int unitID;
@@ -60,6 +61,7 @@ public class Unit : MonoBehaviour
     [Header("References")]
     public GameObject Panel;
     public Unit attackingTargetUnit;
+    
 
     // Movement Variables
     public Map map;
@@ -87,6 +89,12 @@ public class Unit : MonoBehaviour
         }
         currHP = this.stats["HP"].CalculateFinalValue();
     }
+
+    public void AssignAbilities(List<Ability> abilities)
+    {
+        this.abilities = abilities;
+    }
+
 
     public void AssignMap(Map map)
     {

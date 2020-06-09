@@ -15,11 +15,11 @@ public class PlayerEndTurn : State
         // check whether there are still players in the queue -> if have then it should start the next player.
         if (turnScheduler.currTeamQueue.Count > 0)
         {
-            turnScheduler.currTurn = Turn.PLAYER_TURN;
+            turnScheduler.currTurn = Team.PLAYER;
         }
         else
         {
-            turnScheduler.currTurn = Turn.ENEMY_TURN;
+            turnScheduler.currTurn = Team.ENEMY;
         }
         turnScheduler.SetState(new Transition(turnScheduler));
         yield break;

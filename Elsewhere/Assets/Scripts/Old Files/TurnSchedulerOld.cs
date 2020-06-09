@@ -23,7 +23,7 @@ public class TurnSchedulerOld : MonoBehaviour
     public Map map;
     private int numPlayersAlive;
     private int numEnemiesAlive;
-    private Turn currTurn;
+    private Team currTurn;
     //private Dictionary<string, List<Unit>> AliveList;
     public Unit currUnit;
     private static int UnitIdCounter;
@@ -41,7 +41,7 @@ public class TurnSchedulerOld : MonoBehaviour
         print("numPlayers = " + players.Count);
         print("numEnemies = " + enemies.Count);
         UnitIdCounter = 0;
-        currTurn = Turn.PLAYER_TURN;
+        currTurn = Team.PLAYER;
         // Enqueue start events
         // EnqueueTeams();
         EnqueueTeams("player");
@@ -50,7 +50,7 @@ public class TurnSchedulerOld : MonoBehaviour
         // Start the scheduler
         //Schedule();
         //StartCoroutine(ScheduleNew());
-        NextTurn(Turn.PLAYER_TURN);
+        NextTurn(Team.PLAYER);
     }
 
     public void PlayerEndTurn()
@@ -64,11 +64,11 @@ public class TurnSchedulerOld : MonoBehaviour
         // check whether there are still players in the queue -> if have then it should start the next player.
         if (currTeamQueue.Count > 0)
         {
-            NextTurn(Turn.PLAYER_TURN);
+            NextTurn(Team.PLAYER);
         }
         else
         {
-            NextTurn(Turn.ENEMY_TURN);
+            NextTurn(Team.ENEMY);
         }
        
     }
@@ -83,18 +83,18 @@ public class TurnSchedulerOld : MonoBehaviour
         // check whether there are still enemies in the queue -> if have then it should start the next enemies.
         if (currTeamQueue.Count > 0)
         {
-            NextTurn(Turn.ENEMY_TURN);
+            NextTurn(Team.ENEMY);
         }
         else
         {
-            NextTurn(Turn.PLAYER_TURN);
+            NextTurn(Team.PLAYER);
         }
 
     }
 
 
     // function that checks if there are still players alive on each team. If there are, it continues with the turn provided.
-    public void NextTurn(Turn turn)
+    public void NextTurn(Team turn)
     { 
         // check if game has been won.
         if (numPlayersAlive == 0)
@@ -109,13 +109,13 @@ public class TurnSchedulerOld : MonoBehaviour
         }
 
         // there are still players alive. Check if the current queue still has players if not have to requeue.
-        if (turn == Turn.ENEMY_TURN)
+        if (turn == Team.ENEMY)
         {
             if (currTeamQueue.Count == 0)
             {
                 EnqueueTeams("enemy");
             }
-            currTurn = Turn.ENEMY_TURN;
+            currTurn = Team.ENEMY;
             currUnit = currTeamQueue.Dequeue();
             StartEnemyTurn();
         }
@@ -125,7 +125,7 @@ public class TurnSchedulerOld : MonoBehaviour
             {
                 EnqueueTeams("player");
             }
-            currTurn = Turn.PLAYER_TURN;
+            currTurn = Team.PLAYER;
             currUnit = currTeamQueue.Dequeue();
             StartPlayerTurn();
         }
@@ -214,7 +214,7 @@ public class TurnSchedulerOld : MonoBehaviour
     //Draft 
     public void OnEndTurnButton()
     {
-        if (currTurn == Turn.PLAYER_TURN)
+        if (currTurn == Team.PLAYER)
         {
             PlayerEndTurn();
         }
@@ -233,7 +233,7 @@ public class TurnSchedulerOld : MonoBehaviour
 
         currUnit.currState = UnitState.TARGETING;
 
-        if (currTurn == Turn.PLAYER_TURN)
+        if (currTurn == Team.PLAYER)
         {
             Debug.Log("starting player attack");
             StartCoroutine(PlayerAttack());

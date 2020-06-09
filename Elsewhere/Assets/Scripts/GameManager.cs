@@ -13,17 +13,12 @@ public class GameManager : MonoBehaviour
     public List<PlayerUnit> players = new List<PlayerUnit>();
     public List<EnemyUnit> enemies = new List<EnemyUnit>();
 
-    //private int currentPlayerIndex = 0;
 
     public Camera worldCamera;
 
     private Dictionary<string, float> defaultStats = new Dictionary<string, float>();
+    private List<Ability> defaultAbilities = new List<Ability>();
 
-    private void Awake()
-    {
-        //map = FindObjectOfType<Map>();
-        //turnScheduler = FindObjectOfType<TurnScheduler>();
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -39,29 +34,6 @@ public class GameManager : MonoBehaviour
         //players[currentPlayerIndex].ExecuteTurn();
     }
 
-    /*
-    public void nextTurn()
-    {
-        currentPlayerIndex = (currentPlayerIndex +1) % (players.Count -1);
-    }
-    */
-    /*
-    void generateMap()
-    {
-        map = new List<List<Tile>>();
-        for (int i = 0 ; i < mapSize ; i ++) {
-            List<Tile> row = new List<Tile>();
-            for (int j = 0 ; j < mapSize ; j++) {
-                Tile tile = ((GameObject)Instantiate(TilePrefab, new Vector3(i - mapSize/2 + 1, j - mapSize/2 + 1, 0),
-                    Quaternion.Euler(new Vector3()) )).GetComponent<Tile>();
-                tile.gridPosition = new Vector2Int(i,j);
-                row.Add(tile);
-            }
-            map.Add(row);
-        }
-    }
-    */
-
     // TODO add the EnemyUnits too.
     void generatePlayers() {
 
@@ -74,7 +46,12 @@ public class GameManager : MonoBehaviour
         defaultStats.Add("magicRes", 5);
         defaultStats.Add("movementRange", 4);
         defaultStats.Add("attackRange", 2);
-    
+
+        // default abilities
+        defaultAbilities.Add(new HealAbility());
+        defaultAbilities.Add(new HealAbility());
+
+
         // PLAYERS
 
         PlayerUnit player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0, 0, 0),
@@ -83,6 +60,7 @@ public class GameManager : MonoBehaviour
         player.tag = "player";
         player.AssignStats(defaultStats);
         player.AssignMap(map);
+        player.AssignAbilities(defaultAbilities);
         player.UpdateUI();
         players.Add(player);
 
@@ -92,6 +70,7 @@ public class GameManager : MonoBehaviour
         player2.tag = "player";
         player2.AssignStats(defaultStats);
         player2.AssignMap(map);
+        player.AssignAbilities(defaultAbilities);
         player2.UpdateUI();
         players.Add(player2);
 

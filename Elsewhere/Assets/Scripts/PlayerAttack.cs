@@ -8,6 +8,12 @@ public class PlayerAttack : State
 
     public override IEnumerator Execute()
     {
+        map.RemoveSelectedTiles(currUnit.currentTile, false);
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
+        // should display the attacking tiles.
+        currUnit.currState = UnitState.TARGETING;
+        Debug.Log("starting player attack");
+
         Unit targetUnit = null;
         
         // wait for player to click on a valid target
@@ -42,7 +48,7 @@ public class PlayerAttack : State
         // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
         currUnit.StartAttack(targetUnit);
         BattleManager.Battle(currUnit, targetUnit);
-        
+
         // TODO how can like this?
         yield return turnScheduler.StartCoroutine(turnScheduler.AttackAnimation(currUnit, targetUnit));
 

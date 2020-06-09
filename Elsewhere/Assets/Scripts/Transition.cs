@@ -38,7 +38,7 @@ public class Transition : State
 
         
         // start next turn
-        if (turnScheduler.currTurn == Turn.ENEMY_TURN)
+        if (turnScheduler.currTurn == Team.ENEMY)
         {
             turnScheduler.SetState(new StartEnemyTurn(turnScheduler));
         }

@@ -11,12 +11,12 @@ public class TurnScheduler : StateMachine
     public List<PlayerUnit> players;
     public List<EnemyUnit> enemies;
     public Queue<Unit> currTeamQueue = new Queue<Unit>();
-    
+    public GameObject confirmationPanel;
     public GameObject playerActionPanel;
     public Map map;
     public Unit currUnit;
 
-    public Turn currTurn;
+    public Team currTurn;
     private static int UnitIdCounter;
 
     #endregion
@@ -28,15 +28,16 @@ public class TurnScheduler : StateMachine
         this.players = players;
         this.enemies = enemies;
         UnitIdCounter = 0;
-        currTurn = Turn.PLAYER_TURN;
-        EnqueueTeams(Turn.PLAYER_TURN);
+        currTurn = Team.PLAYER;
+        EnqueueTeams(Team.PLAYER);
 
         SetState(new Transition(this));
     }
 
-    public void OnAbilityButton()
+    public void OnAbilityButton(Ability ability)
     {
-        //StartCoroutine(State.());
+        currUnit.chosenAbility = ability;
+        StartCoroutine(State.Ability());
     }
     public void OnEndTurnButton()
     {
@@ -65,14 +66,6 @@ public class TurnScheduler : StateMachine
 
     #endregion
 
-    #region State-Specific Behaviours
-
-
-
-
-
-    #endregion
-
     #region Deprecated 
     public void PlayerEndTurn()
     {
@@ -88,17 +81,17 @@ public class TurnScheduler : StateMachine
         // check whether there are still players in the queue -> if have then it should start the next player.
         if (currTeamQueue.Count > 0)
         {
-            Transition(Turn.PLAYER_TURN);
+            Transition(Team.PLAYER);
         }
         else
         {
-            Transition(Turn.ENEMY_TURN);
+            Transition(Team.ENEMY);
         }
 
     }
 
     // function that checks if there are still players alive on each team. If there are, it continues with the turn provided.
-    public void Transition(Turn turn)
+    public void Transition(Team turn)
     {
         // check if game has been won.
         if (players.Count == 0)
@@ -113,13 +106,13 @@ public class TurnScheduler : StateMachine
         }
 
         // there are still players alive. Check if the current queue still has players if not have to requeue.
-        if (turn == Turn.ENEMY_TURN)
+        if (turn == Team.ENEMY)
         {
             if (currTeamQueue.Count == 0)
             {
-                EnqueueTeams(Turn.ENEMY_TURN);
+                EnqueueTeams(Team.ENEMY);
             }
-            currTurn = Turn.ENEMY_TURN;
+            currTurn = Team.ENEMY;
             currUnit = currTeamQueue.Dequeue();
             StartEnemyTurn();
         }
@@ -127,9 +120,9 @@ public class TurnScheduler : StateMachine
         {
             if (currTeamQueue.Count == 0)
             {
-                EnqueueTeams(Turn.PLAYER_TURN);
+                EnqueueTeams(Team.PLAYER);
             }
-            currTurn = Turn.PLAYER_TURN;
+            currTurn = Team.PLAYER;
             currUnit = currTeamQueue.Dequeue();
             StartPlayerTurn();
         }
@@ -275,11 +268,11 @@ public class TurnScheduler : StateMachine
         // check whether there are still enemies in the queue -> if have then it should start the next enemies.
         if (currTeamQueue.Count > 0)
         {
-            Transition(Turn.ENEMY_TURN);
+            Transition(Team.ENEMY);
         }
         else
         {
-            Transition(Turn.PLAYER_TURN);
+            Transition(Team.PLAYER);
         }
 
     }
@@ -304,10 +297,10 @@ public class TurnScheduler : StateMachine
 
     #endregion
 
-    public void EnqueueTeams(Turn team = Turn.BOTH) 
+    public void EnqueueTeams(Team team = Team.BOTH) 
     {
 
-        if (team == Turn.PLAYER_TURN)
+        if (team == Team.PLAYER)
         {
             for (int i = 0; i < players.Count; i++)
             {
@@ -317,7 +310,7 @@ public class TurnScheduler : StateMachine
             }
         }
 
-        else if (team == Turn.ENEMY_TURN)
+        else if (team == Team.ENEMY)
         {
             for (int i = 0; i < enemies.Count; i++)
             {
@@ -327,7 +320,7 @@ public class TurnScheduler : StateMachine
             }
         }
 
-        if (team == Turn.BOTH)
+        if (team == Team.BOTH)
         {
             for (int i = 0; i < players.Count; i++)
             {
@@ -361,9 +354,9 @@ public class TurnScheduler : StateMachine
 }
 
 
-public enum Turn 
+public enum Team 
 {
-    ENEMY_TURN,
-    PLAYER_TURN,
+    ENEMY,
+    PLAYER,
     BOTH
 }

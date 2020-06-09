@@ -25,11 +25,16 @@ public abstract class State
         yield break;
     }
 
+    public virtual IEnumerator Ability()
+    {
+        yield break;
+    }
+
     public virtual IEnumerator EndTurn()
     {
         if (currUnit.currState == UnitState.IDLING)
         {
-            if (turnScheduler.currTurn == Turn.PLAYER_TURN)
+            if (turnScheduler.currTurn == Team.PLAYER)
             {
                 turnScheduler.SetState(new PlayerEndTurn(turnScheduler));
             } 

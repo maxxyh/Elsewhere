@@ -15,11 +15,11 @@ public class EnemyEndTurn : State
         // check whether there are still enemies in the queue -> if have then it should start the next enemies.
         if (turnScheduler.currTeamQueue.Count > 0)
         {
-            turnScheduler.currTurn = Turn.ENEMY_TURN;
+            turnScheduler.currTurn = Team.ENEMY;
         }
         else
         {
-            turnScheduler.currTurn = Turn.PLAYER_TURN;
+            turnScheduler.currTurn = Team.PLAYER;
         }
         turnScheduler.SetState(new Transition(turnScheduler));
         yield break;

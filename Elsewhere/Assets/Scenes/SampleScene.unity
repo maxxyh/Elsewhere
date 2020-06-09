@@ -237,6 +237,11 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 1993327612}
+    - target: {fileID: 3651426993338132624, guid: 4c3382c93e72b044490938e580df6bb7,
+        type: 3}
+      propertyPath: confirmationPanel
+      value: 
+      objectReference: {fileID: 991683323}
     - target: {fileID: 5323341924538777091, guid: 4c3382c93e72b044490938e580df6bb7,
         type: 3}
       propertyPath: m_Name
@@ -1815,7 +1820,7 @@ GameObject:
   - component: {fileID: 140807221}
   - component: {fileID: 140807220}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1883,7 +1888,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 140807221}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 991683327}
+        m_MethodName: OnNoButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &140807221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,7 +2077,7 @@ GameObject:
   - component: {fileID: 330976150}
   - component: {fileID: 330976149}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2129,7 +2145,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 330976150}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 991683327}
+        m_MethodName: OnYesButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &330976150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2237,7 +2264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5331b14bcf0f48f4396f817cd9c9662b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 351248090}
 --- !u!114 &351248090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2923,12 +2949,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1462282264}
+        m_MethodName: OnAbilitiesButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3830,8 +3856,9 @@ GameObject:
   - component: {fileID: 991683324}
   - component: {fileID: 991683326}
   - component: {fileID: 991683325}
+  - component: {fileID: 991683327}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ConfirmationPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3855,7 +3882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: -7.300003}
+  m_AnchoredPosition: {x: 0, y: -7.300003}
   m_SizeDelta: {x: -242.49063, y: -142.73698}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991683325
@@ -3895,6 +3922,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991683323}
   m_CullTransparentMesh: 0
+--- !u!114 &991683327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991683323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4633c146b0652144a8ef9c5dd2660ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1072848593
 GameObject:
   m_ObjectHideFlags: 0
@@ -5913,6 +5952,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2127094681}
     m_Modifications:
+    - target: {fileID: 8426583364401080994, guid: 59f06a62fda6def41993135eaf8dfc42,
+        type: 3}
+      propertyPath: m_Name
+      value: MainActions
+      objectReference: {fileID: 0}
     - target: {fileID: 8426583364401081021, guid: 59f06a62fda6def41993135eaf8dfc42,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6302,8 +6346,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 105424488}
-        m_MethodName: OnEndTurnButton
+      - m_Target: {fileID: 1462282264}
+        m_MethodName: OnSkill1Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6736,8 +6780,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 105424488}
-        m_MethodName: OnAttackButton
+      - m_Target: {fileID: 1462282264}
+        m_MethodName: OnSkill2Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6795,6 +6839,7 @@ GameObject:
   - component: {fileID: 1462282261}
   - component: {fileID: 1462282263}
   - component: {fileID: 1462282262}
+  - component: {fileID: 1462282264}
   m_Layer: 5
   m_Name: Abilitties panel
   m_TagString: Untagged
@@ -6861,6 +6906,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462282260}
   m_CullTransparentMesh: 0
+--- !u!114 &1462282264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462282260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56f50794c8e9d4409bc88386e3e6ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnScheduler: {fileID: 105424488}
+  playerActionPanel: {fileID: 1863035541}
+  abilitiesPanel: {fileID: 1462282260}
+  skill1Button: {fileID: 1277822360}
+  skill2Button: {fileID: 1434468091}
 --- !u!1 &1509465899
 GameObject:
   m_ObjectHideFlags: 0
@@ -6943,12 +7005,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1462282264}
+        m_MethodName: OnReturnButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7057,6 +7119,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1863035541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8426583364401080994, guid: 59f06a62fda6def41993135eaf8dfc42,
+    type: 3}
+  m_PrefabInstance: {fileID: 1166333607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1882406298
 GameObject:
   m_ObjectHideFlags: 0

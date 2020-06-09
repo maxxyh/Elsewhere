@@ -25,12 +25,16 @@ public class StartPlayerTurn : State
     {
         if (currUnit.currState == UnitState.IDLING) 
         {
-            map.RemoveSelectedTiles(currUnit.currentTile, false);
-            map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
-            // should display the attacking tiles.
-            currUnit.currState = UnitState.TARGETING;
-            Debug.Log("starting player attack");
             turnScheduler.SetState(new PlayerAttack(turnScheduler));
+        }
+        yield break;
+    }
+
+    public override IEnumerator Ability()
+    {
+        if (currUnit.currState == UnitState.IDLING)
+        {
+            turnScheduler.SetState(new PlayerAbility(turnScheduler));
         }
         yield break;
     }
