@@ -5,64 +5,61 @@ using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
 
-public class TurnSchedulerNew : StateMachine
+public class TurnSchedulerOld : MonoBehaviour
 {
-    #region Fields and References
-    public List<PlayerUnit> players;
-    public List<EnemyUnit> enemies;
-    private Queue<Unit> currTeamQueue = new Queue<Unit>();
+    private List<PlayerUnit> players;
+    private List<EnemyUnit> enemies;
     
-    public GameObject playerActionPanel;
-    public Map map;
-    public Unit currUnit;
+    PriorityQueue<Action> actionsOfPlayerTeam = new PriorityQueue<Action>();
+    PriorityQueue<Action> actionsOfEnemyTeam = new PriorityQueue<Action>();
 
+    Queue<Unit> currTeamQueue = new Queue<Unit>();
+
+    public GameObject playerPanel;
+
+    PriorityQueue<Event> playerEvents = new PriorityQueue<Event>();
+    PriorityQueue<Event> enemyEvents = new PriorityQueue<Event>();
+
+    public Map map;
+    private int numPlayersAlive;
+    private int numEnemiesAlive;
     private Turn currTurn;
+    //private Dictionary<string, List<Unit>> AliveList;
+    public Unit currUnit;
     private static int UnitIdCounter;
 
-    #endregion
-
-    #region Execution 
+    public void InitialNo() 
+    {
+        numEnemiesAlive = enemies.Count;
+        numPlayersAlive = players.Count;
+    }
 
     public void Init(List<PlayerUnit> players, List<EnemyUnit> enemies)
     {
         this.players = players;
         this.enemies = enemies;
+        print("numPlayers = " + players.Count);
+        print("numEnemies = " + enemies.Count);
         UnitIdCounter = 0;
         currTurn = Turn.PLAYER_TURN;
-
+        // Enqueue start events
+        // EnqueueTeams();
         EnqueueTeams("player");
+        // Get count of players & enemies alive
+        InitialNo();
+        // Start the scheduler
+        //Schedule();
+        //StartCoroutine(ScheduleNew());
         NextTurn(Turn.PLAYER_TURN);
-
-        // SetState(new Begin(this));
-
     }
-
-    public void OnAbilityButton()
-    {
-        //StartCoroutine(State.());
-    }
-
-    #endregion
-
-    #region State-Specific Behaviours
-
-
-
-
-
-    #endregion
-
 
     public void PlayerEndTurn()
     {
-        // StartCoroutine(State.PlayerEndTurn());
-        
-        
         map.RemoveSelectedTiles(currUnit.currentTile);
         currUnit.EndTurn();
 
         currUnit.statPanel.SetActive(false);
-        playerActionPanel.SetActive(false);
+        playerPanel.SetActive(false);
 
         // check whether there are still players in the queue -> if have then it should start the next player.
         if (currTeamQueue.Count > 0)
@@ -100,12 +97,12 @@ public class TurnSchedulerNew : StateMachine
     public void NextTurn(Turn turn)
     { 
         // check if game has been won.
-        if (players.Count == 0)
+        if (numPlayersAlive == 0)
         {
             print("Battle lost. The memories are lost. Try again!");
             return;
         }
-        else if (enemies.Count == 0 )
+        else if (numEnemiesAlive == 0 )
         {
             print("Battle won! The memories are safe...for now.");
             return;
@@ -139,7 +136,7 @@ public class TurnSchedulerNew : StateMachine
     public void StartPlayerTurn()
     {
         currUnit.StartTurn();
-        playerActionPanel.SetActive(true);
+        playerPanel.SetActive(true);
         map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
     }
 
@@ -214,20 +211,6 @@ public class TurnSchedulerNew : StateMachine
         }
     }
 
-    public IEnumerator AttackAnimation(Unit currUnit, Unit targetUnit)
-    {
-        targetUnit.statPanel.SetActive(true);
-        yield return StartCoroutine(currUnit.AttackAnimation());
-        TraumaInducer camShakeInducer = GetComponent<TraumaInducer>();
-        yield return StartCoroutine(camShakeInducer.Shake());
-
-        // targetUnit not destroyed yet  
-        if (targetUnit != null)
-        {
-            targetUnit.statPanel.SetActive(false);
-        }
-    }
-
     //Draft 
     public void OnEndTurnButton()
     {
@@ -241,9 +224,40 @@ public class TurnSchedulerNew : StateMachine
         }
     }
 
+    // Draft for now 
     public void OnAttackButton()
     {
-        StartCoroutine(State.Attack());
+        map.RemoveSelectedTiles(currUnit.currentTile, false);
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
+        // should display the attacking tiles.
+
+        currUnit.currState = UnitState.TARGETING;
+
+        if (currTurn == Turn.PLAYER_TURN)
+        {
+            Debug.Log("starting player attack");
+            StartCoroutine(PlayerAttack());
+        }
+        else
+        {
+            Debug.Log("starting enemy attack");
+            StartCoroutine(EnemyAttack());
+        }
+        
+    }
+
+    IEnumerator AttackAnimation(Unit targetUnit)
+    {
+        targetUnit.statPanel.SetActive(true);
+        yield return StartCoroutine(currUnit.AttackAnimation());
+        TraumaInducer camShakeInducer = GetComponent<TraumaInducer>();
+        yield return StartCoroutine(camShakeInducer.Shake());
+        
+        // targetUnit not destroyed yet
+        if (targetUnit != null) 
+        {
+            targetUnit.statPanel.SetActive(false);
+        }
     }
 
     IEnumerator PlayerAttack()
@@ -290,7 +304,7 @@ public class TurnSchedulerNew : StateMachine
         currUnit.StartAttack(targetUnit);
         BattleManager.Battle(currUnit, targetUnit);
 
-        yield return StartCoroutine(AttackAnimation(currUnit, targetUnit));
+        yield return StartCoroutine(AttackAnimation(targetUnit));
         
 
         PlayerEndTurn();
@@ -309,9 +323,53 @@ public class TurnSchedulerNew : StateMachine
         currUnit.StartAttack(targetPlayer);
         BattleManager.Battle(currUnit, targetPlayer);
 
-        yield return StartCoroutine(AttackAnimation(currUnit, targetPlayer));
+        yield return StartCoroutine(AttackAnimation(targetPlayer));
 
         EnemyEndTurn();
+    }
+
+    // out of use.
+    IEnumerator EnemyAttack()
+    {
+        Unit targetUnit = null;
+        // wait for player to click on a valid target
+        yield return new WaitUntil(() =>
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Unit[] units = GameObject.FindObjectsOfType<Unit>();
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.CompareTag("tile"))
+                    {
+                        Tile t = hit.collider.GetComponent<Tile>();
+                        if (t.occupied && t.attackable)
+                        {
+                            foreach (Unit unit in units)
+                            {
+                                if (unit.gameObject.CompareTag("player") && unit.currentTile == t)
+                                {
+                                    targetUnit = unit;
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        });
+        Debug.Log("valid attack target found");
+        Debug.Log("Attacking player. 6 damage done.");
+
+        map.RemoveAttackableTiles();
+        // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
+        currUnit.StartAttack(targetUnit);
+        BattleManager.Battle(currUnit, targetUnit);
+        TraumaInducer camShakeInducer = GetComponent<TraumaInducer>();
+        StartCoroutine(camShakeInducer.Shake());
     }
 
     public void EnqueueTeams(string team = "both") 
@@ -323,6 +381,8 @@ public class TurnSchedulerNew : StateMachine
             {
                 PlayerUnit unit = players[i];
                 unit.unitID = UnitIdCounter++;
+                actionsOfPlayerTeam.Enqueue(new StartAction(unit));
+                playerEvents.Enqueue(new Event(unit, EventType.START));
                 currTeamQueue.Enqueue(unit);
             }
         }
@@ -333,6 +393,8 @@ public class TurnSchedulerNew : StateMachine
             {
                 EnemyUnit unit = enemies[i];
                 unit.unitID = UnitIdCounter++;
+                actionsOfEnemyTeam.Enqueue(new StartAction(unit));
+                enemyEvents.Enqueue(new Event(unit, EventType.START));
                 currTeamQueue.Enqueue(unit);
             }
         }
@@ -343,12 +405,16 @@ public class TurnSchedulerNew : StateMachine
             {
                 PlayerUnit unit = players[i];
                 unit.unitID = UnitIdCounter++;
+                actionsOfPlayerTeam.Enqueue(new StartAction(unit));
+                playerEvents.Enqueue(new Event(unit, EventType.START));
             }
 
             for (int i = 0; i < enemies.Count; i++)
             {
                 EnemyUnit unit = enemies[i];
                 unit.unitID = UnitIdCounter++;
+                actionsOfEnemyTeam.Enqueue(new StartAction(unit));
+                enemyEvents.Enqueue(new Event(unit, EventType.START));
             }
         }
     }
@@ -361,13 +427,16 @@ public class TurnSchedulerNew : StateMachine
 
         if (toRemove != null) {
             players.Remove((PlayerUnit)deadUnit);
+            numPlayersAlive--;
         }
         else {
             enemies.Remove((EnemyUnit)deadUnit);
+            numEnemiesAlive--;
         }
         Destroy(deadUnit.gameObject);
     }
 }
+
 
 /*
 public enum Turn 
@@ -376,3 +445,12 @@ public enum Turn
     PLAYER_TURN
 }
 */
+
+public enum EventType
+{
+    START,
+    MOVE,
+    ATTACK,
+    END
+}
+

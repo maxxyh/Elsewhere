@@ -11,6 +11,8 @@ using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
+
+    #region FIELDS AND REFERENCES
     [Header("UI")]
     public GameObject statPanel;
     public Text unitName;
@@ -40,6 +42,7 @@ public class Unit : MonoBehaviour
     [Header("Player Stats")]
     public Dictionary<string, UnitStat> stats;
     public float currHP;
+    public float moveSpeed;
 
     [Header("States")]
     private UnitState _currState = UnitState.ENDTURN;
@@ -50,12 +53,7 @@ public class Unit : MonoBehaviour
         set { _currState = value;  }
     }
 
-    public bool takingTurn = false;
-    public bool moving = false;
-    public float moveSpeed;
-    public bool attackingPhase = false;
-    public bool isAttacking = false;
-
+    
     [Header("References")]
     public GameObject Panel;
     public Unit attackingTargetUnit;
@@ -73,6 +71,9 @@ public class Unit : MonoBehaviour
     [Header("For collision")]
     public Transform sparkle;
 
+    #endregion
+
+
     // Dictionary style constructor 
     public void AssignStats(Dictionary<string,float> input)
     {
@@ -82,19 +83,6 @@ public class Unit : MonoBehaviour
             this.stats[pair.Key] = new UnitStat(pair.Value);
         }
         currHP = this.stats["HP"].CalculateFinalValue();
-    }
-    
-    public void UpdateUI()
-    {
-        unitName.text = this.characterName;
-        unitHP.text = this.currHP.ToString() + "/" + this.stats["HP"].baseValue.ToString();
-        unitMana.text = this.stats["mana"].baseValue.ToString();
-        unitAttackDamage.text = this.stats["attackDamage"].CalculateFinalValue().ToString();
-        unitMagicDamage.text = this.stats["magicDamage"].CalculateFinalValue().ToString();
-        unitArmor.text = this.stats["armor"].CalculateFinalValue().ToString();
-        unitMagicRes.text = this.stats["magicRes"].CalculateFinalValue().ToString();
-        unitMovementRange.text = this.stats["movementRange"].CalculateFinalValue().ToString();
-        unitAttackRange.text = this.stats["attackRange"].CalculateFinalValue().ToString();
     }
 
     public void AssignMap(Map map)
@@ -110,6 +98,19 @@ public class Unit : MonoBehaviour
         {
             statPanel.SetActive(false);
         }
+    }
+
+    public void UpdateUI()
+    {
+        unitName.text = this.characterName;
+        unitHP.text = this.currHP.ToString() + "/" + this.stats["HP"].baseValue.ToString();
+        unitMana.text = this.stats["mana"].baseValue.ToString();
+        unitAttackDamage.text = this.stats["attackDamage"].CalculateFinalValue().ToString();
+        unitMagicDamage.text = this.stats["magicDamage"].CalculateFinalValue().ToString();
+        unitArmor.text = this.stats["armor"].CalculateFinalValue().ToString();
+        unitMagicRes.text = this.stats["magicRes"].CalculateFinalValue().ToString();
+        unitMovementRange.text = this.stats["movementRange"].CalculateFinalValue().ToString();
+        unitAttackRange.text = this.stats["attackRange"].CalculateFinalValue().ToString();
     }
 
     public bool isDead()
@@ -129,6 +130,7 @@ public class Unit : MonoBehaviour
     public void EndTurn()
     {
         currState = UnitState.ENDTURN;
+        this.statPanel.SetActive(false);
     }
     
 
@@ -157,6 +159,8 @@ public class Unit : MonoBehaviour
         attackingTargetUnit.TakeDamage(attackDamage);
         DamagePopUp.Create(attackingTargetUnit.transform.position, (int)attackDamage);
     }
+
+    #region MOVEMENT
 
     // Generates the path to the tile
     public void GetPathToTile(Tile target)
@@ -272,6 +276,8 @@ public class Unit : MonoBehaviour
         }
     }
 
+    #endregion
+
     private void OnMouseEnter()
     {
         this.statPanel.SetActive(true);
@@ -279,7 +285,7 @@ public class Unit : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (!takingTurn)
+        if (currState == UnitState.ENDTURN)
         {
             this.statPanel.SetActive(false);
         }

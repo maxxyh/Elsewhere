@@ -25,4 +25,20 @@ public abstract class State
         yield break;
     }
 
+    public virtual IEnumerator EndTurn()
+    {
+        if (currUnit.currState == UnitState.IDLING)
+        {
+            if (turnScheduler.currTurn == Turn.PLAYER_TURN)
+            {
+                turnScheduler.SetState(new PlayerEndTurn(turnScheduler));
+            } 
+            else
+            {
+                turnScheduler.SetState(new EnemyEndTurn(turnScheduler));
+            }
+        }
+        yield break;
+    }
+
 }

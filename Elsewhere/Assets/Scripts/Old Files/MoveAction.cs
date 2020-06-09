@@ -21,10 +21,20 @@ public class MoveAction : Action
         }
         */
         //currUnit.WaitForAttackOrEndTurn();
+
+
+
+
+        /*
         if (!currUnit.takingTurn)
         {
             return new EndAction(actionID + 1, currUnit);
         }
+        */
+
+
+        #region SECOND IMPLEMENTATION
+        /* 
         if (currUnit.attackingPhase)
         {
             return new AttackAction(actionID + 1, currUnit);
@@ -34,5 +44,8 @@ public class MoveAction : Action
             Debug.Log("ERROR: Ended turn before endAction or attackAction detected.");
             return null;
         }
+        */
+        #endregion
+        return null;
     }
 }

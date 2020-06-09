@@ -38,6 +38,9 @@ public class AttackTarget : MonoBehaviour
     // }
 
     public void Update() {
-
+        if (magnitude != null && manaCost != null)
+        {
+            return;
+        }
     }
 }

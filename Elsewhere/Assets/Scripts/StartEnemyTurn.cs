@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Packages.Rider.Editor.UnitTesting;
 
 public class StartEnemyTurn : State
 {
@@ -16,8 +17,6 @@ public class StartEnemyTurn : State
         // Step 1.5: Assign the AI type?
         // Step 2: AI.execute().
 
-
-
         // Attack  
 
         // Defence/Call for help - Buffs/Running Away 
@@ -29,6 +28,10 @@ public class StartEnemyTurn : State
 
         //turnScheduler.SetState(...);
 
+        turnScheduler.SetState(new AggressiveEnemyAI(turnScheduler));
+
+
         yield break;
     }
+
 }

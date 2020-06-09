@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/*
+
 public class PlayerAttack : State
 {
     public PlayerAttack(TurnScheduler turnScheduler) : base(turnScheduler) { }
@@ -27,6 +27,7 @@ public class PlayerAttack : State
                             if (unit.currentTile == t)
                             {
                                 targetUnit = unit;
+                                // add a confirmation button
                                 return true;
                             }
                         }
@@ -50,4 +51,3 @@ public class PlayerAttack : State
 
     
 }
-*/
