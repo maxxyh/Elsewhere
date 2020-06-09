@@ -25,6 +25,9 @@ public class Unit : MonoBehaviour
     public Text unitMovementRange;
     public Text unitAttackRange;
 
+    [Header("Abilities")]
+    public List<Ability> abilities = new List<Ability>();
+
     [Header("Identifiers")]
     public int unitID;
     public string characterName;

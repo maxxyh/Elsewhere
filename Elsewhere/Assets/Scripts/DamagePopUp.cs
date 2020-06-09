@@ -33,7 +33,7 @@ public class DamagePopUp : MonoBehaviour
         if (!isCriticalHit)
         {
             textMesh.fontSize = 3;
-            textColor = new Color(0.8018868f, 0.3884505f, 0.09456211f);
+            textColor = new Color(0.80392f, 0.36078f, 0.36078f);
         }
         else
         {
