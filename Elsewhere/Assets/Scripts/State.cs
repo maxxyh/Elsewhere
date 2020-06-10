@@ -30,6 +30,26 @@ public abstract class State
         yield break;
     }
 
+    public virtual IEnumerator Targeting(ActionType actType)
+    {
+        yield break;
+    }
+
+    public virtual IEnumerator CheckTargeting(Tile tile)
+    {
+        yield break;
+    }
+
+    public virtual IEnumerator Yes()
+    {
+        yield break;
+    }
+
+    public virtual IEnumerator No()
+    {
+        yield break;
+    }
+
     public virtual IEnumerator EndTurn()
     {
         if (currUnit.currState == UnitState.IDLING)
@@ -45,5 +65,6 @@ public abstract class State
         }
         yield break;
     }
+
 
 }

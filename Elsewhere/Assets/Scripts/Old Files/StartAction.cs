@@ -11,7 +11,7 @@ public class StartAction : Action
     public override Action GenerateNextAction() 
     {
         currUnit.StartTurn();
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].Value);
         
         return new MoveAction(actionID + 1, currUnit);
     }

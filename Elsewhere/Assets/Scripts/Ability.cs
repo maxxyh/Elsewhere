@@ -23,4 +23,9 @@ public abstract class Ability
     {
         yield break;
     }
+    
+    public float GetManaCost()
+    {
+        return manaCost;
+    }
 }

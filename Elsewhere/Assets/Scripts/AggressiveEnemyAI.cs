@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
+
 public class AggressiveEnemyAI : State
 {
     public AggressiveEnemyAI(TurnScheduler turnScheduler) : base(turnScheduler)
@@ -9,13 +11,13 @@ public class AggressiveEnemyAI : State
     public override IEnumerator Execute()
     {
         currUnit.StartTurn();
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].Value);
 
         yield return new WaitForSecondsRealtime(0.75f);
 
         // use distance to determine closest player
         int minDistance = int.MaxValue;
-        Unit targetPlayer = turnScheduler.players[0];
+        Unit targetPlayer = turnScheduler.players.ElementAt(0);
         foreach (Unit player in turnScheduler.players)
         {
             AStarSearch.GeneratePath(map, currUnit.currentTile, player.currentTile, false, true);
@@ -38,7 +40,7 @@ public class AggressiveEnemyAI : State
 
         /*
         // get target tile by subtracting the attackRange
-        int attackRange = (int) currUnit.stats["attackRange"].baseValue;
+        int attackRange = (int) currUnit.stats["attackRange"].Value;
         for (int i = 0; i < attackRange; i++)
         {
             if (targetTile == currUnit.currentTile)
@@ -58,10 +60,10 @@ public class AggressiveEnemyAI : State
         yield return new WaitUntil(() => currUnit.currState == UnitState.IDLING);
 
         // check if there are players in range
-        if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats["attackRange"].baseValue, targetPlayer))
+        if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats["attackRange"].Value, targetPlayer))
         {
             currUnit.attackingTargetUnit = targetPlayer;
-            turnScheduler.OnAttackButton();
+            turnScheduler.StartAttack(targetPlayer);
         }
         else
         {
@@ -77,7 +79,7 @@ public class AggressiveEnemyAI : State
         Unit targetPlayer = currUnit.attackingTargetUnit;
 
         map.RemoveSelectedTiles(currUnit.currentTile, false);
-        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].Value) ;
         // should display the attacking tiles.
 
         yield return new WaitForSecondsRealtime(1);

@@ -45,7 +45,6 @@ public class Unit : MonoBehaviour
     */
     [Header("Player Stats")]
     public Dictionary<string, UnitStat> stats;
-    public float currHP;
     public float moveSpeed;
 
     [Header("States")]
@@ -61,6 +60,7 @@ public class Unit : MonoBehaviour
     [Header("References")]
     public GameObject Panel;
     public Unit attackingTargetUnit;
+    public Unit abilityTargetUnit;
     
 
     // Movement Variables
@@ -87,7 +87,6 @@ public class Unit : MonoBehaviour
         {
             this.stats[pair.Key] = new UnitStat(pair.Value);
         }
-        currHP = this.stats["HP"].CalculateFinalValue();
     }
 
     public void AssignAbilities(List<Ability> abilities)
@@ -114,8 +113,8 @@ public class Unit : MonoBehaviour
     public void UpdateUI()
     {
         unitName.text = this.characterName;
-        unitHP.text = this.currHP.ToString() + "/" + this.stats["HP"].baseValue.ToString();
-        unitMana.text = this.stats["mana"].baseValue.ToString();
+        unitHP.text = this.stats["HP"].Value.ToString() + "/" + this.stats["HP"].baseValue.ToString();
+        unitMana.text = this.stats["mana"].Value.ToString() + "/" + this.stats["mana"].baseValue.ToString(); ;
         unitAttackDamage.text = this.stats["attackDamage"].CalculateFinalValue().ToString();
         unitMagicDamage.text = this.stats["magicDamage"].CalculateFinalValue().ToString();
         unitArmor.text = this.stats["armor"].CalculateFinalValue().ToString();
@@ -126,7 +125,7 @@ public class Unit : MonoBehaviour
 
     public bool isDead()
     {
-        return currHP <= 0;
+        return this.stats["HP"].Value <= 0;
     }
 
     // sets the currentTile 
@@ -159,16 +158,15 @@ public class Unit : MonoBehaviour
     }
 
     public void TakeDamage(float damage) {
-        stats["HP"].baseValue -= damage;
-        currHP = stats["HP"].CalculateFinalValue();
+        stats["HP"].AddModifier(new StatModifier(-damage, StatModType.Flat));
     }
 
     public void BasicAttack()
     {
         // check if critical hit
-        float attackDamage = this.stats["attackDamage"].baseValue;
+        float attackDamage = this.stats["attackDamage"].Value;
         attackingTargetUnit.TakeDamage(attackDamage);
-        DamagePopUp.Create(attackingTargetUnit.transform.position, (int)attackDamage);
+        DamagePopUp.Create(attackingTargetUnit.transform.position, (int) attackDamage);
     }
 
     #region MOVEMENT

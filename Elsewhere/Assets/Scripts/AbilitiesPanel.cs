@@ -24,13 +24,21 @@ public class AbilitiesPanel : MonoBehaviour
     public void OnSkill1Button()
     {
         Debug.Log("skill1 pressed");
-        turnScheduler.OnAbilityButton(turnScheduler.currUnit.abilities[0]);
+
+        Ability ability = turnScheduler.currUnit.abilities[0];
+        CheckEnoughMana(turnScheduler.currUnit, ability);
+
+        turnScheduler.OnAbilityButton(ability);
     }
 
     public void OnSkill2Button()
     {
         Debug.Log("skill2 pressed");
-        turnScheduler.OnAbilityButton(turnScheduler.currUnit.abilities[1]);
+
+        Ability ability = turnScheduler.currUnit.abilities[1];
+        CheckEnoughMana(turnScheduler.currUnit, ability);
+
+        turnScheduler.OnAbilityButton(ability);
     }
     
 
@@ -42,10 +50,16 @@ public class AbilitiesPanel : MonoBehaviour
     public void OnAbilitiesButton()
     {
         abilitiesPanel.SetActive(true);
+        Debug.Log("Player Ability size inside call " + turnScheduler.currUnit.abilities.Count);
         text1.text = turnScheduler.currUnit.abilities[0].abilityName;
         text2.text = turnScheduler.currUnit.abilities[1].abilityName;
         playerActionPanel.SetActive(false); 
     }
 
     
+    private static bool CheckEnoughMana(Unit unit, Ability ability)
+    {
+        return unit.stats["mana"].Value >= ability.GetManaCost();
+    }
+
 }

@@ -14,18 +14,25 @@ public class StartPlayerTurn : State
     {
         currUnit.StartTurn();
         turnScheduler.playerActionPanel.SetActive(true);
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].Value);
 
         // menu will be available for viewing...
 
         yield break;
     }
 
-    public override IEnumerator Attack()
+    public override IEnumerator Targeting(ActionType actType)
     {
         if (currUnit.currState == UnitState.IDLING) 
         {
-            turnScheduler.SetState(new PlayerAttack(turnScheduler));
+            if (actType == ActionType.ATTACK)
+            {
+                turnScheduler.SetState(new PlayerAttackTargeting(turnScheduler));
+            }
+            else if (actType == ActionType.ABILITY)
+            {
+                turnScheduler.SetState(new PlayerAbilityTargeting(turnScheduler));
+            }
         }
         yield break;
     }

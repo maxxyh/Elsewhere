@@ -8,8 +8,8 @@ using UnityEngine;
 public class TurnScheduler : StateMachine
 {
     #region Fields and References
-    public List<PlayerUnit> players;
-    public List<EnemyUnit> enemies;
+    public IEnumerable<PlayerUnit> players;
+    public IEnumerable<EnemyUnit> enemies;
     public Queue<Unit> currTeamQueue = new Queue<Unit>();
     public GameObject confirmationPanel;
     public GameObject playerActionPanel;
@@ -34,11 +34,6 @@ public class TurnScheduler : StateMachine
         SetState(new Transition(this));
     }
 
-    public void OnAbilityButton(Ability ability)
-    {
-        currUnit.chosenAbility = ability;
-        StartCoroutine(State.Ability());
-    }
     public void OnEndTurnButton()
     {
         StartCoroutine(State.EndTurn());
@@ -46,7 +41,34 @@ public class TurnScheduler : StateMachine
 
     public void OnAttackButton()
     {
+        StartCoroutine(State.Targeting(ActionType.ATTACK));
+    }
+
+    public void OnAbilityButton(Ability ability)
+    {
+        currUnit.chosenAbility = ability;
+        StartCoroutine(State.Targeting(ActionType.ABILITY));
+    }
+
+    public void OnClickCheckForValidTarget(Tile tile)
+    {
+        StartCoroutine(State.CheckTargeting(tile));
+    }
+
+    public void StartAttack(Unit unit)
+    {
+        currUnit.attackingTargetUnit = unit;
         StartCoroutine(State.Attack());
+    }
+
+    public void OnYesConfirmation()
+    {
+        StartCoroutine(State.Yes());
+    }
+
+    public void OnNoConfirmation()
+    {
+        StartCoroutine(State.No());
     }
 
     public IEnumerator AttackAnimation(Unit currUnit, Unit targetUnit)
@@ -94,12 +116,12 @@ public class TurnScheduler : StateMachine
     public void Transition(Team turn)
     {
         // check if game has been won.
-        if (players.Count == 0)
+        if (players.Count() == 0)
         {
             print("Battle lost. The memories are lost. Try again!");
             return;
         }
-        else if (enemies.Count == 0)
+        else if (enemies.Count() == 0)
         {
             print("Battle won! The memories are safe...for now.");
             return;
@@ -135,7 +157,7 @@ public class TurnScheduler : StateMachine
     {
         currUnit.StartTurn();
         playerActionPanel.SetActive(true);
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].Value);
     }
 
     IEnumerator PlayerAttack()
@@ -195,7 +217,7 @@ public class TurnScheduler : StateMachine
 
         // use distance to determine closest player
         int minDistance = int.MaxValue;
-        Unit targetPlayer = players[0];
+        Unit targetPlayer = players.ElementAt(0);
         foreach (Unit player in players)
         {
             AStarSearch.GeneratePath(map, currUnit.currentTile, player.currentTile, false, true);
@@ -218,7 +240,7 @@ public class TurnScheduler : StateMachine
 
         /*
         // get target tile by subtracting the attackRange
-        int attackRange = (int) currUnit.stats["attackRange"].baseValue;
+        int attackRange = (int) currUnit.stats["attackRange"].Value;
         for (int i = 0; i < attackRange; i++)
         {
             if (targetTile == currUnit.currentTile)
@@ -237,7 +259,7 @@ public class TurnScheduler : StateMachine
         yield return new WaitUntil(() => currUnit.currState == UnitState.IDLING);
 
         // check if there are players in range
-        if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats["attackRange"].baseValue, targetPlayer))
+        if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats["attackRange"].Value, targetPlayer))
         {
             StartCoroutine(AutoEnemyAttack(targetPlayer));
         }
@@ -250,7 +272,7 @@ public class TurnScheduler : StateMachine
     public void StartEnemyTurn()
     {
         currUnit.StartTurn();
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].Value);
 
         StartCoroutine(EnemyMovement());
 
@@ -280,7 +302,7 @@ public class TurnScheduler : StateMachine
     IEnumerator AutoEnemyAttack(Unit targetPlayer)
     {
         map.RemoveSelectedTiles(currUnit.currentTile, false);
-        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].Value);
         // should display the attacking tiles.
 
         yield return new WaitForSecondsRealtime(1);
@@ -302,9 +324,9 @@ public class TurnScheduler : StateMachine
 
         if (team == Team.PLAYER)
         {
-            for (int i = 0; i < players.Count; i++)
+            for (int i = 0; i < players.Count(); i++)
             {
-                PlayerUnit unit = players[i];
+                PlayerUnit unit = players.ElementAt(i);
                 unit.unitID = UnitIdCounter++;
                 currTeamQueue.Enqueue(unit);
             }
@@ -312,9 +334,9 @@ public class TurnScheduler : StateMachine
 
         else if (team == Team.ENEMY)
         {
-            for (int i = 0; i < enemies.Count; i++)
+            for (int i = 0; i < enemies.Count(); i++)
             {
-                EnemyUnit unit = enemies[i];
+                EnemyUnit unit = enemies.ElementAt(i);
                 unit.unitID = UnitIdCounter++;
                 currTeamQueue.Enqueue(unit);
             }
@@ -322,15 +344,15 @@ public class TurnScheduler : StateMachine
 
         if (team == Team.BOTH)
         {
-            for (int i = 0; i < players.Count; i++)
+            for (int i = 0; i < players.Count(); i++)
             {
-                PlayerUnit unit = players[i];
+                PlayerUnit unit = players.ElementAt(i);
                 unit.unitID = UnitIdCounter++;
             }
 
-            for (int i = 0; i < enemies.Count; i++)
+            for (int i = 0; i < enemies.Count(); i++)
             {
-                EnemyUnit unit = enemies[i];
+                EnemyUnit unit = enemies.ElementAt(i);
                 unit.unitID = UnitIdCounter++;
             }
         }
@@ -344,10 +366,14 @@ public class TurnScheduler : StateMachine
         var toRemove = deadUnit as PlayerUnit;
 
         if (toRemove != null) {
-            players.Remove((PlayerUnit)deadUnit);
+            List<PlayerUnit> playerTemp = players.ToList();
+            playerTemp.Remove((PlayerUnit)deadUnit);
+            players = playerTemp;
         }
         else {
-            enemies.Remove((EnemyUnit)deadUnit);
+            List<EnemyUnit> enemyTemp = enemies.ToList();
+            enemyTemp.Remove((EnemyUnit)deadUnit);
+            enemies = enemyTemp;
         }
         Destroy(deadUnit.gameObject);
     }
@@ -359,4 +385,10 @@ public enum Team
     ENEMY,
     PLAYER,
     BOTH
+}
+
+public enum ActionType
+{
+    ATTACK,
+    ABILITY
 }

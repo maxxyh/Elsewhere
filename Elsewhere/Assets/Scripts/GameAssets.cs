@@ -19,5 +19,5 @@ public class GameAssets : MonoBehaviour
 
     public Transform pfDamagePopUp;
 
-    public Transform AbilitiesPanel;
+    public TurnScheduler turnScheduler;
 }

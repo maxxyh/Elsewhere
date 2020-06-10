@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 2870922879879798620}
   - component: {fileID: 8475443668315694982}
   - component: {fileID: 1315062736122327609}
-  - component: {fileID: 4156216740947667034}
   m_Layer: 8
-  m_Name: Swordsman (w stats) 1
+  m_Name: Swordsman
   m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,37 +77,14 @@ MonoBehaviour:
   unitID: 0
   characterName: 
   anim: {fileID: 6029520780938894478}
-  currHP: 0
-  takingTurn: 0
-  moving: 0
   moveSpeed: 5
-  attackingPhase: 0
-  isAttacking: 0
   Panel: {fileID: 0}
   attackingTargetUnit: {fileID: 0}
+  abilityTargetUnit: {fileID: 0}
   map: {fileID: 0}
   currentTile: {fileID: 0}
   sparkle: {fileID: 5133980785669610318}
   gridPosition: {x: 0, y: 0}
---- !u!95 &4156216740947667034
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2870922879879798622}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2870922879948342433
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +234,7 @@ Animator:
   m_GameObject: {fileID: 2870922880512250334}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 797c724396b1c764494b17dde8b643d1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9a96febe1007b5845968419f26c7449c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

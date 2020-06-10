@@ -14,7 +14,9 @@ public class HealAbility : Ability
         {
             target.stats["HP"].AddModifier(new StatModifier(-5, StatModType.Flat));
             Debug.Log(target.stats["HP"].Value);
+            target.UpdateUI();
         }
+
         yield break;
     }
 }

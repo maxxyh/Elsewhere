@@ -6,7 +6,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public GameObject TilePrefab;
-    public GameObject PlayerPrefab;
+    public GameObject[] PlayerPrefabs;
     public GameObject EnemyPrefab;
     public Map map;
     public TurnScheduler turnScheduler;
@@ -53,24 +53,26 @@ public class GameManager : MonoBehaviour
 
 
         // PLAYERS
-
-        PlayerUnit player = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0, 0, 0),
+        
+        PlayerUnit player = ((GameObject)Instantiate(PlayerPrefabs[0], new Vector3(0, 0, 0),
             Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
         //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
         player.tag = "player";
         player.AssignStats(defaultStats);
         player.AssignMap(map);
         player.AssignAbilities(defaultAbilities);
+        Debug.Log("Player abilities size " + player.abilities.Count);
         player.UpdateUI();
         players.Add(player);
 
-        PlayerUnit player2 = ((GameObject)Instantiate(PlayerPrefab, new Vector3(0, 2, 0),
+        PlayerUnit player2 = ((GameObject)Instantiate(PlayerPrefabs[1], new Vector3(0, 2, 0),
             Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
         //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
         player2.tag = "player";
         player2.AssignStats(defaultStats);
         player2.AssignMap(map);
-        player.AssignAbilities(defaultAbilities);
+        player2.AssignAbilities(defaultAbilities);
+        Debug.Log("Player abilities size " + player.abilities.Count);
         player2.UpdateUI();
         players.Add(player2);
 

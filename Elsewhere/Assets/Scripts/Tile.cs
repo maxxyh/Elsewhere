@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
@@ -13,10 +16,7 @@ public class Tile : MonoBehaviour
     public int movementCost;
 
     public bool occupied = false;
-    
 
-    // For BFS
-    public bool visited = false;
     public Tile parent = null;
     public int distance = int.MaxValue;
 
@@ -24,11 +24,6 @@ public class Tile : MonoBehaviour
 
     public Vector2Int gridPosition = Vector2Int.zero;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -94,12 +89,8 @@ public class Tile : MonoBehaviour
         selectable = false;
         attackable = false;
 
-        // For BFS
-        visited = false;
         parent = null;
         distance = int.MaxValue;
-
-        // distance = 0; BFS NOT IN USE
     }
 
     public void FindNeighbours()
@@ -121,24 +112,17 @@ public class Tile : MonoBehaviour
         foreach (Collider item in colliders)
         {
             Tile tile = item.GetComponent<Tile>();
-            //Debug.Log("Processing " + tile.gridPosition.x + tile.gridPosition.y);
-            if (tile != null)// && tile.walkable && !tile.occupied)
+            if (tile != null)
             {
                 adjacencyList.Add(tile);
-
-                /* Not working for some reason
-                Vector2 origin = new Vector2(tile.transform.position.x, tile.transform.position.y);
-                RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("stopsMovement"));
-                if (hit.collider != null && hit.collider.CompareTag("enemy") || hit.collider != null && hit.collider.CompareTag("player"))
-                { 
-                    {
-                        Debug.Log("Found character on tile");
-                        //adjacencyList.Add(tile);
-                    }
-                }
-                */
             }
         }
+    }
+
+
+    public void OnMouseDown()
+    {
+        GameAssets.MyInstance.turnScheduler.OnClickCheckForValidTarget(this);
     }
 }
 
