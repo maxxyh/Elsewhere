@@ -93,15 +93,44 @@ public class Tile : MonoBehaviour
         distance = int.MaxValue;
     }
 
-    public void FindNeighbours()
-    {
-        //Reset();
+    public void FindNeighbours(List<List<Tile>> tileList, bool includeDiagonals)
+    { 
         adjacencyList.Clear();
 
+        int currX = this.gridPosition.x, currY = this.gridPosition.y;
+
+        List<int> hor, vert;
+
+        if (includeDiagonals)
+        {
+            hor = new List<int>() { -1, 0, 1, 0, -1, 1, -1, 1 };
+            vert = new List<int>() { 0, 1, 0, -1, 1, 1, -1, -1 };
+        }
+        else
+        {
+            hor = new List<int>() { -1, 0, 1, 0 };
+            vert = new List<int>() { 0, 1, 0, -1 };
+        }
+        
+
+        for (int j = 0; j < hor.Count; j++)
+        {
+            int newX = currX + hor[j];
+            int newY = currY + vert[j];
+
+            // check that is valid tile
+            if (newX >= 0 && newX < tileList.Count && newY >= 0 && newY < tileList[0].Count)
+            {
+                this.adjacencyList.Add(tileList[newX][newY]);
+            }
+        }
+
+        /*
         CheckTile(Vector3.left);
         CheckTile(Vector3.right);
         CheckTile(Vector3.up);
         CheckTile(Vector3.down);
+        */
     }
 
     public void CheckTile(Vector3 direction)
@@ -116,7 +145,7 @@ public class Tile : MonoBehaviour
             {
                 adjacencyList.Add(tile);
             }
-        }
+        }   
     }
 
 

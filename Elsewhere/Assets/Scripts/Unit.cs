@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Unit : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class Unit : MonoBehaviour
     [Header("References")]
     public GameObject Panel;
     public Unit attackingTargetUnit;
-    public Unit abilityTargetUnit;
+    public List<Unit> abilityTargetUnits = new List<Unit>();
     
 
     // Movement Variables
@@ -102,7 +103,8 @@ public class Unit : MonoBehaviour
 
     public void Start()
     {
-        sparkle.GetComponent<ParticleSystem>().enableEmission = false;
+        ParticleSystem.EmissionModule tempSparkle = sparkle.GetComponent<ParticleSystem>().emission;
+        tempSparkle.enabled = false;
 
         if (currState == UnitState.ENDTURN)
         {
@@ -303,8 +305,8 @@ public class Unit : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("crystal"))
         {
-            sparkle.GetComponent<ParticleSystem>().enableEmission = true;
-            Debug.Log(sparkle.GetComponent<ParticleSystem>().enableEmission);
+            ParticleSystem.EmissionModule tempSparkle = sparkle.GetComponent<ParticleSystem>().emission;
+            tempSparkle.enabled = true;
             StartCoroutine(stopSparkle());
             Destroy(collision.gameObject);
             if (this.gameObject.CompareTag("enemy"))
@@ -318,7 +320,8 @@ public class Unit : MonoBehaviour
     IEnumerator stopSparkle()
     {
         yield return new WaitForSeconds(0.4f);
-        sparkle.GetComponent<ParticleSystem>().enableEmission = false;
+        ParticleSystem.EmissionModule tempSparkle = sparkle.GetComponent<ParticleSystem>().emission;
+        tempSparkle.enabled = false;
     }
 }
 

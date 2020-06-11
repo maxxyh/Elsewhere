@@ -26,6 +26,11 @@ public class PlayerAttackTargeting : State
 
     public override IEnumerator CheckTargeting(Tile tile)
     {
+        if (!tile.attackable)
+        {
+            yield break;
+        }
+
         IEnumerable<Unit> targetTeam;
 
         if (turnScheduler.currTurn == Team.ENEMY)

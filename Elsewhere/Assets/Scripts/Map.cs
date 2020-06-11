@@ -19,7 +19,10 @@ public class Map : MonoBehaviour
     // For UI
     HashSet<Tile> selectableTiles = new HashSet<Tile>();
     HashSet<Tile> attackableTiles = new HashSet<Tile>();
-
+    public HashSet<Tile> GetAttackableTiles()
+    {
+        return this.attackableTiles;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -100,13 +103,13 @@ public class Map : MonoBehaviour
         return tile;
     }
 
-    public void ComputeAdjacencyList()
+    public void ComputeAdjacencyList(bool includeDiagonals)
     {
         foreach (List<Tile> row in tileList)
         {
             foreach (Tile tile in row)
             {
-                tile.FindNeighbours();
+                tile.FindNeighbours(tileList, includeDiagonals);
             }
         }
 
@@ -155,10 +158,10 @@ public class Map : MonoBehaviour
     }
 
     // To be called whenever a pathfinding event is done. Re-computes adjacency list and resets tile distances.
-    public void InitPathFinding(Tile startTile)
+    public void InitPathFinding(Tile startTile, bool includeDiagonals = false)
     {
         // Initialise AdjacencyList again to account for updates to tiles e.g. destroyed 
-        ComputeAdjacencyList();
+        ComputeAdjacencyList(includeDiagonals);
 
         foreach (List<Tile> row in tileList)
         {
@@ -184,39 +187,90 @@ public class Map : MonoBehaviour
         }
     }
 
-    public void FindAttackableTiles(Tile startTile, float attackRange)
+    public void FindAttackableTiles(Tile startTile, float attackRange, TargetingStyle targetingStyle = TargetingStyle.SINGLE)
     {
-        int[] hor = { -1, 0, 1, 0 };
-        int[] vert = { 0, 1, 0, -1 };
-
-        int currX = startTile.gridPosition.x, currY = startTile.gridPosition.y;
-
-        bool[] passable = new bool[4];
-        for (int i = 0; i < 4; i++)
+        switch (targetingStyle)
         {
-            passable[i] = true;
-        }
+            #region Basic Targeting
+            case TargetingStyle.SINGLE:
+            case TargetingStyle.MULTI:
+                int[] hor = { -1, 0, 1, 0 };
+                int[] vert = { 0, 1, 0, -1 };
 
-        for (int i = 1; i <= attackRange; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                int newX = currX + i * hor[j];
-                int newY = currY + i * vert[j];
+                int currX = startTile.gridPosition.x, currY = startTile.gridPosition.y;
 
-                if (newX >= 0 && newX < mapSize && newY >= 0 && newY < mapSize)
+                bool[] passable = new bool[4];
+                for (int i = 0; i < 4; i++)
                 {
-                    if (tileList[newX][newY].walkable && passable[j])
+                    passable[i] = true;
+                }
+
+                for (int i = 1; i <= attackRange; i++)
+                {
+                    for (int j = 0; j < 4; j++)
                     {
-                        tileList[newX][newY].attackable = true;
-                        attackableTiles.Add(tileList[newX][newY]);
-                    }
-                    else
-                    {
-                        passable[j] = false;
+                        int newX = currX + i * hor[j];
+                        int newY = currY + i * vert[j];
+
+                        if (newX >= 0 && newX < mapSize && newY >= 0 && newY < mapSize)
+                        {
+                            if (tileList[newX][newY].walkable && passable[j])
+                            {
+                                tileList[newX][newY].attackable = true;
+                                attackableTiles.Add(tileList[newX][newY]);
+                            }
+                            else
+                            {
+                                passable[j] = false;
+                            }
+                        }
                     }
                 }
-            }
+                break;
+            #endregion
+
+            case TargetingStyle.SELF:
+                attackableTiles.Add(startTile);
+                break;
+
+            #region Radius Targeting
+            case TargetingStyle.RADIUS:
+                // init Dijkstra
+                PriorityQueue<TileDistancePair> processing = new PriorityQueue<TileDistancePair>();
+
+
+                // Compute Adjacency List and reset all distances.
+                InitPathFinding(startTile, true);
+
+                attackableTiles.Add(startTile);
+
+                processing.Enqueue(new TileDistancePair(0, startTile));
+
+                // relax edges with minimum SP estimate
+                while (processing.Count() > 0)
+                {
+                    TileDistancePair temp = processing.Dequeue();
+                    float distanceEstimate = temp.d;
+                    Tile node = temp.t;
+                    if ((int)Math.Round(distanceEstimate) == node.distance)
+                    {
+                        foreach (Tile neighbour in node.adjacencyList)
+                        {
+                            int newEstimate = node.distance + 1;
+
+                            if (neighbour.walkable && neighbour.distance > newEstimate && newEstimate <= attackRange)
+                            {
+                                neighbour.attackable= true;
+                                attackableTiles.Add(neighbour);
+                                neighbour.distance = newEstimate;
+                                processing.Enqueue(new TileDistancePair(newEstimate, neighbour));
+                            }
+                        }
+                    }
+                }
+
+                break;
+                #endregion
         }
     }
 

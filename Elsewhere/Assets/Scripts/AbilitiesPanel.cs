@@ -28,6 +28,9 @@ public class AbilitiesPanel : MonoBehaviour
         Ability ability = turnScheduler.currUnit.abilities[0];
         CheckEnoughMana(turnScheduler.currUnit, ability);
 
+        //abilitiesPanel.SetActive(false);
+        //undoPanel.SetActive(true);
+
         turnScheduler.OnAbilityButton(ability);
     }
 
@@ -37,6 +40,9 @@ public class AbilitiesPanel : MonoBehaviour
 
         Ability ability = turnScheduler.currUnit.abilities[1];
         CheckEnoughMana(turnScheduler.currUnit, ability);
+
+        //abilitiesPanel.SetActive(false);
+        //undoPanel.SetActive(true);
 
         turnScheduler.OnAbilityButton(ability);
     }

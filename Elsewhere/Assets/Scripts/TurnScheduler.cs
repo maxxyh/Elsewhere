@@ -76,6 +76,12 @@ public class TurnScheduler : StateMachine
         StartCoroutine(State.No());
     }
 
+    // button to return to movement phase
+    public void OnUndoButton()
+    {
+        StartCoroutine(State.Undo());
+    }
+
     public IEnumerator AttackAnimation(Unit currUnit, Unit targetUnit)
     {
         targetUnit.statPanel.SetActive(true);

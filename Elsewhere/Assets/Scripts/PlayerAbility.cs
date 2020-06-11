@@ -12,15 +12,28 @@ public class PlayerAbility : State
 
     public override IEnumerator Execute()
     {
-        
+
         // TODO change to list style in Unit.cs
-        List<Unit> targetUnits = new List<Unit>();
-        targetUnits.Add(turnScheduler.currUnit.abilityTargetUnit);
+        List<Unit> targetUnits = turnScheduler.currUnit.abilityTargetUnits;
 
         map.RemoveAttackableTiles();    
 
         yield return turnScheduler.StartCoroutine(turnScheduler.currUnit.chosenAbility.Execute(targetUnits));
-        
+
+        foreach (Unit unit in targetUnits)
+        {
+            if (unit.isDead())
+            {
+                turnScheduler.StartCoroutine(turnScheduler.RemoveUnit(unit));
+            }
+            else
+            {
+                unit.UpdateUI();
+            }
+        }
+
+        targetUnits.Clear();
+
         turnScheduler.SetState(new PlayerEndTurn(turnScheduler));
 
         yield break;

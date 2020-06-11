@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour
         defaultStats.Add("attackRange", 2);
 
         // default abilities
-        defaultAbilities.Add(new HealAbility());
-        defaultAbilities.Add(new HealAbility());
+        defaultAbilities.Add(new AbilityHealingWave());
+        defaultAbilities.Add(new AbilityWhirlwindSlash());
 
 
         // PLAYERS
