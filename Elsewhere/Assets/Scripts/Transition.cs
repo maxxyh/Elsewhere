@@ -16,6 +16,7 @@ public class Transition : State
 
     public override IEnumerator Execute()
     {
+        Debug.Log(turnScheduler.currTurn + ": " + turnScheduler.currTeamQueue.Count);
         // check if game has ended.
         if (turnScheduler.players.Count() == 0)
         {
@@ -32,22 +33,36 @@ public class Transition : State
         // check if need to initiatlize team
         if (turnScheduler.currTeamQueue.Count == 0)
         {
+            if (turnScheduler.currTurn == Team.ENEMY)
+            {
+                turnScheduler.enemyPhasePanel.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                turnScheduler.enemyPhasePanel.SetActive(false);
+            }
+            else if (turnScheduler.currTurn == Team.PLAYER)
+            {
+                turnScheduler.playerPhasePanel.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                turnScheduler.playerPhasePanel.SetActive(false);
+            }
             turnScheduler.EnqueueTeams(turnScheduler.currTurn);
         }
         // update current unit
         turnScheduler.currUnit = turnScheduler.currTeamQueue.Dequeue();
 
-        
+
         // start next turn
         if (turnScheduler.currTurn == Team.ENEMY)
         {
+            
+            // yield return turnScheduler.StartCoroutine(turnScheduler.ShowPhase());
             turnScheduler.SetState(new StartEnemyTurn(turnScheduler));
         }
         else
         {
+            // yield return turnScheduler.StartCoroutine(turnScheduler.ShowPhase());
             turnScheduler.SetState(new StartPlayerTurn(turnScheduler));
         }
-
         yield break;
     }
 }

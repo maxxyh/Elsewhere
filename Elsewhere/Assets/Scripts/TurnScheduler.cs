@@ -13,6 +13,11 @@ public class TurnScheduler : StateMachine
     public Queue<Unit> currTeamQueue = new Queue<Unit>();
     public GameObject confirmationPanel;
     public GameObject playerActionPanel;
+    public GameObject playerPhasePanel;
+    public GameObject enemyPhasePanel;
+    public GameObject gameOverUI;
+    public GameObject victoryUI;
+
     public Map map;
     public Unit currUnit;
 
@@ -29,7 +34,7 @@ public class TurnScheduler : StateMachine
         this.enemies = enemies;
         UnitIdCounter = 0;
         currTurn = Team.PLAYER;
-        EnqueueTeams(Team.PLAYER);
+        // EnqueueTeams(Team.PLAYER);
 
         SetState(new Transition(this));
     }
@@ -85,7 +90,24 @@ public class TurnScheduler : StateMachine
         }
     }
 
-
+    /*public IEnumerator ShowPhase()
+    {
+        if (currTurn == Team.ENEMY && currTeamQueue.Count == 0)
+        // Show player phase panel
+        {
+            Debug.Log("Here");
+            playerPhasePanel.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            playerPhasePanel.SetActive(false);
+        }
+        else if (currTurn == Team.PLAYER && currTeamQueue.Count == 0)
+        // Show player phase panel
+        {
+            enemyPhasePanel.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            enemyPhasePanel.SetActive(false);
+        }
+    }*/
     #endregion
 
     #region Deprecated 

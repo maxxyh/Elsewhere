@@ -9,7 +9,9 @@ public class Lose : State
 
     public override IEnumerator Execute()
     {
-        TurnScheduler.print("Battle Lost! The memories have been destroyed. Try again?");
+        turnScheduler.gameOverUI.SetActive(true);
+        Time.timeScale = 0f;
+        
 
         // show the lose screen
         // Lose panel will show 2 buttons: retry, return to main Screen

@@ -9,7 +9,8 @@ public class Win : State
 
     public override IEnumerator Execute()
     {
-        TurnScheduler.print("Battle won! The memories are safe...for now.");
+        Time.timeScale = 0f;
+        turnScheduler.victoryUI.SetActive(true);
 
         // show the win screen
         // win panel will appear showing loots and xp gains from items with 2 Buttons: Continue Story, Return To Main Screen
