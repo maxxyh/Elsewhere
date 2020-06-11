@@ -78,7 +78,7 @@ public class AggressiveEnemyAI : State
     {
         Unit targetPlayer = currUnit.attackingTargetUnit;
 
-        map.RemoveSelectedTiles(currUnit.currentTile, false);
+        map.RemoveSelectableTiles(currUnit.currentTile, false);
         map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].Value) ;
         // should display the attacking tiles.
 

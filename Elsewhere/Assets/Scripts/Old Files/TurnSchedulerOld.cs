@@ -55,7 +55,7 @@ public class TurnSchedulerOld : MonoBehaviour
 
     public void PlayerEndTurn()
     {
-        map.RemoveSelectedTiles(currUnit.currentTile);
+        map.RemoveSelectableTiles(currUnit.currentTile);
         currUnit.EndTurn();
 
         currUnit.statPanel.SetActive(false);
@@ -75,7 +75,7 @@ public class TurnSchedulerOld : MonoBehaviour
 
     public void EnemyEndTurn()
     {
-        map.RemoveSelectedTiles(currUnit.currentTile);
+        map.RemoveSelectableTiles(currUnit.currentTile);
         currUnit.EndTurn();
 
         currUnit.statPanel.SetActive(false);
@@ -227,7 +227,7 @@ public class TurnSchedulerOld : MonoBehaviour
     // Draft for now 
     public void OnAttackButton()
     {
-        map.RemoveSelectedTiles(currUnit.currentTile, false);
+        map.RemoveSelectableTiles(currUnit.currentTile, false);
         map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
         // should display the attacking tiles.
 
@@ -312,7 +312,7 @@ public class TurnSchedulerOld : MonoBehaviour
 
     IEnumerator AutoEnemyAttack(Unit targetPlayer)
     {
-        map.RemoveSelectedTiles(currUnit.currentTile, false);
+        map.RemoveSelectableTiles(currUnit.currentTile, false);
         map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
         // should display the attacking tiles.
 

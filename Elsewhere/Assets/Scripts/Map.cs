@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Transactions;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -118,6 +119,16 @@ public class Map : MonoBehaviour
     // Finds selectable tiles and updates currentTile as current, occupied
     public void FindSelectableTiles(Tile startTile, float movementRange)
     {
+        // if selectable tiles were not removed do not recompute.
+        if (selectableTiles.Count > 0)
+        {
+            foreach (Tile tile in selectableTiles)
+            {
+                tile.selectable = true;
+            }
+            return;
+        }    
+        
         // init Dijkstra
         PriorityQueue<TileDistancePair> processing = new PriorityQueue<TileDistancePair>();
 
@@ -173,7 +184,7 @@ public class Map : MonoBehaviour
         startTile.distance = 0;
     }
 
-    public void RemoveSelectedTiles(Tile currentTile, bool destructive = true)
+    public void RemoveSelectableTiles(Tile currentTile, bool destructive = true)
     {
         currentTile.isStartPoint = false;
 

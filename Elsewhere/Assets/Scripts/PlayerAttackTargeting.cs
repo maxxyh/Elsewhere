@@ -9,7 +9,9 @@ public class PlayerAttackTargeting : State
 
     public override IEnumerator Execute()
     {
-        map.RemoveSelectedTiles(currUnit.currentTile, false);
+        turnScheduler.playerActionPanel.SetActive(false);
+        turnScheduler.cancelPanel.SetActive(true);
+
         map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].Value);
         // should display the attacking tiles.
         currUnit.currState = UnitState.TARGETING;
@@ -61,4 +63,13 @@ public class PlayerAttackTargeting : State
         yield break;
     }
 
+    public override IEnumerator Cancel()
+    {
+        turnScheduler.playerActionPanel.SetActive(true);
+        turnScheduler.cancelPanel.SetActive(false);
+        map.RemoveAttackableTiles();
+
+        turnScheduler.SetState(new PlayerStartTurn(turnScheduler));
+        yield break;
+    }
 }

@@ -9,7 +9,7 @@ public class EnemyEndTurn : State
 
     public override IEnumerator Execute()
     {
-        map.RemoveSelectedTiles(currUnit.currentTile);
+        map.RemoveSelectableTiles(currUnit.currentTile);
         currUnit.EndTurn();
 
         // check whether there are still enemies in the queue -> if have then it should start the next enemies.

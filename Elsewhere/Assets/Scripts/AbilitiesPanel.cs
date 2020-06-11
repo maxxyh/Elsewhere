@@ -52,6 +52,7 @@ public class AbilitiesPanel : MonoBehaviour
     {
         playerActionPanel.SetActive(true);
         abilitiesPanel.SetActive(false);
+        turnScheduler.OnExitAbilityMenuButton();
     }
     public void OnAbilitiesButton()
     {
@@ -59,7 +60,8 @@ public class AbilitiesPanel : MonoBehaviour
         Debug.Log("Player Ability size inside call " + turnScheduler.currUnit.abilities.Count);
         text1.text = turnScheduler.currUnit.abilities[0].abilityName;
         text2.text = turnScheduler.currUnit.abilities[1].abilityName;
-        playerActionPanel.SetActive(false); 
+        playerActionPanel.SetActive(false);
+        turnScheduler.OnAbilityMenuButton();
     }
 
     

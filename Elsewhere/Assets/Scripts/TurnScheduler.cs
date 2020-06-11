@@ -11,8 +11,12 @@ public class TurnScheduler : StateMachine
     public IEnumerable<PlayerUnit> players;
     public IEnumerable<EnemyUnit> enemies;
     public Queue<Unit> currTeamQueue = new Queue<Unit>();
+    
+    [Header("Panels")]
     public GameObject confirmationPanel;
     public GameObject playerActionPanel;
+    public GameObject cancelPanel;
+    public GameObject abilitiesPanel;
     public GameObject playerPhasePanel;
     public GameObject enemyPhasePanel;
     public GameObject gameOverUI;
@@ -76,10 +80,21 @@ public class TurnScheduler : StateMachine
         StartCoroutine(State.No());
     }
 
-    // button to return to movement phase
-    public void OnUndoButton()
+    public void OnCancelButton()
     {
-        StartCoroutine(State.Undo());
+        Debug.Log("cancel clicked");
+        Debug.Log("Current state = " + this.State);
+        StartCoroutine(State.Cancel());
+    }
+
+    public void OnAbilityMenuButton()
+    {
+        StartCoroutine(State.OpenMenu(MenuType.ABILITY));
+    }
+
+    public void OnExitAbilityMenuButton()
+    {
+        StartCoroutine(State.ReturnPreviousMenu());
     }
 
     public IEnumerator AttackAnimation(Unit currUnit, Unit targetUnit)
@@ -96,24 +111,6 @@ public class TurnScheduler : StateMachine
         }
     }
 
-    /*public IEnumerator ShowPhase()
-    {
-        if (currTurn == Team.ENEMY && currTeamQueue.Count == 0)
-        // Show player phase panel
-        {
-            Debug.Log("Here");
-            playerPhasePanel.SetActive(true);
-            yield return new WaitForSeconds(1f);
-            playerPhasePanel.SetActive(false);
-        }
-        else if (currTurn == Team.PLAYER && currTeamQueue.Count == 0)
-        // Show player phase panel
-        {
-            enemyPhasePanel.SetActive(true);
-            yield return new WaitForSeconds(1f);
-            enemyPhasePanel.SetActive(false);
-        }
-    }*/
     #endregion
 
     #region Deprecated 
@@ -122,7 +119,7 @@ public class TurnScheduler : StateMachine
         // StartCoroutine(State.PlayerEndTurn());
 
 
-        map.RemoveSelectedTiles(currUnit.currentTile);
+        map.RemoveSelectableTiles(currUnit.currentTile);
         currUnit.EndTurn();
 
         currUnit.statPanel.SetActive(false);
@@ -310,7 +307,7 @@ public class TurnScheduler : StateMachine
 
     public void EnemyEndTurn()
     {
-        map.RemoveSelectedTiles(currUnit.currentTile);
+        map.RemoveSelectableTiles(currUnit.currentTile);
         currUnit.EndTurn();
 
         currUnit.statPanel.SetActive(false);
@@ -329,7 +326,7 @@ public class TurnScheduler : StateMachine
 
     IEnumerator AutoEnemyAttack(Unit targetPlayer)
     {
-        map.RemoveSelectedTiles(currUnit.currentTile, false);
+        map.RemoveSelectableTiles(currUnit.currentTile, false);
         map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].Value);
         // should display the attacking tiles.
 

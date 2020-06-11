@@ -50,10 +50,21 @@ public abstract class State
         yield break;
     }
 
-    public virtual IEnumerator Undo()
+    public virtual IEnumerator Cancel()
     {
         yield break;
     }
+
+    public virtual IEnumerator ReturnPreviousMenu()
+    {
+        yield break;
+    }
+
+    public virtual IEnumerator OpenMenu(MenuType menuType)
+    {
+        yield break;
+    }
+
     public virtual IEnumerator EndTurn()
     {
         if (currUnit.currState == UnitState.IDLING)
@@ -71,4 +82,9 @@ public abstract class State
     }
 
 
+}
+
+public enum MenuType
+{
+    ABILITY
 }

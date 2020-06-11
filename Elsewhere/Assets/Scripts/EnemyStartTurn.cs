@@ -2,10 +2,10 @@
 using System.Collections;
 using Packages.Rider.Editor.UnitTesting;
 
-public class StartEnemyTurn : State
+public class EnemyStartTurn : State
 {
 
-    public StartEnemyTurn(TurnScheduler turnScheduler) : base(turnScheduler)
+    public EnemyStartTurn(TurnScheduler turnScheduler) : base(turnScheduler)
     {
 
     }

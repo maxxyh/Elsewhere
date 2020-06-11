@@ -7,7 +7,7 @@ public class PlayerEndTurn : State
 
     public override IEnumerator Execute()
     {
-        map.RemoveSelectedTiles(currUnit.currentTile);
+        map.RemoveSelectableTiles(currUnit.currentTile);
         currUnit.EndTurn();
 
         turnScheduler.playerActionPanel.SetActive(false);

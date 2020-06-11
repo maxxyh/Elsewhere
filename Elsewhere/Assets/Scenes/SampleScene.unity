@@ -262,6 +262,16 @@ PrefabInstance:
       propertyPath: victoryUI
       value: 
       objectReference: {fileID: 1018546801}
+    - target: {fileID: 3651426993338132624, guid: 4c3382c93e72b044490938e580df6bb7,
+        type: 3}
+      propertyPath: cancelPanel
+      value: 
+      objectReference: {fileID: 943756523}
+    - target: {fileID: 3651426993338132624, guid: 4c3382c93e72b044490938e580df6bb7,
+        type: 3}
+      propertyPath: abilitiesPanel
+      value: 
+      objectReference: {fileID: 1462282260}
     - target: {fileID: 5323341924538777091, guid: 4c3382c93e72b044490938e580df6bb7,
         type: 3}
       propertyPath: m_Name
@@ -2572,7 +2582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &943756524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2580,18 +2590,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943756523}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.020195}
+  m_LocalScale: {x: 1.4427693, y: 1.4427693, z: 1.4427693}
   m_Children:
   - {fileID: 1626178345}
-  m_Father: {fileID: 8426583366272887898}
-  m_RootOrder: 2
+  m_Father: {fileID: 2127094681}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 47.99, y: 23.28}
-  m_SizeDelta: {x: -322.66348, y: -183.48073}
+  m_AnchoredPosition: {x: 112.508514, y: 10.318174}
+  m_SizeDelta: {x: -322.6035, y: -183.41974}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943756525
 MonoBehaviour:
@@ -5605,7 +5615,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.5896226, b: 0.5896226, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -5626,7 +5636,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1626178347}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 105424488}
+        m_MethodName: OnCancelButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1626178347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5695,7 +5716,7 @@ RectTransform:
   m_Children:
   - {fileID: 108364673353091100}
   m_Father: {fileID: 2127094681}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6532,6 +6553,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 943756524}
   - {fileID: 8426583366272887898}
   - {fileID: 991683324}
   - {fileID: 1781094540}
@@ -6827,7 +6849,7 @@ RectTransform:
   m_Children:
   - {fileID: 5329804146286031022}
   m_Father: {fileID: 2127094681}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7071,7 +7093,7 @@ PrefabInstance:
     - target: {fileID: 4164886101872703359, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4164886101872703359, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
@@ -7708,7 +7730,7 @@ PrefabInstance:
     - target: {fileID: 1477187372881078892, guid: 55a8ec568b5d8c140b86e6b24babcb6d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1477187372881078892, guid: 55a8ec568b5d8c140b86e6b24babcb6d,
         type: 3}
@@ -8551,6 +8573,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949400547514740258, guid: 55a8ec568b5d8c140b86e6b24babcb6d,
+        type: 3}
+      propertyPath: m_Name
+      value: Abilities panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949400547514740258, guid: 55a8ec568b5d8c140b86e6b24babcb6d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6949400547514740259, guid: 55a8ec568b5d8c140b86e6b24babcb6d,
         type: 3}

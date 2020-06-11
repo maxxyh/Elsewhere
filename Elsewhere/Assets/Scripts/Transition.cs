@@ -56,12 +56,12 @@ public class Transition : State
         {
             
             // yield return turnScheduler.StartCoroutine(turnScheduler.ShowPhase());
-            turnScheduler.SetState(new StartEnemyTurn(turnScheduler));
+            turnScheduler.SetState(new EnemyStartTurn(turnScheduler));
         }
         else
         {
             // yield return turnScheduler.StartCoroutine(turnScheduler.ShowPhase());
-            turnScheduler.SetState(new StartPlayerTurn(turnScheduler));
+            turnScheduler.SetState(new PlayerStartTurn(turnScheduler));
         }
         yield break;
     }

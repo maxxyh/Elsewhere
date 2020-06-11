@@ -13,7 +13,9 @@ public class PlayerAbilityTargeting : State
 
     public override IEnumerator Execute()
     {
-        map.RemoveSelectedTiles(currUnit.currentTile, false);
+        turnScheduler.playerActionPanel.SetActive(false);
+        turnScheduler.cancelPanel.SetActive(true);
+
         map.FindAttackableTiles(currUnit.currentTile, ability.attackRange, ability.targetingStyle);
         // display the attacking tiles.
 
@@ -27,9 +29,6 @@ public class PlayerAbilityTargeting : State
         {
             yield break;
         }
-
-        // TODO Support clicking blank spaces and checking that there are players within the correct range?
-        // TODO Support multi targeting
 
         #region Getting the correct target team
         IEnumerable<Unit> targetTeam;
@@ -108,7 +107,6 @@ public class PlayerAbilityTargeting : State
         yield break;
     }
 
-
     public override IEnumerator Yes()
     {
         turnScheduler.confirmationPanel.SetActive(false);
@@ -118,6 +116,16 @@ public class PlayerAbilityTargeting : State
     public override IEnumerator No()
     {
         turnScheduler.confirmationPanel.SetActive(false);
+        yield break;
+    }
+
+    public override IEnumerator Cancel()
+    {
+        turnScheduler.playerActionPanel.SetActive(true);
+        turnScheduler.cancelPanel.SetActive(false);
+        map.RemoveAttackableTiles();
+
+        turnScheduler.SetState(new PlayerAbilityMenu(turnScheduler));
         yield break;
     }
 }
