@@ -8,8 +8,8 @@ using UnityEngine;
 public class TurnScheduler : StateMachine
 {
     #region Fields and References
-    public IEnumerable<PlayerUnit> players;
-    public IEnumerable<EnemyUnit> enemies;
+    public List<PlayerUnit> players;
+    public List<EnemyUnit> enemies;
     public Queue<Unit> currTeamQueue = new Queue<Unit>();
     
     [Header("Panels")]
@@ -141,12 +141,12 @@ public class TurnScheduler : StateMachine
     public void Transition(Team turn)
     {
         // check if game has been won.
-        if (players.Count() == 0)
+        if (players.Count == 0)
         {
             print("Battle lost. The memories are lost. Try again!");
             return;
         }
-        else if (enemies.Count() == 0)
+        else if (enemies.Count == 0)
         {
             print("Battle won! The memories are safe...for now.");
             return;
@@ -349,7 +349,7 @@ public class TurnScheduler : StateMachine
 
         if (team == Team.PLAYER)
         {
-            for (int i = 0; i < players.Count(); i++)
+            for (int i = 0; i < players.Count; i++)
             {
                 PlayerUnit unit = players.ElementAt(i);
                 unit.unitID = UnitIdCounter++;
@@ -359,7 +359,7 @@ public class TurnScheduler : StateMachine
 
         else if (team == Team.ENEMY)
         {
-            for (int i = 0; i < enemies.Count(); i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
                 EnemyUnit unit = enemies.ElementAt(i);
                 unit.unitID = UnitIdCounter++;
@@ -369,13 +369,13 @@ public class TurnScheduler : StateMachine
 
         if (team == Team.BOTH)
         {
-            for (int i = 0; i < players.Count(); i++)
+            for (int i = 0; i < players.Count; i++)
             {
                 PlayerUnit unit = players.ElementAt(i);
                 unit.unitID = UnitIdCounter++;
             }
 
-            for (int i = 0; i < enemies.Count(); i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
                 EnemyUnit unit = enemies.ElementAt(i);
                 unit.unitID = UnitIdCounter++;
@@ -390,15 +390,12 @@ public class TurnScheduler : StateMachine
         deadUnit.currentTile.occupied = false;
         var toRemove = deadUnit as PlayerUnit;
 
+
         if (toRemove != null) {
-            List<PlayerUnit> playerTemp = players.ToList();
-            playerTemp.Remove((PlayerUnit)deadUnit);
-            players = playerTemp;
+            players.Remove((PlayerUnit)deadUnit);
         }
         else {
-            List<EnemyUnit> enemyTemp = enemies.ToList();
-            enemyTemp.Remove((EnemyUnit)deadUnit);
-            enemies = enemyTemp;
+            enemies.Remove((EnemyUnit)deadUnit);
         }
         Destroy(deadUnit.gameObject);
     }

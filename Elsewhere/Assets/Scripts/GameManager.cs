@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
         player.AssignStats(defaultStats);
         player.AssignMap(map);
         player.AssignAbilities(defaultAbilities);
-        Debug.Log("Player abilities size " + player.abilities.Count);
         player.UpdateUI();
         players.Add(player);
 
@@ -72,7 +71,6 @@ public class GameManager : MonoBehaviour
         player2.AssignStats(defaultStats);
         player2.AssignMap(map);
         player2.AssignAbilities(defaultAbilities);
-        Debug.Log("Player abilities size " + player.abilities.Count);
         player2.UpdateUI();
         players.Add(player2);
 

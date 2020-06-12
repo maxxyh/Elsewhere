@@ -6,6 +6,7 @@ public class ChangeScene : MonoBehaviour
 {
     public void OnlickChangeSceneButton(string sceneName) {
         SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1;
     }
 
     public void RestartGame()

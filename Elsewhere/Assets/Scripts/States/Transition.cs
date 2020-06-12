@@ -16,14 +16,13 @@ public class Transition : State
 
     public override IEnumerator Execute()
     {
-        Debug.Log(turnScheduler.currTurn + ": " + turnScheduler.currTeamQueue.Count);
         // check if game has ended.
-        if (turnScheduler.players.Count() == 0)
+        if (turnScheduler.players.Count == 0)
         {
             turnScheduler.SetState(new Lose(turnScheduler));
             yield break;
         }
-        else if (turnScheduler.enemies.Count() == 0)
+        else if (turnScheduler.enemies.Count == 0)
         {
             turnScheduler.SetState(new Win(turnScheduler));
             yield break;

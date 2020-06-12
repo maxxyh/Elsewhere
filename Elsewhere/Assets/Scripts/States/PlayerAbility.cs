@@ -20,11 +20,12 @@ public class PlayerAbility : State
 
         yield return turnScheduler.StartCoroutine(turnScheduler.currUnit.chosenAbility.Execute(turnScheduler.currUnit, targetUnits));
 
+
         foreach (Unit unit in targetUnits)
         {
             if (unit.isDead())
             {
-                turnScheduler.StartCoroutine(turnScheduler.RemoveUnit(unit));
+                yield return turnScheduler.StartCoroutine(turnScheduler.RemoveUnit(unit));
             }
             else
             {
