@@ -39,11 +39,11 @@ public class GameManager : MonoBehaviour
 
         // default stats
         defaultStats.Add("attackDamage", 6);
-        defaultStats.Add("magicDamage", 3);
+        defaultStats.Add("magicDamage", 5);
         defaultStats.Add("mana", 20);
         defaultStats.Add("HP", 10);
-        defaultStats.Add("armor", 5);
-        defaultStats.Add("magicRes", 5);
+        defaultStats.Add("armor", 3);
+        defaultStats.Add("magicRes", 2);
         defaultStats.Add("movementRange", 4);
         defaultStats.Add("attackRange", 2);
 

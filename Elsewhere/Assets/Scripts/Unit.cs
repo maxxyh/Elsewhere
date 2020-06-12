@@ -163,14 +163,6 @@ public class Unit : MonoBehaviour
         stats["HP"].AddModifier(new StatModifier(-damage, StatModType.Flat));
     }
 
-    public void BasicAttack()
-    {
-        // check if critical hit
-        float attackDamage = this.stats["attackDamage"].Value;
-        attackingTargetUnit.TakeDamage(attackDamage);
-        DamagePopUp.Create(attackingTargetUnit.transform.position, (int) attackDamage);
-    }
-
     #region MOVEMENT
 
     // Generates the path to the tile

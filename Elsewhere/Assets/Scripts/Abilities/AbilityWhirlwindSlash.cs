@@ -1,0 +1,24 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class AbilityWhirlwindSlash : Ability
+{
+    public AbilityWhirlwindSlash() : base("Whirlwind Slash", 1, 4, false, TargetingStyle.RADIUS)
+    {
+    }
+
+    // Does 120% damage to all units around a 1 tile radius
+    public override IEnumerator Execute(Unit initiator, List<Unit> targets)
+    {
+        foreach (Unit target in targets)
+        {
+            int attackDamage = BattleManager.CalculatePhysicalDamage(1.2f * initiator.stats["attackDamage"].Value, target);
+            target.stats["HP"].AddModifier(new StatModifier(-attackDamage, StatModType.Flat));
+            DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", attackDamage), PopupType.DAMAGE);
+        }
+        base.Execute(initiator, targets);
+
+        yield break;
+    }
+}

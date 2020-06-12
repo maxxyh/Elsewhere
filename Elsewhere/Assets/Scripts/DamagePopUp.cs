@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Diagnostics;
+using UnityEngine.UIElements;
 
 public class DamagePopUp : MonoBehaviour
 {
@@ -15,11 +16,11 @@ public class DamagePopUp : MonoBehaviour
     private const float DISAPPEAR_TIMER_MAX = 1f;
 
 
-    public static DamagePopUp Create(Vector3 position, int damageAmount, bool isCriticalHit = false)
+    public static DamagePopUp Create(Vector3 position, string popupText, PopupType popupType, bool isCriticalHit = false)
     {
         Transform damagePopUpTransform = Instantiate(GameAssets.MyInstance.pfDamagePopUp, position, Quaternion.identity);
         DamagePopUp damagePopUp = damagePopUpTransform.GetComponent<DamagePopUp>();
-        damagePopUp.SetUp(damageAmount, isCriticalHit);
+        damagePopUp.SetUp(popupText, popupType, isCriticalHit);
         return damagePopUp;
     }
     
@@ -27,19 +28,26 @@ public class DamagePopUp : MonoBehaviour
     {
         textMesh = transform.GetComponent<TextMeshPro>();
     }
-    public void SetUp(int damageAmount, bool isCriticalHit)
+    public void SetUp(string popupText, PopupType popupType, bool isCriticalHit)
     {
-        textMesh.SetText("- " + damageAmount.ToString() + " HP");
-        if (!isCriticalHit)
-        {
-            textMesh.fontSize = 3;
-            textColor = new Color(0.80392f, 0.36078f, 0.36078f);
-        }
-        else
+        textMesh.SetText(popupText);
+        if (isCriticalHit)
         {
             textMesh.fontSize = 6;
             textColor = Color.red;
         }
+        else if (popupType == PopupType.BUFF || popupType == PopupType.HEAL)
+        {
+            textMesh.fontSize = 3;
+            textColor = new Color(0.961f, 0.808f, 0.039f);
+            //textColor = Color.green;
+        }
+        else if (popupType == PopupType.DAMAGE || popupType == PopupType.DEBUFF)
+        {
+            textMesh.fontSize = 3;
+            textColor = new Color(0.80392f, 0.36078f, 0.36078f);
+        }
+
         textMesh.color = textColor;
         disappearTimer = DISAPPEAR_TIMER_MAX;
 
@@ -78,4 +86,12 @@ public class DamagePopUp : MonoBehaviour
         }
     }
 
+}
+
+public enum PopupType
+{
+    DAMAGE,
+    BUFF,
+    DEBUFF,
+    HEAL
 }

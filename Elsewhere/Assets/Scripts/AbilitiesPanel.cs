@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class AbilitiesPanel : MonoBehaviour
 {
     public TurnScheduler turnScheduler;
-    public GameObject playerActionPanel;
+    public GameObject mainActionPanel;
     public GameObject abilitiesPanel;
     public Button skill1Button;
     public Button skill2Button;
@@ -50,7 +50,7 @@ public class AbilitiesPanel : MonoBehaviour
 
     public void OnReturnButton()
     {
-        playerActionPanel.SetActive(true);
+        mainActionPanel.SetActive(true);
         abilitiesPanel.SetActive(false);
         turnScheduler.OnExitAbilityMenuButton();
     }
@@ -60,7 +60,7 @@ public class AbilitiesPanel : MonoBehaviour
         Debug.Log("Player Ability size inside call " + turnScheduler.currUnit.abilities.Count);
         text1.text = turnScheduler.currUnit.abilities[0].abilityName;
         text2.text = turnScheduler.currUnit.abilities[1].abilityName;
-        playerActionPanel.SetActive(false);
+        mainActionPanel.SetActive(false);
         turnScheduler.OnAbilityMenuButton();
     }
 
