@@ -23,6 +23,9 @@ public class UnitStat
    
     //indicate if we need to recalculate the value or not
     protected bool isDirty = true;
+
+    // indicate if can exceed the base value
+    protected bool hasLimit;
    
     //holds most recent calculation that we did
     protected float _value;
@@ -32,9 +35,10 @@ public class UnitStat
         this.StatModifiers_readonly = statModifiers.AsReadOnly();
     }
     
-    public UnitStat(float baseValue) : this()
+    public UnitStat(float baseValue, bool hasLimit=false) : this()
     {
         this.baseValue = baseValue;
+        this.hasLimit = hasLimit;
     }
 
     public virtual void AddModifier(StatModifier mod) 
@@ -95,8 +99,14 @@ public class UnitStat
                 } 
             }
         }
-
-        return (float) Math.Round(finalValue, 4);
+        if (hasLimit)
+        {
+            return (float)Math.Min(baseValue, Math.Round(finalValue, 4));
+        } else
+        {
+            return (float)Math.Round(finalValue, 4);
+        }
+        
     }
 
     public virtual bool RemoveAllModifiersFromSource(object source) 

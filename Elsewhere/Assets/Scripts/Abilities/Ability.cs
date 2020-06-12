@@ -21,12 +21,6 @@ public abstract class Ability
 
     public virtual IEnumerator Execute(Unit initiator, List<Unit> targets)
     {
-        foreach(Unit unit in targets)
-        {
-            unit.UpdateUI();
-        }
-        initiator.stats["mana"].AddModifier(new StatModifier(-manaCost, StatModType.Flat));
-        initiator.UpdateUI();
 
         yield break;
     }
@@ -34,6 +28,17 @@ public abstract class Ability
     public float GetManaCost()
     {
         return manaCost;
+    }
+
+    public void UpdateStats(Unit initiator, List<Unit> targets)
+    {
+        Debug.Log("in ability base");
+        foreach (Unit unit in targets)
+        {
+            unit.UpdateUI();
+        }
+        initiator.stats["mana"].AddModifier(new StatModifier(-manaCost, StatModType.Flat));
+        initiator.UpdateUI();
     }
 }
 

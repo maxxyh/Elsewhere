@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.PlayerLoop;
 
 public class AbilityWhirlwindSlash : Ability
 {
@@ -17,7 +18,7 @@ public class AbilityWhirlwindSlash : Ability
             target.stats["HP"].AddModifier(new StatModifier(-attackDamage, StatModType.Flat));
             DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", attackDamage), PopupType.DAMAGE);
         }
-        base.Execute(initiator, targets);
+        UpdateStats(initiator, targets);
 
         yield break;
     }

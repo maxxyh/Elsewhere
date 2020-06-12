@@ -29,7 +29,6 @@ public class AggressiveEnemyAI : State
         }
 
         Tile targetTile = targetPlayer.currentTile;
-        Debug.Log(targetTile.transform.position);
         AStarSearch.GeneratePath(map, currUnit.currentTile, targetPlayer.currentTile, false, true);
 
         // check if target tile is selectable 

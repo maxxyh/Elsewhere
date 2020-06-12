@@ -86,7 +86,13 @@ public class Unit : MonoBehaviour
         stats = new Dictionary<string, UnitStat>();
         foreach(KeyValuePair<string,float> pair in input)
         {
-            this.stats[pair.Key] = new UnitStat(pair.Value);
+            bool hasLimit = false;
+            if (pair.Key.Equals("HP") || pair.Key.Equals("mana"))
+            {
+                hasLimit = true;
+            }
+            this.stats[pair.Key] = new UnitStat(pair.Value, hasLimit);
+            
         }
     }
 
