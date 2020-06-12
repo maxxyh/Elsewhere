@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public Camera worldCamera;
 
     private Dictionary<string, float> defaultStats = new Dictionary<string, float>();
-    private List<Ability> defaultAbilities = new List<Ability>();
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,14 +27,6 @@ public class GameManager : MonoBehaviour
         turnScheduler.Init(players, enemies);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        //players[currentPlayerIndex].ExecuteTurn();
-    }
-
-    // TODO add the EnemyUnits too.
     void generatePlayers() {
 
         // default stats
@@ -47,9 +39,19 @@ public class GameManager : MonoBehaviour
         defaultStats.Add("movementRange", 4);
         defaultStats.Add("attackRange", 2);
 
+
         // default abilities
-        defaultAbilities.Add(new AbilityHealingWave());
-        defaultAbilities.Add(new AbilityWhirlwindSlash());
+        List<Ability> AbilitiesSwordsman= new List<Ability>();
+        List<Ability> AbilitiesMage = new List<Ability>();
+        List<Ability> AbilitiesHealer  = new List<Ability>();
+        AbilitiesHealer.Add(new AbilityHealingWave());
+        AbilitiesHealer.Add(new AbilityArcaneBoost());
+
+        AbilitiesSwordsman.Add(new AbilityWhirlwindSlash());
+        AbilitiesSwordsman.Add(new AbilityDoubleHit());
+
+        AbilitiesMage.Add(new AbilityHPReaver());
+        AbilitiesMage.Add(new AbilityArcaneBoost());
 
 
         // PLAYERS
@@ -60,7 +62,7 @@ public class GameManager : MonoBehaviour
         player.tag = "player";
         player.AssignStats(defaultStats);
         player.AssignMap(map);
-        player.AssignAbilities(defaultAbilities);
+        player.AssignAbilities(AbilitiesMage);
         player.UpdateUI();
         players.Add(player);
 
@@ -70,16 +72,24 @@ public class GameManager : MonoBehaviour
         player2.tag = "player";
         player2.AssignStats(defaultStats);
         player2.AssignMap(map);
-        player2.AssignAbilities(defaultAbilities);
+        player2.AssignAbilities(AbilitiesHealer);
         player2.UpdateUI();
         players.Add(player2);
 
-
+        PlayerUnit player3 = ((GameObject)Instantiate(PlayerPrefabs[2], new Vector3(2, 3, 0),
+            Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
+        //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
+        player3.tag = "player";
+        player3.AssignStats(defaultStats);
+        player3.AssignMap(map);
+        player3.AssignAbilities(AbilitiesSwordsman);
+        player3.UpdateUI();
+        players.Add(player3);
 
         // ENEMIES
 
         // TODO DOESN'T ACTUALLY INITIATE A VALID ENEMY
-        EnemyUnit enemy = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-map.mapSize / 2 + 1, -map.mapSize / 2 + 1, 0),
+        EnemyUnit enemy = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-4, -3, 0),
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
         //enemy.gridPosition = new Vector2(0,0);
         enemy.tag = "enemy";
@@ -88,7 +98,7 @@ public class GameManager : MonoBehaviour
         enemy.UpdateUI();
         enemies.Add(enemy);
 
-        EnemyUnit enemy2 = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-1 -map.mapSize / 2 + 1, -map.mapSize / 2 + 1, 0),
+        EnemyUnit enemy2 = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-3, -3, 0),
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
         //enemy.gridPosition = new Vector2(0,0);
         enemy2.tag = "enemy";
@@ -96,5 +106,14 @@ public class GameManager : MonoBehaviour
         enemy2.AssignMap(map);
         enemy2.UpdateUI();
         enemies.Add(enemy2);
+
+        EnemyUnit enemy3 = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-2, -3, 0),
+            Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
+        //enemy.gridPosition = new Vector2(0,0);
+        enemy3.tag = "enemy";
+        enemy3.AssignStats(defaultStats);
+        enemy3.AssignMap(map);
+        enemy.UpdateUI();
+        enemies.Add(enemy3);
     }
 }

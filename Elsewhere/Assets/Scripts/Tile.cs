@@ -34,13 +34,13 @@ public class Tile : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = new Color(0.43f, 0.76f, 0.86f, 0.3f);
         }
-        else if (hasPlayer)
-        {
-            GetComponent<Renderer>().material.color = new Color(1,1,0,0.3f);
-        }
         else if (attackable)
         {
             GetComponent<Renderer>().material.color = new Color(0.65f, 0.17f, 0.17f, 0.3f);
+        }
+        else if (hasPlayer)
+        {
+            GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.3f);
         }
         else if (target)
         {

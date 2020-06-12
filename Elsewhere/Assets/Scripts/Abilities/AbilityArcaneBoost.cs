@@ -17,7 +17,8 @@ public class AbilityArcaneBoost : Ability
             target.stats["magicDamage"].AddModifier(new StatModifier(magicDamageBuff, StatModType.PercentAdd));
             target.stats["armor"].AddModifier(new StatModifier(armorBuff, StatModType.PercentAdd));
             DamagePopUp.Create(target.transform.position, string.Format("+ {0}% MagAttack", magicDamageBuff*100), PopupType.BUFF);
-            DamagePopUp.Create(target.transform.position, string.Format("+ {0}% Armor", armorBuff * 100), PopupType.BUFF);
+            yield return new WaitForSecondsRealtime(0.5f);
+            DamagePopUp.Create(target.transform.position, string.Format("\n\n + {0}% Armor", armorBuff * 100), PopupType.BUFF);
         }
 
         base.Execute(initiator, targets);

@@ -47,5 +47,6 @@ public enum TargetingStyle
     MULTI,
     RADIUS, 
     CONE, 
-    SELF
+    SELF,
+    SELFSINGLE
 }

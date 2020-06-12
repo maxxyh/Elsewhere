@@ -64,7 +64,7 @@ public class PlayerAbilityTargeting : State
 
         #region Single Targeting Style
 
-        if (ability.targetingStyle == TargetingStyle.SINGLE)
+        if (ability.targetingStyle == TargetingStyle.SINGLE || ability.targetingStyle == TargetingStyle.SELFSINGLE)
         {
             Unit targetUnit = null;
 
@@ -105,10 +105,13 @@ public class PlayerAbilityTargeting : State
         #endregion
 
         #region Self Targeting Style
-
-        if (tile == turnScheduler.currUnit.currentTile)
+        if (ability.targetingStyle == TargetingStyle.SINGLE || ability.targetingStyle == TargetingStyle.SELFSINGLE)
         {
-            targetsFound = true;
+            if (tile == turnScheduler.currUnit.currentTile)
+            {
+                targetsFound = true;
+                targetUnits.Add(turnScheduler.currUnit);
+            }
         }
 
         #endregion

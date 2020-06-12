@@ -83,6 +83,7 @@ MonoBehaviour:
   abilityTargetUnits: []
   map: {fileID: 0}
   currentTile: {fileID: 0}
+  startTile: {fileID: 0}
   sparkle: {fileID: 5133980785669610318}
   gridPosition: {x: 0, y: 0}
 --- !u!1 &2870922879948342433
@@ -475,6 +476,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: c09792004f8fc6e4c9ea5a927484a362,
         type: 3}
+    - target: {fileID: 8632271839532296848, guid: bc63a8b10a3db674eb67c5f1c5d5af20,
+        type: 3}
+      propertyPath: m_Text
+      value: ESMERALDA
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632271839532296855, guid: bc63a8b10a3db674eb67c5f1c5d5af20,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 151.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632271839532296855, guid: bc63a8b10a3db674eb67c5f1c5d5af20,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 764.0755
+      objectReference: {fileID: 0}
     - target: {fileID: 8632271839751008629, guid: bc63a8b10a3db674eb67c5f1c5d5af20,
         type: 3}
       propertyPath: m_AnchorMin.y

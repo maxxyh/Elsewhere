@@ -13,7 +13,7 @@ public class DamagePopUp : MonoBehaviour
     private Color textColor;
     private Vector3 moveVector;
 
-    private const float DISAPPEAR_TIMER_MAX = 1f;
+    private const float DISAPPEAR_TIMER_MAX = 2f;
 
 
     public static DamagePopUp Create(Vector3 position, string popupText, PopupType popupType, bool isCriticalHit = false)
@@ -39,8 +39,8 @@ public class DamagePopUp : MonoBehaviour
         else if (popupType == PopupType.BUFF || popupType == PopupType.HEAL)
         {
             textMesh.fontSize = 3;
-            textColor = new Color(0.961f, 0.808f, 0.039f);
-            //textColor = Color.green;
+            //textColor = new Color(0.961f, 0.808f, 0.039f);
+            textColor = Color.white;
         }
         else if (popupType == PopupType.DAMAGE || popupType == PopupType.DEBUFF)
         {

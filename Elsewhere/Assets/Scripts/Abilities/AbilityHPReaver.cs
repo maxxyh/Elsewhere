@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AbilityHPReaver : Ability
 {
-    public AbilityHPReaver() : base("HP Reaver", 3, 4, true, TargetingStyle.SINGLE)
+    public AbilityHPReaver() : base("HP Reaver", 3, 4, false, TargetingStyle.SINGLE)
     {
     }
 
@@ -17,8 +17,7 @@ public class AbilityHPReaver : Ability
             target.stats["HP"].AddModifier(new StatModifier(magicDamage, StatModType.Flat));
             initiator.stats["HP"].AddModifier(new StatModifier(magicDamage, StatModType.Flat));
             DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", magicDamage), PopupType.DAMAGE);
-            yield return new WaitForSecondsRealtime(0.5f);
-            DamagePopUp.Create(initiator.transform.position, string.Format("+ {0}% HP", magicDamage), PopupType.HEAL);
+            DamagePopUp.Create(initiator.transform.position, string.Format("+ {0} HP", magicDamage), PopupType.HEAL);
         }
 
         base.Execute(initiator, targets);
