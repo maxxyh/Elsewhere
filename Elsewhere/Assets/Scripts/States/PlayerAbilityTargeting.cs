@@ -30,6 +30,8 @@ public class PlayerAbilityTargeting : State
             yield break;
         }
 
+        bool targetsFound = false;
+
         #region Getting the correct target team
         IEnumerable<Unit> targetTeam;
         if (turnScheduler.currTurn == Team.ENEMY)
@@ -78,9 +80,7 @@ public class PlayerAbilityTargeting : State
             if (targetUnit != null)
             {
                 targetUnits.Add(targetUnit);
-                currUnit.abilityTargetUnits = targetUnits;
-                turnScheduler.cancelPanel.SetActive(false);
-                turnScheduler.confirmationPanel.SetActive(true);
+                targetsFound = true;
             }
         }
         #endregion
@@ -100,9 +100,7 @@ public class PlayerAbilityTargeting : State
 
         if (targetUnits.Count >0)
         {
-            currUnit.abilityTargetUnits = targetUnits;
-            turnScheduler.cancelPanel.SetActive(false);
-            turnScheduler.confirmationPanel.SetActive(true);
+            targetsFound = true;
         }
         #endregion
 
@@ -110,12 +108,17 @@ public class PlayerAbilityTargeting : State
 
         if (tile == turnScheduler.currUnit.currentTile)
         {
-            targetUnits.Add(turnScheduler.currUnit);
-            turnScheduler.cancelPanel.SetActive(false);
-            turnScheduler.confirmationPanel.SetActive(true);
+            targetsFound = true;
         }
 
         #endregion
+
+        if (targetsFound)
+        {
+            currUnit.abilityTargetUnits = targetUnits;
+            turnScheduler.cancelPanel.SetActive(false);
+            turnScheduler.confirmationPanel.SetActive(true);
+        }
 
         yield break;
     }

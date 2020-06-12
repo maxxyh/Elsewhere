@@ -57,6 +57,7 @@ public class PlayerAttackTargeting : State
 
         if (targetUnit != null)
         {
+            turnScheduler.cancelPanel.SetActive(false);
             turnScheduler.StartAttack(targetUnit);
         }
         
