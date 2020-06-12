@@ -7,12 +7,12 @@ using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
-    public bool isStartPoint = false;
     public bool target = false;
     public bool selectable = false;
     public bool walkable = true;
     public bool attackable = false;
     public bool hover = false;
+    public bool hasPlayer = false;
     public int movementCost;
 
     public bool occupied = false;
@@ -24,6 +24,8 @@ public class Tile : MonoBehaviour
 
     public Vector2Int gridPosition = Vector2Int.zero;
 
+    public Animator anim;
+
 
     // Update is called once per frame
     void Update()
@@ -32,10 +34,9 @@ public class Tile : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = new Color(0.43f, 0.76f, 0.86f, 0.3f);
         }
-        else if (isStartPoint)
+        else if (hasPlayer)
         {
-            // Magenta
-            GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.2f);
+            GetComponent<Renderer>().material.color = new Color(1,1,0,0.3f);
         }
         else if (attackable)
         {
@@ -84,10 +85,11 @@ public class Tile : MonoBehaviour
     {
         adjacencyList.Clear();
 
-        isStartPoint = false;
         target = false;
         selectable = false;
         attackable = false;
+        //occupied = false; Needs to be manually done if not will cause problems with pathfinding.
+        hasPlayer = false;
 
         parent = null;
         distance = int.MaxValue;

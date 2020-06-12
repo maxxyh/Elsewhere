@@ -186,7 +186,6 @@ public class Map : MonoBehaviour
 
     public void RemoveSelectableTiles(Tile currentTile, bool destructive = true)
     {
-        currentTile.isStartPoint = false;
 
         foreach (Tile t in selectableTiles)
         {

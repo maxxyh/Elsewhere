@@ -12,6 +12,8 @@ public class PlayerStartTurn : State
 
     public override IEnumerator Execute()
     {
+        Debug.Log("STARTING PLAYER TURN");
+        
         // this added layer is to support cancel functionality
         if (currUnit.currState == UnitState.ENDTURN)
         {
@@ -49,6 +51,31 @@ public class PlayerStartTurn : State
             map.RemoveSelectableTiles(turnScheduler.currUnit.currentTile, false);
             turnScheduler.SetState(new PlayerAbilityMenu(turnScheduler));
         }
+        yield break;
+    }
+
+    // used to change active player
+    public override IEnumerator CheckTargeting(Tile tile)
+    {
+        Unit switchUnit = null;
+        foreach(Unit unit in turnScheduler.currTeamQueue)
+        {
+            if (unit.currentTile == tile)
+            {
+                switchUnit = unit;
+                break;
+            }
+        }
+
+        if (switchUnit != null)
+        {
+            currUnit.ReturnToStartTile();
+            Debug.Log("CURRENT TILE OCCUPIED " + turnScheduler.currUnit.currentTile.occupied);
+            turnScheduler.currTeamQueue.AddLast(turnScheduler.currUnit);
+            turnScheduler.currTeamQueue.Remove(switchUnit);
+            turnScheduler.currTeamQueue.AddFirst(switchUnit);
+            turnScheduler.SetState(new PlayerEndTurn(turnScheduler));
+        }    
         yield break;
     }
 

@@ -10,7 +10,7 @@ public class TurnScheduler : StateMachine
     #region Fields and References
     public List<PlayerUnit> players;
     public List<EnemyUnit> enemies;
-    public Queue<Unit> currTeamQueue = new Queue<Unit>();
+    public LinkedList<Unit> currTeamQueue = new LinkedList<Unit>();
     
     [Header("Panels")]
     public GameObject confirmationPanel;
@@ -97,6 +97,7 @@ public class TurnScheduler : StateMachine
         StartCoroutine(State.ReturnPreviousMenu());
     }
 
+
     public IEnumerator AttackAnimation(Unit currUnit, Unit targetUnit)
     {
         targetUnit.statPanel.SetActive(true);
@@ -121,76 +122,6 @@ public class TurnScheduler : StateMachine
     #endregion
 
     #region Deprecated 
-    public void PlayerEndTurn()
-    {
-        // StartCoroutine(State.PlayerEndTurn());
-
-
-        map.RemoveSelectableTiles(currUnit.currentTile);
-        currUnit.EndTurn();
-
-        currUnit.statPanel.SetActive(false);
-        playerActionPanel.SetActive(false);
-
-        // check whether there are still players in the queue -> if have then it should start the next player.
-        if (currTeamQueue.Count > 0)
-        {
-            Transition(Team.PLAYER);
-        }
-        else
-        {
-            Transition(Team.ENEMY);
-        }
-
-    }
-
-    // function that checks if there are still players alive on each team. If there are, it continues with the turn provided.
-    public void Transition(Team turn)
-    {
-        // check if game has been won.
-        if (players.Count == 0)
-        {
-            print("Battle lost. The memories are lost. Try again!");
-            return;
-        }
-        else if (enemies.Count == 0)
-        {
-            print("Battle won! The memories are safe...for now.");
-            return;
-        }
-
-        // there are still players alive. Check if the current queue still has players if not have to requeue.
-        if (turn == Team.ENEMY)
-        {
-            if (currTeamQueue.Count == 0)
-            {
-                EnqueueTeams(Team.ENEMY);
-            }
-            currTurn = Team.ENEMY;
-            currUnit = currTeamQueue.Dequeue();
-            StartEnemyTurn();
-        }
-        else
-        {
-            if (currTeamQueue.Count == 0)
-            {
-                EnqueueTeams(Team.PLAYER);
-            }
-            currTurn = Team.PLAYER;
-            currUnit = currTeamQueue.Dequeue();
-            StartPlayerTurn();
-        }
-    }
-
-
-    // currUnit.startTurn() -> update current tile + updates booleans
-    // find selectable tiles 
-    public void StartPlayerTurn()
-    {
-        currUnit.StartTurn();
-        playerActionPanel.SetActive(true);
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].Value);
-    }
 
     IEnumerator PlayerAttack()
     {
@@ -239,115 +170,9 @@ public class TurnScheduler : StateMachine
         yield return StartCoroutine(AttackAnimation(currUnit, targetUnit));
 
 
-        PlayerEndTurn();
+        //PlayerEndTurn();
     }
 
-
-    IEnumerator EnemyMovement()
-    {
-        yield return new WaitForSecondsRealtime(0.75f);
-
-        // use distance to determine closest player
-        int minDistance = int.MaxValue;
-        Unit targetPlayer = players.ElementAt(0);
-        foreach (Unit player in players)
-        {
-            AStarSearch.GeneratePath(map, currUnit.currentTile, player.currentTile, false, true);
-            if (player.currentTile.distance < minDistance)
-            {
-                minDistance = player.currentTile.distance;
-                targetPlayer = player;
-            }
-        }
-
-        Tile targetTile = targetPlayer.currentTile;
-        Debug.Log(targetTile.transform.position);
-        AStarSearch.GeneratePath(map, currUnit.currentTile, targetPlayer.currentTile, false, true);
-
-        // check if target tile is selectable 
-        while (!targetTile.selectable)
-        {
-            targetTile = targetTile.parent;
-        }
-
-        /*
-        // get target tile by subtracting the attackRange
-        int attackRange = (int) currUnit.stats["attackRange"].Value;
-        for (int i = 0; i < attackRange; i++)
-        {
-            if (targetTile == currUnit.currentTile)
-            {
-                break;
-            }
-            else
-            {
-                targetTile = targetTile.parent;
-            }                
-        }
-        */
-        // A star movement towards the target 
-        currUnit.GetPathToTile(targetTile);
-
-        yield return new WaitUntil(() => currUnit.currState == UnitState.IDLING);
-
-        // check if there are players in range
-        if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats["attackRange"].Value, targetPlayer))
-        {
-            StartCoroutine(AutoEnemyAttack(targetPlayer));
-        }
-        else
-        {
-            EnemyEndTurn();
-        }
-    }
-
-    public void StartEnemyTurn()
-    {
-        currUnit.StartTurn();
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].Value);
-
-        StartCoroutine(EnemyMovement());
-
-
-        // call it's own movement and attack functions
-    }
-
-    public void EnemyEndTurn()
-    {
-        map.RemoveSelectableTiles(currUnit.currentTile);
-        currUnit.EndTurn();
-
-        currUnit.statPanel.SetActive(false);
-
-        // check whether there are still enemies in the queue -> if have then it should start the next enemies.
-        if (currTeamQueue.Count > 0)
-        {
-            Transition(Team.ENEMY);
-        }
-        else
-        {
-            Transition(Team.PLAYER);
-        }
-
-    }
-
-    IEnumerator AutoEnemyAttack(Unit targetPlayer)
-    {
-        map.RemoveSelectableTiles(currUnit.currentTile, false);
-        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].Value);
-        // should display the attacking tiles.
-
-        yield return new WaitForSecondsRealtime(1);
-
-        map.RemoveAttackableTiles();
-        // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
-        currUnit.StartAttack(targetPlayer);
-        BattleManager.Battle(currUnit, targetPlayer);
-
-        yield return StartCoroutine(AttackAnimation(currUnit, targetPlayer));
-
-        EnemyEndTurn();
-    }
 
     #endregion
 
@@ -360,7 +185,7 @@ public class TurnScheduler : StateMachine
             {
                 PlayerUnit unit = players.ElementAt(i);
                 unit.unitID = UnitIdCounter++;
-                currTeamQueue.Enqueue(unit);
+                currTeamQueue.AddLast(unit);
             }
         }
 
@@ -370,7 +195,7 @@ public class TurnScheduler : StateMachine
             {
                 EnemyUnit unit = enemies.ElementAt(i);
                 unit.unitID = UnitIdCounter++;
-                currTeamQueue.Enqueue(unit);
+                currTeamQueue.AddLast(unit);
             }
         }
 

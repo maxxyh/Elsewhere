@@ -69,6 +69,7 @@ public class Unit : MonoBehaviour
     
     Stack<Tile> path = new Stack<Tile>();
     public Tile currentTile;
+    public Tile startTile;
 
     Vector3 heading = new Vector3();
     Vector3 velocity = new Vector3();
@@ -139,8 +140,8 @@ public class Unit : MonoBehaviour
     // sets the currentTile 
     public void StartTurn()
     {
-        currentTile = map.GetCurrentTile(transform.position);
-        currentTile.isStartPoint = true;
+        startTile = map.GetCurrentTile(transform.position); ;
+        currentTile = startTile;
         currState = UnitState.IDLING;
         this.statPanel.SetActive(true);
     }
@@ -226,16 +227,14 @@ public class Unit : MonoBehaviour
         else
         {
             // clear currentTile and make sure it's selectable
-            currentTile.isStartPoint = false;
+            currentTile.Reset();
             currentTile.occupied = false;
             currentTile.selectable = true;
-            currentTile.target = false;
 
             currState = UnitState.IDLING;
 
             // update currentTile
             currentTile = map.GetCurrentTile(transform.position);
-            currentTile.isStartPoint = true;
             
             //TurnManager.EndTurn();
             // TODO only EndTurn after taking an action e.g. attack, wait, defend etc.
@@ -320,6 +319,20 @@ public class Unit : MonoBehaviour
                 UpdateUI();
             }
         }
+    }
+
+    public void ReturnToStartTile()
+    {
+        currentTile.Reset();
+        currentTile.occupied = false;
+        transform.position = startTile.transform.position;
+        currentTile = startTile;
+        currentTile.occupied = true;
+        lastMove.x = 0;
+        lastMove.y = 0;
+        anim.SetFloat("lastMoveX", lastMove.x);
+        anim.SetFloat("lastMoveY", lastMove.y);
+        Debug.Log("RETURN TO START TILE");
     }
 
     IEnumerator stopSparkle()

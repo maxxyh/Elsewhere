@@ -315,19 +315,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8c72d6fc09a9747a11d99d1165cf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStartPoint: 0
   target: 0
   selectable: 0
   walkable: 1
   attackable: 0
   hover: 0
+  hasPlayer: 0
   movementCost: 0
   occupied: 0
-  clickButton: {fileID: 0}
   parent: {fileID: 0}
   distance: 0
   adjacencyList: []
   gridPosition: {x: 0, y: 0}
+  anim: {fileID: 0}
 --- !u!1 &9089950522437165942
 GameObject:
   m_ObjectHideFlags: 0

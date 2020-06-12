@@ -47,7 +47,8 @@ public class Transition : State
             turnScheduler.EnqueueTeams(turnScheduler.currTurn);
         }
         // update current unit
-        turnScheduler.currUnit = turnScheduler.currTeamQueue.Dequeue();
+        turnScheduler.currUnit = turnScheduler.currTeamQueue.First();
+        turnScheduler.currTeamQueue.RemoveFirst();
 
 
         // start next turn

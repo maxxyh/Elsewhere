@@ -171,7 +171,6 @@ public class TacticsMove : MonoBehaviour
     {
         if (currentTile != null)
         {
-            currentTile.isStartPoint = false;
             currentTile = null;
         }
 

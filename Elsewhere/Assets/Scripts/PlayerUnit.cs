@@ -24,6 +24,7 @@ public class PlayerUnit : Unit
         
         if (currState == UnitState.IDLING)
         {
+            currentTile.hasPlayer = true;
             CheckMoveMouse();
         }
         
@@ -54,4 +55,5 @@ public class PlayerUnit : Unit
             }
         }
     }
+
 }
