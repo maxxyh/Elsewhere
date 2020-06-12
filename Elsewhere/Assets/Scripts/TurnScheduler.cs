@@ -111,6 +111,13 @@ public class TurnScheduler : StateMachine
         }
     }
 
+    public IEnumerator AbilityAnimation(Unit currUnit)
+    { 
+        yield return StartCoroutine(currUnit.AbilityAnimation());
+        TraumaInducer camShakeInducer = GetComponent<TraumaInducer>();
+        yield return StartCoroutine(camShakeInducer.Shake());
+    }
+
     #endregion
 
     #region Deprecated 

@@ -21,7 +21,6 @@ public abstract class Ability
 
     public virtual IEnumerator Execute(Unit initiator, List<Unit> targets)
     {
-
         yield break;
     }
     

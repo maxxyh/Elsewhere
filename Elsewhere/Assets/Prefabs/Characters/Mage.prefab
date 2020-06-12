@@ -80,7 +80,7 @@ MonoBehaviour:
   moveSpeed: 5
   Panel: {fileID: 0}
   attackingTargetUnit: {fileID: 0}
-  abilityTargetUnit: {fileID: 0}
+  abilityTargetUnits: []
   map: {fileID: 0}
   currentTile: {fileID: 0}
   sparkle: {fileID: 5133980785669610318}

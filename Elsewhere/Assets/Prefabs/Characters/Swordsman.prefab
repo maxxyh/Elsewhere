@@ -80,7 +80,7 @@ MonoBehaviour:
   moveSpeed: 5
   Panel: {fileID: 0}
   attackingTargetUnit: {fileID: 0}
-  abilityTargetUnit: {fileID: 0}
+  abilityTargetUnits: []
   map: {fileID: 0}
   currentTile: {fileID: 0}
   sparkle: {fileID: 5133980785669610318}
@@ -234,7 +234,7 @@ Animator:
   m_GameObject: {fileID: 2870922880512250334}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9a96febe1007b5845968419f26c7449c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 797c724396b1c764494b17dde8b643d1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

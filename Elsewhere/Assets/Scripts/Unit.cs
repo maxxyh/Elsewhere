@@ -165,6 +165,13 @@ public class Unit : MonoBehaviour
         anim.SetBool("isAttacking", false);
     }
 
+    public IEnumerator AbilityAnimation()
+    {
+        anim.SetBool("isAbility", true);
+        yield return new WaitForSecondsRealtime(0.5f);
+        anim.SetBool("isAbility", false);
+    }
+
     public void TakeDamage(float damage) {
         stats["HP"].AddModifier(new StatModifier(-damage, StatModType.Flat));
     }

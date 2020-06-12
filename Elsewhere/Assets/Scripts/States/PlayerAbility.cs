@@ -16,10 +16,10 @@ public class PlayerAbility : State
         // TODO change to list style in Unit.cs
         List<Unit> targetUnits = turnScheduler.currUnit.abilityTargetUnits;
 
-        map.RemoveAttackableTiles();    
+        map.RemoveAttackableTiles();
 
-        yield return turnScheduler.StartCoroutine(turnScheduler.currUnit.chosenAbility.Execute(turnScheduler.currUnit, targetUnits));
-
+         yield return turnScheduler.StartCoroutine(turnScheduler.AbilityAnimation(currUnit));
+         yield return turnScheduler.StartCoroutine(turnScheduler.currUnit.chosenAbility.Execute(turnScheduler.currUnit, targetUnits));
 
         foreach (Unit unit in targetUnits)
         {
