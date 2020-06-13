@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject TilePrefab;
     public GameObject[] PlayerPrefabs;
-    public GameObject EnemyPrefab;
+    public GameObject[] EnemyPrefab;
     public Map map;
     public TurnScheduler turnScheduler;
     public List<PlayerUnit> players = new List<PlayerUnit>();
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         // ENEMIES
 
         // TODO DOESN'T ACTUALLY INITIATE A VALID ENEMY
-        EnemyUnit enemy = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-4, -3, 0),
+        EnemyUnit enemy = ((GameObject)Instantiate(EnemyPrefab[0], new Vector3(-4, -3, 0),
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
         //enemy.gridPosition = new Vector2(0,0);
         enemy.tag = "enemy";
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         enemy.UpdateUI();
         enemies.Add(enemy);
 
-        EnemyUnit enemy2 = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-3, -3, 0),
+        EnemyUnit enemy2 = ((GameObject)Instantiate(EnemyPrefab[1], new Vector3(-3, -3, 0),
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
         //enemy.gridPosition = new Vector2(0,0);
         enemy2.tag = "enemy";
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         enemy2.UpdateUI();
         enemies.Add(enemy2);
 
-        EnemyUnit enemy3 = ((GameObject)Instantiate(EnemyPrefab, new Vector3(-2, -3, 0),
+        EnemyUnit enemy3 = ((GameObject)Instantiate(EnemyPrefab[0], new Vector3(-2, -3, 0),
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
         //enemy.gridPosition = new Vector2(0,0);
         enemy3.tag = "enemy";

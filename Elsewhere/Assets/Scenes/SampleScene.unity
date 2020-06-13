@@ -8225,8 +8225,9 @@ MonoBehaviour:
   - {fileID: 2870922879879798622, guid: 7161820e4206e6242bfd1f897d971232, type: 3}
   - {fileID: 2870922879879798622, guid: 65dccee9e9c20294292c3317e88ecf9f, type: 3}
   - {fileID: 2870922879879798622, guid: ba5383cf5522ac74ea9a4336af10bc66, type: 3}
-  EnemyPrefab: {fileID: 2897327392223700814, guid: f4fbd421b0f58f9408007e94fbd01382,
-    type: 3}
+  EnemyPrefab:
+  - {fileID: 2897327392223700814, guid: f4fbd421b0f58f9408007e94fbd01382, type: 3}
+  - {fileID: 2897327392223700814, guid: df7846522d417a043a6c844e36c8e3f7, type: 3}
   map: {fileID: 1993327612}
   turnScheduler: {fileID: 105424488}
   players: []
@@ -8262,12 +8263,12 @@ PrefabInstance:
     - target: {fileID: 7757812188013045447, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 124.8342
+      value: 124.83423
       objectReference: {fileID: 0}
     - target: {fileID: 7757812188013045447, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8.522388
+      value: -8.5224
       objectReference: {fileID: 0}
     - target: {fileID: 7757812188013045447, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
