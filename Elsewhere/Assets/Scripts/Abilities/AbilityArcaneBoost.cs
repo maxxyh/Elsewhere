@@ -21,7 +21,6 @@ public class AbilityArcaneBoost : Ability
             DamagePopUp.Create(target.transform.position, string.Format("\n\n + {0}% Armor", armorBuff * 100), PopupType.BUFF);
         }
 
-        base.Execute(initiator, targets);
         UpdateStats(initiator, targets);
 
         yield break;

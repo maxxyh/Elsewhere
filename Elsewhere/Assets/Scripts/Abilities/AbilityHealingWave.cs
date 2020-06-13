@@ -17,7 +17,6 @@ public class AbilityHealingWave : Ability
             DamagePopUp.Create(target.transform.position, string.Format("+ {0} HP", healingAmount), PopupType.HEAL);
         }
 
-        base.Execute(initiator, targets);
         UpdateStats(initiator, targets);
 
         yield break;

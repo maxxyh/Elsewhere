@@ -19,8 +19,6 @@ public class AbilityHPReaver : Ability
             DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", magicDamage), PopupType.DAMAGE);
             DamagePopUp.Create(initiator.transform.position, string.Format("+ {0} HP", magicDamage), PopupType.HEAL);
         }
-
-        base.Execute(initiator, targets);
         UpdateStats(initiator, targets);
 
         yield break;

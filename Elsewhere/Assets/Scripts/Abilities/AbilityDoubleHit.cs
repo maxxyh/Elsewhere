@@ -19,7 +19,7 @@ public class AbilityDoubleHit : Ability
                 DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", attackDamage), PopupType.DAMAGE);
             }
         }
-        base.Execute(attacker, targets);
+
         UpdateStats(attacker, targets);
 
         yield break;
