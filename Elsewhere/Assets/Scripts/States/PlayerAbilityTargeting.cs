@@ -105,7 +105,7 @@ public class PlayerAbilityTargeting : State
         #endregion
 
         #region Self Targeting Style
-        if (ability.targetingStyle == TargetingStyle.SINGLE || ability.targetingStyle == TargetingStyle.SELFSINGLE)
+        if (ability.targetingStyle == TargetingStyle.SELF || ability.targetingStyle == TargetingStyle.SELFSINGLE)
         {
             if (tile == turnScheduler.currUnit.currentTile)
             {
