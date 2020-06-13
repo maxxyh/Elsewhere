@@ -20,6 +20,8 @@ public class AbilityDoubleHit : Ability
             }
         }
         base.Execute(attacker, targets);
+        UpdateStats(attacker, targets);
+
         yield break;
     }
 }

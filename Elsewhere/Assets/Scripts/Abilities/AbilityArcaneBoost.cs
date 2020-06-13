@@ -22,6 +22,7 @@ public class AbilityArcaneBoost : Ability
         }
 
         base.Execute(initiator, targets);
+        UpdateStats(initiator, targets);
 
         yield break;
     }

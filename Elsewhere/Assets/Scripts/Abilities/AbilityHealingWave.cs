@@ -18,6 +18,7 @@ public class AbilityHealingWave : Ability
         }
 
         base.Execute(initiator, targets);
+        UpdateStats(initiator, targets);
 
         yield break;
     }

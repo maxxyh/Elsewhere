@@ -21,6 +21,7 @@ public class AbilityHPReaver : Ability
         }
 
         base.Execute(initiator, targets);
+        UpdateStats(initiator, targets);
 
         yield break;
     }
