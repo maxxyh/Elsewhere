@@ -5,6 +5,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,7 +17,8 @@ public class Unit : MonoBehaviour
     #region FIELDS AND REFERENCES
     [Header("UI")]
     public GameObject statPanel;
-    public Text unitName;
+    /*public GameObject unitName;
+    public GameObject unitClass;
     public Text unitHP;
     public Text unitMana;
     public Text unitAttackDamage;
@@ -26,6 +28,16 @@ public class Unit : MonoBehaviour
     public Text unitMovementRange;
     public Text unitAttackRange;
 
+    *//*[Header("Button")]
+    public Button unitHPButton;
+    public Button unitManaButton;
+    public Button unitAttackDamageButton;
+    public Button unitMagicDamageButton;
+    public Button unitArmorButton;
+    public Button unitMagicResButton;
+    public Button unitMovementRangeButton;
+    public Button unitAttackRangeButton;*/
+
     [Header("Abilities")]
     public List<Ability> abilities = new List<Ability>();
     public Ability chosenAbility;
@@ -33,7 +45,7 @@ public class Unit : MonoBehaviour
     [Header("Identifiers")]
     public int unitID;
     public string characterName;
-
+    public string characterClass;
     public Animator anim;
     /* All stats: 
      * attackDamage;
@@ -59,7 +71,6 @@ public class Unit : MonoBehaviour
 
     
     [Header("References")]
-    public GameObject Panel;
     public Unit attackingTargetUnit;
     public List<Unit> abilityTargetUnits = new List<Unit>();
     
@@ -117,19 +128,21 @@ public class Unit : MonoBehaviour
         {
             statPanel.SetActive(false);
         }
+        //statPanel.SetActive(false);
     }
 
     public void UpdateUI()
     {
-        unitName.text = this.characterName;
-        unitHP.text = this.stats["HP"].Value.ToString() + "/" + this.stats["HP"].baseValue.ToString();
-        unitMana.text = this.stats["mana"].Value.ToString() + "/" + this.stats["mana"].baseValue.ToString(); ;
-        unitAttackDamage.text = this.stats["attackDamage"].CalculateFinalValue().ToString();
-        unitMagicDamage.text = this.stats["magicDamage"].CalculateFinalValue().ToString();
-        unitArmor.text = this.stats["armor"].CalculateFinalValue().ToString();
-        unitMagicRes.text = this.stats["magicRes"].CalculateFinalValue().ToString();
-        unitMovementRange.text = this.stats["movementRange"].CalculateFinalValue().ToString();
-        unitAttackRange.text = this.stats["attackRange"].CalculateFinalValue().ToString();
+        /*statPanel.GetComponent<StatPanel>().unitName.GetComponent<TextMeshPro>().text = this.characterName;
+        statPanel.GetComponent<StatPanel>().unitClass.GetComponent<TextMeshPro>().text = this.characterClass;*/
+        statPanel.GetComponent<StatPanel>().unitHP.text = this.stats["HP"].Value.ToString() + "/" + this.stats["HP"].baseValue.ToString();
+        statPanel.GetComponent<StatPanel>().unitMana.text = this.stats["mana"].Value.ToString() + "/" + this.stats["mana"].baseValue.ToString(); ;
+        statPanel.GetComponent<StatPanel>().unitAttackDamage.text = this.stats["attackDamage"].CalculateFinalValue().ToString();
+        statPanel.GetComponent<StatPanel>().unitMagicDamage.text = this.stats["magicDamage"].CalculateFinalValue().ToString();
+        statPanel.GetComponent<StatPanel>().unitArmor.text = this.stats["armor"].CalculateFinalValue().ToString();
+        statPanel.GetComponent<StatPanel>().unitMagicRes.text = this.stats["magicRes"].CalculateFinalValue().ToString();
+        statPanel.GetComponent<StatPanel>().unitMovementRange.text = this.stats["movementRange"].CalculateFinalValue().ToString();
+        statPanel.GetComponent<StatPanel>().unitAttackRange.text = this.stats["attackRange"].CalculateFinalValue().ToString();
     }
 
     public bool isDead()

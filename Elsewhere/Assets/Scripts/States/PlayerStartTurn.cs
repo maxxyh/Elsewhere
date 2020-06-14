@@ -16,7 +16,7 @@ public class PlayerStartTurn : State
         
         // this added layer is to support cancel functionality
         if (currUnit.currState == UnitState.ENDTURN)
-        {
+        { 
             currUnit.StartTurn();
         } 
         else
