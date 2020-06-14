@@ -137,12 +137,12 @@ public class Unit : MonoBehaviour
         statPanel.GetComponent<StatPanel>().unitClass.GetComponent<TextMeshPro>().text = this.characterClass;*/
         statPanel.GetComponent<StatPanel>().unitHP.text = this.stats["HP"].Value.ToString() + "/" + this.stats["HP"].baseValue.ToString();
         statPanel.GetComponent<StatPanel>().unitMana.text = this.stats["mana"].Value.ToString() + "/" + this.stats["mana"].baseValue.ToString(); ;
-        statPanel.GetComponent<StatPanel>().unitAttackDamage.text = this.stats["attackDamage"].CalculateFinalValue().ToString();
-        statPanel.GetComponent<StatPanel>().unitMagicDamage.text = this.stats["magicDamage"].CalculateFinalValue().ToString();
-        statPanel.GetComponent<StatPanel>().unitArmor.text = this.stats["armor"].CalculateFinalValue().ToString();
-        statPanel.GetComponent<StatPanel>().unitMagicRes.text = this.stats["magicRes"].CalculateFinalValue().ToString();
-        statPanel.GetComponent<StatPanel>().unitMovementRange.text = this.stats["movementRange"].CalculateFinalValue().ToString();
-        statPanel.GetComponent<StatPanel>().unitAttackRange.text = this.stats["attackRange"].CalculateFinalValue().ToString();
+        statPanel.GetComponent<StatPanel>().unitAttackDamage.text = this.stats["attackDamage"].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitMagicDamage.text = this.stats["magicDamage"].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitArmor.text = this.stats["armor"].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitMagicRes.text = this.stats["magicRes"].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitMovementRange.text = this.stats["movementRange"].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitAttackRange.text = this.stats["attackRange"].Value.ToString();
     }
 
     public bool isDead()
