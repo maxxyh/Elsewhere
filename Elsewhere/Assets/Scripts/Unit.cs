@@ -57,7 +57,7 @@ public class Unit : MonoBehaviour
      * attackRange;
     */
     [Header("Player Stats")]
-    public Dictionary<string, UnitStat> stats;
+    public Dictionary<StatString, UnitStat> stats;
     public float moveSpeed;
 
     [Header("States")]
@@ -93,13 +93,13 @@ public class Unit : MonoBehaviour
 
 
     // Dictionary style constructor 
-    public void AssignStats(Dictionary<string,float> input)
+    public void AssignStats(Dictionary<StatString,float> input)
     {
-        stats = new Dictionary<string, UnitStat>();
-        foreach(KeyValuePair<string,float> pair in input)
+        stats = new Dictionary<StatString, UnitStat>();
+        foreach(KeyValuePair<StatString,float> pair in input)
         {
             bool hasLimit = false;
-            if (pair.Key.Equals("HP") || pair.Key.Equals("mana"))
+            if (pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA))
             {
                 hasLimit = true;
             }
@@ -135,19 +135,19 @@ public class Unit : MonoBehaviour
     {
         /*statPanel.GetComponent<StatPanel>().unitName.GetComponent<TextMeshPro>().text = this.characterName;
         statPanel.GetComponent<StatPanel>().unitClass.GetComponent<TextMeshPro>().text = this.characterClass;*/
-        statPanel.GetComponent<StatPanel>().unitHP.text = this.stats["HP"].Value.ToString() + "/" + this.stats["HP"].baseValue.ToString();
-        statPanel.GetComponent<StatPanel>().unitMana.text = this.stats["mana"].Value.ToString() + "/" + this.stats["mana"].baseValue.ToString(); ;
-        statPanel.GetComponent<StatPanel>().unitAttackDamage.text = this.stats["attackDamage"].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitMagicDamage.text = this.stats["magicDamage"].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitArmor.text = this.stats["armor"].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitMagicRes.text = this.stats["magicRes"].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitMovementRange.text = this.stats["movementRange"].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitAttackRange.text = this.stats["attackRange"].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitHP.text = this.stats[StatString.HP].Value.ToString() + "/" + this.stats[StatString.HP].baseValue.ToString();
+        statPanel.GetComponent<StatPanel>().unitMana.text = this.stats[StatString.MANA].Value.ToString() + "/" + this.stats[StatString.MANA].baseValue.ToString(); ;
+        statPanel.GetComponent<StatPanel>().unitAttackDamage.text = this.stats[StatString.ATTACK_DAMAGE].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitMagicDamage.text = this.stats[StatString.MAGIC_DAMAGE].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitArmor.text = this.stats[StatString.ARMOR].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitMagicRes.text = this.stats[StatString.MAGIC_RES].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitMovementRange.text = this.stats[StatString.MOVEMENT_RANGE].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitAttackRange.text = this.stats[StatString.ATTACK_DAMAGE].Value.ToString();
     }
 
     public bool isDead()
     {
-        return this.stats["HP"].Value <= 0;
+        return this.stats[StatString.HP].Value <= 0;
     }
 
     // sets the currentTile 
@@ -187,7 +187,7 @@ public class Unit : MonoBehaviour
     }
 
     public void TakeDamage(float damage) {
-        stats["HP"].AddModifier(new StatModifier(-damage, StatModType.Flat));
+        stats[StatString.HP].AddModifier(new StatModifier(-damage, StatModType.Flat));
     }
 
     #region MOVEMENT
@@ -328,7 +328,7 @@ public class Unit : MonoBehaviour
             Destroy(collision.gameObject);
             if (this.gameObject.CompareTag("enemy"))
             {
-                this.stats["attackDamage"].AddModifier(new StatModifier(3, StatModType.Flat));
+                this.stats[StatString.ATTACK_DAMAGE].AddModifier(new StatModifier(3, StatModType.Flat));
                 UpdateUI();
             }
         }

@@ -35,7 +35,7 @@ public class UnitStat
         this.StatModifiers_readonly = statModifiers.AsReadOnly();
     }
     
-    public UnitStat(float baseValue, bool hasLimit=false) : this()
+    public UnitStat(float baseValue, bool hasLimit = false) : this()
     {
         this.baseValue = baseValue;
         this.hasLimit = hasLimit;
@@ -123,4 +123,16 @@ public class UnitStat
         }
         return didRemove;
     }
+}
+
+public enum StatString
+{
+    HP,
+    MANA,
+    ATTACK_DAMAGE,
+    MAGIC_DAMAGE,
+    ARMOR,
+    MAGIC_RES,
+    MOVEMENT_RANGE,
+    ATTACK_RANGE
 }

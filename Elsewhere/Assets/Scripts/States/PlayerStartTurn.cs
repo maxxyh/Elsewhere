@@ -24,7 +24,7 @@ public class PlayerStartTurn : State
             currUnit.currState = UnitState.IDLING;
         }
         turnScheduler.playerActionPanel.SetActive(true);
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].Value);
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats[StatString.MOVEMENT_RANGE].Value);
 
         // menu will be available for viewing...
 

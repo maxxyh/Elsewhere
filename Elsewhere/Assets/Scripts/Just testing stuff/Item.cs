@@ -10,12 +10,12 @@ public class Item
     {
         mod1 = new StatModifier(10, StatModType.Flat, this);
         mod2 = new StatModifier(0.1f, StatModType.PercentMult, this);
-        c.stats["attackDamage"].AddModifier(mod1);
-        c.stats["attackDamage"].AddModifier(mod2);
+        c.stats[StatString.ATTACK_DAMAGE].AddModifier(mod1);
+        c.stats[StatString.ATTACK_DAMAGE].AddModifier(mod2);
     }
 
     public void UnEquip(PlayerUnit c) 
     {
-        c.stats["attackDamage"].RemoveAllModifiersFromSource(this);
+        c.stats[StatString.ATTACK_DAMAGE].RemoveAllModifiersFromSource(this);
     }
 }

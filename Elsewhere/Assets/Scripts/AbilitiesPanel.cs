@@ -67,7 +67,7 @@ public class AbilitiesPanel : MonoBehaviour
     
     private static bool CheckEnoughMana(Unit unit, Ability ability)
     {
-        return unit.stats["mana"].Value >= ability.GetManaCost();
+        return unit.stats[StatString.MANA].Value >= ability.GetManaCost();
     }
 
 }

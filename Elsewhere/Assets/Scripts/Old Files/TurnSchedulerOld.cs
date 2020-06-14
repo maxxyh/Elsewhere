@@ -137,7 +137,7 @@ public class TurnSchedulerOld : MonoBehaviour
     {
         currUnit.StartTurn();
         playerPanel.SetActive(true);
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats[StatString.MOVEMENT_RANGE].baseValue);
     }
 
 
@@ -145,7 +145,7 @@ public class TurnSchedulerOld : MonoBehaviour
     public void StartEnemyTurn()
     {
         currUnit.StartTurn();
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].baseValue);
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats[StatString.MOVEMENT_RANGE].baseValue);
 
         StartCoroutine(EnemyMovement());
         
@@ -201,7 +201,7 @@ public class TurnSchedulerOld : MonoBehaviour
         yield return new WaitUntil(() => currUnit.currState == UnitState.IDLING);
 
         // check if there are players in range
-        if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats["attackRange"].baseValue, targetPlayer))
+        if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats[StatString.ATTACK_RANGE].baseValue, targetPlayer))
         {
             StartCoroutine(AutoEnemyAttack(targetPlayer));
         }
@@ -228,7 +228,7 @@ public class TurnSchedulerOld : MonoBehaviour
     public void OnAttackButton()
     {
         map.RemoveSelectableTiles(currUnit.currentTile, false);
-        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats[StatString.ATTACK_RANGE].baseValue);
         // should display the attacking tiles.
 
         currUnit.currState = UnitState.TARGETING;
@@ -313,7 +313,7 @@ public class TurnSchedulerOld : MonoBehaviour
     IEnumerator AutoEnemyAttack(Unit targetPlayer)
     {
         map.RemoveSelectableTiles(currUnit.currentTile, false);
-        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].baseValue);
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats[StatString.ATTACK_RANGE].baseValue);
         // should display the attacking tiles.
 
         yield return new WaitForSecondsRealtime(1);

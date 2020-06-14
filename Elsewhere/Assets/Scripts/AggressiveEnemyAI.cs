@@ -11,7 +11,7 @@ public class AggressiveEnemyAI : State
     public override IEnumerator Execute()
     {
         currUnit.StartTurn();
-        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats["movementRange"].Value);
+        map.FindSelectableTiles(currUnit.currentTile, currUnit.stats[StatString.MOVEMENT_RANGE].Value);
 
         yield return new WaitForSecondsRealtime(0.75f);
 
@@ -59,7 +59,7 @@ public class AggressiveEnemyAI : State
         yield return new WaitUntil(() => currUnit.currState == UnitState.IDLING);
 
         // check if there are players in range
-        if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats["attackRange"].Value, targetPlayer))
+        if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats[StatString.ATTACK_RANGE].Value, targetPlayer))
         {
             currUnit.attackingTargetUnit = targetPlayer;
             turnScheduler.StartAttack(targetPlayer);
@@ -78,7 +78,7 @@ public class AggressiveEnemyAI : State
         Unit targetPlayer = currUnit.attackingTargetUnit;
 
         map.RemoveSelectableTiles(currUnit.currentTile, false);
-        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].Value) ;
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats[StatString.ATTACK_RANGE].Value) ;
         // should display the attacking tiles.
 
         yield return new WaitForSecondsRealtime(1);

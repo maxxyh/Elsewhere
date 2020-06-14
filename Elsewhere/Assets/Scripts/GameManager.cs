@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public Camera worldCamera;
 
-    private Dictionary<string, float> defaultStats = new Dictionary<string, float>();
+    private Dictionary<StatString, float> defaultStats = new Dictionary<StatString, float>();
     
 
     // Start is called before the first frame update
@@ -30,14 +30,14 @@ public class GameManager : MonoBehaviour
     void generatePlayers() {
 
         // default stats
-        defaultStats.Add("attackDamage", 6);
-        defaultStats.Add("magicDamage", 5);
-        defaultStats.Add("mana", 20);
-        defaultStats.Add("HP", 10);
-        defaultStats.Add("armor", 3);
-        defaultStats.Add("magicRes", 2);
-        defaultStats.Add("movementRange", 4);
-        defaultStats.Add("attackRange", 2);
+        defaultStats.Add(StatString.ATTACK_DAMAGE, 6);
+        defaultStats.Add(StatString.MAGIC_DAMAGE, 5);
+        defaultStats.Add(StatString.MANA, 20);
+        defaultStats.Add(StatString.HP, 10);
+        defaultStats.Add(StatString.ARMOR, 3);
+        defaultStats.Add(StatString.MAGIC_RES, 2);
+        defaultStats.Add(StatString.MOVEMENT_RANGE, 4);
+        defaultStats.Add(StatString.ATTACK_RANGE, 2);
 
 
         // default abilities

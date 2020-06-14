@@ -13,7 +13,7 @@ public class AbilityHealingWave : Ability
         foreach(Unit target in targets)
         {
             int healingAmount = 5;
-            target.stats["HP"].AddModifier(new StatModifier(healingAmount, StatModType.Flat));
+            target.stats[StatString.HP].AddModifier(new StatModifier(healingAmount, StatModType.Flat));
             DamagePopUp.Create(target.transform.position, string.Format("+ {0} HP", healingAmount), PopupType.HEAL);
         }
 

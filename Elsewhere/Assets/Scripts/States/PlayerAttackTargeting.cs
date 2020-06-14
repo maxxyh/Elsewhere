@@ -12,7 +12,7 @@ public class PlayerAttackTargeting : State
         turnScheduler.playerActionPanel.SetActive(false);
         turnScheduler.cancelPanel.SetActive(true);
 
-        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats["attackRange"].Value);
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats[StatString.ATTACK_RANGE].Value);
         // should display the attacking tiles.
         currUnit.currState = UnitState.TARGETING;
 

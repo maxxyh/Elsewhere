@@ -36,7 +36,7 @@ public abstract class Ability
         {
             unit.UpdateUI();
         }
-        initiator.stats["mana"].AddModifier(new StatModifier(-manaCost, StatModType.Flat));
+        initiator.stats[StatString.MANA].AddModifier(new StatModifier(-manaCost, StatModType.Flat));
         initiator.UpdateUI();
     }
 }

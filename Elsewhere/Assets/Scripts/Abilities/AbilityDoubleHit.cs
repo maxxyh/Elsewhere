@@ -15,7 +15,7 @@ public class AbilityDoubleHit : Ability
             float attackDamage = BattleManager.CalculateBaseDamage(attacker, target);
             for (int i = 0; i < 2; i++)
             {
-                target.stats["HP"].AddModifier(new StatModifier(-attackDamage, StatModType.Flat));
+                target.stats[StatString.HP].AddModifier(new StatModifier(-attackDamage, StatModType.Flat));
                 DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", attackDamage), PopupType.DAMAGE);
             }
         }
