@@ -59,6 +59,7 @@ public class PlayerAttackTargeting : State
         {
             turnScheduler.cancelPanel.SetActive(false);
             turnScheduler.StartAttack(targetUnit);
+            GameAssets.MyInstance.highlightMap.RemoveClicked();
         }
         
         yield break;

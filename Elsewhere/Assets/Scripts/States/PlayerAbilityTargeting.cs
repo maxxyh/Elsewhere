@@ -97,6 +97,7 @@ public class PlayerAbilityTargeting : State
 
             // Compute Adjacency List and reset all distances.
             map.InitPathFinding(tile, false);
+            selectedTiles.Add(tile);
             processing.Enqueue(tile);
 
             // relax edges with minimum SP estimate
@@ -188,6 +189,7 @@ public class PlayerAbilityTargeting : State
         turnScheduler.confirmationPanel.SetActive(false);
         turnScheduler.cancelPanel.SetActive(true);
         GameAssets.MyInstance.highlightMap.RemoveClicked();
+        GameAssets.MyInstance.highlightMap.RemoveSelectedTiles();
         yield break;
     }
 

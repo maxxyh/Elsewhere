@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -11,9 +12,16 @@ public class HighlightMap : MonoBehaviour
     public List<List<HighlightTile>> tileList = new List<List<HighlightTile>>();
     [SerializeField] public Map map;
     public List<HighlightTile> selectedTiles;
+    private bool clicked;
 
     public void HighlightSelectedTiles(HighlightTile mainTile)
     {
+        // if alr clicked, do nothing: 
+        if (clicked)
+        {
+            return;
+        }
+        
         // check if tile being hovered is attackable
 
         Tile mapStartTile = map.tileList[mainTile.gridPosition.x][mainTile.gridPosition.y];
@@ -22,7 +30,7 @@ public class HighlightMap : MonoBehaviour
             return;
         }
 
-        //RemoveSelectedTiles();
+        RemoveSelectedTiles();
 
         Ability ability = GameAssets.MyInstance.turnScheduler.currUnit?.chosenAbility;
         TargetingStyle targetingStyle = TargetingStyle.SINGLE;
@@ -33,7 +41,35 @@ public class HighlightMap : MonoBehaviour
         
         if (targetingStyle == TargetingStyle.MULTI)
         {
-            int multiAbilityRange = (int) ability.multiAbilityRange;
+            
+            #region Getting the correct target team
+            IEnumerable<Unit> friendlyTeam;
+            TurnScheduler turnScheduler = GameAssets.MyInstance.turnScheduler;
+            if (turnScheduler.currTurn == Team.ENEMY)
+            {
+                if (ability.targetsSameTeam)
+                {
+                    friendlyTeam = turnScheduler.enemies;
+                }
+                else
+                {
+                    friendlyTeam = turnScheduler.players;
+                }
+            }
+            else
+            {
+                if (ability.targetsSameTeam)
+                {
+                    friendlyTeam = turnScheduler.enemies;
+                }
+                else
+                {
+                    friendlyTeam = turnScheduler.players;
+                }
+            }
+            #endregion
+
+            int multiAbilityRange = ability.multiAbilityRange;
             //Debug.Log("multiAbilityRange = " + multiAbilityRange);
 
             // init BFS
@@ -41,6 +77,7 @@ public class HighlightMap : MonoBehaviour
 
             // Compute Adjacency List and reset all distances.
             InitPathFinding(mainTile);
+            selectedTiles.Add(mainTile);
             processing.Enqueue(mainTile);
 
             // relax edges with minimum SP estimate
@@ -49,12 +86,27 @@ public class HighlightMap : MonoBehaviour
                 HighlightTile node = processing.Dequeue();
                 foreach (HighlightTile neighbour in node.adjacencyList)
                 {
-                    Tile mapEquivalent = map.tileList[node.gridPosition.x][node.gridPosition.y];
+                    Tile mapEquivalent = map.tileList[neighbour.gridPosition.x][neighbour.gridPosition.y];
                     if (mapEquivalent.walkable && neighbour.distance > node.distance + 1 && node.distance + 1 <= multiAbilityRange)
                     {
-                        neighbour.distance = node.distance + 1;
-                        selectedTiles.Add(neighbour);
-                        processing.Enqueue(neighbour);
+                        bool friendlyFire = false;
+                        if (mapEquivalent.occupied)
+                        {
+                            foreach(Unit unit in friendlyTeam)
+                            {
+                                if (unit.currentTile == mapEquivalent)
+                                {
+                                    friendlyFire = true;
+                                }
+                            }
+                        }
+
+                        if (!friendlyFire)
+                        {
+                            neighbour.distance = node.distance + 1;
+                            selectedTiles.Add(neighbour);
+                            processing.Enqueue(neighbour);
+                        }
                     }
                 }
             }
@@ -72,7 +124,7 @@ public class HighlightMap : MonoBehaviour
 
         foreach (HighlightTile tile in selectedTiles)
         {
-            tile.GetComponent<Renderer>().material.color = new Color(0, 0, 1, 0.3f);
+            tile.hover = true;
         }
     }
 
@@ -80,7 +132,7 @@ public class HighlightMap : MonoBehaviour
     {
         foreach(HighlightTile tile in selectedTiles)
         {
-            tile.GetComponent<Renderer>().material.color = new Color(0, 0, 1, 0);
+            tile.hover = false;
         }
         selectedTiles.Clear();
     }
@@ -140,18 +192,12 @@ public class HighlightMap : MonoBehaviour
 
     public void SetClicked()
     {
-        Debug.Log("selected Tiles size" + selectedTiles.Count);
-        foreach (HighlightTile tile in selectedTiles)
-        {
-            tile.clicked = true;
-        }
+        clicked = true;
     }
 
     public void RemoveClicked()
     {
-        foreach (HighlightTile tile in selectedTiles)
-        {
-            tile.clicked = false;
-        }
+        clicked = false;
+        RemoveSelectedTiles();
     }
 }

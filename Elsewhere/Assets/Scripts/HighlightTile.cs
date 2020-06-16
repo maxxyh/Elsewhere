@@ -9,14 +9,19 @@ public class HighlightTile : MonoBehaviour
     public List<HighlightTile> adjacencyList = new List<HighlightTile>();
     public int distance = int.MaxValue;
     public HighlightMap highlightMap;
-    public bool clicked = false;
+    public bool hover = false;
 
     private void Update()
     {
-        if (clicked)
+        if (hover)
         {
             GetComponent<Renderer>().material.color = new Color(0, 0, 1, 0.3f);
         }
+        else
+        {
+            GetComponent<Renderer>().material.color = new Color(0, 0, 1, 0);
+        }
+
     }
 
     public void FindNeighbours(List<List<HighlightTile>> tileList, bool includeDiagonals)
@@ -62,11 +67,4 @@ public class HighlightTile : MonoBehaviour
         highlightMap.HighlightSelectedTiles(this);
     }
 
-    public void OnMouseExit()
-    {
-        if (!clicked)
-        {
-            highlightMap.RemoveSelectedTiles();
-        }
-    }
 }

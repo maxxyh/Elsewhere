@@ -15,11 +15,11 @@ public class AbilityAstralFlare : Ability
         foreach (Unit target in targets)
         {
             int attackDamage = BattleManager.CalculateMagicDamage(1.2f * initiator.stats[StatString.MAGIC_DAMAGE].Value, target);
-            float magicDebuff = 0.2f;
+            float armorDebuff = 0.2f;
             target.stats[StatString.HP].AddModifier(new StatModifier(-attackDamage, StatModType.Flat));
-            target.stats[StatString.ATTACK_DAMAGE].AddModifier(new StatModifier(-magicDebuff, StatModType.PercentAdd));
+            target.stats[StatString.ARMOR].AddModifier(new StatModifier(-armorDebuff, StatModType.PercentAdd));
             DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", attackDamage), PopupType.DAMAGE);
-            DamagePopUp.Create(target.transform.position, string.Format("\n\n- {0}% Attack", magicDebuff), PopupType.DEBUFF);
+            DamagePopUp.Create(target.transform.position, string.Format("\n\n- {0}% Attack", armorDebuff), PopupType.DEBUFF);
         }
         UpdateStats(initiator, targets);
 

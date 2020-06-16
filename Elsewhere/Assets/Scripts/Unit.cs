@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -163,6 +164,8 @@ public class Unit : MonoBehaviour
     {
         currState = UnitState.ENDTURN;
         this.statPanel.SetActive(false);
+        DecrementAllStatDuration();
+        UpdateUI();
     }
     
 
@@ -353,6 +356,14 @@ public class Unit : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         ParticleSystem.EmissionModule tempSparkle = sparkle.GetComponent<ParticleSystem>().emission;
         tempSparkle.enabled = false;
+    }
+
+    public void DecrementAllStatDuration()
+    {
+        foreach(KeyValuePair<StatString, UnitStat> pair in stats)
+        {
+            pair.Value.DecrementDuration();
+        }
     }
 }
 

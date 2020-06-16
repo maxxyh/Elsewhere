@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 public class UnitStat 
 {
     public float baseValue;
-    protected readonly List<StatModifier> statModifiers;
+    protected List<StatModifier> statModifiers;
     public readonly ReadOnlyCollection<StatModifier> StatModifiers_readonly;
     public virtual float Value { 
         get {
@@ -122,6 +122,27 @@ public class UnitStat
             }
         }
         return didRemove;
+    }
+
+    public void DecrementDuration()
+    {
+        List<StatModifier> toRemove = new List<StatModifier>();
+        foreach(StatModifier statModifier in statModifiers)
+        {
+            if (statModifier.duration > 1)
+            {
+                statModifier.duration--;
+            }
+            else if (statModifier.duration == 1)
+            {
+                toRemove.Add(statModifier);
+            }
+        }
+        
+        foreach(StatModifier sm in toRemove)
+        {
+            RemoveModifier(sm);
+        }
     }
 }
 

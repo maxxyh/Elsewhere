@@ -1,7 +1,22 @@
 {
 
-	"whatStopsMovement": 1e9,
-	"plants": 2,
-	"grass": 1
+	"tileCost": {
+		"obstacles": "null",
+		"plants": 2,
+		"grass": 1
+	},
+
+	"characters" : {
+		"julius": {
+			"HP": 3
+		}
+	},
+
+	"abilities" : {
+
+
+	}
+
+	
 
 }

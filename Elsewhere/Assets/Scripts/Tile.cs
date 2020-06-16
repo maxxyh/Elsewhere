@@ -63,11 +63,6 @@ public class Tile : MonoBehaviour
     void OnMouseEnter()
     {
         hover = true;
-        //Debug.Log("Distance: " + distance);
-        //Debug.Log("Walkable: " + walkable + ", movementCost: " + movementCost);
-        //transform.renderer.material
-
-        //Debug.Log("Current position: " + gridPosition.x + ", " + gridPosition.y);
     }
 
     void OnMouseExit()
