@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] PlayerPrefabs;
     public GameObject[] EnemyPrefab;
     public Map map;
+    public HighlightMap highlightMap;
     public TurnScheduler turnScheduler;
     public List<PlayerUnit> players = new List<PlayerUnit>();
     public List<EnemyUnit> enemies = new List<EnemyUnit>();
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         map.generateMap();
+        highlightMap.generateUIMap();
         generatePlayers();
         turnScheduler.Init(players, enemies);
     }
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
         AbilitiesSwordsman.Add(new AbilityDoubleHit());
 
         AbilitiesMage.Add(new AbilityHPReaver());
-        AbilitiesMage.Add(new AbilityArcaneBoost());
+        AbilitiesMage.Add(new AbilityAstralFlare());
 
 
         // PLAYERS

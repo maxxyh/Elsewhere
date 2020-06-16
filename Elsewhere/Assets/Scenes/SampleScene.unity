@@ -121,6 +121,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &32760336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 32760338}
+  - component: {fileID: 32760337}
+  m_Layer: 0
+  m_Name: HighlightMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &32760337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32760336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4608fcf80ca275b4aae858418e63e551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightTilePrefab: {fileID: 5169222114318017564, guid: fa3d6be0b9a496c42af6208bf076c45a,
+    type: 3}
+  map: {fileID: 1993327612}
+  selectedTiles: []
+--- !u!4 &32760338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32760336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1671144, y: 1.1132109, z: -204.08139}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &72141186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,6 +2530,7 @@ MonoBehaviour:
   pfDamagePopUp: {fileID: 5763456026689798542, guid: 32f34e4b29d1bcb47b3b6ba0b857d416,
     type: 3}
   turnScheduler: {fileID: 105424488}
+  highlightMap: {fileID: 32760337}
 --- !u!1 &943756523 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5225696614032337710, guid: 0e4439cd97b45224bb130fe9b0e45ddb,
@@ -8459,6 +8507,7 @@ MonoBehaviour:
   - {fileID: 2897327392223700814, guid: f4fbd421b0f58f9408007e94fbd01382, type: 3}
   - {fileID: 2897327392223700814, guid: df7846522d417a043a6c844e36c8e3f7, type: 3}
   map: {fileID: 1993327612}
+  highlightMap: {fileID: 32760337}
   turnScheduler: {fileID: 105424488}
   players: []
   enemies: []

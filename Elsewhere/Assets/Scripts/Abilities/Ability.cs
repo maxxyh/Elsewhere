@@ -8,15 +8,17 @@ public abstract class Ability
     public float attackRange;
     public TargetingStyle targetingStyle;
     public bool targetsSameTeam;
+    public float multiAbilityRange;
     protected float manaCost;
 
-    public Ability(string abilityName, float attackRange, float manaCost, bool targetsSameTeam, TargetingStyle targetingStyle)
+    public Ability(string abilityName, float attackRange, float manaCost, bool targetsSameTeam, TargetingStyle targetingStyle, float multiAbilityRange = 0)
     {
         this.abilityName = abilityName;
         this.attackRange = attackRange;
         this.manaCost = manaCost;
         this.targetsSameTeam = targetsSameTeam;
         this.targetingStyle = targetingStyle;
+        this.multiAbilityRange = multiAbilityRange;
     }
 
     public virtual IEnumerator Execute(Unit initiator, List<Unit> targets)

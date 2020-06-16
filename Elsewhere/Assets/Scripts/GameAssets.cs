@@ -20,4 +20,6 @@ public class GameAssets : MonoBehaviour
     public Transform pfDamagePopUp;
 
     public TurnScheduler turnScheduler;
+
+    public HighlightMap highlightMap;
 }

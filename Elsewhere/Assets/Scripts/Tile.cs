@@ -29,12 +29,13 @@ public class Tile : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {         
+    {
+        /*
         if (hover && walkable)
         {
             GetComponent<Renderer>().material.color = new Color(0.43f, 0.76f, 0.86f, 0.3f);
-        }
-        else if (attackable)
+        }*/
+        if (attackable)
         {
             GetComponent<Renderer>().material.color = new Color(0.65f, 0.17f, 0.17f, 0.3f);
         }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 public class PlayerAbilityTargeting : State
 {
@@ -85,6 +86,53 @@ public class PlayerAbilityTargeting : State
         }
         #endregion
 
+        #region Multi Targeting Style
+        
+        if (ability.targetingStyle == TargetingStyle.MULTI)
+        {
+            List<Tile> selectedTiles = new List<Tile>();
+
+            // init BFS
+            Queue<Tile> processing = new Queue<Tile>();
+
+            // Compute Adjacency List and reset all distances.
+            map.InitPathFinding(tile, false);
+            processing.Enqueue(tile);
+
+            // relax edges with minimum SP estimate
+            while (processing.Count > 0)
+            {
+                Tile node = processing.Dequeue();
+                foreach (Tile neighbour in node.adjacencyList)
+                {
+                    if (neighbour.walkable && neighbour.distance > node.distance + 1 && node.distance + 1 <= ability.multiAbilityRange)
+                    {
+                        neighbour.distance = node.distance + 1;
+                        selectedTiles.Add(neighbour);
+                        processing.Enqueue(neighbour);
+                    }
+                }
+            }
+
+            foreach (Tile t in selectedTiles)
+            {
+                foreach (Unit unit in targetTeam)
+                {
+                    if (unit.currentTile == t)
+                    {
+                        targetUnits.Add(unit);
+                    }
+                }
+            }
+
+            if (targetUnits.Count > 0)
+            {
+                targetsFound = true;
+            }
+        }
+
+        #endregion
+
         #region Radius Style
         if (ability.targetingStyle == TargetingStyle.RADIUS)
         {
@@ -121,6 +169,7 @@ public class PlayerAbilityTargeting : State
             currUnit.abilityTargetUnits = targetUnits;
             turnScheduler.cancelPanel.SetActive(false);
             turnScheduler.confirmationPanel.SetActive(true);
+            GameAssets.MyInstance.highlightMap.SetClicked();
         }
 
         yield break;
@@ -130,6 +179,7 @@ public class PlayerAbilityTargeting : State
     {
         turnScheduler.confirmationPanel.SetActive(false);
         turnScheduler.cancelPanel.SetActive(false);
+        GameAssets.MyInstance.highlightMap.RemoveClicked();
         turnScheduler.SetState(new PlayerAbility(turnScheduler));
         yield break;
     }
@@ -137,6 +187,7 @@ public class PlayerAbilityTargeting : State
     {
         turnScheduler.confirmationPanel.SetActive(false);
         turnScheduler.cancelPanel.SetActive(true);
+        GameAssets.MyInstance.highlightMap.RemoveClicked();
         yield break;
     }
 
