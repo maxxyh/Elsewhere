@@ -11,7 +11,7 @@ public class HighlightMap : MonoBehaviour
     [SerializeField] public GameObject highlightTilePrefab;
     public List<List<HighlightTile>> tileList = new List<List<HighlightTile>>();
     [SerializeField] public Map map;
-    public List<HighlightTile> selectedTiles;
+    public HashSet<HighlightTile> selectedTiles = new HashSet<HighlightTile>();
     private bool clicked;
 
     public void HighlightSelectedTiles(HighlightTile mainTile)
@@ -22,6 +22,9 @@ public class HighlightMap : MonoBehaviour
             return;
         }
         
+        
+        RemoveSelectedTiles();
+
         // check if tile being hovered is attackable
 
         Tile mapStartTile = map.tileList[mainTile.gridPosition.x][mainTile.gridPosition.y];
@@ -30,44 +33,58 @@ public class HighlightMap : MonoBehaviour
             return;
         }
 
-        RemoveSelectedTiles();
-
         Ability ability = GameAssets.MyInstance.turnScheduler.currUnit?.chosenAbility;
-        TargetingStyle targetingStyle = TargetingStyle.SINGLE;
-        if (ability != null)
+        if (ability == null)
         {
-            targetingStyle = ability.targetingStyle;
+            ability = new AbilityDefault();
         }
-        
-        if (targetingStyle == TargetingStyle.MULTI)
+        TargetingStyle targetingStyle = ability.targetingStyle;
+
+        #region Getting the correct target team
+        IEnumerable<Unit> friendlyTeam;
+        TurnScheduler turnScheduler = GameAssets.MyInstance.turnScheduler;
+        if (turnScheduler.currTurn == Team.ENEMY)
         {
-            
-            #region Getting the correct target team
-            IEnumerable<Unit> friendlyTeam;
-            TurnScheduler turnScheduler = GameAssets.MyInstance.turnScheduler;
-            if (turnScheduler.currTurn == Team.ENEMY)
+            if (ability.targetsSameTeam)
             {
-                if (ability.targetsSameTeam)
-                {
-                    friendlyTeam = turnScheduler.enemies;
-                }
-                else
-                {
-                    friendlyTeam = turnScheduler.players;
-                }
+                friendlyTeam = turnScheduler.enemies;
             }
             else
             {
-                if (ability.targetsSameTeam)
+                friendlyTeam = turnScheduler.players;
+            }
+        }
+        else
+        {
+            if (ability.targetsSameTeam)
+            {
+                friendlyTeam = turnScheduler.enemies;
+            }
+            else
+            {
+                friendlyTeam = turnScheduler.players;
+            }
+        }
+        #endregion
+
+        bool IsFriendlyFire(Tile mapEquivalent)
+        {
+            if (mapEquivalent.occupied)
+            {
+                foreach (Unit unit in friendlyTeam)
                 {
-                    friendlyTeam = turnScheduler.enemies;
-                }
-                else
-                {
-                    friendlyTeam = turnScheduler.players;
+                    if (unit.currentTile == mapEquivalent)
+                    {
+                        return true;
+                    }
                 }
             }
-            #endregion
+            return false;
+        }
+
+        if (targetingStyle == TargetingStyle.MULTI)
+        {
+            
 
             int multiAbilityRange = ability.multiAbilityRange;
             //Debug.Log("multiAbilityRange = " + multiAbilityRange);
@@ -89,19 +106,7 @@ public class HighlightMap : MonoBehaviour
                     Tile mapEquivalent = map.tileList[neighbour.gridPosition.x][neighbour.gridPosition.y];
                     if (mapEquivalent.walkable && neighbour.distance > node.distance + 1 && node.distance + 1 <= multiAbilityRange)
                     {
-                        bool friendlyFire = false;
-                        if (mapEquivalent.occupied)
-                        {
-                            foreach(Unit unit in friendlyTeam)
-                            {
-                                if (unit.currentTile == mapEquivalent)
-                                {
-                                    friendlyFire = true;
-                                }
-                            }
-                        }
-
-                        if (!friendlyFire)
+                        if (!IsFriendlyFire(mapEquivalent))
                         {
                             neighbour.distance = node.distance + 1;
                             selectedTiles.Add(neighbour);
@@ -113,14 +118,23 @@ public class HighlightMap : MonoBehaviour
         }
         else if (targetingStyle == TargetingStyle.SINGLE || targetingStyle == TargetingStyle.SELF || targetingStyle == TargetingStyle.SELFSINGLE)
         {
-            selectedTiles.Add(mainTile);
+            Tile mapEquivalent = map.tileList[mainTile.gridPosition.x][mainTile.gridPosition.y];
+            if (!IsFriendlyFire(mapEquivalent))
+            {
+                selectedTiles.Add(mainTile);
+            }
         }
 
         else if (targetingStyle == TargetingStyle.RADIUS)
         {
-            return;
+            foreach(Tile tile in map.GetAttackableTiles())
+            {
+                if (!IsFriendlyFire(tile))
+                {
+                    selectedTiles.Add(tileList[tile.gridPosition.x][tile.gridPosition.y]);
+                }
+            }
         }
-        // how to change back though? Tile states?
 
         foreach (HighlightTile tile in selectedTiles)
         {
