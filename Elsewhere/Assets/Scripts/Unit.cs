@@ -109,6 +109,21 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public void AssignStats(Dictionary<StatString, string> input)
+    {
+        stats = new Dictionary<StatString, UnitStat>();
+        foreach (KeyValuePair<StatString, string> pair in input)
+        {
+            bool hasLimit = false;
+            if (pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA))
+            {
+                hasLimit = true;
+            }
+            this.stats[pair.Key] = new UnitStat(float.Parse(pair.Value), hasLimit);
+
+        }
+    }
+
     public void AssignAbilities(List<Ability> abilities)
     {
         this.abilities = abilities;
@@ -138,12 +153,12 @@ public class Unit : MonoBehaviour
         statPanel.GetComponent<StatPanel>().unitClass.GetComponent<TextMeshPro>().text = this.characterClass;*/
         statPanel.GetComponent<StatPanel>().unitHP.text = this.stats[StatString.HP].Value.ToString() + "/" + this.stats[StatString.HP].baseValue.ToString();
         statPanel.GetComponent<StatPanel>().unitMana.text = this.stats[StatString.MANA].Value.ToString() + "/" + this.stats[StatString.MANA].baseValue.ToString(); ;
-        statPanel.GetComponent<StatPanel>().unitAttackDamage.text = this.stats[StatString.ATTACK_DAMAGE].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitPhysicalDamage.text = this.stats[StatString.PHYSICAL_DAMAGE].Value.ToString();
         statPanel.GetComponent<StatPanel>().unitMagicDamage.text = this.stats[StatString.MAGIC_DAMAGE].Value.ToString();
         statPanel.GetComponent<StatPanel>().unitArmor.text = this.stats[StatString.ARMOR].Value.ToString();
         statPanel.GetComponent<StatPanel>().unitMagicRes.text = this.stats[StatString.MAGIC_RES].Value.ToString();
         statPanel.GetComponent<StatPanel>().unitMovementRange.text = this.stats[StatString.MOVEMENT_RANGE].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitAttackRange.text = this.stats[StatString.ATTACK_DAMAGE].Value.ToString();
+        statPanel.GetComponent<StatPanel>().unitAttackRange.text = this.stats[StatString.PHYSICAL_DAMAGE].Value.ToString();
     }
 
     public bool isDead()
@@ -331,7 +346,7 @@ public class Unit : MonoBehaviour
             Destroy(collision.gameObject);
             if (this.gameObject.CompareTag("enemy"))
             {
-                this.stats[StatString.ATTACK_DAMAGE].AddModifier(new StatModifier(3, StatModType.Flat));
+                this.stats[StatString.PHYSICAL_DAMAGE].AddModifier(new StatModifier(3, StatModType.Flat));
                 UpdateUI();
             }
         }

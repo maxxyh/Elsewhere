@@ -7,13 +7,13 @@ using System.Transactions;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.IO;
 
 public class Map : MonoBehaviour
 {
     public GameObject TilePrefab;
-    [SerializeField] public Tilemap plants;
-    [SerializeField] public Tilemap obstacles;
-    public int mapSize = 8;
+    [SerializeField] public LevelTileCostData tileCostReference;
+    [SerializeField] public Vector2Int mapSize;
 
     public List<List<Tile>> tileList = new List<List<Tile>>();
 
@@ -25,48 +25,36 @@ public class Map : MonoBehaviour
         return this.attackableTiles;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //generateMap();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void generateMap()
     {
         
-        for (int i = 0; i < mapSize; i++)
+        for (int i = 0; i < mapSize.x; i++)
         {
             List<Tile> row = new List<Tile>();
-            for (int j = 0; j < mapSize; j++)
+            for (int j = 0; j < mapSize.y; j++)
             {
-                GameObject go = Instantiate(TilePrefab, new Vector3(i - mapSize / 2, j - mapSize / 2 + 1, 0),
+                GameObject go = Instantiate(TilePrefab, new Vector3(i - mapSize.x / 2, j - mapSize.y / 2 + 1, 0),
                     Quaternion.identity);
                 go.transform.parent = gameObject.transform;
                 //go.layer = LayerMask.NameToLayer("map");
                 Tile tile = go.GetComponent<Tile>();
                 tile.gridPosition = new Vector2Int(i, j);
 
-                int movementCost = 1;
+                int movementCost;
                 bool walkable = true;
 
-                Vector2 origin = new Vector2(tile.transform.position.x, tile.transform.position.y);
-                Vector3 hitPoint = new Vector3(tile.transform.position.x, tile.transform.position.y, 0); 
-                if (plants.GetTile(Vector3Int.RoundToInt(hitPoint)) != null)
+                Vector3 hitPoint = new Vector3(tile.transform.position.x, tile.transform.position.y, 0);
+                movementCost = tileCostReference.GetTileCost(hitPoint);
+                if (movementCost == -1)
                 {
-                    movementCost = 2;
-                }
-                if (obstacles.GetTile(Vector3Int.RoundToInt(hitPoint)) != null)
+                    Debug.LogError("No movement cost as tile does not exist.");
+                    movementCost = 0;
+                } 
+                if (movementCost == 0)
                 {
-                    movementCost = -1;
+                    movementCost = int.MaxValue;
                     walkable = false;
                 }
-
                 tile.movementCost = movementCost;
                 tile.walkable = walkable;
                 
@@ -78,7 +66,7 @@ public class Map : MonoBehaviour
     public Tile GetCurrentTile(Vector3 currentPos)
     {
         Vector3Int currCoor = Vector3Int.RoundToInt(currentPos);
-        Tile current = tileList[currCoor.x + mapSize / 2][currCoor.y + mapSize / 2 - 1];
+        Tile current = tileList[currCoor.x + (mapSize.x / 2)][currCoor.y + mapSize.y / 2 - 1];
         
         //Tile current = GetTargetTile(Vector3Int.RoundToInt(currentPos));
         if (current != null)
@@ -221,7 +209,7 @@ public class Map : MonoBehaviour
                     int newX = currX + i * hor[j];
                     int newY = currY + i * vert[j];
 
-                    if (newX >= 0 && newX < mapSize && newY >= 0 && newY < mapSize)
+                    if (newX >= 0 && newX < mapSize.x && newY >= 0 && newY < mapSize.y)
                     {
                         if (tileList[newX][newY].walkable && passable[j])
                         {
@@ -308,7 +296,7 @@ public class Map : MonoBehaviour
                 int newX = currX + i * hor[j];
                 int newY = currY + i * vert[j];
 
-                if (newX >= 0 && newX < mapSize && newY >= 0 && newY < mapSize)
+                if (newX >= 0 && newX < mapSize.x && newY >= 0 && newY < mapSize.y)
                 {
                     Tile newTile = tileList[newX][newY];
                     if (newTile.walkable && passable[j])

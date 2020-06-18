@@ -15,8 +15,11 @@
 	"abilities" : {
 
 
-	}
+	},
 
-	
+	"mapSize":  {
+		"tutorial": 8,
+		""
+	}
 
 }

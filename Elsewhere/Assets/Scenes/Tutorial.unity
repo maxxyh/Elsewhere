@@ -153,7 +153,6 @@ MonoBehaviour:
   highlightTilePrefab: {fileID: 5169222114318017564, guid: fa3d6be0b9a496c42af6208bf076c45a,
     type: 3}
   map: {fileID: 1993327612}
-  selectedTiles: []
 --- !u!4 &32760338
 Transform:
   m_ObjectHideFlags: 0
@@ -162,7 +161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32760336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1671144, y: 1.1132109, z: -204.08139}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -430,7 +429,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 305839541}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &129988705
 TilemapRenderer:
@@ -2023,6 +2022,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 891002227}
   - {fileID: 129988704}
   - {fileID: 1072848594}
   - {fileID: 1882406299}
@@ -2531,6 +2531,58 @@ MonoBehaviour:
     type: 3}
   turnScheduler: {fileID: 105424488}
   highlightMap: {fileID: 32760337}
+--- !u!1 &891002226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 891002227}
+  - component: {fileID: 891002228}
+  m_Layer: 0
+  m_Name: TileCostData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &891002227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891002226}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.57992846, y: 2.31071, z: -276.77826}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 305839541}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &891002228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891002226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b464ddb044b63d644b28ebd91c8a4270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 1072848596}
+  - {fileID: 1882406301}
+  movementCost1:
+  - {fileID: 129988706}
+  movementCost2:
+  - {fileID: 986111560}
+  movementCost3: []
+  movementCost4: []
 --- !u!1 &943756523 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5225696614032337710, guid: 0e4439cd97b45224bb130fe9b0e45ddb,
@@ -2576,7 +2628,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 305839541}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &986111559
 TilemapRenderer:
@@ -3193,7 +3245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 305839541}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1072848595
 TilemapRenderer:
@@ -5900,7 +5952,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 305839541}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1882406300
 TilemapRenderer:
@@ -6537,9 +6589,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TilePrefab: {fileID: 7842217359672464155, guid: bab4188df0fb02445848cbc25e2698a1,
     type: 3}
-  plants: {fileID: 986111560}
-  obstacles: {fileID: 1072848596}
-  mapSize: 8
+  tileCostReference: {fileID: 891002228}
+  mapSize: {x: 8, y: 8}
 --- !u!4 &1993327613
 Transform:
   m_ObjectHideFlags: 0
@@ -8511,6 +8562,7 @@ MonoBehaviour:
   turnScheduler: {fileID: 105424488}
   players: []
   enemies: []
+  levelUnitPosition: {fileID: 11400000, guid: a79539abc87981d4f89e8f826af80193, type: 2}
   worldCamera: {fileID: 72141188}
 --- !u!1001 &7757812188048609844
 PrefabInstance:

@@ -31,7 +31,7 @@ public class BattleManager : MonoBehaviour
 
     public static int CalculateBaseDamage(Unit attacker, Unit recipient)
     {
-        return Math.Max(1, (int) Math.Ceiling(attacker.stats[StatString.ATTACK_DAMAGE].Value - recipient.stats[StatString.ARMOR].Value));
+        return Math.Max(1, (int) Math.Ceiling(attacker.stats[StatString.PHYSICAL_DAMAGE].Value - recipient.stats[StatString.ARMOR].Value));
     }
 
     public static int CalculatePhysicalDamage(float attackDamage, Unit recipient)

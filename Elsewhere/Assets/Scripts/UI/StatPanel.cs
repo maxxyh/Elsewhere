@@ -12,7 +12,7 @@ public class StatPanel : MonoBehaviour
     public GameObject unitClass;
     public Text unitHP;
     public Text unitMana;
-    public Text unitAttackDamage;
+    public Text unitPhysicalDamage;
     public Text unitMagicDamage;
     public Text unitArmor;
     public Text unitMagicRes;
@@ -22,7 +22,7 @@ public class StatPanel : MonoBehaviour
     [Header("Button")]
     public Button unitHPButton;
     public Button unitManaButton;
-    public Button unitAttackDamageButton;
+    public Button unitPhysicalDamageButton;
     public Button unitMagicDamageButton;
     public Button unitArmorButton;
     public Button unitMagicResButton;

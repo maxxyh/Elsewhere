@@ -153,13 +153,13 @@ public class HighlightMap : MonoBehaviour
 
     public void generateUIMap()
     {
-        int mapSize = map.mapSize;
-        for (int i = 0; i < mapSize; i++)
+        Vector2Int mapSize = map.mapSize;
+        for (int i = 0; i < mapSize.x; i++)
         {
             List<HighlightTile> row = new List<HighlightTile>();
-            for (int j = 0; j < mapSize; j++)
+            for (int j = 0; j < mapSize.y; j++)
             {
-                GameObject go = Instantiate(highlightTilePrefab, new Vector3(i - mapSize / 2, j - mapSize / 2 + 1, 0),
+                GameObject go = Instantiate(highlightTilePrefab, new Vector3(i - mapSize.x / 2, j - mapSize.y / 2 + 1, 0),
                     Quaternion.identity);
                 go.transform.parent = gameObject.transform;
                 //go.layer = LayerMask.NameToLayer("map");

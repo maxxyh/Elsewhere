@@ -150,10 +150,11 @@ public enum StatString
 {
     HP,
     MANA,
-    ATTACK_DAMAGE,
+    PHYSICAL_DAMAGE,
     MAGIC_DAMAGE,
     ARMOR,
     MAGIC_RES,
     MOVEMENT_RANGE,
-    ATTACK_RANGE
+    ATTACK_RANGE,
+    CRIT_RATE
 }
