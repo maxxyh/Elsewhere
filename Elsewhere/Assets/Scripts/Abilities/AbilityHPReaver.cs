@@ -14,7 +14,7 @@ public class AbilityHPReaver : Ability
         foreach(Unit target in targets)
         {
             int magicDamage = BattleManager.CalculateMagicDamage(0.4f * initiator.stats[StatString.MAGIC_DAMAGE].Value, target);
-            target.stats[StatString.HP].AddModifier(new StatModifier(magicDamage, StatModType.Flat));
+            target.stats[StatString.HP].AddModifier(new StatModifier(-magicDamage, StatModType.Flat));
             initiator.stats[StatString.HP].AddModifier(new StatModifier(magicDamage, StatModType.Flat));
             DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", magicDamage), PopupType.DAMAGE);
             DamagePopUp.Create(initiator.transform.position, string.Format("+ {0} HP", magicDamage), PopupType.HEAL);

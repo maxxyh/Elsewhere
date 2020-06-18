@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -180,7 +180,7 @@ public class TurnSchedulerOld : MonoBehaviour
             targetTile = targetTile.parent;
         }
 
-        /*
+        *//*
         // get target tile by subtracting the attackRange
         int attackRange = (int) currUnit.stats["attackRange"].baseValue;
         for (int i = 0; i < attackRange; i++)
@@ -194,7 +194,7 @@ public class TurnSchedulerOld : MonoBehaviour
                 targetTile = targetTile.parent;
             }                
         }
-        */
+        *//*
         // A star movement towards the target 
         currUnit.GetPathToTile(targetTile);
 
@@ -438,13 +438,13 @@ public class TurnSchedulerOld : MonoBehaviour
 }
 
 
-/*
+*//*
 public enum Turn 
 {
     ENEMY_TURN,
     PLAYER_TURN
 }
-*/
+*//*
 
 public enum EventType
 {
@@ -454,3 +454,4 @@ public enum EventType
     END
 }
 
+*/

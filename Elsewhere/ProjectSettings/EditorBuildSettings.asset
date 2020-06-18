@@ -11,4 +11,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/CrystalOnFloor.unity
+    guid: 894f9ab737491554eb8aa40c8af66551
+  - enabled: 1
+    path: Assets/Scenes/BloodyBear.unity
+    guid: d12fa8c01b6d6c04dadc8ccf29e445e2
+  - enabled: 1
+    path: Assets/Scenes/BloodyHand.unity
+    guid: b175290e54f86224b94a8d450f5aaff9
+  - enabled: 1
+    path: Assets/Scenes/HuggingCrying.unity
+    guid: 712acede59c09d446be323a304e668c6
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: c69718a10e97bb94082f433d86c38174
+  - enabled: 1
+    path: Assets/Scenes/UnderTree.unity
+    guid: f484eeae4524fae4baa62eb51c6bc9ec
+  - enabled: 1
+    path: Assets/Scenes/AfterBattle - Esmeralda vs Claude.unity
+    guid: aa81015d7c63958418a3c96fa4dc8bb1
   m_configObjects: {}
