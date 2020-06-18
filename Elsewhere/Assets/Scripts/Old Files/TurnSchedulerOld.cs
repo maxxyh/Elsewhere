@@ -10,8 +10,8 @@ public class TurnSchedulerOld : MonoBehaviour
     private List<PlayerUnit> players;
     private List<EnemyUnit> enemies;
     
-    PriorityQueue<Action> actionsOfPlayerTeam = new PriorityQueue<Action>();
-    PriorityQueue<Action> actionsOfEnemyTeam = new PriorityQueue<Action>();
+    //PriorityQueue<Action> actionsOfPlayerTeam = new PriorityQueue<Action>();
+    //PriorityQueue<Action> actionsOfEnemyTeam = new PriorityQueue<Action>();
 
     Queue<Unit> currTeamQueue = new Queue<Unit>();
 
@@ -381,7 +381,7 @@ public class TurnSchedulerOld : MonoBehaviour
             {
                 PlayerUnit unit = players[i];
                 unit.unitID = UnitIdCounter++;
-                actionsOfPlayerTeam.Enqueue(new StartAction(unit));
+                //actionsOfPlayerTeam.Enqueue(new StartAction(unit));
                 playerEvents.Enqueue(new Event(unit, EventType.START));
                 currTeamQueue.Enqueue(unit);
             }
@@ -393,7 +393,7 @@ public class TurnSchedulerOld : MonoBehaviour
             {
                 EnemyUnit unit = enemies[i];
                 unit.unitID = UnitIdCounter++;
-                actionsOfEnemyTeam.Enqueue(new StartAction(unit));
+                //actionsOfEnemyTeam.Enqueue(new StartAction(unit));
                 enemyEvents.Enqueue(new Event(unit, EventType.START));
                 currTeamQueue.Enqueue(unit);
             }
@@ -405,7 +405,7 @@ public class TurnSchedulerOld : MonoBehaviour
             {
                 PlayerUnit unit = players[i];
                 unit.unitID = UnitIdCounter++;
-                actionsOfPlayerTeam.Enqueue(new StartAction(unit));
+                //actionsOfPlayerTeam.Enqueue(new StartAction(unit));
                 playerEvents.Enqueue(new Event(unit, EventType.START));
             }
 
@@ -413,7 +413,7 @@ public class TurnSchedulerOld : MonoBehaviour
             {
                 EnemyUnit unit = enemies[i];
                 unit.unitID = UnitIdCounter++;
-                actionsOfEnemyTeam.Enqueue(new StartAction(unit));
+                //actionsOfEnemyTeam.Enqueue(new StartAction(unit));
                 enemyEvents.Enqueue(new Event(unit, EventType.START));
             }
         }

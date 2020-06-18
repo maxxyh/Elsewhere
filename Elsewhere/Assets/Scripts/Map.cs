@@ -14,6 +14,7 @@ public class Map : MonoBehaviour
     public GameObject TilePrefab;
     [SerializeField] public LevelTileCostData tileCostReference;
     [SerializeField] public Vector2Int mapSize;
+    [SerializeField] public Vector2Int bottomLeft;
 
     public List<List<Tile>> tileList = new List<List<Tile>>();
 
@@ -33,7 +34,7 @@ public class Map : MonoBehaviour
             List<Tile> row = new List<Tile>();
             for (int j = 0; j < mapSize.y; j++)
             {
-                GameObject go = Instantiate(TilePrefab, new Vector3(i - mapSize.x / 2, j - mapSize.y / 2 + 1, 0),
+                GameObject go = Instantiate(TilePrefab, new Vector3(i + bottomLeft.x, j + bottomLeft.y, 0),
                     Quaternion.identity);
                 go.transform.parent = gameObject.transform;
                 //go.layer = LayerMask.NameToLayer("map");
@@ -66,7 +67,7 @@ public class Map : MonoBehaviour
     public Tile GetCurrentTile(Vector3 currentPos)
     {
         Vector3Int currCoor = Vector3Int.RoundToInt(currentPos);
-        Tile current = tileList[currCoor.x + (mapSize.x / 2)][currCoor.y + mapSize.y / 2 - 1];
+        Tile current = tileList[currCoor.x - bottomLeft.x][currCoor.y - bottomLeft.y];
         
         //Tile current = GetTargetTile(Vector3Int.RoundToInt(currentPos));
         if (current != null)

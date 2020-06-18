@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 using System;
 using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour
         Vector3Int[] playerPositions = levelUnitPosition.PlayerPositions;
         Vector3Int[] enemyPositions = levelUnitPosition.EnemyPositions;
 
+        //dynamic temp = JObject.Parse(File.ReadAllText(@"Assets\Scripts\characterConfig.json"));
+        //Debug.Log(temp.Julius.HP);
 
         // default stats 
         /*

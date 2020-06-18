@@ -149,6 +149,7 @@ public class Tile : MonoBehaviour
 
     public void OnMouseDown()
     {
+        Debug.Log("Tile clicked");
         GameAssets.MyInstance.turnScheduler.OnClickCheckForValidTarget(this);
     }
 }

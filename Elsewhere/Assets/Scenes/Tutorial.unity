@@ -6591,6 +6591,7 @@ MonoBehaviour:
     type: 3}
   tileCostReference: {fileID: 891002228}
   mapSize: {x: 8, y: 8}
+  bottomLeft: {x: -4, y: -3}
 --- !u!4 &1993327613
 Transform:
   m_ObjectHideFlags: 0

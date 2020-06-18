@@ -45,6 +45,7 @@ public class TurnScheduler : StateMachine
 
     public void OnEndTurnButton()
     {
+        Debug.Log("End Turn Button");
         StartCoroutine(State.EndTurn());
     }
 
