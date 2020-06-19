@@ -13,7 +13,7 @@ public class PlayerUnit : Unit
     private void Update()
     {     
         // simply update currentTile if not taking turn
-        if (currState == UnitState.ENDTURN)
+        if (CurrState == UnitState.ENDTURN)
         {
             if (currentTile == null && map != null)
             {
@@ -22,13 +22,13 @@ public class PlayerUnit : Unit
             return;
         }
         
-        if (currState == UnitState.IDLING)
+        if (CurrState == UnitState.IDLING)
         {
             currentTile.hasPlayer = true;
             CheckMoveMouse();
         }
         
-        else if (currState == UnitState.MOVING)
+        else if (CurrState == UnitState.MOVING)
         {
             Move();
         }

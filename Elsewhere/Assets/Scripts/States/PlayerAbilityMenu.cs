@@ -10,12 +10,12 @@ public class PlayerAbilityMenu : State
     public override IEnumerator Execute()
     {
         turnScheduler.abilitiesPanel.SetActive(true);
-        turnScheduler.currUnit.currState = UnitState.IDLING;
+        turnScheduler.currUnit.CurrState = UnitState.IDLING;
         yield break;
     }
     public override IEnumerator Targeting(ActionType actType)
     {
-        if (currUnit.currState == UnitState.IDLING)
+        if (currUnit.CurrState == UnitState.IDLING)
         {
             if (actType == ActionType.ABILITY)
             {

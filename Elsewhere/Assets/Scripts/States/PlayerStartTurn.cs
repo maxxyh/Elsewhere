@@ -15,13 +15,13 @@ public class PlayerStartTurn : State
         Debug.Log("STARTING PLAYER TURN");
         
         // this added layer is to support cancel functionality
-        if (currUnit.currState == UnitState.ENDTURN)
+        if (currUnit.CurrState == UnitState.ENDTURN)
         { 
             currUnit.StartTurn();
         } 
         else
         {
-            currUnit.currState = UnitState.IDLING;
+            currUnit.CurrState = UnitState.IDLING;
         }
         turnScheduler.playerActionPanel.SetActive(true);
         map.FindSelectableTiles(currUnit.currentTile, currUnit.stats[StatString.MOVEMENT_RANGE].Value);
@@ -33,7 +33,7 @@ public class PlayerStartTurn : State
 
     public override IEnumerator Targeting(ActionType actType)
     {
-        if (currUnit.currState == UnitState.IDLING) 
+        if (currUnit.CurrState == UnitState.IDLING) 
         {
             if (actType == ActionType.ATTACK)
             {

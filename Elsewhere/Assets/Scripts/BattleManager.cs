@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mail;
-using UnityEngine;
 
-public class BattleManager : MonoBehaviour
+public class BattleManager
 {
     public static void Battle(Unit attacker, Unit recipient) 
     {
-        TurnScheduler turnScheduler = FindObjectOfType<TurnScheduler>();
+        TurnScheduler turnScheduler = GameAssets.MyInstance.turnScheduler;
 
         if (!recipient.isDead()) 
         {
@@ -29,17 +25,17 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public static int CalculateBaseDamage(Unit attacker, Unit recipient)
+    public static int CalculateBaseDamage(IUnit attacker, IUnit recipient)
     {
         return Math.Max(1, (int) Math.Ceiling(attacker.stats[StatString.PHYSICAL_DAMAGE].Value - recipient.stats[StatString.ARMOR].Value));
     }
 
-    public static int CalculatePhysicalDamage(float attackDamage, Unit recipient)
+    public static int CalculatePhysicalDamage(float attackDamage, IUnit recipient)
     {
         return Math.Max(1, (int)Math.Ceiling(attackDamage - recipient.stats[StatString.ARMOR].Value));
     }
 
-    public static int CalculateMagicDamage(float attackDamage, Unit recipient)
+    public static int CalculateMagicDamage(float attackDamage, IUnit recipient)
     {
         return Math.Max(1, (int)Math.Ceiling(attackDamage - recipient.stats[StatString.MAGIC_RES].Value));
     }

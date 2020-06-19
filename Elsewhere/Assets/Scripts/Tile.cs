@@ -1,31 +1,29 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, ITile
 {
-    public bool target = false;
-    public bool selectable = false;
-    public bool walkable = true;
-    public bool attackable = false;
-    public bool hover = false;
-    public bool hasPlayer = false;
-    public int movementCost;
+    public bool target { get; set; }
+    public bool selectable { get; set; }
+    public bool walkable { get; set; }
+    public bool attackable { get; set; }
+    public bool hasPlayer { get; set; }
+    public int movementCost { get; set; }
+    public bool occupied { get; set; }
 
-    public bool occupied = false;
+    private bool hover;
 
-    public Tile parent = null;
-    public int distance = int.MaxValue;
+    public Tile parent { get; set; }
+    public int distance { get; set; }
 
-    public List<Tile> adjacencyList = new List<Tile>();
+    private List<Tile> _adjacencyList = new List<Tile>();
+    public List<Tile> adjacencyList { get { return _adjacencyList; } set { _adjacencyList = value; } }
 
-    public Vector2Int gridPosition = Vector2Int.zero;
-
-    public Animator anim;
-
+    public Vector2Int _gridPosition = Vector2Int.zero;
+    public Vector2Int gridPosition { get { return _gridPosition; } set { _gridPosition = value; } }
 
     // Update is called once per frame
     void Update()
@@ -73,7 +71,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseButtonDown()
     {
-        
+
     }
 
     // every turn the tile variables need to be reset
@@ -92,7 +90,7 @@ public class Tile : MonoBehaviour
     }
 
     public void FindNeighbours(List<List<Tile>> tileList, bool includeDiagonals)
-    { 
+    {
         adjacencyList.Clear();
 
         int currX = this.gridPosition.x, currY = this.gridPosition.y;
@@ -109,7 +107,7 @@ public class Tile : MonoBehaviour
             hor = new List<int>() { -1, 0, 1, 0 };
             vert = new List<int>() { 0, 1, 0, -1 };
         }
-        
+
 
         for (int j = 0; j < hor.Count; j++)
         {
@@ -143,7 +141,7 @@ public class Tile : MonoBehaviour
             {
                 adjacencyList.Add(tile);
             }
-        }   
+        }
     }
 
 
@@ -152,6 +150,7 @@ public class Tile : MonoBehaviour
         Debug.Log("Tile clicked");
         GameAssets.MyInstance.turnScheduler.OnClickCheckForValidTarget(this);
     }
+
 }
 
 

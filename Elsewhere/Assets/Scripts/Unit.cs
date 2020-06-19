@@ -5,39 +5,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
-public class Unit : MonoBehaviour
+public class Unit : MonoBehaviour, IUnit
 {
 
     #region FIELDS AND REFERENCES
     [Header("UI")]
     public GameObject statPanel;
-    /*public GameObject unitName;
-    public GameObject unitClass;
-    public Text unitHP;
-    public Text unitMana;
-    public Text unitAttackDamage;
-    public Text unitMagicDamage;
-    public Text unitArmor;
-    public Text unitMagicRes;
-    public Text unitMovementRange;
-    public Text unitAttackRange;
-
-    *//*[Header("Button")]
-    public Button unitHPButton;
-    public Button unitManaButton;
-    public Button unitAttackDamageButton;
-    public Button unitMagicDamageButton;
-    public Button unitArmorButton;
-    public Button unitMagicResButton;
-    public Button unitMovementRangeButton;
-    public Button unitAttackRangeButton;*/
 
     [Header("Abilities")]
     public List<Ability> abilities = new List<Ability>();
@@ -48,37 +23,29 @@ public class Unit : MonoBehaviour
     public string characterName;
     public string characterClass;
     public Animator anim;
-    /* All stats: 
-     * attackDamage;
-     * magicDamage;
-     * mana;
-     * HP;
-     * defence;
-     * movementRange;
-     * attackRange;
-    */
+
     [Header("Player Stats")]
-    public Dictionary<StatString, UnitStat> stats;
     public float moveSpeed;
+    public Dictionary<StatString, UnitStat> stats { get; set; }
 
     [Header("States")]
     private UnitState _currState = UnitState.ENDTURN;
-    public UnitState currState
+    public UnitState CurrState
     {
         get { return _currState; }
 
-        set { _currState = value;  }
+        set { _currState = value; }
     }
 
-    
+
     [Header("References")]
     public Unit attackingTargetUnit;
     public List<Unit> abilityTargetUnits = new List<Unit>();
-    
+
 
     // Movement Variables
     public Map map;
-    
+
     Stack<Tile> path = new Stack<Tile>();
     public Tile currentTile;
     public Tile startTile;
@@ -94,10 +61,10 @@ public class Unit : MonoBehaviour
 
 
     // Dictionary style constructor 
-    public void AssignStats(Dictionary<StatString,float> input)
+    public void AssignStats(Dictionary<StatString, float> input)
     {
         stats = new Dictionary<StatString, UnitStat>();
-        foreach(KeyValuePair<StatString,float> pair in input)
+        foreach (KeyValuePair<StatString, float> pair in input)
         {
             bool hasLimit = false;
             if (pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA))
@@ -105,7 +72,7 @@ public class Unit : MonoBehaviour
                 hasLimit = true;
             }
             this.stats[pair.Key] = new UnitStat(pair.Value, hasLimit);
-            
+
         }
     }
 
@@ -140,7 +107,7 @@ public class Unit : MonoBehaviour
         ParticleSystem.EmissionModule tempSparkle = sparkle.GetComponent<ParticleSystem>().emission;
         tempSparkle.enabled = false;
 
-        if (currState == UnitState.ENDTURN)
+        if (CurrState == UnitState.ENDTURN)
         {
             statPanel.SetActive(false);
         }
@@ -171,22 +138,22 @@ public class Unit : MonoBehaviour
     {
         startTile = map.GetCurrentTile(transform.position); ;
         currentTile = startTile;
-        currState = UnitState.IDLING;
+        CurrState = UnitState.IDLING;
         this.statPanel.SetActive(true);
     }
 
     public void EndTurn()
     {
-        currState = UnitState.ENDTURN;
+        CurrState = UnitState.ENDTURN;
         this.statPanel.SetActive(false);
         DecrementAllStatDuration();
         UpdateUI();
     }
-    
+
 
     public void StartAttack(Unit unit)
     {
-        currState = UnitState.ATTACKING;
+        CurrState = UnitState.ATTACKING;
         attackingTargetUnit = unit;
     }
 
@@ -204,7 +171,8 @@ public class Unit : MonoBehaviour
         anim.SetBool("isAbility", false);
     }
 
-    public void TakeDamage(float damage) {
+    public void TakeDamage(float damage)
+    {
         stats[StatString.HP].AddModifier(new StatModifier(-damage, StatModType.Flat));
     }
 
@@ -216,7 +184,7 @@ public class Unit : MonoBehaviour
         AStarSearch.GeneratePath(map, currentTile, target, true);
         path.Clear();
         target.target = true;
-        currState = UnitState.MOVING;
+        CurrState = UnitState.MOVING;
 
         Tile next = target;
         while (next != null)
@@ -262,11 +230,11 @@ public class Unit : MonoBehaviour
             currentTile.occupied = false;
             currentTile.selectable = true;
 
-            currState = UnitState.IDLING;
+            CurrState = UnitState.IDLING;
 
             // update currentTile
             currentTile = map.GetCurrentTile(transform.position);
-            
+
             //TurnManager.EndTurn();
             // TODO only EndTurn after taking an action e.g. attack, wait, defend etc.
         }
@@ -294,7 +262,7 @@ public class Unit : MonoBehaviour
             if (!statPanel.activeSelf)
             {
                 statPanel.SetActive(true);
-            } 
+            }
             else
             {
                 statPanel.SetActive(false);
@@ -304,7 +272,7 @@ public class Unit : MonoBehaviour
 
     public void MovementAnimation()
     {
-        if (currState == UnitState.MOVING)
+        if (CurrState == UnitState.MOVING)
         {
             anim.SetFloat("moveSpeed", moveSpeed);
             anim.SetFloat("Horizontal", heading.x);
@@ -312,7 +280,7 @@ public class Unit : MonoBehaviour
             if (heading.x == 1 || heading.x == -1)
             {
                 lastMove = new Vector2(heading.x, 0f);
-            }    
+            }
             else if (heading.y == 1 || heading.y == -1)
             {
                 lastMove = new Vector2(0f, heading.y);
@@ -331,7 +299,7 @@ public class Unit : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (currState == UnitState.ENDTURN)
+        if (CurrState == UnitState.ENDTURN)
         {
             this.statPanel.SetActive(false);
         }
@@ -375,7 +343,7 @@ public class Unit : MonoBehaviour
 
     public void DecrementAllStatDuration()
     {
-        foreach(KeyValuePair<StatString, UnitStat> pair in stats)
+        foreach (KeyValuePair<StatString, UnitStat> pair in stats)
         {
             pair.Value.DecrementDuration();
         }

@@ -10,7 +10,7 @@ public class EnemyUnit : Unit
     private void Update()
     {
         // simply update currentTile if not taking turn
-        if (currState == UnitState.ENDTURN)
+        if (CurrState == UnitState.ENDTURN)
         {
             if (currentTile == null && map != null)
             {
@@ -19,7 +19,7 @@ public class EnemyUnit : Unit
             return;
         }
 
-        if (currState == UnitState.MOVING)
+        if (CurrState == UnitState.MOVING)
         {
             Move();
         }

@@ -1,17 +1,12 @@
 ﻿//using Newtonsoft.Json;
 //using Newtonsoft.Json.Linq;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Transactions;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using System.IO;
 
 public class Map : MonoBehaviour
 {
-    public GameObject TilePrefab;
+    [SerializeField] public GameObject TilePrefab;
     [SerializeField] public LevelTileCostData tileCostReference;
     [SerializeField] public Vector2Int mapSize;
     [SerializeField] public Vector2Int bottomLeft;
@@ -26,7 +21,12 @@ public class Map : MonoBehaviour
         return this.attackableTiles;
     }
 
-    public void generateMap()
+    public HashSet<Tile> GetSelectableTiles()
+    {
+        return this.selectableTiles;
+    }
+
+    public void GenerateMap()
     {
         
         for (int i = 0; i < mapSize.x; i++)

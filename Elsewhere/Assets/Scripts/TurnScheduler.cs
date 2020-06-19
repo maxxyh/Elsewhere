@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnScheduler : StateMachine
 {
@@ -42,8 +43,15 @@ public class TurnScheduler : StateMachine
         UnitIdCounter = 0;
         currTurn = Team.PLAYER;
         // EnqueueTeams(Team.PLAYER);
-
-        SetState(new CutScene(this));
+        if (SceneManager.GetActiveScene().name.Equals("Tutorial"))
+        {
+            SetState(new CutScene(this));
+        }
+        else
+        {
+            SetState(new Transition(this));
+        }
+        
     }
 
     public void OnEndTurnButton()

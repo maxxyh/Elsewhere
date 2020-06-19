@@ -56,7 +56,7 @@ public class AggressiveEnemyAI : State
         // A star movement towards the target 
         currUnit.GetPathToTile(targetTile);
 
-        yield return new WaitUntil(() => currUnit.currState == UnitState.IDLING);
+        yield return new WaitUntil(() => currUnit.CurrState == UnitState.IDLING);
 
         // check if there are players in range
         if (map.PlayerTargetInRange(currUnit.currentTile, currUnit.stats[StatString.ATTACK_RANGE].Value, targetPlayer))

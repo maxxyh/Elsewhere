@@ -72,7 +72,7 @@ public abstract class State
 
     public virtual IEnumerator EndTurn()
     {
-        if (currUnit.currState == UnitState.IDLING)
+        if (currUnit.CurrState == UnitState.IDLING)
         {
             if (turnScheduler.currTurn == Team.PLAYER)
             {

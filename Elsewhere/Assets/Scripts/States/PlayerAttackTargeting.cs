@@ -14,7 +14,7 @@ public class PlayerAttackTargeting : State
 
         map.FindAttackableTiles(currUnit.currentTile, currUnit.stats[StatString.ATTACK_RANGE].Value);
         // should display the attacking tiles.
-        currUnit.currState = UnitState.TARGETING;
+        currUnit.CurrState = UnitState.TARGETING;
 
         yield break;
 

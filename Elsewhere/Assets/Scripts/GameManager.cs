@@ -10,30 +10,27 @@ using Newtonsoft.Json.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject TilePrefab;
     public GameObject[] PlayerPrefabs;
     public GameObject[] EnemyPrefabs;
     public Map map;
     public HighlightMap highlightMap;
-    public TurnScheduler turnScheduler;
     public List<PlayerUnit> players = new List<PlayerUnit>();
     public List<EnemyUnit> enemies = new List<EnemyUnit>();
+    [JsonConverter(typeof(StringEnumConverter))]
     private Dictionary<string, Dictionary<StatString, string>> unitStatConfig;
     public LevelUnitPosition levelUnitPosition;
 
     public Camera worldCamera;
 
-    [JsonConverter(typeof(StringEnumConverter))]
-    private Dictionary<StatString, float> defaultStats = new Dictionary<StatString, float>();
-    
+  
 
     // Start is called before the first frame update
     void Start()
     {
-        map.generateMap();
+        map.GenerateMap();
         highlightMap.generateUIMap();
         generatePlayers();
-        turnScheduler.Init(players, enemies);
+        GameAssets.MyInstance.turnScheduler.Init(players, enemies);
     }
 
     void generatePlayers() {
@@ -45,18 +42,6 @@ public class GameManager : MonoBehaviour
 
         //dynamic temp = JObject.Parse(File.ReadAllText(@"Assets\Scripts\characterConfig.json"));
         //Debug.Log(temp.Julius.HP);
-
-        // default stats 
-        /*
-        defaultStats.Add(StatString.PHYSICAL_DAMAGE, 6);
-        defaultStats.Add(StatString.MAGIC_DAMAGE, 5);
-        defaultStats.Add(StatString.MANA, 20);
-        defaultStats.Add(StatString.HP, 10);
-        defaultStats.Add(StatString.ARMOR, 3);
-        defaultStats.Add(StatString.MAGIC_RES, 2);
-        defaultStats.Add(StatString.MOVEMENT_RANGE, 4);
-        defaultStats.Add(StatString.ATTACK_RANGE, 2);
-        */
 
         // default abilities
         List<Ability> AbilitiesSwordsman= new List<Ability>();
@@ -78,7 +63,7 @@ public class GameManager : MonoBehaviour
             Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
         //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
         player.tag = "player";
-        player.AssignStats(unitStatConfig["Julius"]);
+        player.AssignStats(unitStatConfig["Esmeralda"]);
         player.AssignMap(map);
         player.AssignAbilities(AbilitiesMage);
         player.UpdateUI();
@@ -98,7 +83,7 @@ public class GameManager : MonoBehaviour
             Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
         //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
         player3.tag = "player";
-        player3.AssignStats(unitStatConfig["Esmeralda"]);
+        player3.AssignStats(unitStatConfig["Julius"]);
         player3.AssignMap(map);
         player3.AssignAbilities(AbilitiesSwordsman);
         player3.UpdateUI();
@@ -106,7 +91,6 @@ public class GameManager : MonoBehaviour
 
         // ENEMIES
 
-        // TODO DOESN'T ACTUALLY INITIATE A VALID ENEMY
         EnemyUnit enemy = ((GameObject)Instantiate(EnemyPrefabs[0], enemyPositions[0],
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
         //enemy.gridPosition = new Vector2(0,0);
