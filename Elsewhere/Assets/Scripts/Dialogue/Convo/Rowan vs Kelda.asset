@@ -35,7 +35,7 @@ MonoBehaviour:
       Enemy Phase.
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: 'During Player Phase, reposition members of Iris, and choose an action
-      for each one of them. '
+      for each one of them from the panel there. '
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: Each of us has unique skills that can change the tide of the battle! Strategy
       is key!

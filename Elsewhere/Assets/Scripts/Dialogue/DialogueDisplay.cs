@@ -12,7 +12,7 @@ public class DialogueDisplay : MonoBehaviour
     public SpeakerUI[] speakerUIs;
 
     private int activeLineIndex = 0;
-    private bool endConvo = false;
+    public bool endConvo = false;
     public string nextScene;
 
     private void Start()
@@ -22,6 +22,8 @@ public class DialogueDisplay : MonoBehaviour
 
         speakerUIs[0].ActiveSpeaker = conversation.speakers[0];
         speakerUIs[1].ActiveSpeaker = conversation.speakers[1];
+
+        AdvanceConversation();
     }
 
     private void Update()
@@ -42,7 +44,7 @@ public class DialogueDisplay : MonoBehaviour
         }
     }
 
-    void AdvanceConversation()
+    public void AdvanceConversation()
     {
         if (activeLineIndex < conversation.lines.Length)
         {

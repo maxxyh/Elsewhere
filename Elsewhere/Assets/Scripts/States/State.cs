@@ -65,6 +65,10 @@ public abstract class State
         yield break;
     }
 
+    public virtual IEnumerator DuringCutScene()
+    {
+        yield break;
+    }
 
     public virtual IEnumerator EndTurn()
     {

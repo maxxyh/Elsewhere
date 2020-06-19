@@ -21,6 +21,9 @@ public class TurnScheduler : StateMachine
     public GameObject enemyPhasePanel;
     public GameObject gameOverUI;
     public GameObject victoryUI;
+    public GameObject tutorialPanel;
+
+    public DialogueDisplay dialogUI;
 
     public Map map;
     public Unit currUnit;
@@ -40,7 +43,7 @@ public class TurnScheduler : StateMachine
         currTurn = Team.PLAYER;
         // EnqueueTeams(Team.PLAYER);
 
-        SetState(new Transition(this));
+        SetState(new CutScene(this));
     }
 
     public void OnEndTurnButton()
@@ -79,6 +82,11 @@ public class TurnScheduler : StateMachine
     public void OnNoConfirmation()
     {
         StartCoroutine(State.No());
+    }
+
+    public void DuringCutScene()
+    {
+        StartCoroutine(State.DuringCutScene());
     }
 
     public void OnCancelButton()
