@@ -28,6 +28,7 @@ public class Transition : State
             yield break;
         }
 
+
         // continue game
         // check if need to initiatlize team
         if (turnScheduler.currTeamQueue.Count == 0)
@@ -37,30 +38,30 @@ public class Transition : State
                 turnScheduler.enemyPhasePanel.SetActive(true);
                 yield return new WaitForSeconds(1f);
                 turnScheduler.enemyPhasePanel.SetActive(false);
+                foreach (Unit player in turnScheduler.players) player.RemoveGrayscale();
             }
             else if (turnScheduler.currTurn == Team.PLAYER)
             {
                 turnScheduler.playerPhasePanel.SetActive(true);
                 yield return new WaitForSeconds(1f);
                 turnScheduler.playerPhasePanel.SetActive(false);
+                foreach (Unit enemy in turnScheduler.enemies) enemy.RemoveGrayscale();
             }
             turnScheduler.EnqueueTeams(turnScheduler.currTurn);
+            
         }
         // update current unit
         turnScheduler.currUnit = turnScheduler.currTeamQueue.First();
-        turnScheduler.currTeamQueue.RemoveFirst();
 
 
-        // start next turn
+        // start next turn/next unit
         if (turnScheduler.currTurn == Team.ENEMY)
         {
-            
-            // yield return turnScheduler.StartCoroutine(turnScheduler.ShowPhase());
+            turnScheduler.currTeamQueue.RemoveFirst();
             turnScheduler.SetState(new EnemyStartTurn(turnScheduler));
         }
         else
         {
-            // yield return turnScheduler.StartCoroutine(turnScheduler.ShowPhase());
             turnScheduler.SetState(new PlayerStartTurn(turnScheduler));
         }
         yield break;

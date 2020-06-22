@@ -11,6 +11,7 @@ public class PlayerEndTurn : State
         currUnit.EndTurn();
 
         turnScheduler.playerActionPanel.SetActive(false);
+        turnScheduler.currTeamQueue.Remove(currUnit);
 
         // check whether there are still players in the queue -> if have then it should start the next player.
         if (turnScheduler.currTeamQueue.Count > 0)

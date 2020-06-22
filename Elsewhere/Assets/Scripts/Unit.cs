@@ -13,6 +13,7 @@ public class Unit : MonoBehaviour, IUnit
     #region FIELDS AND REFERENCES
     [Header("UI")]
     public GameObject statPanel;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Abilities")]
     public List<Ability> abilities = new List<Ability>();
@@ -136,7 +137,7 @@ public class Unit : MonoBehaviour, IUnit
     // sets the currentTile 
     public void StartTurn()
     {
-        startTile = map.GetCurrentTile(transform.position); ;
+        startTile = map.GetCurrentTile(transform.position);
         currentTile = startTile;
         CurrState = UnitState.IDLING;
         this.statPanel.SetActive(true);
@@ -145,11 +146,23 @@ public class Unit : MonoBehaviour, IUnit
     public void EndTurn()
     {
         CurrState = UnitState.ENDTURN;
+        this.spriteRenderer.material.SetFloat("_GrayscaleAmount", 0.75f);
         this.statPanel.SetActive(false);
         DecrementAllStatDuration();
         UpdateUI();
     }
 
+    // Reset state to end turn without registering as an end turn
+    public void MakeInactive()
+    {
+        CurrState = UnitState.ENDTURN;
+        this.statPanel.SetActive(false);
+    }
+
+    public void RemoveGrayscale()
+    {
+        this.spriteRenderer.material.SetFloat("_GrayscaleAmount", 0);
+    }
 
     public void StartAttack(Unit unit)
     {

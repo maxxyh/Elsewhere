@@ -28,7 +28,7 @@ public class PlayerAbilityMenu : State
     public override IEnumerator ReturnPreviousMenu()
     {
         turnScheduler.abilitiesPanel.SetActive(false);
-        turnScheduler.SetState(new PlayerStartTurn(turnScheduler));
+        turnScheduler.SetState(new PlayerUnitSelected(turnScheduler));
         yield break;
     }
 }

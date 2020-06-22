@@ -71,7 +71,7 @@ public class PlayerAttackTargeting : State
         turnScheduler.cancelPanel.SetActive(false);
         map.RemoveAttackableTiles();
 
-        turnScheduler.SetState(new PlayerStartTurn(turnScheduler));
+        turnScheduler.SetState(new PlayerUnitSelected(turnScheduler));
         yield break;
     }
 }

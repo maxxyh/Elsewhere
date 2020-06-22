@@ -20,9 +20,11 @@ public interface IUnit
     void EndTurn();
     void GetPathToTile(Tile target);
     bool isDead();
+    void MakeInactive();
     void Move();
     void MovementAnimation();
     void OnMouseDown();
+    void RemoveGrayscale();
     void ReturnToStartTile();
     void Start();
     void StartAttack(Unit unit);
