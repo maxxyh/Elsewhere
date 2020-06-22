@@ -32,9 +32,16 @@ public class TurnScheduler : StateMachine
     public Team currTurn;
     private static int UnitIdCounter;
 
+    [SerializeField] private TraumaInducer camShakeInducer;
+
     #endregion
 
     #region Execution 
+
+    private void Awake()
+    {
+        camShakeInducer = GetComponent<TraumaInducer>();
+    }
 
     public void Init(List<PlayerUnit> players, List<EnemyUnit> enemies)
     {
@@ -117,15 +124,14 @@ public class TurnScheduler : StateMachine
 
     public IEnumerator AttackAnimation(Unit currUnit, Unit targetUnit)
     {
-        targetUnit.statPanel.SetActive(true);
+        targetUnit.statPanelGO.SetActive(true);
+        StartCoroutine(camShakeInducer.Shake());
         yield return StartCoroutine(currUnit.AttackAnimation());
-        TraumaInducer camShakeInducer = GetComponent<TraumaInducer>();
-        yield return StartCoroutine(camShakeInducer.Shake());
 
         // targetUnit not destroyed yet  
         if (targetUnit != null)
         {
-            targetUnit.statPanel.SetActive(false);
+            targetUnit.statPanelGO.SetActive(false);
         }
     }
 

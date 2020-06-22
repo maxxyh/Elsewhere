@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4456a8e92b4a64fa81fa3d154ef044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statPanel: {fileID: 8392416297826450018}
+  statPanelGO: {fileID: 8392416297826450018}
   spriteRenderer: {fileID: 347565865485393676}
   unitID: 0
   characterName: 
@@ -439,6 +439,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: physicalDamage
       objectReference: {fileID: 0}
+    - target: {fileID: 6803744995801828448, guid: 60af12357c78e9645a3b7674acb397ab,
+        type: 3}
+      propertyPath: m_Name
+      value: Class
+      objectReference: {fileID: 0}
     - target: {fileID: 6803744995801828454, guid: 60af12357c78e9645a3b7674acb397ab,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -669,6 +674,11 @@ PrefabInstance:
       propertyPath: unitPhysicalDamage
       value: 
       objectReference: {fileID: 8392416296172332359}
+    - target: {fileID: 6803744997096290581, guid: 60af12357c78e9645a3b7674acb397ab,
+        type: 3}
+      propertyPath: unitName
+      value: 
+      objectReference: {fileID: 8392416297360290661}
     - target: {fileID: 6803744997096290582, guid: 60af12357c78e9645a3b7674acb397ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -902,3 +912,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8392416297360290661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6803744996626067472, guid: 60af12357c78e9645a3b7674acb397ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 3034326836959445877}
+  m_PrefabAsset: {fileID: 0}

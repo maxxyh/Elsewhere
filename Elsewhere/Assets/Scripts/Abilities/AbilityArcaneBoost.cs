@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AbilityArcaneBoost : Ability
 {
-    public AbilityArcaneBoost() : base("Arcane Boost", 3, 4, true, TargetingStyle.SELF, 2)
+    public AbilityArcaneBoost() : base("Arcane Boost", 3, 20, true, TargetingStyle.SELF, 2, 3)
     {
     }
 

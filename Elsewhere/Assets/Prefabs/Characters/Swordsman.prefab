@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c14c17b5337fd04b9b5e5664385f4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statPanel: {fileID: 3681065781349610691}
+  statPanelGO: {fileID: 3681065781349610691}
   spriteRenderer: {fileID: 2870922880512250332}
   unitID: 0
   characterName: 
@@ -462,6 +462,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1521092903780300954, guid: f4d24ff5f97830c4b8c039d718a9d22e,
+        type: 3}
+      propertyPath: m_Name
+      value: Class
+      objectReference: {fileID: 0}
     - target: {fileID: 3727885032442452288, guid: f4d24ff5f97830c4b8c039d718a9d22e,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -481,6 +486,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727885032442452288, guid: f4d24ff5f97830c4b8c039d718a9d22e,
+        type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5785139994306853350, guid: f4d24ff5f97830c4b8c039d718a9d22e,
         type: 3}
@@ -847,6 +857,11 @@ PrefabInstance:
       propertyPath: unitPhysicalDamageButton
       value: 
       objectReference: {fileID: 3681065782330161891}
+    - target: {fileID: 8041053661164271464, guid: f4d24ff5f97830c4b8c039d718a9d22e,
+        type: 3}
+      propertyPath: unitName
+      value: 
+      objectReference: {fileID: 5872392861381657410}
     - target: {fileID: 9073299137143239099, guid: f4d24ff5f97830c4b8c039d718a9d22e,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -935,3 +950,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5872392861381657410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3612970806377922625, guid: f4d24ff5f97830c4b8c039d718a9d22e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7159940554941448963}
+  m_PrefabAsset: {fileID: 0}

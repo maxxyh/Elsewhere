@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour
     public List<PlayerUnit> players = new List<PlayerUnit>();
     public List<EnemyUnit> enemies = new List<EnemyUnit>();
     [JsonConverter(typeof(StringEnumConverter))]
-    private Dictionary<string, Dictionary<StatString, string>> unitStatConfig;
+    //private Dictionary<string, Dictionary<StatString, string>> unitStatConfig;
+    private JObject unitStatConfig;
     public LevelUnitPosition levelUnitPosition;
 
     public Camera worldCamera;
@@ -35,13 +37,12 @@ public class GameManager : MonoBehaviour
 
     void generatePlayers() {
 
-        unitStatConfig = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<StatString, string>>>(File.ReadAllText(@"Assets\Scripts\characterConfig.json"));
+        //unitStatConfig = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(Application.streamingAssetsPath + "/characterConfig.json"));
+        unitStatConfig = JObject.Parse(File.ReadAllText(Application.streamingAssetsPath + "/characterConfig.json"));
 
         Vector3Int[] playerPositions = levelUnitPosition.PlayerPositions;
         Vector3Int[] enemyPositions = levelUnitPosition.EnemyPositions;
 
-        //dynamic temp = JObject.Parse(File.ReadAllText(@"Assets\Scripts\characterConfig.json"));
-        //Debug.Log(temp.Julius.HP);
 
         // default abilities
         List<Ability> AbilitiesSwordsman= new List<Ability>();
@@ -58,36 +59,24 @@ public class GameManager : MonoBehaviour
 
 
         // PLAYERS
-        
-        PlayerUnit player = ((GameObject)Instantiate(PlayerPrefabs[0], playerPositions[0],
-            Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
-        //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
-        player.tag = "player";
-        player.AssignStats(unitStatConfig["Esmeralda"]);
-        player.AssignMap(map);
-        player.AssignAbilities(AbilitiesMage);
-        player.UpdateUI();
-        players.Add(player);
 
-        PlayerUnit player2 = ((GameObject)Instantiate(PlayerPrefabs[1], playerPositions[1],
-            Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
-        //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
-        player2.tag = "player";
-        player2.AssignStats(unitStatConfig["Kelda"]);
-        player2.AssignMap(map);
-        player2.AssignAbilities(AbilitiesHealer);
-        player2.UpdateUI();
-        players.Add(player2);
+        string[] playerNames = { "Esmeralda", "Kelda", "Julius" };
+        List<Ability>[] abilitiesList = { AbilitiesMage, AbilitiesHealer, AbilitiesSwordsman };
 
-        PlayerUnit player3 = ((GameObject)Instantiate(PlayerPrefabs[2], playerPositions[2],
+        for (int i = 0; i < playerPositions.Count(); i++)
+        {
+            PlayerUnit player = ((GameObject)Instantiate(PlayerPrefabs[i], playerPositions[i],
             Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
-        //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
-        player3.tag = "player";
-        player3.AssignStats(unitStatConfig["Julius"]);
-        player3.AssignMap(map);
-        player3.AssignAbilities(AbilitiesSwordsman);
-        player3.UpdateUI();
-        players.Add(player3);
+            //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
+            player.tag = "player";
+            player.AssignStats(unitStatConfig[playerNames[i]]["stats"].ToObject<Dictionary<StatString, float>>());
+            player.AssignMap(map);
+            player.AssignAbilities(abilitiesList[i]);
+            player.AssignIdentity((string)unitStatConfig[playerNames[i]]["name"], (string)unitStatConfig[playerNames[i]]["class"]);
+            player.UpdateUI();
+            players.Add(player);
+        }
+
 
         // ENEMIES
 
@@ -95,8 +84,9 @@ public class GameManager : MonoBehaviour
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
         //enemy.gridPosition = new Vector2(0,0);
         enemy.tag = "enemy";
-        enemy.AssignStats(unitStatConfig["HarvesterGunslinger"]);
+        enemy.AssignStats(unitStatConfig["HarvesterGunslinger"]["stats"].ToObject<Dictionary<StatString, float>>());
         enemy.AssignMap(map);
+        enemy.AssignIdentity((string)unitStatConfig["HarvesterGunslinger"]["name"], (string)unitStatConfig["HarvesterGunslinger"]["class"]);
         enemy.UpdateUI();
         enemies.Add(enemy);
 
@@ -104,8 +94,9 @@ public class GameManager : MonoBehaviour
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
         //enemy.gridPosition = new Vector2(0,0);
         enemy2.tag = "enemy";
-        enemy2.AssignStats(unitStatConfig["HarvesterSwordsman"]);
+        enemy2.AssignStats(unitStatConfig["HarvesterTank"]["stats"].ToObject<Dictionary<StatString, float>>());
         enemy2.AssignMap(map);
+        enemy2.AssignIdentity((string)unitStatConfig["HarvesterTank"]["name"], (string)unitStatConfig["HarvesterTank"]["class"]);
         enemy2.UpdateUI();
         enemies.Add(enemy2);
 
@@ -113,9 +104,10 @@ public class GameManager : MonoBehaviour
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
         //enemy.gridPosition = new Vector2(0,0);
         enemy3.tag = "enemy";
-        enemy3.AssignStats(unitStatConfig["HarvesterGunslinger"]);
+        enemy3.AssignStats(unitStatConfig["HarvesterGunslinger"]["stats"].ToObject<Dictionary<StatString, float>>());
+        enemy3.AssignIdentity((string)unitStatConfig["HarvesterGunslinger"]["name"], (string)unitStatConfig["HarvesterGunslinger"]["class"]);
         enemy3.AssignMap(map);
-        enemy.UpdateUI();
+        enemy3.UpdateUI();
         enemies.Add(enemy3);
     }
 }

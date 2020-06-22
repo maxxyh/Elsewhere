@@ -13,7 +13,7 @@ public abstract class Ability
     protected float manaCost;
     
 
-    public Ability(string abilityName, float attackRange, float manaCost, bool targetsSameTeam, TargetingStyle targetingStyle, int multiAbilityRange = 0, int duration = 1)
+    public Ability(string abilityName, float attackRange, float manaCost, bool targetsSameTeam, TargetingStyle targetingStyle, int multiAbilityRange = 0, int duration = -1)
     {
         this.abilityName = abilityName;
         this.attackRange = attackRange;

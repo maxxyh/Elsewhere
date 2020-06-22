@@ -64,7 +64,10 @@ public class HighlightTile : MonoBehaviour
 
     public void OnMouseOver()
     {
-        highlightMap.HighlightSelectedTiles(this);
+        if (GameAssets.MyInstance.turnScheduler.currTurn == Team.PLAYER)
+        {
+            highlightMap.HighlightSelectedTiles(this);
+        }
     }
 
 }

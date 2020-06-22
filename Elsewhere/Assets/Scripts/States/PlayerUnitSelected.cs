@@ -44,10 +44,15 @@ public class PlayerUnitSelected : State
 
     public override IEnumerator OpenMenu(MenuType menuType)
     {
-        if (menuType == MenuType.ABILITY)
+        if (currUnit.CurrState == UnitState.IDLING)
         {
-            map.RemoveSelectableTiles(turnScheduler.currUnit.currentTile, false);
-            turnScheduler.SetState(new PlayerAbilityMenu(turnScheduler));
+            if (menuType == MenuType.ABILITY)
+            {
+                map.RemoveSelectableTiles(turnScheduler.currUnit.currentTile, false);
+                turnScheduler.abilitiesPanel.SetActive(true);
+                turnScheduler.playerActionPanel.SetActive(false);
+                turnScheduler.SetState(new PlayerAbilityMenu(turnScheduler));
+            }
         }
         yield break;
     }

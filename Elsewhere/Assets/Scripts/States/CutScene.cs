@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditorInternal;
-using System.Runtime.CompilerServices;
 using UnityEngine.UI;
 
 public class CutScene : State
