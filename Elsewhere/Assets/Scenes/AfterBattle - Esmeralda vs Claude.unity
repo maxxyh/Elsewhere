@@ -1021,7 +1021,8 @@ MonoBehaviour:
   speakerUIs:
   - {fileID: 1264869778}
   - {fileID: 1652490921}
-  nextScene: MenuScreen
+  endConvo: 0
+  nextScene: Level1
 --- !u!1 &1167460778
 GameObject:
   m_ObjectHideFlags: 0

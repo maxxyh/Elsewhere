@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c14c17b5337fd04b9b5e5664385f4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statPanel: {fileID: 2509651737894692911}
+  statPanelGO: {fileID: 2509651737894692911}
   spriteRenderer: {fileID: 4118148980490403031}
   unitID: 0
   characterName: 
@@ -461,6 +461,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521092903780300954, guid: f4d24ff5f97830c4b8c039d718a9d22e,
+        type: 3}
+      propertyPath: m_Name
+      value: Class
       objectReference: {fileID: 0}
     - target: {fileID: 3727885032442452288, guid: f4d24ff5f97830c4b8c039d718a9d22e,
         type: 3}
@@ -853,6 +858,11 @@ PrefabInstance:
       propertyPath: unitPhysicalDamage
       value: 
       objectReference: {fileID: 2509651737087807425}
+    - target: {fileID: 8041053661164271464, guid: f4d24ff5f97830c4b8c039d718a9d22e,
+        type: 3}
+      propertyPath: unitName
+      value: 
+      objectReference: {fileID: 4665510514139750318}
     - target: {fileID: 9073299137143239099, guid: f4d24ff5f97830c4b8c039d718a9d22e,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -941,3 +951,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4665510514139750318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3612970806377922625, guid: f4d24ff5f97830c4b8c039d718a9d22e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8258723042006736879}
+  m_PrefabAsset: {fileID: 0}

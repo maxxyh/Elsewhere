@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Collections.ObjectModel;
+using UnityEngine;
+using System.Runtime.Remoting.Messaging;
 
 [Serializable]
 public class UnitStat 
@@ -78,16 +80,31 @@ public class UnitStat
         float finalValue = baseValue;
         float sumPercentAdd = 0;
 
+        Debug.Log("starting value = " + finalValue);
+
         for (int i = 0; i < statModifiers.Count; i++) 
         {
             StatModifier mod = statModifiers[i];
             if (mod.type == StatModType.Flat) 
             {
-                finalValue += mod.value;
+                if (finalValue + mod.value > baseValue && hasLimit)
+                {
+                    finalValue = baseValue;
+                }
+                else if (finalValue + mod.value < 0)
+                {
+                    finalValue = 0;
+                }
+                else
+                {
+                    finalValue += mod.value;
+                }
+                Debug.Log("current value = " + finalValue);
             } 
             else if (mod.type == StatModType.PercentMult) 
             {
-                finalValue *= 1 + mod.value;  
+                finalValue *= 1 + mod.value;
+                Debug.Log("current value = " + finalValue);
             }
             else if (mod.type == StatModType.PercentAdd)
             {
@@ -95,18 +112,12 @@ public class UnitStat
                 if (i + 1 >= statModifiers.Count || statModifiers[i + 1].type != StatModType.PercentAdd) 
                 {
                     finalValue *= 1 + sumPercentAdd;
+                    Debug.Log("current value = " + finalValue);
                     sumPercentAdd = 0;
                 } 
             }
         }
-        if (hasLimit)
-        {
-            return (float)Math.Min(baseValue, Math.Round(finalValue, 4));
-        } else
-        {
-            return (float)Math.Round(finalValue, 4);
-        }
-        
+        return finalValue;
     }
 
     public virtual bool RemoveAllModifiersFromSource(object source) 
@@ -129,13 +140,16 @@ public class UnitStat
         List<StatModifier> toRemove = new List<StatModifier>();
         foreach(StatModifier statModifier in statModifiers)
         {
-            if (statModifier.duration > 1)
+            if (statModifier.type == StatModType.PercentAdd || statModifier.type == StatModType.PercentMult)
             {
-                statModifier.duration--;
-            }
-            else if (statModifier.duration == 1)
-            {
-                toRemove.Add(statModifier);
+                if (statModifier.duration > 1)
+                {
+                    statModifier.duration--;
+                }
+                else if (statModifier.duration == 1)
+                {
+                    toRemove.Add(statModifier);
+                }
             }
         }
         

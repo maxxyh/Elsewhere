@@ -5,7 +5,7 @@ using UnityEngine.PlayerLoop;
 
 public class AbilityAstralFlare : Ability
 {
-    public AbilityAstralFlare() : base("Astral Flare", 3, 4, false, TargetingStyle.MULTI, 2)
+    public AbilityAstralFlare() : base("Astral Flare", 3, 25, false, TargetingStyle.MULTI, 2, 4)
     {
     }
 
@@ -17,7 +17,7 @@ public class AbilityAstralFlare : Ability
             int attackDamage = BattleManager.CalculateMagicDamage(1.2f * initiator.stats[StatString.MAGIC_DAMAGE].Value, target);
             float armorDebuff = 0.2f;
             target.stats[StatString.HP].AddModifier(new StatModifier(-attackDamage, StatModType.Flat));
-            target.stats[StatString.ARMOR].AddModifier(new StatModifier(-armorDebuff, StatModType.PercentAdd));
+            target.stats[StatString.ARMOR].AddModifier(new StatModifier(-armorDebuff, duration, StatModType.PercentAdd));
             DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", attackDamage), PopupType.DAMAGE);
             DamagePopUp.Create(target.transform.position, string.Format("\n\n- {0}% Attack", armorDebuff), PopupType.DEBUFF);
         }

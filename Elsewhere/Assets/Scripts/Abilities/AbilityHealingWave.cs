@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AbilityHealingWave : Ability
 {
-    public AbilityHealingWave() : base("Healing Wave", 3, 4, true, TargetingStyle.SELFSINGLE)
+    public AbilityHealingWave() : base("Healing Wave", 3, 25, true, TargetingStyle.SELFSINGLE)
     {
     }
 
@@ -12,7 +12,7 @@ public class AbilityHealingWave : Ability
     {
         foreach(Unit target in targets)
         {
-            int healingAmount = 5;
+            int healingAmount = 30;
             target.stats[StatString.HP].AddModifier(new StatModifier(healingAmount, StatModType.Flat));
             DamagePopUp.Create(target.transform.position, string.Format("+ {0} HP", healingAmount), PopupType.HEAL);
         }

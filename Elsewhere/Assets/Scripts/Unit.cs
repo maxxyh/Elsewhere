@@ -5,6 +5,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Unit : MonoBehaviour, IUnit
@@ -12,7 +13,8 @@ public class Unit : MonoBehaviour, IUnit
 
     #region FIELDS AND REFERENCES
     [Header("UI")]
-    public GameObject statPanel;
+    public GameObject statPanelGO;
+    private StatPanel statPanel;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Abilities")]
@@ -60,6 +62,10 @@ public class Unit : MonoBehaviour, IUnit
 
     #endregion
 
+    private void Awake()
+    {
+        statPanel = statPanelGO.GetComponent<StatPanel>();
+    }
 
     // Dictionary style constructor 
     public void AssignStats(Dictionary<StatString, float> input)
@@ -92,6 +98,15 @@ public class Unit : MonoBehaviour, IUnit
         }
     }
 
+    public void AssignIdentity(string name, string characterClass)
+    {
+        TextMeshProUGUI MyName = statPanel.unitName.GetComponent<TextMeshProUGUI>();
+        MyName.SetText(name);
+        TextMeshProUGUI MyClass = statPanel.unitClass.GetComponent<TextMeshProUGUI>();
+        MyClass.SetText(characterClass);
+    }
+
+
     public void AssignAbilities(List<Ability> abilities)
     {
         this.abilities = abilities;
@@ -110,23 +125,22 @@ public class Unit : MonoBehaviour, IUnit
 
         if (CurrState == UnitState.ENDTURN)
         {
-            statPanel.SetActive(false);
+            statPanelGO.SetActive(false);
         }
-        //statPanel.SetActive(false);
     }
 
     public void UpdateUI()
     {
-        /*statPanel.GetComponent<StatPanel>().unitName.GetComponent<TextMeshPro>().text = this.characterName;
-        statPanel.GetComponent<StatPanel>().unitClass.GetComponent<TextMeshPro>().text = this.characterClass;*/
-        statPanel.GetComponent<StatPanel>().unitHP.text = this.stats[StatString.HP].Value.ToString() + "/" + this.stats[StatString.HP].baseValue.ToString();
-        statPanel.GetComponent<StatPanel>().unitMana.text = this.stats[StatString.MANA].Value.ToString() + "/" + this.stats[StatString.MANA].baseValue.ToString(); ;
-        statPanel.GetComponent<StatPanel>().unitPhysicalDamage.text = this.stats[StatString.PHYSICAL_DAMAGE].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitMagicDamage.text = this.stats[StatString.MAGIC_DAMAGE].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitArmor.text = this.stats[StatString.ARMOR].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitMagicRes.text = this.stats[StatString.MAGIC_RES].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitMovementRange.text = this.stats[StatString.MOVEMENT_RANGE].Value.ToString();
-        statPanel.GetComponent<StatPanel>().unitAttackRange.text = this.stats[StatString.PHYSICAL_DAMAGE].Value.ToString();
+        /*statPanel.unitName.GetComponent<TextMeshPro>().text = this.characterName;
+        statPanel.unitClass.GetComponent<TextMeshPro>().text = this.characterClass;*/
+        statPanel.unitHP.text = this.stats[StatString.HP].Value.ToString() + "/" + this.stats[StatString.HP].baseValue.ToString();
+        statPanel.unitMana.text = this.stats[StatString.MANA].Value.ToString() + "/" + this.stats[StatString.MANA].baseValue.ToString(); ;
+        statPanel.unitPhysicalDamage.text = this.stats[StatString.PHYSICAL_DAMAGE].Value.ToString();
+        statPanel.unitMagicDamage.text = this.stats[StatString.MAGIC_DAMAGE].Value.ToString();
+        statPanel.unitArmor.text = this.stats[StatString.ARMOR].Value.ToString();
+        statPanel.unitMagicRes.text = this.stats[StatString.MAGIC_RES].Value.ToString();
+        statPanel.unitMovementRange.text = this.stats[StatString.MOVEMENT_RANGE].Value.ToString();
+        statPanel.unitAttackRange.text = this.stats[StatString.ATTACK_RANGE].Value.ToString();
     }
 
     public bool isDead()
@@ -140,14 +154,14 @@ public class Unit : MonoBehaviour, IUnit
         startTile = map.GetCurrentTile(transform.position);
         currentTile = startTile;
         CurrState = UnitState.IDLING;
-        this.statPanel.SetActive(true);
+        this.statPanelGO.SetActive(true);
     }
 
     public void EndTurn()
     {
         CurrState = UnitState.ENDTURN;
         this.spriteRenderer.material.SetFloat("_GrayscaleAmount", 0.75f);
-        this.statPanel.SetActive(false);
+        this.statPanelGO.SetActive(false);
         DecrementAllStatDuration();
         UpdateUI();
     }
@@ -156,7 +170,7 @@ public class Unit : MonoBehaviour, IUnit
     public void MakeInactive()
     {
         CurrState = UnitState.ENDTURN;
-        this.statPanel.SetActive(false);
+        this.statPanelGO.SetActive(false);
     }
 
     public void RemoveGrayscale()
@@ -270,15 +284,15 @@ public class Unit : MonoBehaviour, IUnit
     // need to integrate with the turn manager
     public void OnMouseDown()
     {
-        if (statPanel != null)
+        if (statPanelGO != null)
         {
-            if (!statPanel.activeSelf)
+            if (!statPanelGO.activeSelf)
             {
-                statPanel.SetActive(true);
+                statPanelGO.SetActive(true);
             }
             else
             {
-                statPanel.SetActive(false);
+                statPanelGO.SetActive(false);
             }
         }
     }
@@ -303,20 +317,20 @@ public class Unit : MonoBehaviour, IUnit
         }
     }
 
-    #endregion
-
-    private void OnMouseEnter()
+    #endregion   
+    public void SetStatPanelActive()
     {
-        this.statPanel.SetActive(true);
+        this.statPanelGO.SetActive(true);
     }
 
-    private void OnMouseExit()
+    public void SetStatPanelInActive()
     {
         if (CurrState == UnitState.ENDTURN)
         {
-            this.statPanel.SetActive(false);
+            this.statPanelGO.SetActive(false);
         }
     }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("crystal"))

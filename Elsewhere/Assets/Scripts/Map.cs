@@ -143,11 +143,15 @@ public class Map : MonoBehaviour
                 {
                     int newEstimate = node.distance + neighbour.movementCost;
 
-                    if (neighbour.walkable && !neighbour.occupied && neighbour.distance > newEstimate && newEstimate <= movementRange)
+                    if (neighbour.walkable && neighbour.distance > newEstimate && newEstimate <= movementRange)
                     {
-                        neighbour.selectable = true;
-                        // TODO remove selectableTiles
-                        selectableTiles.Add(neighbour);
+                        if (!neighbour.occupied)
+                        {
+                            neighbour.selectable = true;
+                            selectableTiles.Add(neighbour);
+                        }
+                           
+
                         neighbour.distance = newEstimate;
                         neighbour.parent = node;
                         processing.Enqueue(new TileDistancePair(newEstimate, neighbour));

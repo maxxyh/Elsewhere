@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/UnderTree.unity
     guid: f484eeae4524fae4baa62eb51c6bc9ec
   - enabled: 1
+    path: Assets/Scenes/AfterBattle - Rowan vs Julius.unity
+    guid: c330baf618b12e24c9f168d777671790
+  - enabled: 1
     path: Assets/Scenes/AfterBattle - Esmeralda vs Claude.unity
     guid: aa81015d7c63958418a3c96fa4dc8bb1
   m_configObjects: {}

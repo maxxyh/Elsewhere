@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AbilityHPReaver : Ability
 {
-    public AbilityHPReaver() : base("HP Reaver", 3, 4, false, TargetingStyle.SINGLE)
+    public AbilityHPReaver() : base("HP Reaver", 3, 15, false, TargetingStyle.SINGLE)
     {
     }
 

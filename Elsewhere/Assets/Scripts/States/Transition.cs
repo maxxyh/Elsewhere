@@ -4,8 +4,6 @@
 
 using UnityEngine;
 using System.Collections;
-using UnityEngine.XR.WSA.Input;
-using UnityEngine.SocialPlatforms;
 using System.Linq;
 
 public class Transition : State

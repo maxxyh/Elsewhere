@@ -388,6 +388,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8193701953913414164, guid: 4c3382c93e72b044490938e580df6bb7,
+        type: 3}
+      propertyPath: Range
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193701953913414164, guid: 4c3382c93e72b044490938e580df6bb7,
+        type: 3}
+      propertyPath: Delay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193701953913414164, guid: 4c3382c93e72b044490938e580df6bb7,
+        type: 3}
+      propertyPath: MaximumStress
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c3382c93e72b044490938e580df6bb7, type: 3}
 --- !u!114 &105424488 stripped

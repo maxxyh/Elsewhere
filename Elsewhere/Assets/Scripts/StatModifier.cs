@@ -32,5 +32,5 @@ public class StatModifier
 
     public StatModifier(float value, StatModType type, object source) : this (value, type, (int) type, source, 0) { }
 
-    public StatModifier(float value, int distance, StatModType type) : this(value, type, (int)type, null, distance) { }
+    public StatModifier(float value, int duration, StatModType type) : this(value, type, (int)type, null, duration) { }
 }

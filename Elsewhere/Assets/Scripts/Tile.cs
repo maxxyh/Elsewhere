@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ public class Tile : MonoBehaviour, ITile
     public bool occupied { get; set; }
 
     private bool hover;
+
+    private Unit toDisplay;
 
     public Tile parent { get; set; }
     public int distance { get; set; }
@@ -58,16 +61,19 @@ public class Tile : MonoBehaviour, ITile
 
 
     // TODO move this to another layer perhaps?
+    /*
     void OnMouseEnter()
     {
         hover = true;
     }
+    
 
     void OnMouseExit()
     {
         GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0f);
         hover = false;
     }
+    */
 
     void OnMouseButtonDown()
     {
@@ -144,6 +150,31 @@ public class Tile : MonoBehaviour, ITile
         }
     }
 
+    public void OnMouseEnter()
+    {
+        if (occupied)
+        {
+            toDisplay = GameAssets.MyInstance.turnScheduler.players.Find(x => x.currentTile == this);
+            if (toDisplay == null)
+            {
+                toDisplay = GameAssets.MyInstance.turnScheduler.enemies.Find(x => x.currentTile == this);
+            }
+            if (toDisplay != null)
+            {
+                toDisplay.SetStatPanelActive();
+            }
+        }
+
+    }
+
+    public void OnMouseExit()
+    {
+        if (occupied && toDisplay != null)
+        {
+            toDisplay.SetStatPanelInActive();
+            toDisplay = null;
+        }
+    }
 
     public void OnMouseDown()
     {
