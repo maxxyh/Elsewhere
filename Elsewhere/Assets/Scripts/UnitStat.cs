@@ -22,9 +22,9 @@ public class UnitStat
     protected float lastBaseValue = float.MinValue;
    
     //indicate if we need to recalculate the value or not
-    protected bool isDirty = true;
-
-    // indicate if can exceed the base value
+    protected bool isDirty = true;
+
+    // indicate if can exceed the base value
     protected bool hasLimit;
    
     //holds most recent calculation that we did
@@ -78,6 +78,7 @@ public class UnitStat
         float finalValue = baseValue;
         float sumPercentAdd = 0;
 
+        // Debug.Log("starting value = " + finalValue);
 
         for (int i = 0; i < statModifiers.Count; i++) 
         {
@@ -96,6 +97,7 @@ public class UnitStat
                 if (i + 1 >= statModifiers.Count || statModifiers[i + 1].type != StatModType.PercentAdd) 
                 {
                     finalValue *= 1 + sumPercentAdd;
+                    // Debug.Log("current value = " + finalValue);
                     sumPercentAdd = 0;
                 } 
             }
@@ -118,41 +120,41 @@ public class UnitStat
         return didRemove;
     }
 
-    public void DecrementDuration()
-    {
-        List<StatModifier> toRemove = new List<StatModifier>();
-        foreach(StatModifier statModifier in statModifiers)
-        {
-            if (statModifier.type == StatModType.PercentAdd || statModifier.type == StatModType.PercentMult)
-            {
-                if (statModifier.duration > 1)
-                {
-                    statModifier.duration--;
-                }
-                else if (statModifier.duration == 1)
-                {
-                    toRemove.Add(statModifier);
-                }
-            }
-        }
-        
-        foreach(StatModifier sm in toRemove)
-        {
-            RemoveModifier(sm);
-        }
+    public void DecrementDuration()
+    {
+        List<StatModifier> toRemove = new List<StatModifier>();
+        foreach(StatModifier statModifier in statModifiers)
+        {
+            if (statModifier.type == StatModType.PercentAdd || statModifier.type == StatModType.PercentMult)
+            {
+                if (statModifier.duration > 1)
+                {
+                    statModifier.duration--;
+                }
+                else if (statModifier.duration == 1)
+                {
+                    toRemove.Add(statModifier);
+                }
+            }
+        }
+        
+        foreach(StatModifier sm in toRemove)
+        {
+            RemoveModifier(sm);
+        }
     }
 
-    public float GetPercentageModifierAmount()
-    {
+    public float GetPercentageModifierAmount()
+    {
         float percentMult = 1;
         float sumPercentAdd = 1;
 
-        for (int i = 0; i < statModifiers.Count; i++)
+        for (int i = 0; i < statModifiers.Count; i++)
         {
             StatModifier mod = statModifiers[i];
-            if (mod.type == StatModType.PercentMult)
+            if (mod.type == StatModType.PercentMult)
             {
-                percentMult *= mod.value;
+                percentMult *= mod.value;
             }
             else if (mod.type == StatModType.PercentAdd)
             {
@@ -165,19 +167,19 @@ public class UnitStat
         float finalValue = CalculateFinalValue();
 
         return finalValue - finalValue / result;
-
+
     }
 }
 
-public enum StatString
-{
-    HP,
-    MANA,
-    PHYSICAL_DAMAGE,
-    MAGIC_DAMAGE,
-    ARMOR,
-    MAGIC_RES,
-    MOVEMENT_RANGE,
-    ATTACK_RANGE,
-    CRIT_RATE
+public enum StatString
+{
+    HP,
+    MANA,
+    PHYSICAL_DAMAGE,
+    MAGIC_DAMAGE,
+    ARMOR,
+    MAGIC_RES,
+    MOVEMENT_RANGE,
+    ATTACK_RANGE,
+    CRIT_RATE
 }

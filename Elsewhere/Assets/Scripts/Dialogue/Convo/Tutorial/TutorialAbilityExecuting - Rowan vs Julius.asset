@@ -10,25 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
-  m_Name: Rowan vs Kelda
+  m_Name: TutorialAbilityExecuting - Rowan vs Julius
   m_EditorClassIdentifier: 
   speakers:
+  - {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
   - {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-  - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: Hope you haven't forgotten why we're here Claudie, there's a memory to
-      be reclaimed!
+    text: Anyways, see those blue tiles? That's your ability range!
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: Let your gracious senior tell you what to do!
+    text: 'Just click on a tile inside the range and click "Yes" in the panel! '
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: 'We''re in the Lucid World, trying to reclaim MY memory. '
+    text: The best part is, you can change your mind any time! Just click "No" instead!
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: See those guys in pink?
+    text: See? I know the developers are so considerate!
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: They're the EVIIIIL Harvesters who destroy memories to create Etherium
-      energy! Despicable! Right, Kelda?
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-    text: Agree! We need to defeat them all to win... Not gonna be easy...
-  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: But we can do it! Let's go!
+    text: You are so cool, Julius!
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: How can you not be tired of talking, Rowan...

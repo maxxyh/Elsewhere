@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour, IUnit
     #region FIELDS AND REFERENCES
     [Header("UI")]
     public GameObject statPanelGO;
-    private StatPanel statPanel;
+    public StatPanel statPanel;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Abilities")]
@@ -100,6 +100,7 @@ public class Unit : MonoBehaviour, IUnit
 
     public void AssignIdentity(string name, string characterClass)
     {
+        this.characterName = name;
         TextMeshProUGUI MyName = statPanel.unitName.GetComponent<TextMeshProUGUI>();
         MyName.SetText(name);
         TextMeshProUGUI MyClass = statPanel.unitClass.GetComponent<TextMeshProUGUI>();
@@ -145,17 +146,17 @@ public class Unit : MonoBehaviour, IUnit
 
     static string DisplayBuff(float amount)
     {
-        if (amount ==0)
+        if (amount == 0)
         {
             return "";
         }
         else if (amount > 0)
         {
-            return $" (+ {amount})";
+            return $"(+{amount})";
         }
         else
         {
-            return $" (- {Math.Abs(amount)})";
+            return $"(-{Math.Abs(amount)})";
         }
     }
 

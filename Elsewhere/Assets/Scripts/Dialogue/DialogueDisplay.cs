@@ -26,7 +26,7 @@ public class DialogueDisplay : MonoBehaviour
         AdvanceConversation();
     }
 
-    private void Update()
+    public void Update()
     {
         if (!endConvo)
         {

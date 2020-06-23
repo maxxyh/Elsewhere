@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: TutorialMove - Esmeralda
+  m_EditorClassIdentifier: 
+  speakers:
+  - {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+  - {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+  lines:
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: See the green tiles? They reflect your movement range. You can only move
+      within these tiles.
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: Bushes will shorten your movement range by 1 unit.
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: And those planters will block your path.
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: Now it's time to choose a location.
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: 'Hey Capt! Can I take over you from here? I LOVE THE FUN PART! '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: Sure, Rowan, go ahead.
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: Thanks Capt! So Claudie, now we can attack them!
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: 'Just click attack! See all those red tiles? '

@@ -24,13 +24,23 @@ public class TurnScheduler : StateMachine
     public GameObject victoryUI;
     public GameObject tutorialPanel;
 
-    public DialogueDisplay dialogUI;
+    [Header("Dialogue")]
+    public DialogueDisplay openingDialogue;
+    public GameObject startPlayerTurnDialogue;
+    public GameObject moveDiaglogue;
+    public GameObject attackDialogue;
+    public GameObject nextChooseDialogue;
+    public GameObject abilityClickDialogue;
+    public GameObject abilityChoosingDialogue;
+    public GameObject abilityExecutingDialogue;
+    public GameObject startEnemyTurnDialogue;
 
     public Map map;
     public Unit currUnit;
 
     public Team currTurn;
     private static int UnitIdCounter;
+    public int TutTurn = 0;
 
     [SerializeField] private TraumaInducer camShakeInducer;
 

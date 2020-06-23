@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: TutorialStart - Esmeralda vs Kelda
+  m_EditorClassIdentifier: 
+  speakers:
+  - {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+  - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  lines:
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'Now is our turn. Left-click on me so you can start my turn of action. '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: You can also check our own members' stats as well as enemies's by right-clicking
+      on them.
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: You got this, Claude!

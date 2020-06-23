@@ -8,5 +8,4 @@ public class LevelUnitPosition : ScriptableObject
     public Vector3Int[] PlayerPositions;
     [SerializeField]
     public Vector3Int[] EnemyPositions;
-    
-}
+}  
