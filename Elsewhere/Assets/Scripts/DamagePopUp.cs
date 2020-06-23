@@ -45,7 +45,8 @@ public class DamagePopUp : MonoBehaviour
         else if (popupType == PopupType.DAMAGE || popupType == PopupType.DEBUFF)
         {
             textMesh.fontSize = 3;
-            textColor = new Color(0.80392f, 0.36078f, 0.36078f);
+            //textColor = new Color(0.80392f, 0.36078f, 0.36078f);
+            textColor = Color.red;
         }
 
         textMesh.color = textColor;

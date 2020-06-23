@@ -3,6 +3,7 @@ using System;
 using System.Collections.ObjectModel;
 using UnityEngine;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Policy;
 
 [Serializable]
 public class UnitStat 
@@ -80,8 +81,6 @@ public class UnitStat
         float finalValue = baseValue;
         float sumPercentAdd = 0;
 
-        Debug.Log("starting value = " + finalValue);
-
         for (int i = 0; i < statModifiers.Count; i++) 
         {
             StatModifier mod = statModifiers[i];
@@ -99,12 +98,10 @@ public class UnitStat
                 {
                     finalValue += mod.value;
                 }
-                Debug.Log("current value = " + finalValue);
             } 
             else if (mod.type == StatModType.PercentMult) 
             {
                 finalValue *= 1 + mod.value;
-                Debug.Log("current value = " + finalValue);
             }
             else if (mod.type == StatModType.PercentAdd)
             {
@@ -112,7 +109,6 @@ public class UnitStat
                 if (i + 1 >= statModifiers.Count || statModifiers[i + 1].type != StatModType.PercentAdd) 
                 {
                     finalValue *= 1 + sumPercentAdd;
-                    Debug.Log("current value = " + finalValue);
                     sumPercentAdd = 0;
                 } 
             }
@@ -157,6 +153,32 @@ public class UnitStat
         {
             RemoveModifier(sm);
         }
+    }
+
+    public float GetPercentageModifierAmount()
+    {
+        float percentMult = 1;
+        float sumPercentAdd = 1;
+
+        for (int i = 0; i < statModifiers.Count; i++)
+        {
+            StatModifier mod = statModifiers[i];
+            if (mod.type == StatModType.PercentMult)
+            {
+                percentMult *= mod.value;
+            }
+            else if (mod.type == StatModType.PercentAdd)
+            {
+                sumPercentAdd += mod.value;
+            }
+        }
+
+        float result = sumPercentAdd * percentMult;
+
+        float finalValue = CalculateFinalValue();
+
+        return finalValue - finalValue / result;
+
     }
 }
 

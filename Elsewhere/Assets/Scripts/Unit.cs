@@ -135,12 +135,28 @@ public class Unit : MonoBehaviour, IUnit
         statPanel.unitClass.GetComponent<TextMeshPro>().text = this.characterClass;*/
         statPanel.unitHP.text = this.stats[StatString.HP].Value.ToString() + "/" + this.stats[StatString.HP].baseValue.ToString();
         statPanel.unitMana.text = this.stats[StatString.MANA].Value.ToString() + "/" + this.stats[StatString.MANA].baseValue.ToString(); ;
-        statPanel.unitPhysicalDamage.text = this.stats[StatString.PHYSICAL_DAMAGE].Value.ToString();
-        statPanel.unitMagicDamage.text = this.stats[StatString.MAGIC_DAMAGE].Value.ToString();
-        statPanel.unitArmor.text = this.stats[StatString.ARMOR].Value.ToString();
-        statPanel.unitMagicRes.text = this.stats[StatString.MAGIC_RES].Value.ToString();
+        statPanel.unitPhysicalDamage.text = this.stats[StatString.PHYSICAL_DAMAGE].Value.ToString() + DisplayBuff(this.stats[StatString.PHYSICAL_DAMAGE].GetPercentageModifierAmount()); 
+        statPanel.unitMagicDamage.text = this.stats[StatString.MAGIC_DAMAGE].Value.ToString() + DisplayBuff(this.stats[StatString.MAGIC_DAMAGE].GetPercentageModifierAmount());
+        statPanel.unitArmor.text = this.stats[StatString.ARMOR].Value.ToString() + DisplayBuff(this.stats[StatString.ARMOR].GetPercentageModifierAmount());
+        statPanel.unitMagicRes.text = this.stats[StatString.MAGIC_RES].Value.ToString() + DisplayBuff(this.stats[StatString.MAGIC_RES].GetPercentageModifierAmount());
         statPanel.unitMovementRange.text = this.stats[StatString.MOVEMENT_RANGE].Value.ToString();
         statPanel.unitAttackRange.text = this.stats[StatString.ATTACK_RANGE].Value.ToString();
+    }
+
+    static string DisplayBuff(float amount)
+    {
+        if (amount ==0)
+        {
+            return "";
+        }
+        else if (amount > 0)
+        {
+            return $" (+ {amount})";
+        }
+        else
+        {
+            return $" (- {Math.Abs(amount)})";
+        }
     }
 
     public bool isDead()

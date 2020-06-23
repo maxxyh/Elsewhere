@@ -1,7 +1,7 @@
 {
     "Julius": {
         "name": "Julius",
-        "class": "Sworsman",
+        "class": "Swordsman",
         "stats":{
             "HP": 94,
             "MANA": 55,

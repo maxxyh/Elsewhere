@@ -19,7 +19,7 @@ public class AbilityAstralFlare : Ability
             target.stats[StatString.HP].AddModifier(new StatModifier(-attackDamage, StatModType.Flat));
             target.stats[StatString.ARMOR].AddModifier(new StatModifier(-armorDebuff, duration, StatModType.PercentAdd));
             DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", attackDamage), PopupType.DAMAGE);
-            DamagePopUp.Create(target.transform.position, string.Format("\n\n- {0}% Attack", armorDebuff), PopupType.DEBUFF);
+            DamagePopUp.Create(target.transform.position, string.Format("\n\n- {0}% Attack", armorDebuff*100), PopupType.DEBUFF);
         }
         UpdateStats(initiator, targets);
 
