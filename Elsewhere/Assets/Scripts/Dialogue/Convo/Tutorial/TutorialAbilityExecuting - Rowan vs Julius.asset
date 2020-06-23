@@ -25,6 +25,4 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: See? I know the developers are so considerate!
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: You are so cool, Julius!
-  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
     text: How can you not be tired of talking, Rowan...
