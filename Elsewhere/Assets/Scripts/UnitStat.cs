@@ -78,7 +78,6 @@ public class UnitStat
         float finalValue = baseValue;
         float sumPercentAdd = 0;
 
-        Debug.Log("starting value = " + finalValue);
 
         for (int i = 0; i < statModifiers.Count; i++) 
         {
@@ -97,7 +96,6 @@ public class UnitStat
                 if (i + 1 >= statModifiers.Count || statModifiers[i + 1].type != StatModType.PercentAdd) 
                 {
                     finalValue *= 1 + sumPercentAdd;
-                    Debug.Log("current value = " + finalValue);
                     sumPercentAdd = 0;
                 } 
             }
