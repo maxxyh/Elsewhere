@@ -2,16 +2,18 @@
 using System.Collections;
 
 [CreateAssetMenu(fileName = "Level InitialUnitInfo", menuName = "ScriptableObjects/New InitialUnitInfo")]
-public class IntialUnitInfo : ScriptableObject
+public class IntialInfo : ScriptableObject
 {
     [SerializeField]
-    public UnitInfoSO[] playerList;
+    public GameObjectInfo[] playerList;
     [SerializeField]
-    public UnitInfoSO[] enemyList;
+    public GameObjectInfo[] enemyList;
+    [SerializeField]
+    public GameObjectInfo[] crystalList;
 }
 
 [System.Serializable]
-public class UnitInfoSO
+public class GameObjectInfo
 {
     [SerializeField]
     public string unitID;

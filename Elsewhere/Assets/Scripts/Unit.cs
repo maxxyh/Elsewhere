@@ -15,6 +15,8 @@ public class Unit : MonoBehaviour, IUnit
     [Header("UI")]
     public GameObject statPanelGO;
     public StatPanel statPanel;
+    public MajorStatPanel majorStatPanel;
+
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Abilities")]
@@ -142,6 +144,15 @@ public class Unit : MonoBehaviour, IUnit
         statPanel.unitMagicRes.text = this.stats[StatString.MAGIC_RES].Value.ToString() + DisplayBuff(this.stats[StatString.MAGIC_RES].GetPercentageModifierAmount());
         statPanel.unitMovementRange.text = this.stats[StatString.MOVEMENT_RANGE].Value.ToString();
         statPanel.unitAttackRange.text = this.stats[StatString.ATTACK_RANGE].Value.ToString();
+
+        majorStatPanel.unitHP.text = this.stats[StatString.HP].Value.ToString() + "/" + this.stats[StatString.HP].baseValue.ToString();
+        majorStatPanel.unitMana.text = this.stats[StatString.MANA].Value.ToString() + "/" + this.stats[StatString.MANA].baseValue.ToString(); ;
+        majorStatPanel.unitPhysicalDamage.text = this.stats[StatString.PHYSICAL_DAMAGE].Value.ToString() + DisplayBuff(this.stats[StatString.PHYSICAL_DAMAGE].GetPercentageModifierAmount());
+        majorStatPanel.unitMagicDamage.text = this.stats[StatString.MAGIC_DAMAGE].Value.ToString() + DisplayBuff(this.stats[StatString.MAGIC_DAMAGE].GetPercentageModifierAmount());
+        majorStatPanel.unitArmor.text = this.stats[StatString.ARMOR].Value.ToString() + DisplayBuff(this.stats[StatString.ARMOR].GetPercentageModifierAmount());
+        majorStatPanel.unitMagicRes.text = this.stats[StatString.MAGIC_RES].Value.ToString() + DisplayBuff(this.stats[StatString.MAGIC_RES].GetPercentageModifierAmount());
+        majorStatPanel.unitMovementRange.text = this.stats[StatString.MOVEMENT_RANGE].Value.ToString();
+        majorStatPanel.unitAttackRange.text = this.stats[StatString.ATTACK_RANGE].Value.ToString();
     }
 
     static string DisplayBuff(float amount)

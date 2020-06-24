@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public HighlightMap highlightMap;
     public List<PlayerUnit> players = new List<PlayerUnit>();
     public List<EnemyUnit> enemies = new List<EnemyUnit>();
-    public IntialUnitInfo initialUnitInfo;
+    public IntialInfo initialUnitInfo;
     [JsonConverter(typeof(StringEnumConverter))]
     //private Dictionary<string, Dictionary<StatString, string>> unitStatConfig;
     private JObject unitStatConfig;
@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
         /*Vector3Int[] playerPositions = levelUnitPosition.PlayerPositions;
         Vector3Int[] enemyPositions = levelUnitPosition.EnemyPositions;*/
 
-        UnitInfoSO[] playerInfo = initialUnitInfo.playerList;
-        UnitInfoSO[] enemyInfo = initialUnitInfo.enemyList;
+        GameObjectInfo[] playerInfo = initialUnitInfo.playerList;
+        GameObjectInfo[] enemyInfo = initialUnitInfo.enemyList;
         // default abilities
         List <Ability> AbilitiesSwordsman= new List<Ability>();
         List<Ability> AbilitiesMage = new List<Ability>();

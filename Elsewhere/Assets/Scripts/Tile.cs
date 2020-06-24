@@ -164,7 +164,6 @@ public class Tile : MonoBehaviour, ITile
                 toDisplay.SetStatPanelActive();
             }
         }
-
     }
 
     public void OnMouseExit()
@@ -182,6 +181,24 @@ public class Tile : MonoBehaviour, ITile
         GameAssets.MyInstance.turnScheduler.OnClickCheckForValidTarget(this);
     }
 
+    public void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (occupied)
+            {
+                toDisplay = GameAssets.MyInstance.turnScheduler.players.Find(x => x.currentTile == this);
+                if (toDisplay == null)
+                {
+                    toDisplay = GameAssets.MyInstance.turnScheduler.enemies.Find(x => x.currentTile == this);
+                }
+                if (toDisplay != null)
+                {
+                    toDisplay.majorStatPanel.gameObject.SetActive(true);
+                }
+            }
+        }
+    }
 }
 
 

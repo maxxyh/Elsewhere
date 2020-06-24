@@ -35,7 +35,7 @@
         "class": "Healer",
         "stats": {
             "HP": 100,
-            "MANA": 150,
+            "MANA": 80,
             "PHYSICAL_DAMAGE": 20,
             "MAGIC_DAMAGE": 36,
             "ARMOR": 25,
