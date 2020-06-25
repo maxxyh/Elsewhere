@@ -3,6 +3,7 @@ using System.Collections;
 using System.Xml.Serialization;
 using UnityEngine.PlayerLoop;
 using System;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -32,8 +33,18 @@ public class AudioManager : MonoBehaviour
     private AudioSource musicSource;
     private AudioSource musicSource2;
     private AudioSource sfxSource;
+    private AudioSource loopingSFXSource;
+
+    [SerializeField] private AudioClip hitSFX;
+    [SerializeField] private AudioClip spellSFX;
+    [SerializeField] private AudioClip crystalCollectedSFX;
+    [SerializeField] private AudioClip walkingSFX;
+    [SerializeField] private AudioClip buttonHoverSFX;
+    [SerializeField] private AudioClip buttonClickSFX;
+
 
     private bool firstMusicSourceIsPlaying;
+    private bool loopingSFXisPlaying;
     #endregion
 
     private void Awake()
@@ -45,10 +56,14 @@ public class AudioManager : MonoBehaviour
         musicSource = this.gameObject.AddComponent<AudioSource>();
         musicSource2 = this.gameObject.AddComponent<AudioSource>();
         sfxSource = this.gameObject.AddComponent<AudioSource>();
+        loopingSFXSource = this.gameObject.AddComponent<AudioSource>();
 
         // Loop the music tracks
         musicSource.loop = true;
         musicSource2.loop = true;
+        loopingSFXSource.loop = true;
+
+        Unit.OnCrystalCollected += PlayCollectCrystalSound;
     }
 
     public void PlayMusic(AudioClip musicClip)
@@ -134,6 +149,53 @@ public class AudioManager : MonoBehaviour
         sfxSource.volume = volume;
         sfxSource.PlayOneShot(clip);
     }
+
+    public void PlayLoopingSFX(AudioClip clip, float volume=1)
+    {
+        loopingSFXSource.clip = clip;
+        loopingSFXSource.volume = volume;
+        loopingSFXSource.Play();
+        loopingSFXisPlaying = true;
+}
+
+    public void StopLoopingSFX()
+    {
+        loopingSFXSource.Stop();
+        loopingSFXisPlaying = false;
+}
+
+    public void PlayHitSound(float volume=1)
+    {
+        PlaySFX(hitSFX, volume);
+    }
+
+    public void PlaySpellSound(float volume = 1)
+    {
+        PlaySFX(spellSFX, volume);
+    }
+
+    public void PlayWalkingSound(float volume = 1)
+    {
+        if (!loopingSFXisPlaying)
+        {
+            PlayLoopingSFX(walkingSFX, volume);
+        }
+    }
+
+    public void PlayCollectCrystalSound()
+    {
+        PlaySFX(crystalCollectedSFX, 1);
+    }
+
+    public void PlayButtonHoverSFX()
+    {
+        PlaySFX(buttonHoverSFX);
+    }
+    public void PlayButtonClickSFX()
+    {
+        PlaySFX(buttonClickSFX);
+    }
+
 
     public void SetSFXVolume(float volume)
     {

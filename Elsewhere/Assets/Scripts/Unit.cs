@@ -68,7 +68,6 @@ public class Unit : MonoBehaviour, IUnit
 
     private void Awake()
     {
-        // panelManager = panelManagerGO.GetComponent<PanelManager>();
         statPanel = statPanelGO.GetComponent<StatPanel>();
     }
 
@@ -185,6 +184,7 @@ public class Unit : MonoBehaviour, IUnit
 
     public IEnumerator AttackAnimation()
     {
+        AudioManager.Instance.PlayHitSound();
         anim.SetBool("isAttacking", true);
         yield return new WaitForSecondsRealtime(0.4f);
         anim.SetBool("isAttacking", false);
@@ -192,9 +192,11 @@ public class Unit : MonoBehaviour, IUnit
 
     public IEnumerator AbilityAnimation()
     {
+        AudioManager.Instance.PlaySpellSound();
         anim.SetBool("isAbility", true);
         yield return new WaitForSecondsRealtime(0.5f);
         anim.SetBool("isAbility", false);
+        AudioManager.Instance.PlayHitSound();
     }
 
     public void TakeDamage(float damage)
@@ -225,6 +227,7 @@ public class Unit : MonoBehaviour, IUnit
     {
         if (path.Count > 0)
         {
+            AudioManager.Instance.PlayWalkingSound();
             Tile t = path.Peek();
             Vector3 target = t.transform.position;
 
@@ -251,6 +254,7 @@ public class Unit : MonoBehaviour, IUnit
         }
         else
         {
+            AudioManager.Instance.StopLoopingSFX();
             // clear currentTile and make sure it's selectable
             currentTile.Reset();
             currentTile.occupied = false;

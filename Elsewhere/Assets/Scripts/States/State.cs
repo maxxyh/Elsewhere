@@ -91,6 +91,11 @@ public abstract class State
         yield break;
     }
 
+    public virtual IEnumerator AllCrystalsCollectedWin()
+    {
+        turnScheduler.SetState(new Win(turnScheduler));
+        yield break;
+    }
 
 }
 

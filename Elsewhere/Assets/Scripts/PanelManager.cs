@@ -12,6 +12,8 @@ public class PanelManager : MonoBehaviour
     private Dictionary<int, DialogueDisplay> sceneDialogueDisplays = new Dictionary<int, DialogueDisplay>();
     private Dictionary<int, DialogueDisplay> postSceneDialogueDisplays = new Dictionary<int, DialogueDisplay>();
 
+    public static Action OnAllCrystalsCollected;
+
     [System.Serializable]
     public class CutScenePanelInput
     {
@@ -35,10 +37,11 @@ public class PanelManager : MonoBehaviour
             postSceneDialogueDisplays.Add(postCutscenePanelList[i].index, dp);
         }
 
-        Unit.OnCrystalCollected += PlayDialogue;
+        Unit.OnCrystalCollected += PlayCrystalDialogue;
     }
-    public void PlayDialogue()
+    public void PlayCrystalDialogue()
     {
+        //AudioManager.Instance.PlaySFX()
         StartCoroutine(CrystalDialogue());
     }
 
@@ -61,8 +64,11 @@ public class PanelManager : MonoBehaviour
             yield return new WaitUntil(() => this.postSceneDialogueDisplays[panelCounter].endConvo);
             postCutsceneDialogue.cutSceneGO.SetActive(false);
         }
-
         panelCounter++;
         
+        if (panelCounter == Math.Max(sceneDialogueDisplays.Count, postSceneDialogueDisplays.Count))
+        {
+            OnAllCrystalsCollected();
+        }
     }
 }

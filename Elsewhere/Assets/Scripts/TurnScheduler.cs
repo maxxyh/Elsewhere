@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,8 @@ public class TurnScheduler : StateMachine
     private static int UnitIdCounter;
     public int TutTurn = 0;
 
+    [SerializeField] private ObjectiveType objectiveType;
+
     [SerializeField] private bool skipTutorial;
 
     [SerializeField] private TraumaInducer camShakeInducer;
@@ -53,6 +56,7 @@ public class TurnScheduler : StateMachine
     private void Awake()
     {
         camShakeInducer = GetComponent<TraumaInducer>();
+        PanelManager.OnAllCrystalsCollected += CheckAllCrystalsCollectedObjective;
     }
 
     public void Init(List<PlayerUnit> players, List<EnemyUnit> enemies)
@@ -69,8 +73,15 @@ public class TurnScheduler : StateMachine
         else
         {
             SetState(new Transition(this));
+        }        
+    }
+
+    private void CheckAllCrystalsCollectedObjective()
+    { 
+        if (objectiveType == ObjectiveType.COLLECT_ALL_CRYSTALS)
+        {
+            StartCoroutine(State.AllCrystalsCollectedWin());
         }
-        
     }
 
     public void OnEndTurnButton()
@@ -284,4 +295,11 @@ public enum ActionType
 {
     ATTACK,
     ABILITY
+}
+
+
+public enum ObjectiveType
+{
+    ELIMINATE_ALL_ENEMIES,
+    COLLECT_ALL_CRYSTALS
 }

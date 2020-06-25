@@ -1,14 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
 using UnityEngine;
-using System;
 using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System.Linq;
-using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         AudioManager.Instance.PlayMusicWithFade(levelMusic);
+        AudioManager.Instance.SetMusicVolume(0.6f);
         map.GenerateMap();
         highlightMap.generateUIMap();
         generatePlayers();
@@ -63,9 +59,6 @@ void generatePlayers() {
 
         //unitStatConfig = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(Application.streamingAssetsPath + "/characterConfig.json"));
         unitStatConfig = JObject.Parse(File.ReadAllText(Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json"));
-
-        /*Vector3Int[] playerPositions = levelUnitPosition.PlayerPositions;
-        Vector3Int[] enemyPositions = levelUnitPosition.EnemyPositions;*/
 
         UnitInfo[] playerInfo = initialUnitInfo.playerList;
         UnitInfo[] enemyInfo = initialUnitInfo.enemyList;
