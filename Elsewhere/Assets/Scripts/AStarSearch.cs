@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
+using System.Collections.Generic;
 
 public class AStarSearch
 {
@@ -12,6 +13,8 @@ public class AStarSearch
         return Math.Abs(a.gridPosition.x - b.gridPosition.x) + Math.Abs(a.gridPosition.y - b.gridPosition.y);
     }
 
+    // selectable means that only selectable tiles will be added (for walking within the selectable tile zone)
+    //playerTargeting means that the only occupied tile allowed will be the goal tile (to allow targeting of units)
     public static void GeneratePath(Map map, Tile start, Tile goal, bool selectable = false, bool playerTargeting = false)
     { 
         var frontier = new PriorityQueue<TileDistancePair>();
@@ -36,7 +39,7 @@ public class AStarSearch
 
                 if (neighbour.walkable && neighbour.distance > newEstimate && (!neighbour.occupied || (playerTargeting && neighbour == goal)) )
                 {
-                    // check if neighbour is selectable if setting is activated
+                    // check if neighbour is selectable, if 'selectable' setting is activated
                     if (selectable && !neighbour.selectable)
                     {
                         continue;
@@ -50,4 +53,24 @@ public class AStarSearch
             }
         }
     }
+
+    public static Tile GeneratePathToNearestTarget(Map map, Tile start, List<Tile> targets, bool selectable = false, bool playerTargeting = false)
+    {
+        // use distance to determine closest player
+        int minDistance = int.MaxValue;
+        Tile targetTile = targets[0];
+        foreach (Tile target in targets)
+        {
+            AStarSearch.GeneratePath(map, start, target, selectable, playerTargeting);
+            if (target.distance < minDistance)
+            {
+                minDistance = target.distance;
+                targetTile = target;
+            }
+        }
+
+        AStarSearch.GeneratePath(map, start, targetTile, selectable, playerTargeting);
+        return targetTile;
+    }
+
 }

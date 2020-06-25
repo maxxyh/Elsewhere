@@ -1,18 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
+using System;
+using UnityEngine.Assertions;
+using System.IO.IsolatedStorage;
 
-public class EnemyStartTurn : State
+public class EnemyStartTurn : EnemyState
 {
 
     public EnemyStartTurn(TurnScheduler turnScheduler) : base(turnScheduler)
     {
-
+        
     }
 
     public override IEnumerator Execute()
     {
+        /* AI dependencies: 
+         * Map 
+         * Units in turnScheduler
+         */
 
-        // step 1: checking battlefield conditions then I choose a AI mode I want to use 
+        // step 0: Each enemy should have some AI that is available to it?
+        // step 1: checking battlefield conditions then I choose a AI mode I want to use AI.AnalyzeField(CurrUnit) which will return an AI Type - this is like a recommendation system?
         // Step 1.5: Assign the AI type?
         // Step 2: AI.execute().
 
@@ -24,11 +34,37 @@ public class EnemyStartTurn : State
 
         // Capture
 
+        // EnemyUnit can have states in the update function that check the health periodically to see if they're in need of healing?
+
 
         //turnScheduler.SetState(...);
 
-        turnScheduler.SetState(new AggressiveEnemyAI(turnScheduler));
+        // Recovery Mode floats are determined by predefined personalities of the unit. Let's fix it for now.
 
+
+        currUnit.StartTurn();
+
+        /* WORKING BUT DISABLED VERSION OF RECOVERY AI
+        enemyUnit.CheckIfRecoveryMode();
+        if (enemyUnit.inRecoveryMode)
+        {
+            turnScheduler.SetState(new RecoveryEnemyAI(turnScheduler));
+        }
+        else
+        {
+            turnScheduler.SetState(new AggressiveEnemyAI(turnScheduler));
+        }
+        */
+
+        if (enemyUnit.HasWaitingMode())
+        {
+            turnScheduler.SetState(new WaitEnemyAI(turnScheduler));
+        }
+        else
+        {
+            turnScheduler.SetState(new AggressiveEnemyAI(turnScheduler));
+        }
+        
 
         yield break;
     }

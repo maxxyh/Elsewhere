@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AbilityHealingWave : Ability
 {
-    public AbilityHealingWave() : base("Healing Wave", 3, 25, true, TargetingStyle.SELFSINGLE)
+    public AbilityHealingWave() : base("Healing Wave", 3, 25, true, TargetingStyle.SELFSINGLE, new AbilityType[] { AbilityType.HEAL_SELF, AbilityType.HEAL_TEAM })
     {
     }
 

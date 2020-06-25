@@ -280,6 +280,7 @@ public class Map : MonoBehaviour
         
     }
 
+    // Need to write for all the targeting styles
     public bool PlayerTargetInRange(Tile startTile, float attackRange, Unit player)
     {
         int[] hor = { -1, 0, 1, 0 };

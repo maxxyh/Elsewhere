@@ -42,6 +42,8 @@ public class TurnScheduler : StateMachine
     private static int UnitIdCounter;
     public int TutTurn = 0;
 
+    [SerializeField] private bool skipTutorial;
+
     [SerializeField] private TraumaInducer camShakeInducer;
 
     #endregion
@@ -60,7 +62,7 @@ public class TurnScheduler : StateMachine
         UnitIdCounter = 0;
         currTurn = Team.PLAYER;
         // EnqueueTeams(Team.PLAYER);
-        if (SceneManager.GetActiveScene().name.Equals("Tutorial"))
+        if (SceneManager.GetActiveScene().name.Equals("Tutorial") && !skipTutorial)
         {
             SetState(new CutScene(this));
         }

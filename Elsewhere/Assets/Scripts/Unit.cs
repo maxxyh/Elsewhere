@@ -114,7 +114,7 @@ public class Unit : MonoBehaviour, IUnit
     }
 
 
-    public void AssignAbilities(List<Ability> abilities)
+    public virtual void AssignAbilities(List<Ability> abilities)
     {
         this.abilities = abilities;
     }

@@ -20,11 +20,13 @@ public class GameManager : MonoBehaviour
     //private Dictionary<string, Dictionary<StatString, string>> unitStatConfig;
     private JObject unitStatConfig;
 
-    public Camera worldCamera;
+    public AudioClip levelMusic;
+
  
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.Instance.PlayMusicWithFade(levelMusic);
         map.GenerateMap();
         highlightMap.generateUIMap();
         generatePlayers();
@@ -60,6 +62,9 @@ public class GameManager : MonoBehaviour
         UnitAbilities.Add("Kelda", AbilitiesHealer);
         UnitAbilities.Add("Julius", AbilitiesSwordsman);
         UnitAbilities.Add("Esmeralda", AbilitiesMage);
+
+        // enemy heal-testing abilities
+        List<Ability> AbilitiesHarvesterGunslinger = new List<Ability>() { new AbilityHealingWave(), new AbilityDoubleHit() };
 
         // PLAYERS
 

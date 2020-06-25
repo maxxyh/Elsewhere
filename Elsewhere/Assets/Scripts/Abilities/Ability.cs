@@ -7,19 +7,21 @@ public abstract class Ability
     public string abilityName;
     public float attackRange;
     public TargetingStyle targetingStyle;
+    public AbilityType[] abilityTypes;
     public bool targetsSameTeam;
     public int multiAbilityRange;
     public int duration; 
     protected float manaCost;
     
 
-    public Ability(string abilityName, float attackRange, float manaCost, bool targetsSameTeam, TargetingStyle targetingStyle, int multiAbilityRange = 0, int duration = -1)
+    public Ability(string abilityName, float attackRange, float manaCost, bool targetsSameTeam, TargetingStyle targetingStyle, AbilityType[] abilityTypes, int multiAbilityRange = 0, int duration = -1)
     {
         this.abilityName = abilityName;
         this.attackRange = attackRange;
         this.manaCost = manaCost;
         this.targetsSameTeam = targetsSameTeam;
         this.targetingStyle = targetingStyle;
+        this.abilityTypes = abilityTypes;
         this.multiAbilityRange = multiAbilityRange;
         this.duration = duration;
     }
@@ -54,4 +56,13 @@ public enum TargetingStyle
     CONE, 
     SELF,
     SELFSINGLE
+}
+
+public enum AbilityType
+{
+    DAMAGE,
+    HEAL_TEAM,
+    HEAL_SELF,
+    BUFF,
+    DEBUFF
 }

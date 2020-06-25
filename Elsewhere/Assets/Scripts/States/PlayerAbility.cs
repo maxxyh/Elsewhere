@@ -13,7 +13,6 @@ public class PlayerAbility : State
     public override IEnumerator Execute()
     {
 
-        // TODO change to list style in Unit.cs
         List<Unit> targetUnits = turnScheduler.currUnit.abilityTargetUnits;
 
         map.RemoveAttackableTiles();
