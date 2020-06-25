@@ -9,6 +9,7 @@ public interface IUnit
 {
     UnitState CurrState { get; set; }
     Dictionary<StatString, UnitStat> stats { get; set; }
+    string characterClass { get; set; }
 
     IEnumerator AbilityAnimation();
     void AssignAbilities(List<Ability> abilities);

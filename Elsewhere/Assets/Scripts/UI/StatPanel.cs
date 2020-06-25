@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class StatPanel : MonoBehaviour
@@ -24,4 +26,34 @@ public class StatPanel : MonoBehaviour
     public Button unitMagicResButton;
     public Button unitMovementRangeButton;
     public Button unitAttackRangeButton;
+
+    public void UpdateStatsUI(Dictionary<StatString, UnitStat> stats)
+    {
+        unitHP.text = stats[StatString.HP].Value.ToString() + "/" + stats[StatString.HP].baseValue.ToString();
+        unitMana.text = stats[StatString.MANA].Value.ToString() + "/" + stats[StatString.MANA].baseValue.ToString(); ;
+        unitPhysicalDamage.text = stats[StatString.PHYSICAL_DAMAGE].Value.ToString() + DisplayBuff(stats[StatString.PHYSICAL_DAMAGE].GetPercentageModifierAmount());
+        unitMagicDamage.text = stats[StatString.MAGIC_DAMAGE].Value.ToString() + DisplayBuff(stats[StatString.MAGIC_DAMAGE].GetPercentageModifierAmount());
+        unitArmor.text = stats[StatString.ARMOR].Value.ToString() + DisplayBuff(stats[StatString.ARMOR].GetPercentageModifierAmount());
+        unitMagicRes.text = stats[StatString.MAGIC_RES].Value.ToString() + DisplayBuff(stats[StatString.MAGIC_RES].GetPercentageModifierAmount());
+        unitMovementRange.text = stats[StatString.MOVEMENT_RANGE].Value.ToString();
+        unitAttackRange.text = stats[StatString.ATTACK_RANGE].Value.ToString();
+    }
+
+
+    private static string DisplayBuff(float amount)
+    {
+        if (amount == 0)
+        {
+            return "";
+        }
+        else if (amount > 0)
+        {
+            return $"(+{amount})";
+        }
+        else
+        {
+            return $"(-{Math.Abs(amount)})";
+        }
+    }
+
 }

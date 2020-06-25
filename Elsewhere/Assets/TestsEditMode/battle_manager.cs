@@ -37,6 +37,7 @@ namespace Tests
             IUnit attacker = Substitute.For<IUnit>();
             IUnit recipient = Substitute.For<IUnit>();
             attacker.stats.Returns(defaultStats);
+            attacker.characterClass.Returns("Swordsman");
             recipient.stats.Returns(defaultStats);
 
             // ACT
