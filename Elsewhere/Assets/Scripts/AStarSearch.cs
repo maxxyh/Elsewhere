@@ -14,7 +14,7 @@ public class AStarSearch
     }
 
     // selectable means that only selectable tiles will be added (for walking within the selectable tile zone)
-    //playerTargeting means that the only occupied tile allowed will be the goal tile (to allow targeting of units)
+    // playerTargeting means that the only occupied tile allowed will be the goal tile (to allow targeting of units)
     public static void GeneratePath(Map map, Tile start, Tile goal, bool selectable = false, bool playerTargeting = false)
     { 
         var frontier = new PriorityQueue<TileDistancePair>();
@@ -37,10 +37,10 @@ public class AStarSearch
             {
                 int newEstimate = current.distance + neighbour.movementCost;
 
-                if (neighbour.walkable && neighbour.distance > newEstimate && (!neighbour.occupied || (playerTargeting && neighbour == goal)) )
+                if (neighbour.walkable && neighbour.distance > newEstimate) // && (!neighbour.occupied || (playerTargeting && neighbour == goal)) )
                 {
                     // check if neighbour is selectable, if 'selectable' setting is activated
-                    if (selectable && !neighbour.selectable)
+                    if (selectable && !neighbour.selectable && !map.UnitsInSelectableRange.Contains(neighbour))
                     {
                         continue;
                     }

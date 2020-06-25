@@ -177,7 +177,10 @@ public class Tile : MonoBehaviour, ITile
 
     public void OnMouseDown()
     {
-        Debug.Log("Tile clicked");
+        Debug.Log("Tile Info:");
+        Debug.Log("AdjacencyList size = " + adjacencyList.Count);
+        Debug.Log("Occupied = " + occupied);
+        Debug.Log("Selectable = " + selectable);
         GameAssets.MyInstance.turnScheduler.OnClickCheckForValidTarget(this);
     }
 

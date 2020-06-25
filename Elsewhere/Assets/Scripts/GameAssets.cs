@@ -23,5 +23,4 @@ public class GameAssets : MonoBehaviour
 
     public HighlightMap highlightMap;
 
-    public PanelManager panelManager;
 }

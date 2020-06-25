@@ -436,7 +436,6 @@ MonoBehaviour:
     type: 3}
   turnScheduler: {fileID: 346674795}
   highlightMap: {fileID: 23294546}
-  panelManager: {fileID: 1509953758}
 --- !u!212 &107640955
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9455,6 +9454,7 @@ MonoBehaviour:
   tileCostReference: {fileID: 645472412}
   mapSize: {x: 25, y: 14}
   bottomLeft: {x: -12, y: -7}
+  UnitsInSelectableRange: []
 --- !u!4 &1122544121
 Transform:
   m_ObjectHideFlags: 0
@@ -10416,13 +10416,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9506661690c79c4b90c2790ae500491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelCounter: 0
-  panelList:
-  - {fileID: 1422209883}
-  - {fileID: 729234072}
-  dialogueDisplays:
-  - {fileID: 1422209885}
-  - {fileID: 729234074}
+  cutscenePanelList:
+  - cutSceneGO: {fileID: 1422209883}
+    index: 0
+  - cutSceneGO: {fileID: 729234072}
+    index: 1
+  postCutscenePanelList: []
 --- !u!1 &1569683857
 GameObject:
   m_ObjectHideFlags: 0

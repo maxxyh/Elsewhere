@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.OSXStandalone;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,8 +18,6 @@ public class Unit : MonoBehaviour, IUnit
     public GameObject statPanelGO;
     public StatPanel statPanel;
     public MajorStatPanel majorStatPanel;
-    /*public GameObject panelManagerGO;
-    public PanelManager panelManager;*/
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -64,6 +63,8 @@ public class Unit : MonoBehaviour, IUnit
     [Header("For collision")]
     public Transform sparkle;
     public UnityEvent crystalCollected;
+    public static Action OnCrystalCollected;
+   
 
     #endregion
 
@@ -363,22 +364,6 @@ public class Unit : MonoBehaviour, IUnit
         }
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("crystal"))
-        {
-            ParticleSystem.EmissionModule tempSparkle = sparkle.GetComponent<ParticleSystem>().emission;
-            tempSparkle.enabled = true;
-            StartCoroutine(stopSparkle());
-            Destroy(collision.gameObject);
-            if (this.gameObject.CompareTag("enemy"))
-            {
-                this.stats[StatString.PHYSICAL_DAMAGE].AddModifier(new StatModifier(3, StatModType.Flat));
-                UpdateUI();
-            }
-        }
-    }*/
-
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -398,11 +383,13 @@ public class Unit : MonoBehaviour, IUnit
         Debug.Log("RETURN TO START TILE");
     }
 
-    public IEnumerator stopSparkle()
+    public IEnumerator SparkleAndDestroyCrystal(GameObject Crystal)
     {
-        yield return new WaitForSeconds(0.4f);
         ParticleSystem.EmissionModule tempSparkle = sparkle.GetComponent<ParticleSystem>().emission;
+        tempSparkle.enabled = true;
+        yield return new WaitForSeconds(0.4f);
         tempSparkle.enabled = false;
+        Destroy(Crystal);
     }
 
     public void DecrementAllStatDuration()

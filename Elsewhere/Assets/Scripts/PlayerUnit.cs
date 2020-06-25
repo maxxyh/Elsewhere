@@ -57,19 +57,11 @@ public class PlayerUnit : Unit
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        // crystalCollected.Invoke();
-        ParticleSystem.EmissionModule tempSparkle = sparkle.GetComponent<ParticleSystem>().emission;
-        tempSparkle.enabled = true;
-        StartCoroutine(stopSparkle());
-        Destroy(collision.gameObject);
-        StartCoroutine(WaitForDialogue());
+        if (collision.tag == "crystal")
+        {
+            StartCoroutine(SparkleAndDestroyCrystal(collision.gameObject));
+            OnCrystalCollected();
+        }
     }
 
-    private IEnumerator WaitForDialogue()
-    {
-        yield return new WaitForSeconds(1f);
-        GameAssets.MyInstance.panelManager.ActivatePanel();
-        yield return new WaitUntil(() => GameAssets.MyInstance.panelManager.dialogueDisplays[GameAssets.MyInstance.panelManager.panelCounter].endConvo);
-        GameAssets.MyInstance.panelManager.DeactivatePanel();
-    }
 }

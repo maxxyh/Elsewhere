@@ -16,6 +16,9 @@ public class Map : MonoBehaviour
     // For UI
     HashSet<Tile> selectableTiles = new HashSet<Tile>();
     HashSet<Tile> attackableTiles = new HashSet<Tile>();
+
+    public List<Tile> UnitsInSelectableRange = new List<Tile>();
+
     public HashSet<Tile> GetAttackableTiles()
     {
         return this.attackableTiles;
@@ -93,18 +96,6 @@ public class Map : MonoBehaviour
         return tile;
     }
 
-    public void ComputeAdjacencyList(bool includeDiagonals)
-    {
-        foreach (List<Tile> row in tileList)
-        {
-            foreach (Tile tile in row)
-            {
-                tile.FindNeighbours(tileList, includeDiagonals);
-            }
-        }
-
-    }
-
     // Finds selectable tiles and updates currentTile as current, occupied
     public void FindSelectableTiles(Tile startTile, float movementRange)
     {
@@ -149,6 +140,9 @@ public class Map : MonoBehaviour
                         {
                             neighbour.selectable = true;
                             selectableTiles.Add(neighbour);
+                        } else
+                        {
+                            UnitsInSelectableRange.Add(neighbour);
                         }
                            
 
@@ -161,19 +155,22 @@ public class Map : MonoBehaviour
         }
     }
 
+
     // To be called whenever a pathfinding event is done. Re-computes adjacency list and resets tile distances.
     public void InitPathFinding(Tile startTile, bool includeDiagonals = false)
     {
-        // Initialise AdjacencyList again to account for updates to tiles e.g. destroyed 
-        ComputeAdjacencyList(includeDiagonals);
-
+        
+        // Initialize AdjacencyList
+        // Find tileDistance
         foreach (List<Tile> row in tileList)
         {
             foreach (Tile tile in row)
             {
+                tile.FindNeighbours(tileList, includeDiagonals);
                 tile.distance = int.MaxValue;
             }
         }
+
         startTile.distance = 0;
     }
 
@@ -187,6 +184,7 @@ public class Map : MonoBehaviour
         if (destructive)
         {
             selectableTiles.Clear();
+            UnitsInSelectableRange.Clear();
         }
     }
 

@@ -891,7 +891,7 @@ PrefabInstance:
     - target: {fileID: 3651426993338132624, guid: 4c3382c93e72b044490938e580df6bb7,
         type: 3}
       propertyPath: skipTutorial
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5323341924538777091, guid: 4c3382c93e72b044490938e580df6bb7,
         type: 3}
@@ -7836,7 +7836,6 @@ MonoBehaviour:
     type: 3}
   turnScheduler: {fileID: 105424488}
   highlightMap: {fileID: 32760337}
-  panelManager: {fileID: 0}
 --- !u!1 &853064464
 GameObject:
   m_ObjectHideFlags: 0
@@ -17557,6 +17556,7 @@ MonoBehaviour:
   tileCostReference: {fileID: 891002228}
   mapSize: {x: 8, y: 8}
   bottomLeft: {x: -4, y: -3}
+  UnitsInSelectableRange: []
 --- !u!4 &1993327613
 Transform:
   m_ObjectHideFlags: 0
