@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - PostScene3
+  m_EditorClassIdentifier: 
+  speakers:
+  - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+  lines:
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: I... Remember everything now... That was the last time I saw my parents...*sniffles*
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: 'This is why I told you that this is a waste of time. There''s no point
+      getting sad because you dug up some old memories. '
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: No... It's okay...
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: Claude, you've got it all wrong, I'm not sad, I'm relieved. All this time,
+      I thought my parents abandoned me, that they didn't love me.
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: But today, I remember the truth. My parents are the most loving people
+      out there, and I'm proud to call them mom and dad.
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: The fact that I'm alive...this pendant...my parents have never left my
+      side. Thank you all for helping me find my past.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Huh. Alright. Fair enough.

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - Scene 3
+  m_EditorClassIdentifier: 
+  speakers:
+  - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  lines:
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: 'NO! Mom! Dad! You can''t go!  '
+  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: 'Chuckle... Kelda, let me tell you a story. '
+  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: A long time ago, there was a great disease which was so strong that it
+      threatened to wipe out all humans on Earth.
+  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: There was a girl, not much bigger than yourself, who saw the hurt and pain
+      around her, and wished to the Goddess of Light for healing.
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: Why are you telling me-
+  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: ' The girl wished everyday and wished so hard that the Goddess of Light
+      saw her sincerity, and blessed her with the power to heal others.'
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: Your point is?
+  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: 'Well Kelda... This girl''s name was Arlene Grace, and she''s our grand-ancestor. '
+  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: The blessing of the Goddess of Light has been passed down in the Grace
+      family from generation to generation, from grandma, to me, and to you as well.
+  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: Dad and I are going to the disaster zone to help people, because that's
+      what the Grace family does - our sacred calling.
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: But... You'll be away for so long...
+  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: 'Oh darling... You''re a big girl now! You have to be strong! '
+  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: Kelda, we have a favour. This pendant is veeeery important to the Grace
+      family. Can you keep it safe for mom and dad while we're gone?
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: Well... If you put it that way, I guess I could! Come back soon okay...!

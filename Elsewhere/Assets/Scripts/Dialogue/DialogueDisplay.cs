@@ -91,7 +91,7 @@ public class DialogueDisplay : MonoBehaviour
         foreach (char c in text.ToCharArray())
         {
             speakerUI.Dialog += c;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.001f);
         }
     }
 }

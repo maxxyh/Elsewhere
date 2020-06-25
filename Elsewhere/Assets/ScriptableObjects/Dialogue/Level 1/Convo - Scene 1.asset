@@ -24,14 +24,15 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: BUT IT LOOKS LIKE TODAY'S THE DAY I FINALLY GET TO GO OUT ONTO THE LAKE!!!
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-    text: And about time! I'm already 8! But mom and dad keep saying it's "too dangerous"...hmph!
-      What's a girl gotta do for some fun??
+    text: And about time! I'm already 8! But mom and dad keep saying it's "too dangerous"...
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: Hmph! What's a girl gotta do for some fun??
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: Alright... Just a little step here and... Woaaaaah this boat's shaky hehe...
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: 'Silly me! Of course the boat''s not moving, it''s still docked! Just gotta
       reach a bit to untie the... '
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
     text: Woah... Little bit dizzy what's going-
   - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
     text: '*SPLASH*'

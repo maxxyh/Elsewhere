@@ -21,5 +21,5 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: I can't believe it... It's Meredith Mansion - I used to stay here as a
       kid... I think...?
-  - character: {fileID: 0}
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
     text: I guess we'll find out.
