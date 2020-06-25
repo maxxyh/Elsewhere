@@ -11,10 +11,10 @@ public abstract class Ability
     public bool targetsSameTeam;
     public int multiAbilityRange;
     public int duration; 
-    protected float manaCost;
+    protected int manaCost;
     
 
-    public Ability(string abilityName, float attackRange, float manaCost, bool targetsSameTeam, TargetingStyle targetingStyle, AbilityType[] abilityTypes, int multiAbilityRange = 0, int duration = -1)
+    public Ability(string abilityName, float attackRange, int manaCost, bool targetsSameTeam, TargetingStyle targetingStyle, AbilityType[] abilityTypes, int multiAbilityRange = 0, int duration = -1)
     {
         this.abilityName = abilityName;
         this.attackRange = attackRange;
@@ -31,7 +31,7 @@ public abstract class Ability
         yield break;
     }
     
-    public float GetManaCost()
+    public int GetManaCost()
     {
         return manaCost;
     }

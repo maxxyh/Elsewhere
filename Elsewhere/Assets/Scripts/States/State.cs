@@ -70,6 +70,11 @@ public abstract class State
         yield break;
     }
 
+    public virtual IEnumerator DuringDialogue()
+    {
+        yield break;
+    }
+
     public virtual IEnumerator EndTurn()
     {
         if (currUnit.CurrState == UnitState.IDLING)

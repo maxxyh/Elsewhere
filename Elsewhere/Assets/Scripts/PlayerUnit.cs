@@ -55,6 +55,7 @@ public class PlayerUnit : Unit
             }
         }
     }
+
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "crystal")
@@ -63,5 +64,4 @@ public class PlayerUnit : Unit
             OnCrystalCollected();
         }
     }
-
 }

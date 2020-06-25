@@ -99,7 +99,6 @@ public class Unit : MonoBehaviour, IUnit
                 hasLimit = true;
             }
             this.stats[pair.Key] = new UnitStat(float.Parse(pair.Value), hasLimit);
-
         }
     }
 
@@ -117,6 +116,7 @@ public class Unit : MonoBehaviour, IUnit
     public virtual void AssignAbilities(List<Ability> abilities)
     {
         this.abilities = abilities;
+        majorStatPanel.AssignManaCost(abilities);
     }
 
 

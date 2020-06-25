@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour, ITile
 {
@@ -177,6 +174,10 @@ public class Tile : MonoBehaviour, ITile
 
     public void OnMouseDown()
     {
+        /*if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }*/
         Debug.Log("Tile Info:");
         Debug.Log("AdjacencyList size = " + adjacencyList.Count);
         Debug.Log("Occupied = " + occupied);

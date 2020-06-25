@@ -6685,6 +6685,11 @@ PrefabInstance:
       propertyPath: abilitiesPanel
       value: 
       objectReference: {fileID: 2101583258}
+    - target: {fileID: 3651426993338132624, guid: 4c3382c93e72b044490938e580df6bb7,
+        type: 3}
+      propertyPath: openingDialogue
+      value: 
+      objectReference: {fileID: 1422209885}
     - target: {fileID: 5323341924538777091, guid: 4c3382c93e72b044490938e580df6bb7,
         type: 3}
       propertyPath: m_Name
@@ -11669,6 +11674,7 @@ MonoBehaviour:
   players: []
   enemies: []
   initialUnitInfo: {fileID: 11400000, guid: 8380b358f79bfa24cb646ddb51a177f1, type: 2}
+  pauseMenu: {fileID: 0}
   levelMusic: {fileID: 8300000, guid: d36614415ca20654f8953e30b0291b38, type: 3}
 --- !u!1 &961244781
 GameObject:
@@ -14686,7 +14692,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422209883}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

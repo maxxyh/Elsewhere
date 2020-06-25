@@ -9,7 +9,6 @@ public class Win : State
 
     public override IEnumerator Execute()
     {
-        Time.timeScale = 0f;
         turnScheduler.victoryUI.SetActive(true);
 
         // show the win screen

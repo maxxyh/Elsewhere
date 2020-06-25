@@ -6,6 +6,20 @@ public class PlayerStartTurn : State
     public PlayerStartTurn(TurnScheduler turnScheduler) : base(turnScheduler)
     {
     }
+
+    public override IEnumerator Execute()
+    {
+        if (turnScheduler.openingDialogue.gameObject.activeSelf)
+        {
+            Debug.Log("in execute start player turn true");
+            turnScheduler.WaitForDialogueEnd();
+        }
+        else
+        {
+            Debug.Log("in execute start player turn false");
+        }
+        yield break;
+    }
     public override IEnumerator CheckTargeting(Tile tile)
     {
         Unit switchUnit = null;
@@ -25,5 +39,12 @@ public class PlayerStartTurn : State
             turnScheduler.SetState(new PlayerUnitSelected(turnScheduler));
         }
         yield break;
+    }
+
+    public override IEnumerator DuringDialogue()
+    {
+        Debug.Log("in ienum start player turn");
+        yield return new WaitUntil(() => turnScheduler.openingDialogue.endConvo);
+        turnScheduler.openingDialogue.gameObject.SetActive(false);
     }
 }

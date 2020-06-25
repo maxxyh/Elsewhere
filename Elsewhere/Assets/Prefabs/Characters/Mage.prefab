@@ -170,7 +170,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2870922880512250332}
   unitID: 0
   characterName: 
-  characterClass: 
   anim: {fileID: 6029520780938894478}
   moveSpeed: 5
   attackingTargetUnit: {fileID: 0}
@@ -584,6 +583,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -15.198265
       objectReference: {fileID: 0}
+    - target: {fileID: 764653012576316794, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ceb05e04c143e544abd07b4d3fbdf620,
+        type: 3}
     - target: {fileID: 764653012577021724, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -608,6 +613,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -41.594795
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653012688493687, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: Esmeralda
       objectReference: {fileID: 0}
     - target: {fileID: 764653012896656252, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -669,6 +679,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -15.432579
       objectReference: {fileID: 0}
+    - target: {fileID: 764653013217053240, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: Mage
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653013217053240, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 764653013244853095, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -728,6 +748,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -32.63201
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653013306948632, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: '
+
+
+        The captain'
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653013325892393, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Deals x1.2 magic damage to all units in range of 3, and reduces armor
+        of all affected targets by 20%
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 764653013325892394, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -789,6 +825,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -864.9805
       objectReference: {fileID: 0}
+    - target: {fileID: 764653013743445961, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: "Steals an amount of HP equal to 40% of initiator\u2019s magic damage
+        from a chosen target"
+      objectReference: {fileID: 0}
     - target: {fileID: 764653013743445962, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -842,12 +884,22 @@ PrefabInstance:
     - target: {fileID: 764653014086388944, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 41.27071
+      value: 51.203175
       objectReference: {fileID: 0}
     - target: {fileID: 764653014086388944, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -6.9257107
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653014086388951, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: Astral Flare
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653014093752852, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: HP Reaver
       objectReference: {fileID: 0}
     - target: {fileID: 764653014093752853, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}

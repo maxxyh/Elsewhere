@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AbilityDoubleHit : Ability
 {
-    public AbilityDoubleHit() : base("Double Hit", 1, 15, false, TargetingStyle.SINGLE, new AbilityType[] { AbilityType.DAMAGE })
+    public AbilityDoubleHit() : base("Double Hit", 1, 3, false, TargetingStyle.SINGLE, new AbilityType[] { AbilityType.DAMAGE })
     {
     }
 

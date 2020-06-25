@@ -116,6 +116,11 @@ public class TurnScheduler : StateMachine
         StartCoroutine(State.DuringCutScene());
     }
 
+    public void WaitForDialogueEnd()
+    {
+        StartCoroutine(State.DuringDialogue());
+    }
+
     public void OnCancelButton()
     {
         Debug.Log("cancel clicked");

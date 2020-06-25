@@ -8,6 +8,7 @@ using System.IO;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     public List<PlayerUnit> players = new List<PlayerUnit>();
     public List<EnemyUnit> enemies = new List<EnemyUnit>();
     public InitialUnitInfo initialUnitInfo;
+    [SerializeField] private GameObject pauseMenu;
+
     [JsonConverter(typeof(StringEnumConverter))]
     //private Dictionary<string, Dictionary<StatString, string>> unitStatConfig;
     private JObject unitStatConfig;
@@ -33,10 +36,33 @@ public class GameManager : MonoBehaviour
         GameAssets.MyInstance.turnScheduler.Init(players, enemies);
     }
 
-    void generatePlayers() {
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseMenu.activeSelf)
+            {
+                Time.timeScale = 1;
+                pauseMenu.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 0;
+                pauseMenu.SetActive(true);
+            }
+        }
+    }
+
+    public void OnResumeButton()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+void generatePlayers() {
 
         //unitStatConfig = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(Application.streamingAssetsPath + "/characterConfig.json"));
-        unitStatConfig = JObject.Parse(File.ReadAllText(Application.streamingAssetsPath + "/characterConfig.json"));
+        unitStatConfig = JObject.Parse(File.ReadAllText(Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json"));
 
         /*Vector3Int[] playerPositions = levelUnitPosition.PlayerPositions;
         Vector3Int[] enemyPositions = levelUnitPosition.EnemyPositions;*/

@@ -196,13 +196,9 @@ MonoBehaviour:
   statPanelGO: {fileID: 2509651737894692911}
   statPanel: {fileID: 0}
   majorStatPanel: {fileID: 5694887125233061240}
-  panelManagerGO: {fileID: 3892112550507475105, guid: d860c247740fcba42a001cdda85c7738,
-    type: 3}
-  panelManager: {fileID: 0}
   spriteRenderer: {fileID: 4118148980490403031}
   unitID: 0
   characterName: 
-  characterClass: 
   anim: {fileID: 5547801141535232050}
   moveSpeed: 5
   attackingTargetUnit: {fileID: 0}
@@ -211,9 +207,6 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 5133980785669610318}
-  crystalCollected:
-    m_PersistentCalls:
-      m_Calls: []
   gridPosition: {x: 0, y: 0}
 --- !u!1 &2870922879948342433
 GameObject:
@@ -508,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 764653012399675585, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.7668457
+      value: 1.7668533
       objectReference: {fileID: 0}
     - target: {fileID: 764653012420664137, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -669,7 +662,7 @@ PrefabInstance:
     - target: {fileID: 764653013055201914, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.966278
+      value: -3.9662933
       objectReference: {fileID: 0}
     - target: {fileID: 764653013160534626, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -815,6 +808,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Writeup
       objectReference: {fileID: 0}
+    - target: {fileID: 764653013457436026, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 764653013523593061, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -911,7 +909,7 @@ PrefabInstance:
     - target: {fileID: 764653014086388944, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 41.27071
+      value: 51.203175
       objectReference: {fileID: 0}
     - target: {fileID: 764653014086388944, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -951,7 +949,7 @@ PrefabInstance:
     - target: {fileID: 764653014100602330, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_Text
-      value: Cost:20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 764653014175505785, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}

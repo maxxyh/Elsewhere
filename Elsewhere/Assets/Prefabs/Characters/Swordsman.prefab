@@ -170,7 +170,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2870922880512250332}
   unitID: 0
   characterName: 
-  characterClass: 
   anim: {fileID: 6029520780938894478}
   moveSpeed: 5
   attackingTargetUnit: {fileID: 0}
@@ -674,16 +673,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -15.198265
       objectReference: {fileID: 0}
-    - target: {fileID: 764653012576316794, guid: 7cced2a90ff3fd041bc046586e496ed4,
+    - target: {fileID: 764653012577021724, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 985efb8f7ef885548abce5d719ac7e6d,
-        type: 3}
-    - target: {fileID: 764653012576316795, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -49.199
+      propertyPath: m_AnchoredPosition.y
+      value: -16.599976
       objectReference: {fileID: 0}
     - target: {fileID: 764653012589588747, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -705,11 +698,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -41.594795
       objectReference: {fileID: 0}
-    - target: {fileID: 764653012688493687, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Julius '
-      objectReference: {fileID: 0}
     - target: {fileID: 764653012896656252, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -729,11 +717,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -637.1191
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653012908305351, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 3.5085983
       objectReference: {fileID: 0}
     - target: {fileID: 764653013055201914, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -755,11 +738,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -3.9662933
       objectReference: {fileID: 0}
-    - target: {fileID: 764653013067043909, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Text
-      value: Cost:20
-      objectReference: {fileID: 0}
     - target: {fileID: 764653013160534626, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -779,21 +757,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -15.432579
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653013217053240, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Text
-      value: Swordsman
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653013217053240, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653013217053241, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 764653013244853095, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -855,22 +818,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -32.63201
       objectReference: {fileID: 0}
-    - target: {fileID: 764653013306948632, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Text
-      value: '
-
-
-        The moodswing'
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653013325892393, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Deals x1.2 physical damage to all targets in a radius of 1 tile  from
-        him
-
-'
-      objectReference: {fileID: 0}
     - target: {fileID: 764653013325892394, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -931,28 +878,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -864.9805
       objectReference: {fileID: 0}
-    - target: {fileID: 764653013545481222, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Name
-      value: Item Panel
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653013702705086, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Name
-      value: Skill Panel
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653013743445961, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Deals x2 physical damage to a chosen enemy
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653013743445961, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 764653013743445962, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -993,22 +918,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -751.0498
       objectReference: {fileID: 0}
-    - target: {fileID: 764653014010207073, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Text
-      value: '"An emo teenager but don''t you dare to look down on hi him. His sword
-        is scary. So is he." - Rowan'
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653014010207074, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -2.7599945
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653014010207074, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 29.568413
-      objectReference: {fileID: 0}
     - target: {fileID: 764653014086388944, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1028,21 +937,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -6.9257107
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653014086388944, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 58.40635
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653014086388951, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Text
-      value: Whirlwind Slash
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653014093752852, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Text
-      value: Double Hit
       objectReference: {fileID: 0}
     - target: {fileID: 764653014093752853, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -1178,11 +1072,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 764653014250783044, guid: 7cced2a90ff3fd041bc046586e496ed4,
-        type: 3}
-      propertyPath: m_Name
-      value: Stat panel
       objectReference: {fileID: 0}
     - target: {fileID: 764653014291661110, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
