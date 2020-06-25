@@ -22,4 +22,6 @@ public class GameAssets : MonoBehaviour
     public TurnScheduler turnScheduler;
 
     public HighlightMap highlightMap;
+
+    public PanelManager panelManager;
 }

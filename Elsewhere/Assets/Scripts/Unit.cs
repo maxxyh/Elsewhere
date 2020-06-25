@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Unit : MonoBehaviour, IUnit
 {
@@ -16,6 +17,8 @@ public class Unit : MonoBehaviour, IUnit
     public GameObject statPanelGO;
     public StatPanel statPanel;
     public MajorStatPanel majorStatPanel;
+    /*public GameObject panelManagerGO;
+    public PanelManager panelManager;*/
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -42,7 +45,6 @@ public class Unit : MonoBehaviour, IUnit
         set { _currState = value; }
     }
 
-
     [Header("References")]
     public Unit attackingTargetUnit;
     public List<Unit> abilityTargetUnits = new List<Unit>();
@@ -61,11 +63,13 @@ public class Unit : MonoBehaviour, IUnit
 
     [Header("For collision")]
     public Transform sparkle;
+    public UnityEvent crystalCollected;
 
     #endregion
 
     private void Awake()
     {
+        // panelManager = panelManagerGO.GetComponent<PanelManager>();
         statPanel = statPanelGO.GetComponent<StatPanel>();
     }
 
@@ -358,8 +362,8 @@ public class Unit : MonoBehaviour, IUnit
             this.statPanelGO.SetActive(false);
         }
     }
-    
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("crystal"))
         {
@@ -373,6 +377,11 @@ public class Unit : MonoBehaviour, IUnit
                 UpdateUI();
             }
         }
+    }*/
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+
     }
 
     public void ReturnToStartTile()
@@ -389,7 +398,7 @@ public class Unit : MonoBehaviour, IUnit
         Debug.Log("RETURN TO START TILE");
     }
 
-    IEnumerator stopSparkle()
+    public IEnumerator stopSparkle()
     {
         yield return new WaitForSeconds(0.4f);
         ParticleSystem.EmissionModule tempSparkle = sparkle.GetComponent<ParticleSystem>().emission;

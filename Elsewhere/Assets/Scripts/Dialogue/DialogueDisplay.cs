@@ -37,7 +37,7 @@ public class DialogueDisplay : MonoBehaviour
         } 
         else
         {
-            if (SceneManager.GetActiveScene().name != "Tutorial")
+            if (SceneManager.GetActiveScene().name != "Tutorial" && SceneManager.GetActiveScene().name != "Level1")
             {
                 SceneManager.LoadScene(nextScene);
             }

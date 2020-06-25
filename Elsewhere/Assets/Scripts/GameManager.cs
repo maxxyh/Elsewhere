@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public HighlightMap highlightMap;
     public List<PlayerUnit> players = new List<PlayerUnit>();
     public List<EnemyUnit> enemies = new List<EnemyUnit>();
-    public IntialInfo initialUnitInfo;
+    public InitialUnitInfo initialUnitInfo;
     [JsonConverter(typeof(StringEnumConverter))]
     //private Dictionary<string, Dictionary<StatString, string>> unitStatConfig;
     private JObject unitStatConfig;
@@ -39,8 +39,10 @@ public class GameManager : MonoBehaviour
         /*Vector3Int[] playerPositions = levelUnitPosition.PlayerPositions;
         Vector3Int[] enemyPositions = levelUnitPosition.EnemyPositions;*/
 
-        GameObjectInfo[] playerInfo = initialUnitInfo.playerList;
-        GameObjectInfo[] enemyInfo = initialUnitInfo.enemyList;
+        UnitInfo[] playerInfo = initialUnitInfo.playerList;
+        UnitInfo[] enemyInfo = initialUnitInfo.enemyList;
+        CrystalInfo[] crystalInfo = initialUnitInfo.crystalList;
+
         // default abilities
         List <Ability> AbilitiesSwordsman= new List<Ability>();
         List<Ability> AbilitiesMage = new List<Ability>();
@@ -61,13 +63,9 @@ public class GameManager : MonoBehaviour
 
         // PLAYERS
 
-        // string[] playerNames = { "Esmeralda", "Julius" };
-
-        List<Ability>[] abilitiesList = { AbilitiesMage, AbilitiesSwordsman };
-
         for (int i = 0; i < initialUnitInfo.playerList.Length; i++)
         {
-            PlayerUnit player = ((GameObject)Instantiate(playerInfo[i].UnitPrefab, playerInfo[i].UnitPositions,
+            PlayerUnit player = (Instantiate(playerInfo[i].UnitPrefab, playerInfo[i].UnitPositions,
             Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
             //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
             player.tag = "player";
@@ -82,34 +80,25 @@ public class GameManager : MonoBehaviour
         
         // ENEMIES
 
-        EnemyUnit enemy = ((GameObject)Instantiate(enemyInfo[0].UnitPrefab, enemyInfo[0].UnitPositions,
+        for (int i = 0; i < initialUnitInfo.enemyList.Length; i++)
+        {
+            EnemyUnit enemy = (Instantiate(enemyInfo[i].UnitPrefab, enemyInfo[i].UnitPositions,
             Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
-        //enemy.gridPosition = new Vector2(0,0);
-        enemy.tag = "enemy";
-        enemy.AssignStats(unitStatConfig["HarvesterGunslinger"]["stats"].ToObject<Dictionary<StatString, float>>());
-        enemy.AssignMap(map);
-        enemy.AssignIdentity((string)unitStatConfig["HarvesterGunslinger"]["name"], (string)unitStatConfig["HarvesterGunslinger"]["class"]);
-        enemy.UpdateUI();
-        enemies.Add(enemy);
+            //enemy.gridPosition = new Vector2(0,0);
+            enemy.tag = "enemy";
+            enemy.AssignStats(unitStatConfig[enemyInfo[i].unitID]["stats"].ToObject<Dictionary<StatString, float>>());
+            enemy.AssignMap(map);
+            enemy.AssignIdentity((string)unitStatConfig[enemyInfo[i].unitID]["name"], (string)unitStatConfig["HarvesterGunslinger"]["class"]);
+            enemy.UpdateUI();
+            enemies.Add(enemy);
+        }
 
-        EnemyUnit enemy2 = ((GameObject)Instantiate(enemyInfo[1].UnitPrefab, enemyInfo[1].UnitPositions,
-            Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
-        //enemy.gridPosition = new Vector2(0,0);
-        enemy2.tag = "enemy";
-        enemy2.AssignStats(unitStatConfig["HarvesterTank"]["stats"].ToObject<Dictionary<StatString, float>>());
-        enemy2.AssignMap(map);
-        enemy2.AssignIdentity((string)unitStatConfig["HarvesterTank"]["name"], (string)unitStatConfig["HarvesterTank"]["class"]);
-        enemy2.UpdateUI();
-        enemies.Add(enemy2);
-
-        /*EnemyUnit enemy3 = ((GameObject)Instantiate(enemyInfo[2].UnitPrefab, enemyInfo[1].UnitPositions,
-            Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
-        //enemy.gridPosition = new Vector2(0,0);
-        enemy3.tag = "enemy";
-        enemy3.AssignStats(unitStatConfig["HarvesterGunslinger"]["stats"].ToObject<Dictionary<StatString, float>>());
-        enemy3.AssignIdentity((string)unitStatConfig["HarvesterGunslinger"]["name"], (string)unitStatConfig["HarvesterGunslinger"]["class"]);
-        enemy3.AssignMap(map);
-        enemy3.UpdateUI();
-        enemies.Add(enemy3);*/
+        for (int i = 0; i < initialUnitInfo.crystalList.Length; i++)
+        {
+            GameObject crystal = (Instantiate(crystalInfo[i].UnitPrefab, crystalInfo[i].UnitPositions,
+            Quaternion.Euler(new Vector3())));
+            //enemy.gridPosition = new Vector2(0,0);
+            crystal.tag = "crystal";
+        }
     }
 }
