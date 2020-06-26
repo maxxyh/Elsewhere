@@ -26,4 +26,4 @@ MonoBehaviour:
     text: Thanks for your cooperation HAHA!
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: Instead of attacking, you can also choose to use abilities by clicking
-      on the "Abilitties" button!
+      on the "Abilities" button!
