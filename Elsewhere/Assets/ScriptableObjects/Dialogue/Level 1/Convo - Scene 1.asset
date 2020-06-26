@@ -32,7 +32,7 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: 'Silly me! Of course the boat''s not moving, it''s still docked! Just gotta
       reach a bit to untie the... '
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: Woah... Little bit dizzy what's going-
   - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
     text: '*SPLASH*'

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         AudioManager.Instance.PlayMusicWithFade(levelMusic);
-        AudioManager.Instance.SetMusicVolume(0.6f);
+        AudioManager.Instance.SetMusicVolume(0.5f);
         map.GenerateMap();
         highlightMap.generateUIMap();
         generatePlayers();

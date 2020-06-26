@@ -50,7 +50,7 @@
         "name": "Harvester",
         "class": "Gunslinger",
         "stats": {
-            "HP": 28,
+            "HP": 25,
             "MANA": 25,
             "PHYSICAL_DAMAGE": 13,
             "MAGIC_DAMAGE": 6,
@@ -66,7 +66,7 @@
         "name": "Harvester",
         "class": "Tank",
         "stats": {
-            "HP": 25,
+            "HP": 28,
             "MANA": 25,
             "PHYSICAL_DAMAGE": 11,
             "MAGIC_DAMAGE": 6,
