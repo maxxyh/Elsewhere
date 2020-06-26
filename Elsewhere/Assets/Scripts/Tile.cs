@@ -178,10 +178,10 @@ public class Tile : MonoBehaviour, ITile
         {
             return;
         }*/
-        Debug.Log("Tile Info:");
+        /*Debug.Log("Tile Info:");
         Debug.Log("AdjacencyList size = " + adjacencyList.Count);
         Debug.Log("Occupied = " + occupied);
-        Debug.Log("Selectable = " + selectable);
+        Debug.Log("Selectable = " + selectable);*/
         GameAssets.MyInstance.turnScheduler.OnClickCheckForValidTarget(this);
     }
 

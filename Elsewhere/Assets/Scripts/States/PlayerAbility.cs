@@ -32,6 +32,7 @@ public class PlayerAbility : State
             }
         }
 
+        turnScheduler.currUnit.chosenAbility = null;
         targetUnits.Clear();
 
         turnScheduler.SetState(new PlayerEndTurn(turnScheduler));

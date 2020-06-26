@@ -93,7 +93,6 @@ public abstract class State
 
     public virtual IEnumerator AllCrystalsCollectedWin()
     {
-        turnScheduler.SetState(new Win(turnScheduler));
         yield break;
     }
 

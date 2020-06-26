@@ -83,4 +83,11 @@ public class PlayerUnitSelected : State
         yield break;
     }
 
+
+    public override IEnumerator AllCrystalsCollectedWin()
+    {
+        turnScheduler.SetState(new PlayerEndTurn(turnScheduler));
+        yield break;
+    }
+
 }

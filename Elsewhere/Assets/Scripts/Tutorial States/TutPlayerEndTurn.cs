@@ -23,7 +23,6 @@ public class TutPlayerEndTurn : PlayerEndTurn
             turnScheduler.currTurn = Team.ENEMY;
         }
         
-        Debug.Log("Inside endturn curr team queue cout: " + turnScheduler.currTeamQueue.Count);
         turnScheduler.SetState(new TutTransition(turnScheduler));
         
         yield break;

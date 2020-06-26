@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
   lines:
   - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
-    text: 'Now is our turn. Left-click on me so you can start my turn of action. '
+    text: 'Now it''s our turn. Left-click on me so you can start my turn of action. '
   - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
     text: You can also check our own members' stats as well as enemies's by right-clicking
       on them.

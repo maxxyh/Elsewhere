@@ -13,7 +13,7 @@ public class PlayerEndTurn : State
         turnScheduler.playerActionPanel.SetActive(false);
         // turnScheduler.currTeamQueue.Remove(currUnit);
 
-        // check whether there are still players in the queue -> if have then it should start the next player.
+/*        // check whether there are still players in the queue -> if have then it should start the next player.
         if (turnScheduler.currTeamQueue.Count > 0)
         {
             turnScheduler.currTurn = Team.PLAYER;
@@ -21,7 +21,7 @@ public class PlayerEndTurn : State
         else
         {
             turnScheduler.currTurn = Team.ENEMY;
-        }
+        }*/
         turnScheduler.SetState(new Transition(turnScheduler));
         yield break;
     }

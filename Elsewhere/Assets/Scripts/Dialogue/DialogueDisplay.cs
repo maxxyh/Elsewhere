@@ -15,6 +15,9 @@ public class DialogueDisplay : MonoBehaviour
     public bool endConvo = false;
     public string nextScene;
 
+    private int totalNumCharactersInLine;
+    private int currentNumCharactersDisplayed;
+
     private void Start()
     {
         speakerUIs[0] = speakers[0].GetComponent<SpeakerUI>();
@@ -48,8 +51,15 @@ public class DialogueDisplay : MonoBehaviour
     {
         if (activeLineIndex < conversation.lines.Length)
         {
-            DisplayLine();
-            activeLineIndex += 1;
+            if (currentNumCharactersDisplayed < totalNumCharactersInLine)
+            {
+                StopTypeWriterAndDisplayLineImmediately();
+            } 
+            else
+            {
+                DisplayLine();
+                activeLineIndex += 1;
+            }   
         }
         else
         {
@@ -83,6 +93,8 @@ public class DialogueDisplay : MonoBehaviour
         inactiveSpeakerUI.Hide();
         activeSpeakerUI.Dialog = "";
         StopAllCoroutines();
+        totalNumCharactersInLine = text.Length;
+        currentNumCharactersDisplayed = 0;
         StartCoroutine(EffectTypewriter(text, activeSpeakerUI));
     }
 
@@ -91,7 +103,26 @@ public class DialogueDisplay : MonoBehaviour
         foreach (char c in text.ToCharArray())
         {
             speakerUI.Dialog += c;
+            currentNumCharactersDisplayed+=1;
             yield return new WaitForSeconds(0.001f);
         }
     }
+
+    void StopTypeWriterAndDisplayLineImmediately()
+    {
+        Line line = conversation.lines[activeLineIndex-1];
+        Character character = line.character;
+        StopAllCoroutines();
+        
+        if (speakerUIs[0].SpeakerIs(character))
+        {
+            speakerUIs[0].Dialog = line.text;
+        }
+        else
+        {
+            speakerUIs[1].Dialog = line.text;
+        }
+        currentNumCharactersDisplayed = totalNumCharactersInLine;
+    }
+
 }

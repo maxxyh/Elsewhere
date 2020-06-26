@@ -40,8 +40,7 @@ public class EnemyStartTurn : EnemyState
         //turnScheduler.SetState(...);
 
         // Recovery Mode floats are determined by predefined personalities of the unit. Let's fix it for now.
-
-
+        turnScheduler.currTeamQueue.RemoveFirst();
         currUnit.StartTurn();
 
         /* WORKING BUT DISABLED VERSION OF RECOVERY AI

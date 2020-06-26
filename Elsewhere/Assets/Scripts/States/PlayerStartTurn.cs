@@ -11,12 +11,7 @@ public class PlayerStartTurn : State
     {
         if (turnScheduler.openingDialogue.gameObject.activeSelf)
         {
-            Debug.Log("in execute start player turn true");
             turnScheduler.WaitForDialogueEnd();
-        }
-        else
-        {
-            Debug.Log("in execute start player turn false");
         }
         yield break;
     }
@@ -43,8 +38,9 @@ public class PlayerStartTurn : State
 
     public override IEnumerator DuringDialogue()
     {
-        Debug.Log("in ienum start player turn");
+        Debug.Log("in 'DuringDialogue()' ienum in 'StartPlayerTurn'");
         yield return new WaitUntil(() => turnScheduler.openingDialogue.endConvo);
         turnScheduler.openingDialogue.gameObject.SetActive(false);
     }
+
 }

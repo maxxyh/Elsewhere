@@ -44,6 +44,7 @@ public class TurnScheduler : StateMachine
     public int TutTurn = 0;
 
     [SerializeField] public ObjectiveType objectiveType;
+    public bool objectiveCompleted = false;
 
     [SerializeField] private bool skipTutorial;
 
@@ -80,13 +81,13 @@ public class TurnScheduler : StateMachine
     { 
         if (objectiveType == ObjectiveType.COLLECT_ALL_CRYSTALS)
         {
+            objectiveCompleted = true;
             StartCoroutine(State.AllCrystalsCollectedWin());
         }
     }
 
     public void OnEndTurnButton()
     {
-        Debug.Log("End Turn Button");
         StartCoroutine(State.EndTurn());
     }
 
@@ -134,8 +135,6 @@ public class TurnScheduler : StateMachine
 
     public void OnCancelButton()
     {
-        Debug.Log("cancel clicked");
-        Debug.Log("Current state = " + this.State);
         StartCoroutine(State.Cancel());
     }
 

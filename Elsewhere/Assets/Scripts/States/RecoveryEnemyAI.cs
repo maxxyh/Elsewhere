@@ -65,6 +65,7 @@ public class RecoveryEnemyAI : EnemyState
             }
 
             targetUnits.Clear();
+            turnScheduler.currUnit.chosenAbility = null;
 
             turnScheduler.SetState(new EnemyEndTurn(turnScheduler));
 

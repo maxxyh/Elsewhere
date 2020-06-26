@@ -17,8 +17,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: You can now blow up those harvesters if they happen to stupidly stand on
-      one of those tiles by clicking on them!
+    text: You can now blow up those HazeBringers if they happen to stupidly be in
+      range. Just click on them!
   - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
     text: Rowan, language.
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
