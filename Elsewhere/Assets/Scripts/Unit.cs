@@ -69,6 +69,7 @@ public class Unit : MonoBehaviour, IUnit
     private void Awake()
     {
         statPanel = statPanelGO.GetComponent<StatPanel>();
+        Debug.Log("AWAKE: STATPANEL FOUND?" + statPanel);
     }
 
     // Dictionary style constructor 
@@ -105,6 +106,9 @@ public class Unit : MonoBehaviour, IUnit
     {
         this.characterName = name;
         this.characterClass = characterClass;
+        Debug.Log("statPanel null " + (statPanel == null));
+        Debug.Log("statPanel unitName" + (statPanel.unitName == null));
+        Debug.Log("textMeshProUGUI" + statPanel.unitName.GetComponent<TextMeshProUGUI>());
         TextMeshProUGUI MyName = statPanel.unitName.GetComponent<TextMeshProUGUI>();
         MyName.SetText(name);
         TextMeshProUGUI MyClass = statPanel.unitClass.GetComponent<TextMeshProUGUI>();

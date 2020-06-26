@@ -3393,7 +3393,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 975259261}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &230103500
 TilemapRenderer:
@@ -3433,7 +3433,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -4140,7 +4140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 975259261}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &270243799
 TilemapRenderer:
@@ -7061,6 +7061,11 @@ PrefabInstance:
       propertyPath: openingDialogue
       value: 
       objectReference: {fileID: 1422209885}
+    - target: {fileID: 3651426993338132624, guid: 4c3382c93e72b044490938e580df6bb7,
+        type: 3}
+      propertyPath: objectiveType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5323341924538777091, guid: 4c3382c93e72b044490938e580df6bb7,
         type: 3}
       propertyPath: m_Name
@@ -9756,7 +9761,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 975259261}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &668093736
 PrefabInstance:
@@ -12794,14 +12799,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 453474929}
-  - {fileID: 230103499}
   - {fileID: 270243798}
+  - {fileID: 230103499}
   - {fileID: 1725127635}
   - {fileID: 189894824}
   - {fileID: 1674861318}
   - {fileID: 134278761}
-  - {fileID: 645472413}
   - {fileID: 1493516219}
+  - {fileID: 645472413}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16395,7 +16400,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 975259261}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1493516220
 TilemapRenderer:
@@ -17473,7 +17478,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

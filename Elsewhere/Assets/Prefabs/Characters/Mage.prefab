@@ -805,6 +805,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 764653013457436026, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Name
+      value: Writeup
+      objectReference: {fileID: 0}
     - target: {fileID: 764653013523593061, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -870,6 +875,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653014010207073, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: '"Captain! The founder of Iris! So reliable, so calm, so cool, so she
+        never laughs at my jokes... " - Rowan'
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653014010207074, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -11.419998
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653014010207074, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 46.88977
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653014010207074, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.550003
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653014010207074, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 59.337975
       objectReference: {fileID: 0}
     - target: {fileID: 764653014086388944, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}

@@ -14,16 +14,19 @@ public class Transition : State
 
     public override IEnumerator Execute()
     {
-        // check if game has ended.
-        if (turnScheduler.players.Count == 0)
+        if (turnScheduler.objectiveType == ObjectiveType.ELIMINATE_ALL_ENEMIES)
         {
-            turnScheduler.SetState(new Lose(turnScheduler));
-            yield break;
-        }
-        else if (turnScheduler.enemies.Count == 0)
-        {
-            turnScheduler.SetState(new Win(turnScheduler));
-            yield break;
+            // check if game has ended.
+            if (turnScheduler.players.Count == 0)
+            {
+                turnScheduler.SetState(new Lose(turnScheduler));
+                yield break;
+            }
+            else if (turnScheduler.enemies.Count == 0)
+            {
+                turnScheduler.SetState(new Win(turnScheduler));
+                yield break;
+            }
         }
 
 

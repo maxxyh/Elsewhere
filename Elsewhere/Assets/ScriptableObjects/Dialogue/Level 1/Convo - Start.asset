@@ -22,4 +22,8 @@ MonoBehaviour:
     text: I can't believe it... It's Meredith Mansion - I used to stay here as a
       kid... I think...?
   - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
-    text: I guess we'll find out.
+    text: I guess we'll find out. Those pink crystals. They hold the key to unlocking
+      your stolen memory.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Glad you're here, Kelda, we'll definitely be needing your healing with 
+      this many enemies around.

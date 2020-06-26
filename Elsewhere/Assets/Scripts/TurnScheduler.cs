@@ -43,7 +43,7 @@ public class TurnScheduler : StateMachine
     private static int UnitIdCounter;
     public int TutTurn = 0;
 
-    [SerializeField] private ObjectiveType objectiveType;
+    [SerializeField] public ObjectiveType objectiveType;
 
     [SerializeField] private bool skipTutorial;
 
