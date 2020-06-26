@@ -460,6 +460,7 @@ MonoBehaviour:
   speakerUIs:
   - {fileID: 60562024}
   - {fileID: 1951307641}
+  endConvo: 0
   nextScene: AfterBattle - Esmeralda vs Claude
 --- !u!1 &520442644
 GameObject:
@@ -591,7 +592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 486bf5fd78258d142bd6718ed20460b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62da722c8440d3a40bd59d1a2c268f27, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

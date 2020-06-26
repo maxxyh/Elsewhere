@@ -37,7 +37,10 @@ public class WaitEnemyAI : EnemyState
             }
 
             // if not internal check attackableTiles
-            map.FindAttackableTiles(tile, currUnit.stats[StatString.ATTACK_RANGE].Value, TargetingStyle.SINGLE);
+            if (!insideTile)
+            {
+                map.FindAttackableTiles(tile, currUnit.stats[StatString.ATTACK_RANGE].Value, TargetingStyle.SINGLE);
+            }
         }
 
         bool targetInRange = false;
