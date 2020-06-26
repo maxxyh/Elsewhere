@@ -66,13 +66,14 @@ public class TurnScheduler : StateMachine
         this.enemies = enemies;
         UnitIdCounter = 0;
         currTurn = Team.PLAYER;
-        // EnqueueTeams(Team.PLAYER);
         if (SceneManager.GetActiveScene().name.Equals("Tutorial") && !skipTutorial)
         {
+            currTurn = Team.PLAYER;
             SetState(new CutScene(this));
         }
         else
         {
+            currTurn = Team.ENEMY;
             SetState(new Transition(this));
         }        
     }
