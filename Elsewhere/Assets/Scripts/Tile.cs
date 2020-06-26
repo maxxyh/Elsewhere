@@ -191,16 +191,25 @@ public class Tile : MonoBehaviour, ITile
         {
             if (occupied)
             {
-                toDisplay = GameAssets.MyInstance.turnScheduler.players.Find(x => x.currentTile == this);
-                if (toDisplay == null)
-                {
-                    toDisplay = GameAssets.MyInstance.turnScheduler.enemies.Find(x => x.currentTile == this);
-                }
-                if (toDisplay != null)
-                {
-                    toDisplay.majorStatPanel.gameObject.SetActive(true);
-                }
+                CheckAndActivateMajorStatPanel();
             }
+        }
+    }
+
+    public void CheckAndActivateMajorStatPanel()
+    {
+        toDisplay = GameAssets.MyInstance.turnScheduler.players.Find(x => x.currentTile == this);
+        if (toDisplay == null)
+        {
+            toDisplay = GameAssets.MyInstance.turnScheduler.enemies.Find(x => x.currentTile == this);
+        }
+        if (toDisplay != null)
+        {
+            toDisplay.majorStatPanel.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("no unit detected");
         }
     }
 }

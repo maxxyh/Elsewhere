@@ -42,6 +42,9 @@ public class StatPanel : MonoBehaviour
 
     private static string DisplayBuff(float amount)
     {
+        // round to 1 d.p.
+        amount = Mathf.Round(amount * 10) / 10;
+
         if (amount == 0)
         {
             return "";

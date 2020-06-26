@@ -31,7 +31,7 @@ namespace Tests
 
         // A Test behaves as an ordinary method
         [Test]
-        public void base_damage_is_10_armor_minus_attack()
+        public void base_damage_is_armor_minus_attack_equals_10()
         {
             // ARRANGE
             IUnit attacker = Substitute.For<IUnit>();

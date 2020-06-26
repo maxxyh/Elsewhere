@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Collections.ObjectModel;
+using UnityEngine;
 
 [Serializable]
 public class UnitStat 
@@ -13,7 +14,7 @@ public class UnitStat
             if (isDirty || baseValue != lastBaseValue) {
                 lastBaseValue = baseValue;
                 _value = CalculateFinalValue();
-                isDirty = false;    
+                isDirty = false;
             } 
             return _value;
         }
@@ -113,7 +114,8 @@ public class UnitStat
                 } 
             }
         }
-        return finalValue;
+        // adding a round to 1 d.p.
+        return Mathf.Round(finalValue * 10) / 10;
     }
 
     public virtual bool RemoveAllModifiersFromSource(object source) 

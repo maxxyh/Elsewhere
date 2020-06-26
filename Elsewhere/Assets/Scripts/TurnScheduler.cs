@@ -171,61 +171,6 @@ public class TurnScheduler : StateMachine
 
     #endregion
 
-    #region Deprecated 
-
-    IEnumerator PlayerAttack()
-    {
-        Unit targetUnit = null;
-        // wait for player to click on a valid target
-        yield return new WaitUntil(() =>
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                Unit[] units = GameObject.FindObjectsOfType<Unit>();
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider.CompareTag("tile"))
-                    {
-                        Tile t = hit.collider.GetComponent<Tile>();
-                        Debug.Log("hit a tile");
-                        Debug.Log("occupied = " + t.occupied);
-                        Debug.Log("attackable = " + t.attackable);
-                        if (t.occupied && t.attackable)
-                        {
-                            foreach (Unit unit in units)
-                            {
-                                if (unit.gameObject.CompareTag("enemy") && unit.currentTile == t)
-                                {
-                                    Debug.Log("enemy found");
-                                    targetUnit = unit;
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            return false;
-        });
-        Debug.Log("valid attack target found");
-        Debug.Log("Attacking enemy. 6 damage done.");
-
-        map.RemoveAttackableTiles();
-        // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
-        currUnit.StartAttack(targetUnit);
-        BattleManager.Battle(currUnit, targetUnit);
-
-        yield return StartCoroutine(AttackAnimation(currUnit, targetUnit));
-
-
-        //PlayerEndTurn();
-    }
-
-
-    #endregion
-
     public void EnqueueTeams(Team team = Team.BOTH) 
     {
 
