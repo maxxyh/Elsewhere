@@ -9640,7 +9640,7 @@ PrefabInstance:
     - target: {fileID: 5225696614032337705, guid: 0e4439cd97b45224bb130fe9b0e45ddb,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -9.20018
+      value: -9.200195
       objectReference: {fileID: 0}
     - target: {fileID: 5225696614032337705, guid: 0e4439cd97b45224bb130fe9b0e45ddb,
         type: 3}
@@ -9950,7 +9950,7 @@ PrefabInstance:
     - target: {fileID: 7757812188453158910, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7757812188453158910, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
@@ -10190,7 +10190,7 @@ PrefabInstance:
     - target: {fileID: 7757812189134198260, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7757812189134198260, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
@@ -10584,6 +10584,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 133770564}
+          m_MethodName: RestartGame
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
@@ -10627,6 +10638,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 133770564}
+          m_MethodName: OnlickChangeSceneButton
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MenuScreen
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
@@ -10668,6 +10690,17 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 133770564}
+          m_MethodName: OnlickChangeSceneButton
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: MenuScreen
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 0
