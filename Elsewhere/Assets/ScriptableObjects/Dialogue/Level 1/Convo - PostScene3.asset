@@ -19,18 +19,18 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: I... Remember everything now... That was the last time I saw my parents...*sniffles*
   - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
-    text: 'This is why I told you that this is a waste of time. There''s no point
-      getting sad because you dug up some old memories. '
+    text: 'This is why I told you it''s a waste of time. There''s no point getting
+      sad because you dug up some old memories. '
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-    text: No... It's okay...
+    text: 'Claude, you''ve got it all wrong, I''m not sad, I''m relieved. '
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-    text: Claude, you've got it all wrong, I'm not sad, I'm relieved. All this time,
-      I thought my parents abandoned me, that they didn't love me.
+    text: All this time, I thought my parents abandoned me, that they didn't love
+      me.
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-    text: But today, I remember the truth. My parents are the most loving people
-      out there, and I'm proud to call them mom and dad.
+    text: But now, I remember the truth. My parents were the most loving people out
+      there. I'm proud to call them mom and dad.
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-    text: The fact that I'm alive...this pendant...my parents have never left my
-      side. Thank you all for helping me find my past.
+    text: The fact that I'm alive...this pendant...my parents never left my side.
+      Thank you all for helping me find my past.
   - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
     text: Huh. Alright. Fair enough.
