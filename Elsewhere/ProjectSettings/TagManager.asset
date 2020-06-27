@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - map
   - crystal
+  - door
   layers:
   - Default
   - TransparentFX

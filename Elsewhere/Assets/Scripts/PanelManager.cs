@@ -23,6 +23,7 @@ public class PanelManager : MonoBehaviour
 
     private void Start()
     {
+
         panelCounter = 0;
 
         for (int i = 0; i < cutscenePanelList.Count; i++)
@@ -41,12 +42,25 @@ public class PanelManager : MonoBehaviour
     }
     public void PlayCrystalDialogue()
     {
-        //AudioManager.Instance.PlaySFX()
-        StartCoroutine(CrystalDialogue());
+        //AudioManager.Instance.PlaySFX
+        if (this != null)
+        {
+            StartCoroutine(CrystalDialogue());
+        }
     }
 
     private IEnumerator CrystalDialogue()
     {
+        if (CrystalDialogue() == null)
+        {
+            Debug.Log("crystal dialogue null");
+        }
+
+        if (this == null)
+        {
+            Debug.Log("panel manager null");
+        }
+
         yield return new WaitForSeconds(1f);
 
         CutScenePanelInput cutsceneDialogue = cutscenePanelList.Find(x => x.index == panelCounter);
@@ -70,5 +84,10 @@ public class PanelManager : MonoBehaviour
         {
             OnAllCrystalsCollected();
         }
+    }
+
+    private void OnDestroy()
+    {
+        OnAllCrystalsCollected = null;
     }
 }

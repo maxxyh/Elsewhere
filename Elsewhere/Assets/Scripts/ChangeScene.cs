@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
+    public Animator loadEffect;
+
     public void OnlickChangeSceneButton(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        StartCoroutine(LoadScene(sceneName));
         Time.timeScale = 1;
     }
 
@@ -20,5 +22,12 @@ public class ChangeScene : MonoBehaviour
     {
         Debug.Log("QUIT");
         Application.Quit();
+    }
+
+    IEnumerator LoadScene(string sceneName)
+    {
+        loadEffect.SetTrigger("Start");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(sceneName);
     }
 }

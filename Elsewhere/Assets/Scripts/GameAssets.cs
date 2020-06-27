@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Tilemaps;
 
 public class GameAssets : MonoBehaviour
 {
@@ -23,4 +24,5 @@ public class GameAssets : MonoBehaviour
 
     public HighlightMap highlightMap;
 
+    public GameObject[] houseInterior; 
 }

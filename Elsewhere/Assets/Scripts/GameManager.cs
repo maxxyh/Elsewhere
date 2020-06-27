@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public InitialUnitInfo initialUnitInfo;
     [SerializeField] private GameObject pauseMenu;
 
-    [JsonConverter(typeof(StringEnumConverter))]
+   [JsonConverter(typeof(StringEnumConverter))]
     //private Dictionary<string, Dictionary<StatString, string>> unitStatConfig;
     private JObject unitStatConfig;
 

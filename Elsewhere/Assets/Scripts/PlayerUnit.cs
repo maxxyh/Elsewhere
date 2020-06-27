@@ -59,9 +59,23 @@ public class PlayerUnit : Unit
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "crystal")
-        {
+        { 
             StartCoroutine(SparkleAndDestroyCrystal(collision.gameObject));
+            Debug.Log("Aft collected in PlayerUnit");
+            if (OnCrystalCollected == null)
+            {
+                Debug.Log("Null OnCrystalCollected");
+            }
             OnCrystalCollected();
+        }
+        if (collision.tag == "door")
+        {
+            Debug.Log("Collide Door here");
+            foreach(GameObject go in GameAssets.MyInstance.houseInterior)
+            {
+                go.SetActive(true);
+            }
+            collision.transform.root.gameObject.SetActive(false);
         }
     }
 }

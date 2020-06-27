@@ -5,6 +5,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -368,6 +369,11 @@ public class Unit : MonoBehaviour, IUnit
         {
             pair.Value.DecrementDuration();
         }
+    }
+
+    private void OnDestroy()
+    {
+        PanelManager.OnAllCrystalsCollected -= OnCrystalCollected;
     }
 }
 
