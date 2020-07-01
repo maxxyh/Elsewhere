@@ -9,33 +9,11 @@ public class SelectableUnitTest : MonoBehaviour
     public UnitInfo unitInfo;
     public bool selected;
     public Sprite unitSprite;
-    public Sprite frame;
     public GameObject skillInfo;
 
     private void Start()
     {
-        skillInfo.SetActive(false);
-    }
-    public void OnMouseDown()
-    {
-        Debug.Log("On mouse down");
-        if (!selected)
-        {
-            selected = true;
-        }
-        else
-        {
-            selected = false;
-        }
-    }
-
-    public void OnMouseEnter()
-    {
-        skillInfo.SetActive(true);
-    }
-
-    public void OnMouseExit()
-    {
+        Debug.Log(skillInfo.activeSelf);
         skillInfo.SetActive(false);
     }
 }
