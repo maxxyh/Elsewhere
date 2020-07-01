@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c922d53cfbc342478464c082ec9361b, type: 3}
   m_Name: Tutorial Teams
   m_EditorClassIdentifier: 
-  playerList:
-  - unitID: Julius
-    UnitPrefab: {fileID: 2870922879879798622, guid: ba5383cf5522ac74ea9a4336af10bc66,
-      type: 3}
-    UnitPositions: {x: -1, y: 0, z: 0}
+  tutorialPlayerList:
   - unitID: Esmeralda
     UnitPrefab: {fileID: 2870922879879798622, guid: 7161820e4206e6242bfd1f897d971232,
       type: 3}
     UnitPositions: {x: 0, y: 0, z: 0}
+  - unitID: Julius
+    UnitPrefab: {fileID: 2870922879879798622, guid: ba5383cf5522ac74ea9a4336af10bc66,
+      type: 3}
+    UnitPositions: {x: -1, y: 0, z: 0}
   enemyList:
   - unitID: HarvesterGunslinger
     UnitPrefab: {fileID: 2897327392223700814, guid: f4fbd421b0f58f9408007e94fbd01382,

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -55,19 +56,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-void generatePlayers() {
+    void generatePlayers() {
 
         //unitStatConfig = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(Application.streamingAssetsPath + "/characterConfig.json"));
         unitStatConfig = JObject.Parse(File.ReadAllText(Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json"));
 
-        UnitInfo[] playerInfo = initialUnitInfo.playerList;
+        // UnitInfo[] playerInfo = initialUnitInfo.playerList;
+       
         UnitInfo[] enemyInfo = initialUnitInfo.enemyList;
         CrystalInfo[] crystalInfo = initialUnitInfo.crystalList;
-
         // default abilities
-        List <Ability> AbilitiesSwordsman= new List<Ability>();
+        List<Ability> AbilitiesSwordsman = new List<Ability>();
         List<Ability> AbilitiesMage = new List<Ability>();
-        List<Ability> AbilitiesHealer  = new List<Ability>();
+        List<Ability> AbilitiesHealer = new List<Ability>();
         AbilitiesHealer.Add(new AbilityHealingWave());
         AbilitiesHealer.Add(new AbilityArcaneBoost());
 
@@ -84,24 +85,58 @@ void generatePlayers() {
 
         // enemy heal-testing abilities
         List<Ability> AbilitiesHarvesterGunslinger = new List<Ability>() { new AbilityHealingWave(), new AbilityDoubleHit() };
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            UnitInfo[] playerInfo = initialUnitInfo.tutorialPlayerList;
+            for (int i = 0; i < initialUnitInfo.tutorialPlayerList.Length; i++)
+            {
+                PlayerUnit player = (Instantiate(playerInfo[i].UnitPrefab, playerInfo[i].UnitPositions,
+                Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
+                //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
+                player.tag = "player";
+                player.AssignStats(unitStatConfig[playerInfo[i].unitID]["stats"].ToObject<Dictionary<StatString, float>>());
+                player.AssignMap(map);
+                player.AssignAbilities(UnitAbilities[playerInfo[i].unitID]);
+                player.AssignIdentity((string)unitStatConfig[playerInfo[i].unitID]["name"], (string)unitStatConfig[playerInfo[i].unitID]["class"]);
+                player.UpdateUI();
+                players.Add(player);
+            }
+        }
+        else
+        {
+            List<SelectableUnitTest> playerInfo = UnitSelection.selectedUnitListTest;
+            Debug.Log("PLAYER INFO COUNT:" + UnitSelection.selectedUnitListTest.Count);
+            for (int i = 0; i < UnitSelection.selectedUnitListTest.Count; i++)
+            {
+                Debug.Log("PLAYER INFO COUNT:" + playerInfo.Count);
+                if (playerInfo[i] == null)
+                {
+                    Debug.Log("PLAYERINFO[i] NULL");
+                }
+                if (playerInfo[i].unitInfo.UnitPrefab == null)
+                {
+                    Debug.Log("PLAYERINFO[i] PREFABS NULL");
+                }
+                if (playerInfo[i].unitInfo.UnitPositions == null)
+                {
+                    Debug.Log("PLAYERINFO[i] POSITION NULL");
+                }
+                PlayerUnit player = (Instantiate(playerInfo[i].unitInfo.UnitPrefab, playerInfo[i].unitInfo.UnitPositions,
+                Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
+                //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
+                player.tag = "player";
+                player.AssignStats(unitStatConfig[playerInfo[i].unitInfo.unitID]["stats"].ToObject<Dictionary<StatString, float>>());
+                player.AssignMap(map);
+                player.AssignAbilities(UnitAbilities[playerInfo[i].unitInfo.unitID]);
+                player.AssignIdentity((string)unitStatConfig[playerInfo[i].unitInfo.unitID]["name"], (string)unitStatConfig[playerInfo[i].unitInfo.unitID]["class"]);
+                player.UpdateUI();
+                players.Add(player);
+            }
+        }
+       
 
         // PLAYERS
 
-        for (int i = 0; i < initialUnitInfo.playerList.Length; i++)
-        {
-            PlayerUnit player = (Instantiate(playerInfo[i].UnitPrefab, playerInfo[i].UnitPositions,
-            Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
-            //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
-            player.tag = "player";
-            player.AssignStats(unitStatConfig[playerInfo[i].unitID]["stats"].ToObject<Dictionary<StatString, float>>());
-            player.AssignMap(map);
-            player.AssignAbilities(UnitAbilities[playerInfo[i].unitID]);
-            player.AssignIdentity((string)unitStatConfig[playerInfo[i].unitID]["name"], (string)unitStatConfig[playerInfo[i].unitID]["class"]);
-            player.UpdateUI();
-            players.Add(player);
-        }
-
-        
         // ENEMIES
 
         for (int i = 0; i < initialUnitInfo.enemyList.Length; i++)

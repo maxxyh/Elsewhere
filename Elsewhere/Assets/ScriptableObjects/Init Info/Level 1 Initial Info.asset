@@ -12,19 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c922d53cfbc342478464c082ec9361b, type: 3}
   m_Name: Level 1 Initial Info
   m_EditorClassIdentifier: 
-  playerList:
-  - unitID: Julius
-    UnitPrefab: {fileID: 2870922879879798622, guid: ba5383cf5522ac74ea9a4336af10bc66,
-      type: 3}
-    UnitPositions: {x: -12, y: -3, z: 0}
-  - unitID: Esmeralda
-    UnitPrefab: {fileID: 2870922879879798622, guid: 7161820e4206e6242bfd1f897d971232,
-      type: 3}
-    UnitPositions: {x: -11, y: -2, z: 0}
-  - unitID: Kelda
-    UnitPrefab: {fileID: 2870922879879798622, guid: 65dccee9e9c20294292c3317e88ecf9f,
-      type: 3}
-    UnitPositions: {x: -11, y: -4, z: 0}
+  tutorialPlayerList: []
   enemyList:
   - unitID: HarvesterTank
     UnitPrefab: {fileID: 2897327392223700814, guid: df7846522d417a043a6c844e36c8e3f7,

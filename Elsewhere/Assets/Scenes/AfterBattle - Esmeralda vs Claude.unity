@@ -1022,7 +1022,7 @@ MonoBehaviour:
   - {fileID: 1264869778}
   - {fileID: 1652490921}
   endConvo: 0
-  nextScene: Level1
+  nextScene: NavigationMap
 --- !u!1 &1167460778
 GameObject:
   m_ObjectHideFlags: 0

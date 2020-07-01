@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Level Initial Unit Info", menuName = "ScriptableObjects/New Initial Unit Info")]
 public class InitialUnitInfo : ScriptableObject
 {
-    [SerializeField]
-    public UnitInfo[] playerList;
+    /*[SerializeField]
+    public UnitInfo[] playerList;*/
+    private List<SelectableUnitTest> playerList = UnitSelection.selectedUnitListTest;
+    public UnitInfo[] tutorialPlayerList;
     [SerializeField]
     public UnitInfo[] enemyList;
     [SerializeField]
