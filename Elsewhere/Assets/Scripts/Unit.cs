@@ -29,6 +29,8 @@ public class Unit : MonoBehaviour, IUnit
     public int unitID;
     public string characterName;
     public string characterClass { get; set; }
+
+
     public Animator anim;
 
     [Header("Player Stats")]
@@ -64,12 +66,16 @@ public class Unit : MonoBehaviour, IUnit
     public Transform sparkle;
     public static Action OnCrystalCollected;
    
+    [Header("Inventory and Items")]
+    public UnitInventory inventory;
+    public Weapon weapon;
 
     #endregion
 
     private void Awake()
     {
         statPanel = statPanelGO.GetComponent<StatPanel>();
+        //inventory.Init(5,this);
     }
 
     // Dictionary style constructor 

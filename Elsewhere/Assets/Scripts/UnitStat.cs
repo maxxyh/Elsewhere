@@ -194,5 +194,7 @@ public enum StatString
     MAGIC_RES,
     MOVEMENT_RANGE,
     ATTACK_RANGE,
-    CRIT_RATE
+    CRIT_RATE,
+    HIT_RATE,
+    MIGHT
 }
