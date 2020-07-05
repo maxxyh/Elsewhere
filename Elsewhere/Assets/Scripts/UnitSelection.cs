@@ -14,7 +14,7 @@ public class UnitSelection : MonoBehaviour
     // public GameObject unitCellPrefab;
     private int index = 0;
     public int limit = 0;
-    public string nextScene;
+    private static int nextSceneBuildIndex = 10;
     public Text limitText;
     public Text noOfUnits;
 
@@ -121,7 +121,8 @@ public class UnitSelection : MonoBehaviour
         }
         else if (selectedUnitListTest.Count == limit)
         {
-            SceneManager.LoadScene(nextScene);
+            SceneManager.LoadScene(nextSceneBuildIndex);
+            nextSceneBuildIndex++;
         }
     }
 }

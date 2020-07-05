@@ -1,0 +1,55 @@
+﻿using NSubstitute.Routing.AutoValues;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TEST_StatPanel : MonoBehaviour
+{
+    [SerializeField] TEST_StatDisplay[] statDisplays;
+    [SerializeField] string[] statNames;
+
+    private UnitStat[] stats;
+
+    private void OnValidate()
+    {
+        statDisplays = GetComponentsInChildren<TEST_StatDisplay>();
+        UpdateStatNames();
+    }
+
+    public void SetStats(params UnitStat[] unitStats)
+    {
+        stats = unitStats;
+
+        if (stats.Length > statDisplays.Length)
+        {
+            Debug.LogError("Not enough Stat Displays");
+            return;
+        }
+
+        for (int i = 0; i < statDisplays.Length; i++)
+        {
+            statDisplays[i].gameObject.SetActive(i < stats.Length);
+
+            if (i < stats.Length)
+            {
+                statDisplays[i].Stat = stats[i];
+            }
+        }
+    }
+
+    public void UpdateStatValues()
+    {
+        for (int i = 0; i < stats.Length; i++)
+        {
+            statDisplays[i].UpdateStatValue();
+        }
+    }
+
+    public void UpdateStatNames()
+    {
+        for (int i = 0; i < statNames.Length; i++)
+        {
+            statDisplays[i].Name = statNames[i];
+        }
+    }
+}

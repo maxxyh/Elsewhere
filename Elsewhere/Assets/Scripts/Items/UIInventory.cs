@@ -22,7 +22,4 @@ public class UIInventory : MonoBehaviour
     {
         UpdateSlot(UIItems.FindIndex(i => i.item == item), null);
     }
-      
-
-
 }

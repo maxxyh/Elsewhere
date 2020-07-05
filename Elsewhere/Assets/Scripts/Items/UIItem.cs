@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class UIItem : MonoBehaviour
 {
-    public Item item;
+    public Item item; 
     public Image spriteImage;
     public Text itemName;
     public Text numUses;
