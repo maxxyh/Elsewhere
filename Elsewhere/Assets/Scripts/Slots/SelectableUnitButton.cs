@@ -14,15 +14,17 @@ public class SelectableUnitButton : MonoBehaviour, IPointerEnterHandler, IPointe
 
     private GameObject skillPanel;
     private bool selected = false;
+    private Text unitName;
 
     private void Awake()
     {
         buttonWithImage.image.sprite = selectableUnitGO.GetComponent<SelectableUnitTest>().unitSprite;
         skillPanel = selectableUnitGO.GetComponent<SelectableUnitTest>().skillInfo;
-        
+        unitName = this.GetComponentInChildren<Text>();
     }
     private void Start()
     {
+        unitName.text = selectableUnitGO.GetComponent<SelectableUnitTest>().unitInfo.unitID;
         buttonWithImage.onClick.AddListener(delegate { Select(); });
     }
 
