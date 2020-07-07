@@ -9,6 +9,7 @@ public class TEST_StatDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] Text nameText;
     [SerializeField] Text valueText;
     [SerializeField] TEST_StatToolTip toolTip;
+    private bool showingTooltip;
 
     private UnitStat _stat;
     public UnitStat Stat
@@ -21,9 +22,24 @@ public class TEST_StatDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExi
         }
     }
 
+    private void OnValidate()
+    {
+        Text[] texts = GetComponentsInChildren<Text>();
+        nameText = texts[0];
+        valueText = texts[1];
+        if (toolTip == null)
+        {
+            toolTip = FindObjectOfType<TEST_StatToolTip>();
+        }
+    }
+
     public void UpdateStatValue()
     {
         valueText.text = _stat.Value.ToString();
+        if (showingTooltip)
+        {
+            toolTip.ShowToolTip(Stat, Name);
+        }
     }
 
     private string _name;
@@ -40,21 +56,12 @@ public class TEST_StatDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerEnter(PointerEventData eventData)
     {
         toolTip.ShowToolTip(Stat, Name);
+        showingTooltip = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         toolTip.HideToolTip();
-    }
-
-    private void OnValidate()
-    {
-        Text[] texts = GetComponentsInChildren<Text>();
-        nameText = texts[0];
-        valueText = texts[1];
-        if (toolTip == null)
-        {
-            toolTip = FindObjectOfType<TEST_StatToolTip>();
-        }
+        showingTooltip = false;
     }
 }

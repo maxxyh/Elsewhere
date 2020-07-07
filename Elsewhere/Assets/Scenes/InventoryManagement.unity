@@ -393,9 +393,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountText: {fileID: 926305089}
   icon: {fileID: 1467029374}
-  itemName: {fileID: 770853349}
-  itemNumUses: {fileID: 753215264}
-  toolTip: {fileID: 393652806}
 --- !u!1 &44314331
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +437,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44314331}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -524,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -742,7 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -907,9 +904,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountText: {fileID: 198300747}
   icon: {fileID: 429153196}
-  itemName: {fileID: 1870904307}
-  itemNumUses: {fileID: 1207009128}
-  toolTip: {fileID: 393652806}
 --- !u!1 &191812268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,7 +999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &198300746
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1032,7 +1026,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198300745}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -1235,7 +1229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &213287162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1262,7 +1256,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213287161}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -1873,7 +1867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1952,10 +1946,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountText: {fileID: 44314333}
   icon: {fileID: 174984842}
-  itemName: {fileID: 1927365590}
-  itemNumUses: {fileID: 1704317464}
-  toolTip: {fileID: 393652806}
-  equipped: 0
 --- !u!222 &463375381
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2041,6 +2031,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474850680}
   m_CullTransparentMesh: 0
+--- !u!1 &491863178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 491863180}
+  - component: {fileID: 491863179}
+  m_Layer: 0
+  m_Name: Item Save Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &491863179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491863178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b7410f47a612649bef84d01a4035e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDataBase: {fileID: 11400000, guid: e259511b0f5d3ab44ae71a17e4b40636, type: 2}
+--- !u!4 &491863180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491863178}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 845.43164, y: 317.3652, z: -194.70377}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492441710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,7 +2328,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591082421}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -2572,7 +2606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &680116143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2599,7 +2633,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680116142}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -3703,9 +3737,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountText: {fileID: 680116144}
   icon: {fileID: 1458227879}
-  itemName: {fileID: 159056400}
-  itemNumUses: {fileID: 1362524033}
-  toolTip: {fileID: 393652806}
 --- !u!1 &915704180
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,10 +3792,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountText: {fileID: 1038906227}
   icon: {fileID: 45659926}
-  itemName: {fileID: 1392448733}
-  itemNumUses: {fileID: 191812270}
-  toolTip: {fileID: 393652806}
-  equipped: 0
 --- !u!222 &915704183
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3790,7 +3817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &926305088
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3817,7 +3844,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926305087}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -4296,7 +4323,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038906225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -4393,9 +4420,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountText: {fileID: 213287163}
   icon: {fileID: 1904092464}
-  itemName: {fileID: 1502614941}
-  itemNumUses: {fileID: 1816026080}
-  toolTip: {fileID: 393652806}
 --- !u!1 &1062558219
 GameObject:
   m_ObjectHideFlags: 0
@@ -5222,11 +5246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699a235f21d30c944851d7634fe4c521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedItemsSlotsParent: {fileID: 1264201001}
   equippedItemSlots:
   - {fileID: 915704182}
   - {fileID: 2069741546}
   - {fileID: 463375380}
+  equippedItemsSlotsParent: {fileID: 1264201001}
 --- !u!1 &1333741154
 GameObject:
   m_ObjectHideFlags: 0
@@ -5735,17 +5759,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44baf9971997b1c41be685de6d517e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems:
-  - {fileID: 11400000, guid: 78558570483fff449a45adcf6e56a06b, type: 2}
-  - {fileID: 11400000, guid: 666dfd75907386a4bb17bd4a9c13ecee, type: 2}
-  - {fileID: 11400000, guid: 89050062846591245bf9dc2f54a56010, type: 2}
-  - {fileID: 11400000, guid: ddea3fecca368134e9962bb26fe79e5c, type: 2}
-  itemsParent: {fileID: 1401448951}
-  itemSlots:
+  ItemSlots:
   - {fileID: 1059995671}
   - {fileID: 179611506}
   - {fileID: 40419535}
   - {fileID: 909339691}
+  startingItems:
+  - {fileID: 11400000, guid: 62b52786954e2104db6fd2f2baad4e82, type: 2}
+  - {fileID: 11400000, guid: 666dfd75907386a4bb17bd4a9c13ecee, type: 2}
+  - {fileID: 11400000, guid: 89050062846591245bf9dc2f54a56010, type: 2}
+  - {fileID: 11400000, guid: ddea3fecca368134e9962bb26fe79e5c, type: 2}
+  itemsParent: {fileID: 1401448951}
 --- !u!1 &1458227877
 GameObject:
   m_ObjectHideFlags: 0
@@ -8241,7 +8265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27b15a4d687acc44a9d0327fa108a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 72
   physicalAttack:
     baseValue: 25
   magicalAttack:
@@ -8255,6 +8279,8 @@ MonoBehaviour:
   inventory: {fileID: 1401448953}
   equippedItemsPanel: {fileID: 1264201003}
   statPanel: {fileID: 863501160}
+  itemSaveManager: {fileID: 491863179}
+  itemTooltip: {fileID: 393652806}
 --- !u!1 &2069741544
 GameObject:
   m_ObjectHideFlags: 0
@@ -8310,10 +8336,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountText: {fileID: 591082423}
   icon: {fileID: 456189616}
-  itemName: {fileID: 1675100016}
-  itemNumUses: {fileID: 596795234}
-  toolTip: {fileID: 393652806}
-  equipped: 0
 --- !u!222 &2069741547
 CanvasRenderer:
   m_ObjectHideFlags: 0

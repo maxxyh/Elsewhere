@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938a4165b5b4e2548b5c9bc04a35f7ae, type: 3}
-  m_Name: Crossfire
+  m_Name: Nature Blessing
   m_EditorClassIdentifier: 
-  itemName: Crossfire
-  itemIcon: {fileID: 588142327566772691, guid: b2d9a4363c41f0a43925976ffa354fb9, type: 3}
-  itemNumUses: 3
-  physicalAttackBonus: 5
-  magicalAttackBonus: 3
+  id: 89050062846591245bf9dc2f54a56010
+  itemName: Nature Blessing
+  itemIcon: {fileID: 21300000, guid: 38627da36c288b04e92aabdc7c15838b, type: 3}
+  itemNumUses: 5
+  maxStack: 1
+  physicalAttackBonus: 2
+  magicalAttackBonus: 5
   attackRange: 4
-  critBonus: 20
-  hitRate: 70
-  weaponType: 1
+  critBonus: 30
+  hitRate: 80
+  weaponType: 2

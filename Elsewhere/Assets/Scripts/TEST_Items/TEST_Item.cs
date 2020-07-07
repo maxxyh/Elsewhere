@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -19,11 +19,13 @@ public class TEST_Item : ScriptableObject
     [Range(1, 20)]
     public int maxStack = 1;
 
+    #if UNITY_EDITOR
     private void OnValidate()
     {
         string path = AssetDatabase.GetAssetPath(this);
         id = AssetDatabase.AssetPathToGUID(path);
     }
+    #endif
 
     public virtual TEST_Item GetCopy()
     {

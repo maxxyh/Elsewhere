@@ -5,16 +5,25 @@ using System;
 
 public class TEST_EquippedItemsPanel : MonoBehaviour
 {
-    private int limit = 3;
+    /*private int limit = 3;
     [SerializeField] Transform equippedItemsSlotsParent;
-    [SerializeField] TEST_EquippedItemSlot[] equippedItemSlots;
-    public event Action<TEST_Item> OnItemRightClickedEvent;
+    public TEST_EquippedItemSlot[] equippedItemSlots;
+    public event Action<TEST_Item> OnItemRightClickedEvent;*/
+
+    public TEST_EquippedItemSlot[] equippedItemSlots;
+    [SerializeField] Transform equippedItemsSlotsParent;
+
+    public event Action<TEST_BaseItemSlot> OnPointerEnterEvent;
+    public event Action<TEST_BaseItemSlot> OnPointerExitEvent;
+    public event Action<TEST_BaseItemSlot> OnRightClickEvent;
 
     private void Start()
     {
         for (int i = 0; i < equippedItemSlots.Length; i++)
         {
-            equippedItemSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
+            equippedItemSlots[i].OnPointerEnterEvent += slot => OnPointerEnterEvent(slot);
+            equippedItemSlots[i].OnPointerExitEvent += slot => OnPointerExitEvent(slot);
+            equippedItemSlots[i].OnRightClickEvent += slot => OnRightClickEvent(slot);
         }
     }
     private void OnValidate()
@@ -30,15 +39,14 @@ public class TEST_EquippedItemsPanel : MonoBehaviour
             // might not need this because the equipped slots do not have types, anything can just put in as long as the still got space
             /*if (equippedItemSlots[i].weaponType == item.weaponType)
             {*/
-            if (!equippedItemSlots[i].equipped)
+            if (equippedItemSlots[i].Item == null)
             {
-                equippedItemSlots[i].equipped = true;
                 equippedItemSlots[i].Item = item;
+                equippedItemSlots[i].Amount = 1;
                 return true;
             }
             //}
         }
-        Debug.Log("No more space");
         return false;
     }
 
@@ -48,8 +56,9 @@ public class TEST_EquippedItemsPanel : MonoBehaviour
         {
             if (equippedItemSlots[i].Item == item)
             {
-                equippedItemSlots[i].equipped = false;
+                // equippedItemSlots[i].equipped = false;
                 equippedItemSlots[i].Item = null;
+                equippedItemSlots[i].Amount = 0;
                 return true;
             }
         }

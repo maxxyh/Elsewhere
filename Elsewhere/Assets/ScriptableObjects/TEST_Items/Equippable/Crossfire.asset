@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938a4165b5b4e2548b5c9bc04a35f7ae, type: 3}
-  m_Name: Death's Dance
+  m_Name: Crossfire
   m_EditorClassIdentifier: 
-  itemName: Death's Dance
-  itemIcon: {fileID: 21300000, guid: b59a255625ee9ce4897783c5f7ec4b1e, type: 3}
-  itemNumUses: 6
-  physicalAttackBonus: 4
-  magicalAttackBonus: 4
-  attackRange: 2
-  critBonus: 25
-  hitRate: 80
-  weaponType: 0
+  id: 62b52786954e2104db6fd2f2baad4e82
+  itemName: Crossfire
+  itemIcon: {fileID: 588142327566772691, guid: b2d9a4363c41f0a43925976ffa354fb9, type: 3}
+  itemNumUses: 3
+  maxStack: 1
+  physicalAttackBonus: 5
+  magicalAttackBonus: 3
+  attackRange: 4
+  critBonus: 20
+  hitRate: 70
+  weaponType: 1

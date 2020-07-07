@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938a4165b5b4e2548b5c9bc04a35f7ae, type: 3}
-  m_Name: Nature Blessing
+  m_Name: Saber Sword
   m_EditorClassIdentifier: 
-  itemName: Nature Blessing
-  itemIcon: {fileID: 21300000, guid: 38627da36c288b04e92aabdc7c15838b, type: 3}
-  itemNumUses: 5
-  physicalAttackBonus: 2
-  magicalAttackBonus: 5
-  attackRange: 4
+  id: ddea3fecca368134e9962bb26fe79e5c
+  itemName: Saber Sword
+  itemIcon: {fileID: 21300000, guid: 9da2560eb23af3346afd839fef5144ad, type: 3}
+  itemNumUses: 4
+  maxStack: 1
+  physicalAttackBonus: 4
+  magicalAttackBonus: 2
+  attackRange: 2
   critBonus: 30
   hitRate: 80
-  weaponType: 2
+  weaponType: 0

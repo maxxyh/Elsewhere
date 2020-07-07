@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938a4165b5b4e2548b5c9bc04a35f7ae, type: 3}
-  m_Name: Saber Sword
+  m_Name: Death's Dance
   m_EditorClassIdentifier: 
-  itemName: Saber Sword
-  itemIcon: {fileID: 21300000, guid: 9da2560eb23af3346afd839fef5144ad, type: 3}
-  itemNumUses: 4
+  id: 666dfd75907386a4bb17bd4a9c13ecee
+  itemName: Death's Dance
+  itemIcon: {fileID: 21300000, guid: b59a255625ee9ce4897783c5f7ec4b1e, type: 3}
+  itemNumUses: 6
+  maxStack: 1
   physicalAttackBonus: 4
-  magicalAttackBonus: 2
+  magicalAttackBonus: 4
   attackRange: 2
-  critBonus: 30
+  critBonus: 25
   hitRate: 80
   weaponType: 0
