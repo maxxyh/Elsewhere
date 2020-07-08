@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7074187496226061216}
   - component: {fileID: 7074187496226061151}
   - component: {fileID: 7074187496226061148}
+  - component: {fileID: 3943086663209801055}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: crystal
@@ -150,3 +151,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3943086663209801055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074187496226061219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fbce2dd68606f4fb2bcd13735607c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OwnerTeam: 2
+  CapturingTeam: 2
+  CapturingUnit: {fileID: 0}

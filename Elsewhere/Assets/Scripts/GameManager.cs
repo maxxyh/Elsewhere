@@ -17,7 +17,12 @@ public class GameManager : MonoBehaviour
 
    [JsonConverter(typeof(StringEnumConverter))]
     //private Dictionary<string, Dictionary<StatString, string>> unitStatConfig;
-    private JObject unitStatConfig;
+    private JObject _unitStatConfig;
+    private string _unitStatConfigPath = Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json";
+    private JObject _classStatGrowthConfig;
+    private string _classStatGrowthConfigPath = Application.streamingAssetsPath + "/classStatGrowthConfig.json";
+    private JObject _characterStatGrowthConfig;
+    private string _characterStatGrowthConfigPath = Application.streamingAssetsPath + "/characterStatGrowthConfig.json";
 
     public AudioClip levelMusic;
 
@@ -59,10 +64,12 @@ public class GameManager : MonoBehaviour
     void generatePlayers() {
 
         //unitStatConfig = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(Application.streamingAssetsPath + "/characterConfig.json"));
-        unitStatConfig = JObject.Parse(File.ReadAllText(Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json"));
+        _unitStatConfig = JObject.Parse(File.ReadAllText(_unitStatConfigPath));
+        _classStatGrowthConfig = JObject.Parse(File.ReadAllText(_classStatGrowthConfigPath));
+        _characterStatGrowthConfig = JObject.Parse(File.ReadAllText(_characterStatGrowthConfigPath));
 
         // UnitInfo[] playerInfo = initialUnitInfo.playerList;
-       
+
         UnitInfo[] enemyInfo = initialUnitInfo.enemyList;
         CrystalInfo[] crystalInfo = initialUnitInfo.crystalList;
         // default abilities
@@ -94,10 +101,14 @@ public class GameManager : MonoBehaviour
                 Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
                 //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
                 player.tag = "player";
-                player.AssignStats(unitStatConfig[playerInfo[i].unitID]["stats"].ToObject<Dictionary<StatString, float>>());
+                string unitID = playerInfo[i].unitID;
+
+                player.AssignStats(_unitStatConfig[unitID]["stats"].ToObject<Dictionary<StatString, float>>());
                 player.AssignMap(map);
-                player.AssignAbilities(UnitAbilities[playerInfo[i].unitID]);
-                player.AssignIdentity((string)unitStatConfig[playerInfo[i].unitID]["name"], (string)unitStatConfig[playerInfo[i].unitID]["class"]);
+                player.AssignAbilities(UnitAbilities[unitID]);
+                string unitClass = (string)_unitStatConfig[unitID]["class"];
+                player.AssignIdentity((string)_unitStatConfig[unitID]["name"], unitClass, 
+                    _characterStatGrowthConfig[unitID].ToObject<Dictionary<StatString,int>>(), _classStatGrowthConfig[unitClass].ToObject<Dictionary<StatString, int>>());
                 player.UpdateUI();
                 players.Add(player);
             }
@@ -125,10 +136,14 @@ public class GameManager : MonoBehaviour
                 Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
                 //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
                 player.tag = "player";
-                player.AssignStats(unitStatConfig[playerInfo[i].unitInfo.unitID]["stats"].ToObject<Dictionary<StatString, float>>());
+                string unitID = playerInfo[i].unitInfo.unitID;
+
+                player.AssignStats(_unitStatConfig[unitID]["stats"].ToObject<Dictionary<StatString, float>>());
                 player.AssignMap(map);
-                player.AssignAbilities(UnitAbilities[playerInfo[i].unitInfo.unitID]);
-                player.AssignIdentity((string)unitStatConfig[playerInfo[i].unitInfo.unitID]["name"], (string)unitStatConfig[playerInfo[i].unitInfo.unitID]["class"]);
+                player.AssignAbilities(UnitAbilities[unitID]);
+                string unitClass = (string)_unitStatConfig[unitID]["class"];
+                player.AssignIdentity((string)_unitStatConfig[unitID]["name"], unitClass,
+                    _characterStatGrowthConfig[unitID].ToObject<Dictionary<StatString, int>>(), _classStatGrowthConfig[unitClass].ToObject<Dictionary<StatString, int>>());
                 player.UpdateUI();
                 players.Add(player);
             }
@@ -141,21 +156,23 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < initialUnitInfo.enemyList.Length; i++)
         {
-            EnemyUnit enemy = (Instantiate(enemyInfo[i].UnitPrefab, enemyInfo[i].UnitPositions,
-            Quaternion.Euler(new Vector3()))).GetComponent<EnemyUnit>();
+            EnemyUnit enemy = Instantiate(enemyInfo[i].UnitPrefab, enemyInfo[i].UnitPositions, Quaternion.identity).GetComponent<EnemyUnit>();
             //enemy.gridPosition = new Vector2(0,0);
             enemy.tag = "enemy";
-            enemy.AssignStats(unitStatConfig[enemyInfo[i].unitID]["stats"].ToObject<Dictionary<StatString, float>>());
+            string unitID = enemyInfo[i].unitID;
+
+            enemy.AssignStats(_unitStatConfig[unitID]["stats"].ToObject<Dictionary<StatString, float>>());
             enemy.AssignMap(map);
-            enemy.AssignIdentity((string)unitStatConfig[enemyInfo[i].unitID]["name"], (string)unitStatConfig["HarvesterGunslinger"]["class"]);
+            string unitClass = (string)_unitStatConfig[unitID]["class"];
+            enemy.AssignIdentity((string)_unitStatConfig[unitID]["name"], unitClass,
+                    _characterStatGrowthConfig[unitID].ToObject<Dictionary<StatString, int>>(), _classStatGrowthConfig[unitClass].ToObject<Dictionary<StatString, int>>());
             enemy.UpdateUI();
             enemies.Add(enemy);
         }
 
         for (int i = 0; i < initialUnitInfo.crystalList.Length; i++)
         {
-            GameObject crystal = (Instantiate(crystalInfo[i].UnitPrefab, crystalInfo[i].UnitPositions,
-            Quaternion.Euler(new Vector3())));
+            GameObject crystal = Instantiate(crystalInfo[i].UnitPrefab, crystalInfo[i].UnitPositions, Quaternion.identity);
             //enemy.gridPosition = new Vector2(0,0);
             crystal.tag = "crystal";
         }

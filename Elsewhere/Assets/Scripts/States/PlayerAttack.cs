@@ -11,13 +11,14 @@ public class PlayerAttack : State
     {
         map.RemoveAttackableTiles();
 
-        // taking a risk here...targetUnit might be null apparently! Trust the WaitUntil.
+        // TODO how can like this?
+        turnScheduler.StartCoroutine(turnScheduler.AttackAnimation(currUnit, currUnit.attackingTargetUnit));
+        yield return new WaitUntil(() => currUnit.anim.GetBool("isAttacking") == false);
+
         currUnit.StartAttack(currUnit.attackingTargetUnit);
         BattleManager.Battle(currUnit, currUnit.attackingTargetUnit);
 
-        // TODO how can like this?
-        yield return turnScheduler.StartCoroutine(turnScheduler.AttackAnimation(currUnit, currUnit.attackingTargetUnit));
-
+        yield return new WaitForSeconds(1f);
         turnScheduler.SetState(new PlayerEndTurn(turnScheduler));
     }
 }

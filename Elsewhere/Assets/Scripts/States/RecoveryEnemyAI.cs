@@ -49,7 +49,9 @@ public class RecoveryEnemyAI : EnemyState
             // TODO in future need to migrate this to abiltyTargeting to maximise the number of targets
             List<Unit> targetUnits = new List<Unit>() { currUnit };
 
-            yield return turnScheduler.StartCoroutine(turnScheduler.AbilityAnimation(currUnit));
+            turnScheduler.StartCoroutine(turnScheduler.AbilityAnimation(currUnit));
+            yield return new WaitUntil(() => currUnit.anim.GetBool("isAbility") == false);
+    
             yield return turnScheduler.StartCoroutine(turnScheduler.currUnit.chosenAbility.Execute(turnScheduler.currUnit, targetUnits));
 
             foreach (Unit unit in targetUnits)
@@ -67,6 +69,7 @@ public class RecoveryEnemyAI : EnemyState
             targetUnits.Clear();
             turnScheduler.currUnit.chosenAbility = null;
 
+            yield return new WaitForSeconds(1f);
             turnScheduler.SetState(new EnemyEndTurn(turnScheduler));
 
             yield break;
@@ -186,18 +189,22 @@ public class RecoveryEnemyAI : EnemyState
         Unit targetPlayer = currUnit.attackingTargetUnit;
 
         map.RemoveSelectableTiles(currUnit.currentTile, false);
-        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats[StatString.ATTACK_RANGE].Value) ;
+        map.FindAttackableTiles(currUnit.currentTile, currUnit.stats[StatString.ATTACK_RANGE].Value);
         // should display the attacking tiles.
 
         yield return new WaitForSecondsRealtime(1);
 
         map.RemoveAttackableTiles();
+
+        // TODO how can like this?
+        turnScheduler.StartCoroutine(turnScheduler.AttackAnimation(currUnit, targetPlayer));
+        yield return new WaitUntil(() => currUnit.anim.GetBool("isAttacking") == false);
+
+
         currUnit.StartAttack(targetPlayer);
         BattleManager.Battle(currUnit, targetPlayer);
 
-        // TODO how can like this?
-        yield return turnScheduler.StartCoroutine(turnScheduler.AttackAnimation(currUnit, targetPlayer));
-
+        yield return new WaitForSeconds(1f);
         turnScheduler.SetState(new EnemyEndTurn(turnScheduler));
     }
 

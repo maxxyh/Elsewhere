@@ -58,6 +58,7 @@ public class PlayerUnit : Unit
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        /*
         if (collision.tag == "crystal")
         { 
             StartCoroutine(SparkleAndDestroyCrystal(collision.gameObject));
@@ -68,6 +69,7 @@ public class PlayerUnit : Unit
             }
             OnCrystalCollected();
         }
+        */
         if (collision.tag == "door")
         {
             Debug.Log("Collide Door here");

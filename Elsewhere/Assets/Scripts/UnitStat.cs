@@ -180,7 +180,13 @@ public class UnitStat
         float finalValue = CalculateFinalValue();
 
         return finalValue - finalValue / result;
+    }
 
+    // used when levelling up
+    public void IncreaseBaseValue(int gain)
+    {
+        baseValue += gain;
+        _value += gain;
     }
 }
 

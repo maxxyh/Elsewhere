@@ -1,0 +1,74 @@
+{
+    "Julius" : {
+        "HP": 45,
+        "MANA": 40,
+        "PHYSICAL_DAMAGE": 40,
+        "MAGIC_DAMAGE": 10,
+        "ARMOR": 35,
+        "MAGIC_RES": 20
+    },
+    "Esmeralda" : {
+        "HP": 45,
+        "MANA": 40,
+        "PHYSICAL_DAMAGE": 10,
+        "MAGIC_DAMAGE": 55,
+        "ARMOR": 25	,
+        "MAGIC_RES": 35
+    },
+    "Rowan" : {
+        "HP": 35,
+        "MANA": 40,
+        "PHYSICAL_DAMAGE": 40,
+        "MAGIC_DAMAGE": 30,
+        "ARMOR": 25,
+        "MAGIC_RES": 25
+    },
+    "Kelda" : {
+        "HP": 35,
+        "MANA": 30,
+        "PHYSICAL_DAMAGE": 25,
+        "MAGIC_DAMAGE": 35,
+        "ARMOR": 15,
+        "MAGIC_RES": 35
+    },
+    "Claude" : {
+        "HP": 40,
+        "MANA": 35,
+        "PHYSICAL_DAMAGE": 40,
+        "MAGIC_DAMAGE": 35,
+        "ARMOR": 30,
+        "MAGIC_RES": 20
+    },
+    "EnemySwordsman" : {
+        "HP": 40,
+        "MANA": 50,
+        "PHYSICAL_DAMAGE": 35,
+        "MAGIC_DAMAGE": 20,
+        "ARMOR": 25,
+        "MAGIC_RES": 25
+    },
+    "EnemyTank" : {
+        "HP": 50,
+        "MANA": 40,
+        "PHYSICAL_DAMAGE": 40,
+        "MAGIC_DAMAGE": 15,
+        "ARMOR": 55,
+        "MAGIC_RES": 30
+    },
+    "EnemyGunslinger" : {
+        "HP": 30,
+        "MANA": 35,
+        "PHYSICAL_DAMAGE": 45,
+        "MAGIC_DAMAGE": 40,
+        "ARMOR": 30,
+        "MAGIC_RES": 40
+    },
+    "EnemySage" : {
+        "HP": 40,
+        "MANA": 25,
+        "PHYSICAL_DAMAGE": 25,
+        "MAGIC_DAMAGE": 45,
+        "ARMOR": 35,
+        "MAGIC_RES": 20
+    }
+}

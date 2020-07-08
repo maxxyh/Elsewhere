@@ -194,6 +194,14 @@ public class Tile : MonoBehaviour, ITile
                 CheckAndActivateMajorStatPanel();
             }
         }
+        else if (Input.GetMouseButtonDown(2))
+        {
+            if (occupied)
+            {
+                Unit test = GameAssets.MyInstance.turnScheduler.players.Find(x => x.currentTile == this);
+                test.OnLevelUp();
+            }
+        }
     }
 
     public void CheckAndActivateMajorStatPanel()

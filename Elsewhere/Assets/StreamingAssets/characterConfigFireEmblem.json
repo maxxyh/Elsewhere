@@ -1,0 +1,80 @@
+{
+    "Julius": {
+        "name": "Julius",
+        "class": "Swordsman",
+        "stats":{
+            "HP": 25,
+            "MANA": 20,
+            "PHYSICAL_DAMAGE": 9,
+            "MAGIC_DAMAGE": 5,
+            "ARMOR": 6,
+            "MAGIC_RES": 3,
+            "MOVEMENT_RANGE": 6,
+            "ATTACK_RANGE": 1,
+            "CRIT_RATE": 0.25
+        }
+    },
+    "Esmeralda": {
+        "name": "Esmeralda",
+        "class": "Sage",
+        "stats": {
+            "HP": 25,
+            "MANA": 25,
+            "PHYSICAL_DAMAGE": 4,
+            "MAGIC_DAMAGE": 10,
+            "ARMOR": 3,
+            "MAGIC_RES": 5,
+            "MOVEMENT_RANGE": 4,
+            "ATTACK_RANGE": 3,
+            "CRIT_RATE": 0.25
+        }
+    },
+
+    "Kelda": {
+        "name": "Kelda",
+        "class": "Healer",
+        "stats": {
+            "HP": 25,
+            "MANA": 30,
+            "PHYSICAL_DAMAGE": 4,
+            "MAGIC_DAMAGE": 9,
+            "ARMOR": 3,
+            "MAGIC_RES": 5,
+            "MOVEMENT_RANGE": 4,
+            "ATTACK_RANGE": 3,
+            "CRIT_RATE": 0.25
+        }
+    },
+
+    "HarvesterGunslinger": {
+        "name": "Harvester",
+        "class": "Gunslinger",
+        "stats": {
+            "HP": 25,
+            "MANA": 25,
+            "PHYSICAL_DAMAGE": 8,
+            "MAGIC_DAMAGE": 6,
+            "ARMOR": 5,
+            "MAGIC_RES": 2,
+            "MOVEMENT_RANGE": 4,
+            "ATTACK_RANGE": 3,
+            "CRIT_RATE": 0.25
+        }
+    },
+
+    "HarvesterTank": {
+        "name": "Harvester",
+        "class": "Tank",
+        "stats": {
+            "HP": 28,
+            "MANA": 25,
+            "PHYSICAL_DAMAGE": 8,
+            "MAGIC_DAMAGE": 6,
+            "ARMOR": 6,
+            "MAGIC_RES": 1,
+            "MOVEMENT_RANGE": 5,
+            "ATTACK_RANGE": 1,
+            "CRIT_RATE": 0.25
+        }
+    }
+}

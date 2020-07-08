@@ -178,6 +178,8 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 5133980785669610318}
+  inventory: {fileID: 0}
+  weapon: {fileID: 0}
   gridPosition: {x: 0, y: 0}
 --- !u!1 &2870922879948342433
 GameObject:
@@ -305,7 +307,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5625}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -501,7 +503,7 @@ PrefabInstance:
     - target: {fileID: 764653012399675585, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5.7331467
+      value: -5.7331543
       objectReference: {fileID: 0}
     - target: {fileID: 764653012420664137, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}

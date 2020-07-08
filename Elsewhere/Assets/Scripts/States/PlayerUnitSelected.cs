@@ -90,4 +90,11 @@ public class PlayerUnitSelected : State
         yield break;
     }
 
+    public override IEnumerator Capture()
+    {
+        Unit.OnCaptureCrystal(currUnit);
+        turnScheduler.SetState(new PlayerEndTurn(turnScheduler));
+        yield break;
+    }
+
 }

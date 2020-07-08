@@ -46,8 +46,8 @@
         }
     },
 
-    "HarvesterGunslinger": {
-        "name": "Harvester",
+    "EnemyGunslinger": {
+        "name": "HazeBringer",
         "class": "Gunslinger",
         "stats": {
             "HP": 25,
@@ -62,8 +62,8 @@
         }
     },
 
-    "HarvesterTank": {
-        "name": "Harvester",
+    "EnemyTank": {
+        "name": "HazeBringer",
         "class": "Tank",
         "stats": {
             "HP": 28,

@@ -16,16 +16,22 @@ public class BattleManager
             recipient.TakeDamage(attackDamage);
             DamagePopUp.Create(recipient.transform.position, string.Format("- {0} HP", (int)attackDamage), PopupType.DAMAGE);
 
-        } 
-        
+        }
+
+        bool killed = false;
         if (recipient.isDead())
         {
             turnScheduler.StartCoroutine(turnScheduler.RemoveUnit(recipient));
+            killed = true;
         } 
         else
         {
             recipient.UpdateUI();
         }
+
+        // add exp
+        int exp = Level.CalculateExp(recipient.level, attacker.level, killed);
+        attacker.level.AddExp(exp);
     }
 
     public static int CalculateBaseDamage(IUnit attacker, IUnit recipient)

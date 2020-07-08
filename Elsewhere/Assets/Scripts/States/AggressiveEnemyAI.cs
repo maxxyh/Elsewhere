@@ -91,12 +91,16 @@ public class AggressiveEnemyAI : State
         yield return new WaitForSecondsRealtime(1);
 
         map.RemoveAttackableTiles();
+
+        // TODO how can like this?
+        turnScheduler.StartCoroutine(turnScheduler.AttackAnimation(currUnit, targetPlayer));
+        yield return new WaitUntil(() => currUnit.anim.GetBool("isAttacking") == false);
+
+
         currUnit.StartAttack(targetPlayer);
         BattleManager.Battle(currUnit, targetPlayer);
 
-        // TODO how can like this?
-        yield return turnScheduler.StartCoroutine(turnScheduler.AttackAnimation(currUnit, targetPlayer));
-
+        yield return new WaitForSeconds(1f);
         turnScheduler.SetState(new EnemyEndTurn(turnScheduler));
     }
 

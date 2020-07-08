@@ -149,6 +149,10 @@ public class TurnScheduler : StateMachine
         StartCoroutine(State.ReturnPreviousMenu());
     }
 
+    public void OnCaptureButton()
+    {
+        StartCoroutine(State.Capture());
+    }
 
     public IEnumerator AttackAnimation(Unit currUnit, Unit targetUnit)
     {

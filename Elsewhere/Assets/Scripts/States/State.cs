@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public abstract class State
 {
@@ -82,7 +83,7 @@ public abstract class State
             if (turnScheduler.currTurn == Team.PLAYER)
             {
                 turnScheduler.SetState(new PlayerEndTurn(turnScheduler));
-            } 
+            }
             else
             {
                 turnScheduler.SetState(new EnemyEndTurn(turnScheduler));
@@ -92,6 +93,11 @@ public abstract class State
     }
 
     public virtual IEnumerator AllCrystalsCollectedWin()
+    {
+        yield break;
+    }
+
+    public virtual IEnumerator Capture()
     {
         yield break;
     }

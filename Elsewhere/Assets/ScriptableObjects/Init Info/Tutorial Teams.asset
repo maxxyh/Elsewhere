@@ -22,11 +22,11 @@ MonoBehaviour:
       type: 3}
     UnitPositions: {x: -1, y: 0, z: 0}
   enemyList:
-  - unitID: HarvesterGunslinger
+  - unitID: EnemyGunslinger
     UnitPrefab: {fileID: 2897327392223700814, guid: f4fbd421b0f58f9408007e94fbd01382,
       type: 3}
     UnitPositions: {x: -3, y: -3, z: 0}
-  - unitID: HarvesterTank
+  - unitID: EnemyTank
     UnitPrefab: {fileID: 2897327392223700814, guid: df7846522d417a043a6c844e36c8e3f7,
       type: 3}
     UnitPositions: {x: -2, y: -3, z: 0}

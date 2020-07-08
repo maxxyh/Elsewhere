@@ -1,0 +1,50 @@
+{
+    "Swordsman" : {
+        "HP": 40,
+        "MANA": 10,
+        "PHYSICAL_DAMAGE": 25,
+        "MAGIC_DAMAGE": 0,
+        "ARMOR": 15,
+        "MAGIC_RES": 5,
+    },
+    "Sage" : {
+        "HP": 35,
+        "MANA": 15,
+        "PHYSICAL_DAMAGE": 0,
+        "MAGIC_DAMAGE": 20,
+        "ARMOR": 5,
+        "MAGIC_RES": 10
+    },
+    "Gunslinger" : {
+        "HP": 45,
+        "MANA": 10,
+        "PHYSICAL_DAMAGE": 15,
+        "MAGIC_DAMAGE": 0,
+        "ARMOR": 15,
+        "MAGIC_RES": 5
+    },
+    "Healer" : {
+        "HP": 35,
+        "MANA": 20,
+        "PHYSICAL_DAMAGE": 5,
+        "MAGIC_DAMAGE": 15,
+        "ARMOR": 5,
+        "MAGIC_RES": 15
+    },
+    "Tank" : {
+        "HP": 50,
+        "MANA": 10,
+        "PHYSICAL_DAMAGE": 15,
+        "MAGIC_DAMAGE": 0,
+        "ARMOR": 20,
+        "MAGIC_RES": 5
+    },
+    "Strategist" : {
+        "HP": 45,
+        "MANA": 15,
+        "PHYSICAL_DAMAGE": 20,
+        "MAGIC_DAMAGE": 0,
+        "ARMOR": 10,
+        "MAGIC_RES": 5
+    }
+}

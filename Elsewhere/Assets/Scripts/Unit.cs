@@ -62,20 +62,63 @@ public class Unit : MonoBehaviour, IUnit
     Vector3 velocity = new Vector3();
     private Vector2 lastMove;
 
-    [Header("For collision")]
+    [Header("For crystal")]
     public Transform sparkle;
     public static Action OnCrystalCollected;
-   
+    public static Action<bool> ToggleCaptureButton;
+    public static Action<Unit> OnCaptureCrystal;
+    private bool _onCrystal = false;
+    private StatModifier _crystalBoost = new StatModifier(0.5f, StatModType.PercentAdd);
+
     [Header("Inventory and Items")]
     public UnitInventory inventory;
     public Weapon weapon;
+
+    [Header("Levelling")]
+    public Level level;
+    private Dictionary<StatString, int> _characterStatGrowth;
+    private Dictionary<StatString, int> _classStatGrowth;
 
     #endregion
 
     private void Awake()
     {
         statPanel = statPanelGO.GetComponent<StatPanel>();
+        level = new Level(1, 0, OnLevelUp); //TODO make this loaded from script
         //inventory.Init(5,this);
+    }
+
+    public void OnLevelUp()
+    {
+        StartCoroutine(LevelUp());
+    }
+    private IEnumerator LevelUp()
+    {
+        ParticleSystem.EmissionModule tempSparkle = sparkle.GetComponent<ParticleSystem>().emission;
+        tempSparkle.enabled = true;
+        yield return new WaitForSeconds(0.4f);
+        tempSparkle.enabled = false;
+
+        Debug.Log("LEVEL UP");
+        string increasedStats = "";
+
+        foreach(KeyValuePair<StatString, int> entry in _characterStatGrowth)
+        {
+            int growthRate = entry.Value + _classStatGrowth[entry.Key];
+            int toAdd = growthRate/100;
+            growthRate = growthRate - toAdd * 100;
+            int random = new System.Random().Next(0, 100);
+            if (random <= growthRate)
+                toAdd++;
+            
+            if (toAdd>0)
+                increasedStats += $"{entry.Key} ({toAdd}), ";
+
+            stats[entry.Key].IncreaseBaseValue(toAdd);
+        }
+        UpdateUI();
+
+        Debug.Log($"Stats increased: {increasedStats}");
     }
 
     // Dictionary style constructor 
@@ -108,10 +151,12 @@ public class Unit : MonoBehaviour, IUnit
         }
     }
 
-    public void AssignIdentity(string name, string characterClass)
+    public void AssignIdentity(string name, string characterClass, Dictionary<StatString, int> characterStatGrowth, Dictionary<StatString, int> classStatGrowth)
     {
         this.characterName = name;
         this.characterClass = characterClass;
+        this._characterStatGrowth = characterStatGrowth;
+        this._classStatGrowth = classStatGrowth;
         TextMeshProUGUI MyName = statPanel.unitName.GetComponent<TextMeshProUGUI>();
         MyName.SetText(name);
         TextMeshProUGUI MyClass = statPanel.unitClass.GetComponent<TextMeshProUGUI>();
@@ -160,6 +205,8 @@ public class Unit : MonoBehaviour, IUnit
         currentTile = startTile;
         CurrState = UnitState.IDLING;
         this.statPanelGO.SetActive(true);
+        ToggleCaptureButton(CheckCrystalCollision());
+            
     }
 
     public void EndTurn()
@@ -193,7 +240,7 @@ public class Unit : MonoBehaviour, IUnit
     {
         AudioManager.Instance.PlayHitSound();
         anim.SetBool("isAttacking", true);
-        yield return new WaitForSecondsRealtime(0.4f);
+        yield return new WaitForSecondsRealtime(1f);
         anim.SetBool("isAttacking", false);
     }
 
@@ -201,7 +248,7 @@ public class Unit : MonoBehaviour, IUnit
     {
         AudioManager.Instance.PlaySpellSound();
         anim.SetBool("isAbility", true);
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(1f);
         anim.SetBool("isAbility", false);
         AudioManager.Instance.PlayHitSound();
     }
@@ -257,6 +304,7 @@ public class Unit : MonoBehaviour, IUnit
                 transform.position = target;
                 path.Pop();
                 anim.SetFloat("moveSpeed", 0);
+                ToggleCaptureButton(CheckCrystalCollision());
             }
         }
         else
@@ -377,9 +425,58 @@ public class Unit : MonoBehaviour, IUnit
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("crystal"))
+        {
+            _onCrystal = true;
+        } 
+        else
+        {
+            _onCrystal = false;
+        }
+    }
+
+    private bool CheckCrystalCollision()
+    {
+        float currX = transform.position.x;
+        float currY = transform.position.y;
+        Collider2D[] results = new Collider2D[3]; // max number of results is 3
+        int result = Physics2D.OverlapAreaNonAlloc(new Vector2(currX - 0.5f, currY - 0.5f), new Vector2(currX + 0.5f, currY + 0.5f), results);
+        
+        for (int i = 0; i < result; i++)
+        {
+            if (results[i].CompareTag("crystal"))
+            {
+                Debug.Log("collision with crystal");
+                Crystal crystal = results[i].GetComponent<Crystal>();
+                Team currTeam = (this is PlayerUnit) ? Team.PLAYER : Team.ENEMY;
+                if (crystal.OwnerTeam != currTeam)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+
     private void OnDestroy()
     {
         PanelManager.OnAllCrystalsCollected -= OnCrystalCollected;
+    }
+
+    public void ToggleCrystalBoost(bool apply)
+    {
+        if (apply)
+        {
+            stats[StatString.MANA].AddModifier(_crystalBoost);
+        }
+        else
+        {
+            stats[StatString.MANA].RemoveModifier(_crystalBoost);
+        }
     }
 }
 
