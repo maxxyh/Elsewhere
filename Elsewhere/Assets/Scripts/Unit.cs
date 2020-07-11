@@ -73,7 +73,7 @@ public class Unit : MonoBehaviour, IUnit
     private Dictionary<StatString, int> _classStatGrowth;
 
     [Header("Inventory")]
-    public UnitInventoryManager unitInventory; 
+    public InBattleUnitInventoryManager unitInventory; 
 
     #endregion
 

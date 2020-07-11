@@ -4,15 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CommonInventoryManager : MonoBehaviour
 {
     public List<Item> JuliusItems;
     public List<Item> KeldaItems;
 
-    [SerializeField] UnitEquippedItemPanel unitInventoryPanel;
+    // [SerializeField] UnitEquippedItemPanel unitInventoryPanel;
     [SerializeField] SelectedUnitsPanel selectedUnitsPanel;
-    [SerializeField] UnitInventoryManager inventoryManager;
+    // [SerializeField] UnitInventoryManager inventoryManager;
+    [SerializeField] PreBattleUnitInventoryManager preBattleUnitInventoryManager;
+    [SerializeField] UnitPersonalInventory personalInventory;
+    [SerializeField] Text nameText;
 
     List<UnitData> unitData = new List<UnitData>();
     private JObject _unitStatConfig;
@@ -54,14 +58,21 @@ public class CommonInventoryManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Update()
     {
-        
+        if (chosenUnit != null)
+        {
+            nameText.text = chosenUnit.unitID;
+        }
+        else
+        {
+            nameText.text = "";
+        }
     }
 
     private void ClearAllItemsInUnitInventoryPanel()
     {
-        foreach(EquippedItemSlot slot in unitInventoryPanel.equippedItemSlots)
+        foreach(EquippedItemSlot slot in personalInventory.ItemSlots)
         {
             slot.Item = null;
         }
@@ -73,28 +84,27 @@ public class CommonInventoryManager : MonoBehaviour
 
         chosenUnit = selectedUnit.data;
 
-        if (inventoryManager.unit == null)
-        { 
-            inventoryManager.unit = chosenUnit;
+        if (preBattleUnitInventoryManager.unit == null)
+        {
+            preBattleUnitInventoryManager.unit = chosenUnit;
             // Debug.Log(chosenUnit.unitID);
         }
         else
         {
-            inventoryManager.unit = chosenUnit;
+            preBattleUnitInventoryManager.unit = chosenUnit;
             
         }
 
-        Debug.Log(chosenUnit.unitID);
-        inventoryManager.statPanel.SetStats(chosenUnit.stats[StatString.PHYSICAL_DAMAGE],
+        /*preBattleUnitInventoryManager.statPanel.SetStats(chosenUnit.stats[StatString.PHYSICAL_DAMAGE],
                                             chosenUnit.stats[StatString.MAGIC_DAMAGE],
                                             chosenUnit.stats[StatString.HIT_RATE],
                                             chosenUnit.stats[StatString.CRIT_RATE],
                                             chosenUnit.stats[StatString.ATTACK_RANGE]);
-        inventoryManager.statPanel.UpdateStatValues();
+        preBattleUnitInventoryManager.statPanel.UpdateStatValues();*/
 
         for (int i = 0; i < chosenUnit.unitItems.Count; i++)
         {
-            EquippedItemSlot slot = unitInventoryPanel.equippedItemSlots[i];
+            ItemSlot slot = personalInventory.ItemSlots[i];
             if (chosenUnit.unitItems[i] != null)
             {
                 slot.Item = chosenUnit.unitItems[i];

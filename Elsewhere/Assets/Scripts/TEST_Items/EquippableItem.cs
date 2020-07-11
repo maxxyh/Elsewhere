@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WeaponType
+public enum ItemType
 {
     Sword,
     Gun,
-    Magic_Item,
+    Magic,
+    Protection,
+    Consumable
 }
 [CreateAssetMenu(menuName = "Items / Equippable Item")]
 public class EquippableItem : Item
@@ -19,7 +21,7 @@ public class EquippableItem : Item
     public int hitRate;
     
     [Space]
-    public WeaponType weaponType;
+    public ItemType weaponType;
 
     public override Item GetCopy()
     {
@@ -31,7 +33,7 @@ public class EquippableItem : Item
         Destroy(this);
     }
 
-    public void Equip(UnitInventoryManager inventoryManager)
+    public void Equip(InBattleUnitInventoryManager inventoryManager)
     {
         if (physicalAttackBonus != 0)
             inventoryManager.unit.stats[StatString.PHYSICAL_DAMAGE].AddModifier(new StatModifier(physicalAttackBonus, StatModType.Flat, this));
@@ -45,7 +47,7 @@ public class EquippableItem : Item
             inventoryManager.unit.stats[StatString.HIT_RATE].AddModifier(new StatModifier(hitRate, StatModType.Flat, this));
     }
 
-    public void Unequip(UnitInventoryManager inventoryManager)
+    public void Unequip(InBattleUnitInventoryManager inventoryManager)
     {
         inventoryManager.unit.stats[StatString.PHYSICAL_DAMAGE].RemoveAllModifiersFromSource(this);
         inventoryManager.unit.stats[StatString.MAGIC_DAMAGE].RemoveAllModifiersFromSource(this);

@@ -3,7 +3,7 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
-public class UnitInventoryManager : MonoBehaviour
+public class InBattleUnitInventoryManager : MonoBehaviour
 {
     [Header("Unit")] 
     public UnitData unit;

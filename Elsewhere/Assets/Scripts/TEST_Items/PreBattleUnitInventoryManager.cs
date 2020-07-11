@@ -10,6 +10,7 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
     [Header("Public")]
     public CommonInventory inventory;
     public UnitPersonalInventory unitPersonalInventory;
+    public InventoryItemTypesManager inventoryItemTypesManager;
 
     [Header("Serialize Field")]
     [SerializeField] public ItemSaveManager itemSaveManager;
@@ -24,13 +25,9 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
             itemTooltip = FindObjectOfType<ItemToolTip>();
     }
 
-    // Load unit inventory
-    // turnscheduler has event invoke sent Unit/UnitInventory on unit selected;
-
     public void Awake()
     {
-        // setup Events"
-
+        // Setup Events
         // Pointer Enter
         inventory.OnPointerEnterEvent += ShowTooltip;
         unitPersonalInventory.OnPointerEnterEvent += ShowTooltip;
@@ -41,7 +38,7 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
 
         // Left Click
         inventory.OnLeftClickEvent += InventoryLeftClick;
-        unitPersonalInventory.OnLeftClickEvent += EquippedItemsPanelLeftClick;
+        unitPersonalInventory.OnLeftClickEvent += UnitPersonalInventoryLeftClick;
 
     }
 
@@ -103,6 +100,7 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
                 if (inventory.RemoveItem(itemSlot.Item) && unitPersonalInventory.AddItem(currItem))
                 {
                     unit.unitItems.Add(currItem);
+                    inventoryItemTypesManager.currInventoryItemsList.Remove(currItem);
                 }
                 else
                 {
@@ -112,24 +110,26 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
             }
         }
     }
-    private void EquippedItemsPanelLeftClick(BaseItemSlot itemSlot)
+
+    private void UnitPersonalInventoryLeftClick(BaseItemSlot itemSlot)
     {
         if (unit != null)
         {
             selectedItemSlot = itemSlot;
             if (itemSlot.Item != null)
             {
-                EquippableItem equippableItem = (EquippableItem)itemSlot.Item;
-                if (inventory.CanAddItem(itemSlot.Item) && equippedItemsPanel.RemoveItem(equippableItem))
+                Item item = itemSlot.Item;
+                if (inventory.AddItem(item) && unitPersonalInventory.RemoveItem(item))
                 {
                     // equippedItemsPanel.RemoveItem(equippableItem);
-                    inventory.AddItem(equippableItem);
-                    equippedItemsPanel.RemoveItem(equippableItem);
-                    unit.unitItems.Remove(equippableItem);
+                    // inventory.AddItem(item);
+                    // unitPersonalInventory.RemoveItem(item);
+                    unit.unitItems.Remove(item);
+                    inventoryItemTypesManager.currInventoryItemsList.Add(item);
                 }
                 else
                 {
-                    equippedItemsPanel.AddItem(equippableItem);
+                    // unitPersonalInventory.AddItem(item);
                 }
             }
         }

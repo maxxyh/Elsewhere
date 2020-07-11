@@ -7,7 +7,7 @@ public class StatBuffItemEffect : UsableItemEffect
 	public int AgilityBuff;
 	public float Duration;
 
-	public override void ExecuteEffect(UsableItem parentItem, UnitInventoryManager character)
+	public override void ExecuteEffect(UsableItem parentItem, InBattleUnitInventoryManager character)
 	{
 		StatModifier statModifier = new StatModifier(AgilityBuff, StatModType.Flat, parentItem);
 		// character.Agility.AddModifier(statModifier);
@@ -20,7 +20,7 @@ public class StatBuffItemEffect : UsableItemEffect
 		return "Grants " + AgilityBuff + " Agility for " + Duration + " seconds.";
 	}
 
-	private static IEnumerator RemoveBuff(UnitInventoryManager character, StatModifier statModifier, float duration)
+	private static IEnumerator RemoveBuff(InBattleUnitInventoryManager character, StatModifier statModifier, float duration)
 	{
 		yield return new WaitForSeconds(duration);
 		// character.Agility.RemoveModifier(statModifier);

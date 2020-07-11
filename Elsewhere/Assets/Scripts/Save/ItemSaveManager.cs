@@ -32,17 +32,17 @@ public class ItemSaveManager : MonoBehaviour
         ItemSaveIO.SaveItems(saveData, fileName);
     }
 
-    public void SaveInventory(UnitInventoryManager unit)
+    public void SaveInventory(InBattleUnitInventoryManager unit)
     {
         SaveItems(unit.inventory.ItemSlots, InventoryFileName);
     }
 
-    public void SaveEquippedItems(UnitInventoryManager unit)
+    public void SaveEquippedItems(InBattleUnitInventoryManager unit)
     {
         SaveItems(unit.equippedItemsPanel.equippedItemSlots, EquippedItemsFileName);
     }
 
-    public void LoadInventory(UnitInventoryManager unit)
+    public void LoadInventory(InBattleUnitInventoryManager unit)
     {
         ItemContainerSaveData savedSlots = ItemSaveIO.LoadItems(InventoryFileName);
 
@@ -69,7 +69,7 @@ public class ItemSaveManager : MonoBehaviour
         
     }
 
-    public void LoadEquippedItems(UnitInventoryManager unit)
+    public void LoadEquippedItems(InBattleUnitInventoryManager unit)
     {
         ItemContainerSaveData savedSlots = ItemSaveIO.LoadItems(EquippedItemsFileName);
         

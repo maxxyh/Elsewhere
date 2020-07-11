@@ -34,7 +34,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 
     public virtual bool AddItem(Item item)
     {
-        for (int i = 0; i < ItemSlots.Count; i++)
+       /* for (int i = 0; i < ItemSlots.Count; i++)
         {
             if (ItemSlots[i].CanAddStack(item))
             {
@@ -42,7 +42,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
                 ItemSlots[i].Amount++;
                 return true;
             }
-        }
+        }*/
 
         for (int i = 0; i < ItemSlots.Count; i++)
         {

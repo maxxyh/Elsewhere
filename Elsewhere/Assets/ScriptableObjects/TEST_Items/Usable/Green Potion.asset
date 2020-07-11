@@ -16,8 +16,8 @@ MonoBehaviour:
   itemName: Green Potion
   itemIcon: {fileID: 5636859136003123205, guid: 1e05f513537c24f4e99b1641bc95ec81,
     type: 3}
-  itemNumUses: 0
-  maxStack: 5
+  itemNumUses: 1
+  maxStack: 1
   IsConsumable: 1
   effects:
   - {fileID: 11400000, guid: 9d2646f37c452e44d93ffa112212b948, type: 2}

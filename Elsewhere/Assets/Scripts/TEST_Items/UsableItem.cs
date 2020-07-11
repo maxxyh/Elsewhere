@@ -8,7 +8,13 @@ public class UsableItem : Item
     public bool IsConsumable;
     // TEST_InventoryManager = Unit for now
     public List<UsableItemEffect> effects;
-    public virtual void Use(UnitInventoryManager unit)
+
+    public override Item GetCopy()
+    {
+        return Instantiate(this);
+    }
+
+    public virtual void Use(InBattleUnitInventoryManager unit)
     {
         foreach (UsableItemEffect effect in effects)
         {
