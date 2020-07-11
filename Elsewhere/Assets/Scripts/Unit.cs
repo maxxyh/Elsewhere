@@ -67,14 +67,13 @@ public class Unit : MonoBehaviour, IUnit
     private Crystal _crystalToCapture;
     private StatModifier _crystalBoost = new StatModifier(0.5f, StatModType.PercentAdd);
 
-    [Header("Inventory and Items")]
-    public UnitInventory inventory;
-    public Weapon weapon;
-
     [Header("Levelling")]
     public Level level;
     private Dictionary<StatString, int> _characterStatGrowth;
     private Dictionary<StatString, int> _classStatGrowth;
+
+    [Header("Inventory")]
+    public UnitInventoryManager unitInventory; 
 
     #endregion
 

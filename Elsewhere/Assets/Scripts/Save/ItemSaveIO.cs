@@ -23,10 +23,8 @@ public static class ItemSaveIO
     public static ItemContainerSaveData LoadItems(string path)
     {
         string filePath = baseSavePath + "/" + path + ".dat";
-        Debug.Log(filePath);
         if (System.IO.File.Exists(filePath))
         {
-            Debug.Log("File exists");
             return FileReadWrite.ReadFromBinaryFile<ItemContainerSaveData>(filePath);
         }
         return null;

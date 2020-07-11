@@ -5,10 +5,11 @@ using UnityEngine;
 
 public abstract class ItemContainer : MonoBehaviour, IItemContainer
 {
-    public List<TEST_ItemSlot> ItemSlots;
-    public event Action<TEST_BaseItemSlot> OnPointerEnterEvent;
-    public event Action<TEST_BaseItemSlot> OnPointerExitEvent;
-    public event Action<TEST_BaseItemSlot> OnRightClickEvent;
+    public List<ItemSlot> ItemSlots;
+    public event Action<BaseItemSlot> OnPointerEnterEvent;
+    public event Action<BaseItemSlot> OnPointerExitEvent;
+    public event Action<BaseItemSlot> OnRightClickEvent;
+    public event Action<BaseItemSlot> OnLeftClickEvent;
 
     protected virtual void OnValidate()
     {
@@ -22,19 +23,16 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
             ItemSlots[i].OnPointerEnterEvent += slot => EventHelper(slot, OnPointerEnterEvent);
             ItemSlots[i].OnPointerExitEvent += slot => EventHelper(slot, OnPointerExitEvent);
             ItemSlots[i].OnRightClickEvent += slot => EventHelper(slot, OnRightClickEvent);
-            /*ItemSlots[i].OnBeginDragEvent += slot => EventHelper(slot, OnBeginDragEvent);
-            ItemSlots[i].OnEndDragEvent += slot => EventHelper(slot, OnEndDragEvent);
-            ItemSlots[i].OnDragEvent += slot => EventHelper(slot, OnDragEvent);
-            ItemSlots[i].OnDropEvent += slot => EventHelper(slot, OnDropEvent);*/
+            ItemSlots[i].OnLeftClickEvent += slot => EventHelper(slot, OnLeftClickEvent);
         }
     }
 
-    private void EventHelper(TEST_BaseItemSlot itemSlot, Action<TEST_BaseItemSlot> action)
+    private void EventHelper(BaseItemSlot itemSlot, Action<BaseItemSlot> action)
     {
         action?.Invoke(itemSlot);
     }
 
-    public virtual bool AddItem(TEST_Item item)
+    public virtual bool AddItem(Item item)
     {
         for (int i = 0; i < ItemSlots.Count; i++)
         {
@@ -58,11 +56,11 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
         return false;
     }
 
-    public virtual bool CanAddItem(TEST_Item item, int amount = 1)
+    public virtual bool CanAddItem(Item item, int amount = 1)
     {
         int freeSpaces = 0;
 
-        foreach (TEST_ItemSlot itemSlot in ItemSlots)
+        foreach (ItemSlot itemSlot in ItemSlots)
         {
             if (itemSlot.Item == null || itemSlot.Item.ID == item.ID)
             {
@@ -91,7 +89,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
 
         for (int i = 0; i < ItemSlots.Count; i++)
         {
-            TEST_Item item = ItemSlots[i].Item;
+            Item item = ItemSlots[i].Item;
             if (item != null && item.ID == itemID)
             {
                 number += ItemSlots[i].Amount;
@@ -100,11 +98,11 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
         return number;
     }
 
-    public virtual TEST_Item RemoveItem(string itemID)
+    public virtual Item RemoveItem(string itemID)
     {
         for (int i = 0; i < ItemSlots.Count; i++)
         {
-            TEST_Item item = ItemSlots[i].Item;
+            Item item = ItemSlots[i].Item;
             if (item != null && item.ID == itemID)
             {
                 ItemSlots[i].Amount--;
@@ -114,7 +112,7 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
         return null;
     }
 
-    public virtual bool RemoveItem(TEST_Item item)
+    public virtual bool RemoveItem(Item item)
     {
         for (int i = 0; i < ItemSlots.Count; i++)
         {

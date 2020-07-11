@@ -11,6 +11,7 @@
             "MAGIC_RES": 3,
             "MOVEMENT_RANGE": 6,
             "ATTACK_RANGE": 1,
+	    "HIT_RATE": 0,
             "CRIT_RATE": 0.25
         }
     },
@@ -26,6 +27,7 @@
             "MAGIC_RES": 5,
             "MOVEMENT_RANGE": 4,
             "ATTACK_RANGE": 3,
+	    "HIT_RATE": 0,
             "CRIT_RATE": 0.25
         }
     },
@@ -42,6 +44,7 @@
             "MAGIC_RES": 5,
             "MOVEMENT_RANGE": 4,
             "ATTACK_RANGE": 3,
+            "HIT_RATE": 0,
             "CRIT_RATE": 0.25
         }
     },

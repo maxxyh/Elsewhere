@@ -12,13 +12,13 @@ public class ItemSaveManager : MonoBehaviour
     private const string EquippedItemsFileName = "Equipped Item";
 
     // can pass an array or list
-    private void SaveItems(IList<TEST_ItemSlot> itemSlots, string fileName)
+    private void SaveItems(IList<ItemSlot> itemSlots, string fileName)
     {
         var saveData = new ItemContainerSaveData(itemSlots.Count);
 
         for (int i = 0; i < saveData.SavedSlots.Length; i++)
         {
-            TEST_ItemSlot currSlot = itemSlots[i];
+            ItemSlot currSlot = itemSlots[i];
 
             if (currSlot.Item == null)
             {
@@ -32,17 +32,17 @@ public class ItemSaveManager : MonoBehaviour
         ItemSaveIO.SaveItems(saveData, fileName);
     }
 
-    public void SaveInventory(TEST_Unit unit)
+    public void SaveInventory(UnitInventoryManager unit)
     {
         SaveItems(unit.inventory.ItemSlots, InventoryFileName);
     }
 
-    public void SaveEquippedItems(TEST_Unit unit)
+    public void SaveEquippedItems(UnitInventoryManager unit)
     {
         SaveItems(unit.equippedItemsPanel.equippedItemSlots, EquippedItemsFileName);
     }
 
-    public void LoadInventory(TEST_Unit unit)
+    public void LoadInventory(UnitInventoryManager unit)
     {
         ItemContainerSaveData savedSlots = ItemSaveIO.LoadItems(InventoryFileName);
 
@@ -52,7 +52,7 @@ public class ItemSaveManager : MonoBehaviour
 
         for(int i = 0; i < savedSlots.SavedSlots.Length; i++)
         {
-            TEST_ItemSlot itemSlot = unit.inventory.ItemSlots[i];
+            ItemSlot itemSlot = unit.inventory.ItemSlots[i];
             ItemSlotSaveData savedSlot = savedSlots.SavedSlots[i];
 
             if (savedSlot == null)
@@ -69,7 +69,7 @@ public class ItemSaveManager : MonoBehaviour
         
     }
 
-    public void LoadEquippedItems(TEST_Unit unit)
+    public void LoadEquippedItems(UnitInventoryManager unit)
     {
         ItemContainerSaveData savedSlots = ItemSaveIO.LoadItems(EquippedItemsFileName);
         
@@ -84,15 +84,15 @@ public class ItemSaveManager : MonoBehaviour
             {
                 continue;
             }
-            TEST_Item item = itemDataBase.GetItemCopy(savedSlot.ItemID);
+            Item item = itemDataBase.GetItemCopy(savedSlot.ItemID);
             unit.inventory.AddItem(item);
             // Debug.Log(unit.inventory.ItemSlots.Count);
             /*Debug.Log(unit.inventory.ItemSlots[0].Item);
             Debug.Log(unit.inventory.ItemSlots[0].Amount);
             Debug.Log(unit.inventory.ItemSlots[2].icon.color.a);*/
-            if (item is TEST_EquippableItem)
+            if (item is EquippableItem)
             {
-                unit.Equip((TEST_EquippableItem) item);
+                unit.Equip((EquippableItem) item);
             }
             else
             {

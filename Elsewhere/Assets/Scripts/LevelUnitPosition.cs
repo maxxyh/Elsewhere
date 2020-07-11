@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [CreateAssetMenu(fileName = "Level () UnitPosition", menuName = "ScriptableObjects/Level Unit Position")]
 public class LevelUnitPosition : ScriptableObject

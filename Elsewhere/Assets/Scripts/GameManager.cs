@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("PLAYER INFO COUNT:" + UnitSelection.selectedUnitListTest.Count);
             for (int i = 0; i < UnitSelection.selectedUnitListTest.Count; i++)
             {
-                Debug.Log("PLAYER INFO COUNT:" + playerInfo.Count);
+/*                Debug.Log("PLAYER INFO COUNT:" + playerInfo.Count);
                 if (playerInfo[i] == null)
                 {
                     Debug.Log("PLAYERINFO[i] NULL");
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
                 if (playerInfo[i].unitInfo.UnitPositions == null)
                 {
                     Debug.Log("PLAYERINFO[i] POSITION NULL");
-                }
+                }*/
                 PlayerUnit player = (Instantiate(playerInfo[i].unitInfo.UnitPrefab, playerInfo[i].unitInfo.UnitPositions,
                 Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
                 //player.gridPosition = new Vector2(mapSize/2,mapSize/2);

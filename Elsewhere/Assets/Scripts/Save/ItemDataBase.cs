@@ -6,11 +6,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ItemDataBase : ScriptableObject
 {
-    [SerializeField] TEST_Item[] items;
+    [SerializeField] Item[] items;
 
-    public TEST_Item GetItemReference(string itemID)
+    public Item GetItemReference(string itemID)
     {
-        foreach(TEST_Item item in items)
+        foreach(Item item in items)
         {
             if (item.ID == itemID)
             {
@@ -20,9 +20,9 @@ public class ItemDataBase : ScriptableObject
         return null;
     }
 
-    public TEST_Item GetItemCopy(string itemID)
+    public Item GetItemCopy(string itemID)
     {
-        TEST_Item item = GetItemReference(itemID);
+        Item item = GetItemReference(itemID);
         if (item == null)
         {
             return null;
@@ -53,7 +53,7 @@ public class ItemDataBase : ScriptableObject
 
     private void LoadItems()
     {
-        items = FindAssetsByType<TEST_Item>("Assets/ScriptableObjects/TEST_Items");
+        items = FindAssetsByType<Item>("Assets/ScriptableObjects/TEST_Items");
     }
 
     public static T[] FindAssetsByType<T>(params string[] folders) where T : Object

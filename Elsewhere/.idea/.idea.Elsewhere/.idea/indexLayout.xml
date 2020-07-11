@@ -3,7 +3,11 @@
   <component name="ContentModelUserStore">
     <attachedFolders />
     <explicitIncludes>
+<<<<<<< Updated upstream
       <Path>../../../../../../../../Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.package-manager-ui</Path>
+=======
+      <Path>../../../../../../../../../Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.package-manager-ui</Path>
+>>>>>>> Stashed changes
       <Path>Library/PackageCache/com.unity.2d.animation@3.2.2</Path>
       <Path>Library/PackageCache/com.unity.2d.common@2.0.2</Path>
       <Path>Library/PackageCache/com.unity.2d.path@2.0.4</Path>
@@ -25,6 +29,11 @@
       <Path>.idea</Path>
       <Path>.vs</Path>
       <Path>.vscode</Path>
+<<<<<<< Updated upstream
+=======
+      <Path>Library</Path>
+      <Path>Logs</Path>
+>>>>>>> Stashed changes
       <Path>Temp</Path>
       <Path>obj</Path>
     </explicitExcludes>
