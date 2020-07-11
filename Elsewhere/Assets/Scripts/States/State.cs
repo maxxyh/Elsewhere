@@ -91,17 +91,16 @@ public abstract class State
         }
         yield break;
     }
-
-    public virtual IEnumerator AllCrystalsCollectedWin()
-    {
-        yield break;
-    }
-
+    
     public virtual IEnumerator Capture()
     {
         yield break;
     }
 
+    public virtual IEnumerator CrystalCaptureCutSceneDone()
+    {
+        yield break;
+    }
 }
 
 public enum MenuType

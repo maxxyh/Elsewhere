@@ -166,3 +166,4 @@ MonoBehaviour:
   OwnerTeam: 2
   CapturingTeam: 2
   CapturingUnit: {fileID: 0}
+  OwnerUnit: {fileID: 0}

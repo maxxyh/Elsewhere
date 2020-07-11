@@ -10,9 +10,7 @@ public class SelectableUnit : ScriptableObject
     
     [SerializeField]
     public Sprite unitSprite;
-
-    private SlotScript slot;
-
+    
     public string UnitName
     {
         get
@@ -26,18 +24,6 @@ public class SelectableUnit : ScriptableObject
         get
         {
             return unitSprite;
-        }
-    }
-
-    public SlotScript Slot
-    {
-        get
-        {
-            return slot;
-        }
-        set
-        {
-            slot = value;
         }
     }
 }

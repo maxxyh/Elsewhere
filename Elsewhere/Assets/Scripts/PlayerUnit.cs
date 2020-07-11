@@ -56,7 +56,7 @@ public class PlayerUnit : Unit
         }
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    /*protected override void OnTriggerEnter2D(Collider2D collision)
     {
         /*
         if (collision.tag == "crystal")
@@ -69,7 +69,7 @@ public class PlayerUnit : Unit
             }
             OnCrystalCollected();
         }
-        */
+        #1#
         if (collision.tag == "door")
         {
             Debug.Log("Collide Door here");
@@ -79,5 +79,5 @@ public class PlayerUnit : Unit
             }
             collision.transform.root.gameObject.SetActive(false);
         }
-    }
+    }*/
 }

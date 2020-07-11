@@ -57,7 +57,8 @@ public class TurnScheduler : StateMachine
     private void Awake()
     {
         camShakeInducer = GetComponent<TraumaInducer>();
-        PanelManager.OnAllCrystalsCollected += CheckAllCrystalsCollectedObjective;
+        PanelManager.OnCrystalCaptureCutSceneDone += OnCrystalCaptureCutSceneDone;
+        Crystal.ReturnControlToState += OnReturnControlToState;
     }
 
     public void Init(List<PlayerUnit> players, List<EnemyUnit> enemies)
@@ -78,13 +79,19 @@ public class TurnScheduler : StateMachine
         }        
     }
 
-    private void CheckAllCrystalsCollectedObjective()
-    { 
-        if (objectiveType == ObjectiveType.COLLECT_ALL_CRYSTALS)
+    public void OnCrystalCaptureCutSceneDone(bool allCrystalsCollected)
+    {
+        if (allCrystalsCollected && objectiveType == ObjectiveType.COLLECT_ALL_CRYSTALS)
         {
             objectiveCompleted = true;
-            StartCoroutine(State.AllCrystalsCollectedWin());
         }
+
+        StartCoroutine(State.CrystalCaptureCutSceneDone());
+    }
+
+    public void OnReturnControlToState()
+    {
+        StartCoroutine(State.CrystalCaptureCutSceneDone());
     }
 
     public void OnEndTurnButton()
@@ -230,6 +237,13 @@ public class TurnScheduler : StateMachine
         }
         Destroy(deadUnit.gameObject);
     }
+
+    private void OnDestroy()
+    {
+        if (PanelManager.OnCrystalCaptureCutSceneDone != null)
+            PanelManager.OnCrystalCaptureCutSceneDone -= OnCrystalCaptureCutSceneDone;
+    }
+    
 }
 
 

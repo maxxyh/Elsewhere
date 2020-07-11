@@ -146,7 +146,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -178,6 +178,8 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 4498768073824462151}
+  inventory: {fileID: 0}
+  weapon: {fileID: 0}
   gridPosition: {x: 0, y: 0}
 --- !u!1 &6811365470197037736
 GameObject:

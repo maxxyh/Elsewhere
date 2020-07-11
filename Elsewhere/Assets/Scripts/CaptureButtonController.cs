@@ -1,20 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Serialization;
 
 public class CaptureButtonController : MonoBehaviour
 {
-    public GameObject CaptureButton;
+    public GameObject captureButton;
 
     // Use this for initialization
     void Awake()
     {
         Unit.ToggleCaptureButton += ToggleState;
-        CaptureButton.SetActive(false);
+        captureButton.SetActive(false);
     }
 
     private void ToggleState(bool show)
     {
-        CaptureButton.SetActive(show);
+        captureButton.SetActive(show);
     }
 
     private void OnDestroy()

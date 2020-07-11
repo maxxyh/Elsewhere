@@ -199,6 +199,7 @@ public enum StatString
     ARMOR,
     MAGIC_RES,
     MOVEMENT_RANGE,
+    
     ATTACK_RANGE,
     CRIT_RATE,
     HIT_RATE,

@@ -4,6 +4,7 @@
 
 using UnityEngine;
 using System.Collections;
+using States;
 using UnityEditor;
 
 public class PlayerUnitSelected : State
@@ -83,17 +84,9 @@ public class PlayerUnitSelected : State
         yield break;
     }
 
-
-    public override IEnumerator AllCrystalsCollectedWin()
-    {
-        turnScheduler.SetState(new PlayerEndTurn(turnScheduler));
-        yield break;
-    }
-
     public override IEnumerator Capture()
     {
-        Unit.OnCaptureCrystal(currUnit);
-        turnScheduler.SetState(new PlayerEndTurn(turnScheduler));
+        turnScheduler.SetState(new PlayerCaptureCrystal(turnScheduler));
         yield break;
     }
 

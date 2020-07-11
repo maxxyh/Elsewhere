@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,14 +20,15 @@ public class Tile : MonoBehaviour, ITile
     public Tile parent { get; set; }
     public int distance { get; set; }
 
+    private Material material { get; set; }
+
     private List<Tile> _adjacencyList = new List<Tile>();
     public List<Tile> adjacencyList { get { return _adjacencyList; } set { _adjacencyList = value; } }
 
     public Vector2Int _gridPosition = Vector2Int.zero;
     public Vector2Int gridPosition { get { return _gridPosition; } set { _gridPosition = value; } }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         /*
         if (hover && walkable)
@@ -35,46 +37,30 @@ public class Tile : MonoBehaviour, ITile
         }*/
         if (attackable)
         {
-            GetComponent<Renderer>().material.color = new Color(0.65f, 0.17f, 0.17f, 0.3f);
+            material.color = new Color(0.65f, 0.17f, 0.17f, 0.3f);
         }
         else if (hasPlayer)
         {
-            GetComponent<Renderer>().material.color = new Color(1, 1, 0, 0.3f);
+            material.color = new Color(1, 1, 0, 0.3f);
         }
         else if (target)
         {
-            GetComponent<Renderer>().material.color = new Color(0, 0.8f, 0.8f, 0.3f);
+            material.color = new Color(0, 0.8f, 0.8f, 0.3f);
         }
         else if (selectable)
         {
-            GetComponent<Renderer>().material.color = new Color(0, 1, 0, 0.3f);
+            material.color = new Color(0, 1, 0, 0.3f);
         }
         else
         {
             // transparent nothing
-            GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0f);
+            material.color = new Color(1f, 1f, 1f, 0f);
         }
     }
 
-
-    // TODO move this to another layer perhaps?
-    /*
-    void OnMouseEnter()
+    private void Awake()
     {
-        hover = true;
-    }
-    
-
-    void OnMouseExit()
-    {
-        GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0f);
-        hover = false;
-    }
-    */
-
-    void OnMouseButtonDown()
-    {
-
+        material = GetComponent<Renderer>().material;
     }
 
     // every turn the tile variables need to be reset

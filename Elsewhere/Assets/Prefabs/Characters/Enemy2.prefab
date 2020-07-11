@@ -93,6 +93,8 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 1706582832302019884}
+  inventory: {fileID: 0}
+  weapon: {fileID: 0}
   inRecoveryMode: 0
   recoveryEntrancePercentage: 0
   recoveryExitPercentage: 0
@@ -107,7 +109,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

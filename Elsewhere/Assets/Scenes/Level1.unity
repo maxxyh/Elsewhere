@@ -16584,18 +16584,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutscenePanelList:
-  - cutSceneGO: {fileID: 729234072}
+  - cutSceneGO:
+    - {fileID: 729234072}
     index: 0
-  - cutSceneGO: {fileID: 171753924}
+  - cutSceneGO:
+    - {fileID: 171753924}
     index: 1
-  - cutSceneGO: {fileID: 1429010258}
+  - cutSceneGO:
+    - {fileID: 1429010258}
     index: 2
   postCutscenePanelList:
-  - cutSceneGO: {fileID: 545844596}
+  - cutSceneGO:
+    - {fileID: 545844596}
     index: 0
-  - cutSceneGO: {fileID: 343795432}
+  - cutSceneGO:
+    - {fileID: 343795432}
     index: 1
-  - cutSceneGO: {fileID: 1328478375}
+  - cutSceneGO:
+    - {fileID: 1328478375}
     index: 2
 --- !u!1 &1510657632
 GameObject:
@@ -17050,7 +17056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d1c43af72ffd143ba9c99390654de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CaptureButton: {fileID: 808895997}
+  captureButton: {fileID: 808895997}
 --- !u!1 &1581942304
 GameObject:
   m_ObjectHideFlags: 0

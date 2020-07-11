@@ -21,7 +21,7 @@ namespace Tests
         {
             GameObject PanelManagerGO = GameObject.Instantiate(PanelManagerPrefab, Vector3.zero, Quaternion.identity);
             panelManager = PanelManagerGO.GetComponent<PanelManager>();
-            panelManager.cutscenePanelList[0].cutSceneGO.SetActive(false);
+            //panelManager.cutscenePanelList[0].cutSceneGO.SetActive(false);
             player = MonoBehaviour.Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity).GetComponent<PlayerUnit>();
             enemy = MonoBehaviour.Instantiate(EnemyPrefab, Vector3.zero, Quaternion.identity).GetComponent<EnemyUnit>();
             CrystalGO = MonoBehaviour.Instantiate(CrystalPrefab, new Vector3(2, 0, 0), Quaternion.identity);
@@ -39,7 +39,7 @@ namespace Tests
 
             yield return new WaitForSeconds(1.1f);
 
-            Assert.IsFalse(panelManager.cutscenePanelList[0].cutSceneGO.activeInHierarchy);
+            //Assert.IsFalse(panelManager.cutscenePanelList[0].cutSceneGO.activeInHierarchy);
             Assert.IsFalse(CrystalGO == null);
 
 
@@ -48,7 +48,7 @@ namespace Tests
 
             yield return new WaitForSeconds(1.1f);
 
-            Assert.IsTrue(panelManager.cutscenePanelList[0].cutSceneGO.activeInHierarchy);
+            //Assert.IsTrue(panelManager.cutscenePanelList[0].cutSceneGO.activeInHierarchy);
             Assert.IsTrue(CrystalGO == null);
 
 

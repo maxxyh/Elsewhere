@@ -1,8 +1,4 @@
-﻿/** A unit can move and attack 
- * 
- */
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -68,6 +64,7 @@ public class Unit : MonoBehaviour, IUnit
     public static Action<bool> ToggleCaptureButton;
     public static Action<Unit> OnCaptureCrystal;
     private bool _onCrystal = false;
+    private Crystal _crystalToCapture;
     private StatModifier _crystalBoost = new StatModifier(0.5f, StatModType.PercentAdd);
 
     [Header("Inventory and Items")]
@@ -84,7 +81,7 @@ public class Unit : MonoBehaviour, IUnit
     private void Awake()
     {
         statPanel = statPanelGO.GetComponent<StatPanel>();
-        level = new Level(1, 0, OnLevelUp); //TODO make this loaded from script
+        level = new Level(1, 0, OnLevelUp); // TODO make this loaded from script
         //inventory.Init(5,this);
     }
 
@@ -127,13 +124,8 @@ public class Unit : MonoBehaviour, IUnit
         stats = new Dictionary<StatString, UnitStat>();
         foreach (KeyValuePair<StatString, float> pair in input)
         {
-            bool hasLimit = false;
-            if (pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA))
-            {
-                hasLimit = true;
-            }
+            bool hasLimit = pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA);
             this.stats[pair.Key] = new UnitStat(pair.Value, hasLimit);
-
         }
     }
 
@@ -142,11 +134,7 @@ public class Unit : MonoBehaviour, IUnit
         stats = new Dictionary<StatString, UnitStat>();
         foreach (KeyValuePair<StatString, string> pair in input)
         {
-            bool hasLimit = false;
-            if (pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA))
-            {
-                hasLimit = true;
-            }
+            bool hasLimit = pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA);
             this.stats[pair.Key] = new UnitStat(float.Parse(pair.Value), hasLimit);
         }
     }
@@ -157,10 +145,10 @@ public class Unit : MonoBehaviour, IUnit
         this.characterClass = characterClass;
         this._characterStatGrowth = characterStatGrowth;
         this._classStatGrowth = classStatGrowth;
-        TextMeshProUGUI MyName = statPanel.unitName.GetComponent<TextMeshProUGUI>();
-        MyName.SetText(name);
-        TextMeshProUGUI MyClass = statPanel.unitClass.GetComponent<TextMeshProUGUI>();
-        MyClass.SetText(characterClass);
+        TextMeshProUGUI myName = statPanel.unitName.GetComponent<TextMeshProUGUI>();
+        myName.SetText(name);
+        TextMeshProUGUI myClass = statPanel.unitClass.GetComponent<TextMeshProUGUI>();
+        myClass.SetText(characterClass);
     }
 
 
@@ -204,9 +192,8 @@ public class Unit : MonoBehaviour, IUnit
         startTile = map.GetCurrentTile(transform.position);
         currentTile = startTile;
         CurrState = UnitState.IDLING;
-        this.statPanelGO.SetActive(true);
-        ToggleCaptureButton(CheckCrystalCollision());
-            
+        statPanelGO.SetActive(true);
+        CheckIfActivateCaptureButton();
     }
 
     public void EndTurn()
@@ -304,7 +291,7 @@ public class Unit : MonoBehaviour, IUnit
                 transform.position = target;
                 path.Pop();
                 anim.SetFloat("moveSpeed", 0);
-                ToggleCaptureButton(CheckCrystalCollision());
+                CheckIfActivateCaptureButton();
             }
         }
         else
@@ -388,11 +375,11 @@ public class Unit : MonoBehaviour, IUnit
             this.statPanelGO.SetActive(false);
         }
     }
-
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    
+    /*protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
 
-    }
+    }*/
 
     public void ReturnToStartTile()
     {
@@ -425,46 +412,50 @@ public class Unit : MonoBehaviour, IUnit
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    // Manually check if need to activate capture button after start turn and moving
+    private void CheckIfActivateCaptureButton()
+    {
+        Team currTeam = this is PlayerUnit ? Team.PLAYER : Team.ENEMY;
+        if (_onCrystal )
+        {
+            ToggleCaptureButton(_crystalToCapture.OwnerTeam != currTeam);
+        }
+        else
+        {
+            ToggleCaptureButton(false);
+        }
+    }
+    
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("crystal"))
         {
+            _crystalToCapture = other.GetComponent<Crystal>();
             _onCrystal = true;
-        } 
-        else
+        }
+        
+        if (other.tag == "door")
         {
+            Debug.Log("Collide Door here");
+            foreach(GameObject go in GameAssets.MyInstance.houseInterior)
+            {
+                go.SetActive(true);
+            }
+            other.transform.root.gameObject.SetActive(false);
+        }
+
+        yield break;
+    }
+
+    private IEnumerator OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("crystal"))
+        {
+            ToggleCaptureButton(false);
             _onCrystal = false;
         }
-    }
 
-    private bool CheckCrystalCollision()
-    {
-        float currX = transform.position.x;
-        float currY = transform.position.y;
-        Collider2D[] results = new Collider2D[3]; // max number of results is 3
-        int result = Physics2D.OverlapAreaNonAlloc(new Vector2(currX - 0.5f, currY - 0.5f), new Vector2(currX + 0.5f, currY + 0.5f), results);
-        
-        for (int i = 0; i < result; i++)
-        {
-            if (results[i].CompareTag("crystal"))
-            {
-                Debug.Log("collision with crystal");
-                Crystal crystal = results[i].GetComponent<Crystal>();
-                Team currTeam = (this is PlayerUnit) ? Team.PLAYER : Team.ENEMY;
-                if (crystal.OwnerTeam != currTeam)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-
-    private void OnDestroy()
-    {
-        PanelManager.OnAllCrystalsCollected -= OnCrystalCollected;
+        yield break;
     }
 
     public void ToggleCrystalBoost(bool apply)
