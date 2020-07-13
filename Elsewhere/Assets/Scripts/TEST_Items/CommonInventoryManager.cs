@@ -12,7 +12,7 @@ public class CommonInventoryManager : MonoBehaviour
     public List<Item> KeldaItems;
 
     // [SerializeField] UnitEquippedItemPanel unitInventoryPanel;
-    [SerializeField] SelectedUnitsPanel selectedUnitsPanel;
+    [SerializeField] UnitSelectionPanelMaxx unitSelectionPanel;
     // [SerializeField] UnitInventoryManager inventoryManager;
     [SerializeField] PreBattleUnitInventoryManager preBattleUnitInventoryManager;
     [SerializeField] UnitPersonalInventory personalInventory;
@@ -20,43 +20,35 @@ public class CommonInventoryManager : MonoBehaviour
     [SerializeField] ItemSaveManager itemSaveManager;
 
     List<UnitData> unitData = new List<UnitData>();
+    UnitData chosenUnit;
     private JObject _unitStatConfig;
-    UnitData chosenUnit; 
-    private string _unitStatConfigPath = Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json";
+    private readonly string _unitStatConfigPath = Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json";
 
-    private void OnValidate ()
+    private void Awake ()
     {
-        Dictionary<StatString, UnitStat> JuliusStats = new Dictionary<StatString, UnitStat>();
+        List<string> selectedUnitIds = StaticData.SelectedUnits;
         _unitStatConfig = JObject.Parse(File.ReadAllText(_unitStatConfigPath));
-        foreach (KeyValuePair<StatString, float> pair in _unitStatConfig["Julius"]["stats"]
-            .ToObject<Dictionary<StatString, float>>())
+        for (int i = 0; i < selectedUnitIds.Count; i++)
         {
-            bool hasLimit = pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA);
-            JuliusStats[pair.Key] = new UnitStat(pair.Value, hasLimit);
+            string unitId = selectedUnitIds[i];
+            Dictionary<StatString,UnitStat> stats = ConvertStats(_unitStatConfig[unitId]["stats"].ToObject<Dictionary<StatString,string>>());
+            UnitData currUnitData = new UnitData(unitId, stats, JuliusItems);
+            unitSelectionPanel.CreateUnitSelectionSlot(currUnitData);
         }
-
-        Dictionary<StatString, UnitStat> KeldaStats = new Dictionary<StatString, UnitStat>();
-        _unitStatConfig = JObject.Parse(File.ReadAllText(_unitStatConfigPath));
-        foreach (KeyValuePair<StatString, float> pair in _unitStatConfig["Kelda"]["stats"]
-            .ToObject<Dictionary<StatString, float>>())
-        {
-            bool hasLimit = pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA);
-            KeldaStats[pair.Key] = new UnitStat(pair.Value, hasLimit);
-        }
-
-        UnitData Julius = new UnitData("Julius", JuliusStats, JuliusItems);
-        UnitData Kelda = new UnitData("Kelda", KeldaStats, KeldaItems);
         
-        unitData.Add(Julius);
-        unitData.Add(Kelda);
+        unitSelectionPanel.OnSlotLeftClickEvent += OnChoosingUnit;
+    }
 
-        selectedUnitsPanel.OnSlotLeftClickEvent += OnChoosingUnit;
-
-        for (int i = 0; i < selectedUnitsPanel.selectedUnitSlots.Length; i++)
+    private static Dictionary<StatString, UnitStat> ConvertStats(Dictionary<StatString, string> input)
+    {
+        Dictionary<StatString, UnitStat> stats = new Dictionary<StatString, UnitStat>();
+        foreach (KeyValuePair<StatString, string> pair in input)
         {
-            SelectedUnitSlot currSlot = selectedUnitsPanel.selectedUnitSlots[i];
-            currSlot.data = unitData[i];
+            bool hasLimit = pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA);
+            stats[pair.Key] = new UnitStat(float.Parse(pair.Value), hasLimit);
         }
+
+        return stats;
     }
     private void OnDestroy()
     {

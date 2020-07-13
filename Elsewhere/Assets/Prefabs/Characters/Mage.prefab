@@ -178,8 +178,7 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 5133980785669610318}
-  inventory: {fileID: 0}
-  weapon: {fileID: 0}
+  unitInventory: {fileID: 0}
   gridPosition: {x: 0, y: 0}
 --- !u!1 &2870922879948342433
 GameObject:
@@ -503,7 +502,7 @@ PrefabInstance:
     - target: {fileID: 764653012399675585, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5.7331543
+      value: 1.7668533
       objectReference: {fileID: 0}
     - target: {fileID: 764653012420664137, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -523,7 +522,7 @@ PrefabInstance:
     - target: {fileID: 764653012420664137, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -58.665733
+      value: -21.165724
       objectReference: {fileID: 0}
     - target: {fileID: 764653012420939488, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -543,7 +542,7 @@ PrefabInstance:
     - target: {fileID: 764653012420939488, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -71.89888
+      value: -26.898869
       objectReference: {fileID: 0}
     - target: {fileID: 764653012478898077, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -583,7 +582,7 @@ PrefabInstance:
     - target: {fileID: 764653012496676329, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -30.198269
+      value: -15.198265
       objectReference: {fileID: 0}
     - target: {fileID: 764653012576316794, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -614,7 +613,7 @@ PrefabInstance:
     - target: {fileID: 764653012589588747, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -86.59481
+      value: -41.594795
       objectReference: {fileID: 0}
     - target: {fileID: 764653012688493687, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -659,7 +658,7 @@ PrefabInstance:
     - target: {fileID: 764653013055201914, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -18.966293
+      value: -3.9662933
       objectReference: {fileID: 0}
     - target: {fileID: 764653013160534626, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -679,7 +678,7 @@ PrefabInstance:
     - target: {fileID: 764653013160534626, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -45.432587
+      value: -15.432579
       objectReference: {fileID: 0}
     - target: {fileID: 764653013217053240, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -749,7 +748,7 @@ PrefabInstance:
     - target: {fileID: 764653013305520837, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -85.13203
+      value: -32.63201
       objectReference: {fileID: 0}
     - target: {fileID: 764653013306948632, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -762,10 +761,13 @@ PrefabInstance:
     - target: {fileID: 764653013325892393, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_Text
-      value: 'Deals x1.2 magic damage to all units in range of 3, and reduces armor
-        of all affected targets by 20%
-
-'
+      value: Ranged AoE spell with 3-tile range. Deals x1.2 magic damage and 20%
+        armor debuff on all targets
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653013325892393, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 764653013325892394, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -836,7 +838,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: "Steals an amount of HP equal to 40% of initiator\u2019s magic damage
-        from a chosen target"
+        from a single target"
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653013743445961, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 764653013743445962, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -1087,7 +1094,7 @@ PrefabInstance:
     - target: {fileID: 764653014291661110, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -32.19944
+      value: -9.699434
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cced2a90ff3fd041bc046586e496ed4, type: 3}

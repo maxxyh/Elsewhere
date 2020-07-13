@@ -1,0 +1,26 @@
+﻿{
+  "WhirlwindSlash": {
+    "description": "Deals x1.2 physical damage to all targets in a 1-tile radius",
+    "name": "Whirlwind Slash"
+  },
+  "DoubleHit": {
+    "description": "Unit does 2 normal attacks, dealing x2 physical damage to a single enemy",
+    "name": "Double Hit"
+  },
+  "AstralFlare": {
+    "description":"Ranged AoE spell with 3-tile range. Deals x1.2 magic damage and 20% armor debuff on all targets",
+    "name": "Astral Flare"  
+  },
+  "HpReaver": {
+    "description": "Steals an amount of HP equal to 40% of initiator’s magic damage from a single target",
+    "name": "HP Reaver"
+  },
+  "HealingWave": {
+    "description": "Heals 30HP for a single teammate (including self) within range of 3",
+    "name": "Healing Wave"
+  },
+  "ArcaneBoost": {
+    "description": "Grants caster 20% armor and 20% magic damage buff",
+    "name": "Arcane Boost"
+  }
+}

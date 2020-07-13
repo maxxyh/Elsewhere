@@ -2,6 +2,8 @@
     "Julius": {
         "name": "Julius",
         "class": "Swordsman",
+        "abilities": ["WhirlwindSlash", "DoubleHit"],
+        "items": ["ddea3fecca368134e9962bb26fe79e5c"],
         "stats":{
             "HP": 25,
             "MANA": 20,
@@ -18,6 +20,8 @@
     "Esmeralda": {
         "name": "Esmeralda",
         "class": "Sage",
+        "abilities": ["AstralFlare", "HpReaver"],
+        "items": ["89050062846591245bf9dc2f54a56010"],
         "stats": {
             "HP": 25,
             "MANA": 25,
@@ -35,6 +39,8 @@
     "Kelda": {
         "name": "Kelda",
         "class": "Healer",
+        "abilities": ["HealingWave", "ArcaneBoost"],
+        "items": ["89050062846591245bf9dc2f54a56010"],
         "stats": {
             "HP": 25,
             "MANA": 30,
@@ -52,6 +58,7 @@
     "EnemyGunslinger": {
         "name": "HazeBringer",
         "class": "Gunslinger",
+        "abilities": [],
         "stats": {
             "HP": 25,
             "MANA": 25,
@@ -69,6 +76,7 @@
     "EnemyTank": {
         "name": "HazeBringer",
         "class": "Tank",
+        "abilities": [],
         "stats": {
             "HP": 28,
             "MANA": 25,

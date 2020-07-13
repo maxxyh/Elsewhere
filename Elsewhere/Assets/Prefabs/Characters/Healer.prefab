@@ -764,8 +764,13 @@ PrefabInstance:
     - target: {fileID: 764653013325892393, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_Text
-      value: "Heals 30HP for a chosen teammate (including self) within range\r of
-        3\n\n"
+      value: "Heals 30HP for a single teammate (including self) within range\r of
+        3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653013325892393, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 764653013325892394, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -845,9 +850,7 @@ PrefabInstance:
     - target: {fileID: 764653013743445961, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_Text
-      value: 'Grants herself 20% armor and 20% magic damage
-
-'
+      value: Grants caster 20% armor and 20% magic damage buff
       objectReference: {fileID: 0}
     - target: {fileID: 764653013743445961, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}

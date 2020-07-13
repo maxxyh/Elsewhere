@@ -49,7 +49,7 @@
         }
     },
 
-    "HarvesterGunslinger": {
+    "EnemyGunslinger": {
         "name": "Harvester",
         "class": "Gunslinger",
         "stats": {
@@ -65,7 +65,7 @@
         }
     },
 
-    "HarvesterTank": {
+    "EnemyTank": {
         "name": "Harvester",
         "class": "Tank",
         "stats": {

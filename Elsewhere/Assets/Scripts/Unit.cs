@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Unit : MonoBehaviour, IUnit
 {
@@ -37,9 +39,9 @@ public class Unit : MonoBehaviour, IUnit
     private UnitState _currState = UnitState.ENDTURN;
     public UnitState CurrState
     {
-        get { return _currState; }
+        get => _currState;
 
-        set { _currState = value; }
+        set => _currState = value;
     }
 
     [Header("References")]
@@ -165,6 +167,17 @@ public class Unit : MonoBehaviour, IUnit
     {
         this.abilities = abilities;
         majorStatPanel.AssignManaCost(abilities);
+    }
+
+    public virtual void AssignAbilities(IEnumerable<string> abilityNames, JObject abilityConfig)
+    {
+        abilities = new List<Ability>();
+        foreach (string abilityName in abilityNames)
+        {
+            abilities.Add(StaticData.AbilityReference[abilityName]);
+            majorStatPanel.AddAbilityToPanel((string) abilityConfig[abilityName]["name"], 
+                (string) abilityConfig[abilityName]["description"], StaticData.AbilityReference[abilityName].GetManaCost());
+        }
     }
 
 

@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: c69718a10e97bb94082f433d86c38174
+  - enabled: 1
+    path: Assets/Scenes/InventoryManagement.unity
+    guid: 3da56a78536402c4e82126d1a43352b4
   m_configObjects: {}

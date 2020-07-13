@@ -7,18 +7,34 @@ using UnityEngine.UI;
 
 public class SelectedUnitSlot : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] Text unitName;
-    [SerializeField] Image unitSprite;
+    [SerializeField] protected Text unitName;
+    [SerializeField] protected Image unitSprite;
     public UnitData data;
+
+    [HideInInspector]
+    public string UnitName => unitName.text;
 
     public event Action<SelectedUnitSlot> OnSlotLeftClickEvent;
 
-    private void Awake()
+    private void Start()
+    {
+        if (data != null)
+        {
+            unitSprite.sprite = data.unitSprite;
+            unitName.text = data.unitID;
+        }
+        else
+        {
+            Debug.LogError("selectedUnitSlot data not initialised on start");
+        }
+        
+    }
+
+    public void Refresh()
     {
         unitSprite.sprite = data.unitSprite;
         unitName.text = data.unitID;
     }
-
 
     public void OnPointerClick(PointerEventData eventData)
     {
