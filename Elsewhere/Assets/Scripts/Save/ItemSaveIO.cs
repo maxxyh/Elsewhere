@@ -42,4 +42,19 @@ public static class ItemSaveIO
             Debug.LogException(ex);
         }
     }
+
+    public static void SaveUnit(UnitData data, string path)
+    {
+        FileReadWrite.WriteToBinaryFile(baseSavePath + "/" + path + ".dat", data);
+    }
+
+    public static UnitData LoadUnit(string path)
+    {
+        string filePath = baseSavePath + "/" + path + ".dat";
+        if (System.IO.File.Exists(filePath))
+        {
+            return FileReadWrite.ReadFromBinaryFile<UnitData>(filePath);
+        }
+        return null;
+    }
 }

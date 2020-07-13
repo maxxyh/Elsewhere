@@ -52,7 +52,7 @@ public class AbilitiesPanel : MonoBehaviour
     {
         mainActionPanel.SetActive(true);
         abilitiesPanel.SetActive(false);
-        turnScheduler.OnExitAbilityMenuButton();
+        turnScheduler.OnExitMenuButton();
     }
     public void OnAbilitiesButton()
     {

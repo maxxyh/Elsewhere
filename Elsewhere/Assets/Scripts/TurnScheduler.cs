@@ -24,6 +24,7 @@ public class TurnScheduler : StateMachine
     public GameObject gameOverUI;
     public GameObject victoryUI;
     public GameObject tutorialPanel;
+    public GameObject playerInventoryPanel;
 
     [Header("Dialogue")]
     public DialogueDisplay openingDialogue;
@@ -59,6 +60,7 @@ public class TurnScheduler : StateMachine
         camShakeInducer = GetComponent<TraumaInducer>();
         PanelManager.OnCrystalCaptureCutSceneDone += OnCrystalCaptureCutSceneDone;
         Crystal.ReturnControlToState += OnReturnControlToState;
+        InBattleUnitInventoryManager.OnUsedUsableItem += OnUsedUsableItem;
     }
 
     public void Init(List<PlayerUnit> players, List<EnemyUnit> enemies)
@@ -110,6 +112,11 @@ public class TurnScheduler : StateMachine
         StartCoroutine(State.Targeting(ActionType.ABILITY));
     }
 
+    public void OnInventoryButton()
+    {
+        StartCoroutine(State.OpenMenu(MenuType.INVENTORY));
+    }
+
     public void OnClickCheckForValidTarget(Tile tile)
     {
         StartCoroutine(State.CheckTargeting(tile));
@@ -151,7 +158,7 @@ public class TurnScheduler : StateMachine
         StartCoroutine(State.OpenMenu(MenuType.ABILITY));
     }
 
-    public void OnExitAbilityMenuButton()
+    public void OnExitMenuButton()
     {
         StartCoroutine(State.ReturnPreviousMenu());
     }
@@ -159,6 +166,11 @@ public class TurnScheduler : StateMachine
     public void OnCaptureButton()
     {
         StartCoroutine(State.Capture());
+    }
+
+    public void OnUsedUsableItem()
+    {
+        StartCoroutine(State.UsedUsableItem());
     }
 
     public IEnumerator AttackAnimation(Unit currUnit, Unit targetUnit)
@@ -240,10 +252,10 @@ public class TurnScheduler : StateMachine
 
     private void OnDestroy()
     {
-        if (PanelManager.OnCrystalCaptureCutSceneDone != null)
-            PanelManager.OnCrystalCaptureCutSceneDone -= OnCrystalCaptureCutSceneDone;
+        PanelManager.OnCrystalCaptureCutSceneDone -= OnCrystalCaptureCutSceneDone;
+        Crystal.ReturnControlToState -= OnReturnControlToState;
+        InBattleUnitInventoryManager.OnUsedUsableItem -= OnUsedUsableItem;
     }
-    
 }
 
 

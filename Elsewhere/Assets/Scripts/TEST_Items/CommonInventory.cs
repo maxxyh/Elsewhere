@@ -31,7 +31,6 @@ public class CommonInventory : ItemContainer
 
     private void SetStartingItems()
     {
-        Debug.Log("Set starting Item");
         Clear();
         foreach (Item item in inventoryStartingItems)
         {

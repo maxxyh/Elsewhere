@@ -93,8 +93,10 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 1706582832302019884}
-  inventory: {fileID: 0}
-  weapon: {fileID: 0}
+  unitInventory: {fileID: 6456096091892639001, guid: 88f88883eb2a5e941a0a1c3545efa7a9,
+    type: 3}
+  ItemDatabase: {fileID: 11400000, guid: e259511b0f5d3ab44ae71a17e4b40636, type: 2}
+  unitSprite: {fileID: 21300000, guid: 67666a4a5e974ef45972b8bf564b7fc3, type: 3}
   inRecoveryMode: 0
   recoveryEntrancePercentage: 0
   recoveryExitPercentage: 0
@@ -479,7 +481,7 @@ PrefabInstance:
     - target: {fileID: 764653012399675585, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.7668533
+      value: 1.766861
       objectReference: {fileID: 0}
     - target: {fileID: 764653012420664137, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}

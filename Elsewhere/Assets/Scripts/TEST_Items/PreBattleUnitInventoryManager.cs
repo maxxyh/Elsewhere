@@ -13,7 +13,7 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
     public InventoryItemTypesManager inventoryItemTypesManager;
 
     [Header("Serialize Field")]
-    [SerializeField] public ItemSaveManager itemSaveManager;
+    [SerializeField] ItemSaveManager itemSaveManager;
     [SerializeField] ItemToolTip itemTooltip;
 
     private BaseItemSlot selectedItemSlot;
@@ -46,14 +46,13 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
     {
         /*if (itemSaveManager != null)
         {
-            itemSaveManager.LoadInventory(this);
-            itemSaveManager.LoadEquippedItems(this);
+            itemSaveManager.LoadUnitData(this.unit.unitID);
         }*/
     }
 
-    private void OnDestroy()
+    /*private void OnDestroy()
     {
-        /*if (!IsInventoryNull() && !IsEquippedPanelNull())
+        *//*if (!IsInventoryNull() && !IsEquippedPanelNull())
         {
             itemSaveManager.SaveInventory(this);
             itemSaveManager.SaveEquippedItems(this);
@@ -61,7 +60,12 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
         else
         {
             Debug.Log("Null destroy inventory");
-        }*/
+        }*//*
+    }*/
+
+    private void OnDestroy()
+    {
+        
     }
 
     private bool IsInventoryNull()
