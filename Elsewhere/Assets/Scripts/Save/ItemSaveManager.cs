@@ -11,32 +11,6 @@ public class ItemSaveManager : MonoBehaviour
     private const string InventoryFileName = "Inventory";
     private const string EquippedItemsFileName = "Equipped Item";
 
-    // can pass an array or list
-    /*private void SaveItems(IList<ItemSlot> itemSlots, string fileName)
-    {
-        var saveData = new ItemContainerSaveData(itemSlots.Count);
-
-        for (int i = 0; i < saveData.SavedSlots.Length; i++)
-        {
-            ItemSlot currSlot = itemSlots[i];
-
-            if (currSlot.Item == null)
-            {
-                saveData.SavedSlots[i] = null;
-            }
-            else
-            {
-                saveData.SavedSlots[i] = new ItemSlotSaveData(currSlot.Item.ID, currSlot.Amount);
-            }
-        }
-        JsonSaveLoadIO.SaveItems(saveData, fileName);
-    }
-
-    public void SaveInventory(Unit unit)
-    {
-        SaveItems(unit.unitInventory.ItemSlots, InventoryFileName);
-    }*/
-
     private void SaveUnit(UnitData unit, string fileName)
     {
         fileName += " " + unit.unitID;
@@ -77,30 +51,6 @@ public class ItemSaveManager : MonoBehaviour
         return loadedUnitData;
     }
 
-    /*public void SaveItemsList(List<Item> items, string fileName)
-    {
-        *//*var saveData = new ItemContainerSaveData(items.Count);
-
-        for (int i = 0; i < saveData.SavedSlots.Length; i++)
-        {
-            ItemSlot currSlot = items[i];
-
-            if (currSlot.Item == null)
-            {
-                saveData.SavedSlots[i] = null;
-            }
-            else
-            {
-                saveData.SavedSlots[i] = new ItemSlotSaveData(currSlot.Item.ID, currSlot.Amount);
-            }
-        }
-        JsonSaveLoadIO.SaveItems(saveData, fileName);*//*
-    }*/
-
-    /*public void SaveEquippedItems(Unit unit)
-    {
-        SaveItems(unit.unitInventory.equippedItemSlots, EquippedItemsFileName);
-    }*/
 
     public void LoadInventory(Unit unit)
     {
@@ -128,6 +78,60 @@ public class ItemSaveManager : MonoBehaviour
         }
         
     }
+
+    #region deprecated
+    
+    // can pass an array or list
+    /*private void SaveItems(IList<ItemSlot> itemSlots, string fileName)
+    {
+        var saveData = new ItemContainerSaveData(itemSlots.Count);
+
+        for (int i = 0; i < saveData.SavedSlots.Length; i++)
+        {
+            ItemSlot currSlot = itemSlots[i];
+
+            if (currSlot.Item == null)
+            {
+                saveData.SavedSlots[i] = null;
+            }
+            else
+            {
+                saveData.SavedSlots[i] = new ItemSlotSaveData(currSlot.Item.ID, currSlot.Amount);
+            }
+        }
+        JsonSaveLoadIO.SaveItems(saveData, fileName);
+    }
+
+    public void SaveInventory(Unit unit)
+    {
+        SaveItems(unit.unitInventory.ItemSlots, InventoryFileName);
+    }*/
+
+    /*public void SaveItemsList(List<Item> items, string fileName)
+{
+    *//*var saveData = new ItemContainerSaveData(items.Count);
+
+        for (int i = 0; i < saveData.SavedSlots.Length; i++)
+        {
+            ItemSlot currSlot = items[i];
+
+            if (currSlot.Item == null)
+            {
+                saveData.SavedSlots[i] = null;
+            }
+            else
+            {
+                saveData.SavedSlots[i] = new ItemSlotSaveData(currSlot.Item.ID, currSlot.Amount);
+            }
+        }
+        JsonSaveLoadIO.SaveItems(saveData, fileName);*//*
+    }*/
+
+    /*public void SaveEquippedItems(Unit unit)
+    {
+        SaveItems(unit.unitInventory.equippedItemSlots, EquippedItemsFileName);
+    }*/
+
 
     /*public void SaveUnitData(Unit unit, string fileName)
     {
@@ -191,4 +195,8 @@ public class ItemSaveManager : MonoBehaviour
             }
         }
     }*/
+    
+    
+    #endregion
+
 }

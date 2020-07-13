@@ -23,4 +23,15 @@ public class UnitSelectionPanelMaxx : MonoBehaviour
         selectedUnitSlot.OnSlotMouseEnterEvent += slot => OnSlotMouseEnterEvent(slot);
         LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
     }
+    
+    public void CreateSelectedUnitSlot(UnitData unitData)
+    {
+        GameObject slotGO = Instantiate(unitSelectionSlotPrefab, this.transform);
+        SelectedUnitSlot selectedUnitSlot = slotGO.GetComponent<SelectedUnitSlot>();
+        selectedUnitSlot.data = unitData;
+        selectedUnitSlot.Refresh();
+        slotGO.transform.SetAsLastSibling();
+        selectedUnitSlot.OnSlotLeftClickEvent += slot => OnSlotLeftClickEvent(slot);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
+    }
 }

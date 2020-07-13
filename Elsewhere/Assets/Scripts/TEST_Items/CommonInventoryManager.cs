@@ -32,8 +32,9 @@ public class CommonInventoryManager : MonoBehaviour
         {
             string unitId = selectedUnitIds[i];
             Dictionary<StatString,UnitStat> stats = ConvertStats(_unitStatConfig[unitId]["stats"].ToObject<Dictionary<StatString,string>>());
-            UnitData currUnitData = new UnitData(unitId, stats, JuliusItems);
-            unitSelectionPanel.CreateUnitSelectionSlot(currUnitData);
+            List<Item> tempItems = i == 0 ? JuliusItems : KeldaItems;
+            UnitData currUnitData = new UnitData(unitId, stats, tempItems);
+            unitSelectionPanel.CreateSelectedUnitSlot(currUnitData);
         }
         
         unitSelectionPanel.OnSlotLeftClickEvent += OnChoosingUnit;
