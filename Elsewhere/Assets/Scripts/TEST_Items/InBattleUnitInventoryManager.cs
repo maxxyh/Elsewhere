@@ -1,23 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class InBattleUnitInventoryManager : MonoBehaviour
 {
     [Header("Unit")] 
-    public UnitData unit;
+    public Unit unit;
     
     [Header("Public")]
-    public CommonInventory inventory;
-    public UnitEquippedItemPanel equippedItemsPanel;
+    public UnitPersonalInventory unitPersonalInventory;
+    // public UnitEquippedItemPanel equippedItemsPanel;
 
     [Header("Serialize Field")]
     [SerializeField] public InventoryStatPanel statPanel;
-    [SerializeField] public ItemSaveManager itemSaveManager;
+    // [SerializeField] public ItemSaveManager itemSaveManager;
     [SerializeField] ItemToolTip itemTooltip;
 
     private BaseItemSlot selectedItemSlot;
+    private BaseItemSlot previousItemSlot;
+
+    public static Action OnUsedUsableItem;
 
     private void OnValidate()
     {
@@ -36,20 +41,21 @@ public class InBattleUnitInventoryManager : MonoBehaviour
 
         // setup Events"
         // RightClick
-        inventory.OnRightClickEvent += InventoryRightClick;
-        equippedItemsPanel.OnRightClickEvent += EquippedItemPanelRightClick;
+        // inventory.OnRightClickEvent += InventoryRightClick;
+        
+        // equippedItemsPanel.OnRightClickEvent += EquippedItemPanelRightClick;
 
         // Pointer Enter
-        inventory.OnPointerEnterEvent += ShowTooltip;
-        equippedItemsPanel.OnPointerEnterEvent += ShowTooltip;
+        unitPersonalInventory.OnLeftClickEvent += ShowTooltip;
+        // equippedItemsPanel.OnPointerEnterEvent += ShowTooltip;
 
         // Pointer Exit
-        inventory.OnPointerExitEvent += HideTooltip;
-        equippedItemsPanel.OnPointerExitEvent += HideTooltip;
+        unitPersonalInventory.OnLeftClickEvent += HideTooltip;
+        // equippedItemsPanel.OnPointerExitEvent += HideTooltip;
 
         // Left Click
-        inventory.OnLeftClickEvent += InventoryLeftClick;
-        equippedItemsPanel.OnLeftClickEvent += EquippedItemsPanelLeftClick;
+        unitPersonalInventory.OnLeftClickEvent += PersonalInventoryLeftClick;
+        // equippedItemsPanel.OnLeftClickEvent += EquippedItemsPanelLeftClick;
 
     }
 
@@ -57,25 +63,24 @@ public class InBattleUnitInventoryManager : MonoBehaviour
     {
         /*if (itemSaveManager != null)
         {
-            itemSaveManager.LoadInventory(this);
-            itemSaveManager.LoadEquippedItems(this);
+            itemSaveManager.LoadInventory(this.unit);
+            //itemSaveManager.LoadEquippedItems(this);
         }*/
+    }
+
+    private void Update()
+    {
+        unit = GameAssets.MyInstance.turnScheduler.currUnit;
     }
 
     private void OnDestroy()
     {
-        /*if (!IsInventoryNull() && !IsEquippedPanelNull())
-        {
-            itemSaveManager.SaveInventory(this);
-            itemSaveManager.SaveEquippedItems(this);
-        }
-        else
-        {
-            Debug.Log("Null destroy inventory");
-        }*/
+        
+        // itemSaveManager.SaveInventory(this.unit);
+        //itemSaveManager.SaveEquippedItems(this);
     }
 
-    private bool IsInventoryNull()
+/*    private bool IsInventoryNull()
     {
         for (int i = 0; i < inventory.ItemSlots.Count; i++)
         {
@@ -97,9 +102,9 @@ public class InBattleUnitInventoryManager : MonoBehaviour
             }
         }
         return true; 
-    }
+    }*/
 
-    private void InventoryLeftClick(BaseItemSlot itemSlot)
+/*    private void InventoryLeftClick(BaseItemSlot itemSlot)
     {
         if (unit != null)
         {
@@ -127,8 +132,8 @@ public class InBattleUnitInventoryManager : MonoBehaviour
             }
         }
         // AfterRightClickEvent();
-    }
-    private void EquippedItemsPanelLeftClick(BaseItemSlot itemSlot)
+    }*/
+/*    private void EquippedItemsPanelLeftClick(BaseItemSlot itemSlot)
     {
         if (unit != null)
         {
@@ -177,9 +182,9 @@ public class InBattleUnitInventoryManager : MonoBehaviour
             }
         }
         AfterRightClickEvent();
-    }
+    }*/
 
-    private void EquippedItemPanelRightClick(BaseItemSlot itemSlot)
+ /*   private void EquippedItemPanelRightClick(BaseItemSlot itemSlot)
     {
         selectedItemSlot = itemSlot;
         if (itemSlot.Item != null)
@@ -190,6 +195,51 @@ public class InBattleUnitInventoryManager : MonoBehaviour
             }
         }
         AfterRightClickEvent();
+    }*/
+
+    private void PersonalInventoryLeftClick(BaseItemSlot itemSlot)
+    {
+        selectedItemSlot = itemSlot;
+        previousItemSlot = selectedItemSlot;
+        if (unit != null)
+        {
+            if (itemSlot.Item != null)
+            {
+                if (itemSlot.Item is EquippableItem)
+                {
+                    EquippableItem currItem = (EquippableItem)itemSlot.Item;
+                    if (previousItemSlot.Item != null)
+                    {
+                        EquippableItem prevItem = (EquippableItem)previousItemSlot.Item;
+                        Unequip(prevItem);
+                        prevItem.equipped = false;
+                        if (!currItem.equipped)
+                        {
+                            Equip(currItem);
+                            currItem.equipped = true;
+                        } 
+                        else
+                        {
+                            Unequip(currItem);
+                            currItem.equipped = false;
+                        }
+                    }
+                    else
+                    {
+                        Equip(currItem);
+                        currItem.equipped = true;
+                        itemSlot.Item = currItem;
+                    }
+                }
+                else if (itemSlot.Item is UsableItem)
+                {
+                    UsableItem item = (UsableItem)itemSlot.Item;
+                    item.Use(this);
+                    UpdateStatValues();
+                    OnUsedUsableItem?.Invoke();
+                }
+            }
+        }
     }
 
     private void ShowTooltip(BaseItemSlot itemSlot)
@@ -211,27 +261,27 @@ public class InBattleUnitInventoryManager : MonoBehaviour
     public void Equip(EquippableItem item)
     {
         // check if can remove item from inventory
-        if (inventory.RemoveItem(item) && equippedItemsPanel.AddItem(item))
-        {
-            item.Equip(this);
-            statPanel.UpdateStatValues();
-        }
+        /*if (inventory.RemoveItem(item) && equippedItemsPanel.AddItem(item))
+        {*/
+        item.Equip(this.unit);
+        statPanel.UpdateStatValues();
+        /*}
         else
         {
             inventory.AddItem(item);
             Debug.Log("Remove items from unit to get more space");
-        }
+        }*/
     }
 
     public void Unequip(EquippableItem item)
     {
-        if (inventory.CanAddItem(item) && equippedItemsPanel.RemoveItem(item))
-        {
-            item.Unequip(this);
-            statPanel.UpdateStatValues();
-            inventory.AddItem(item);
+        /*if (inventory.CanAddItem(item) && equippedItemsPanel.RemoveItem(item))
+        {*/
+        item.Unequip(this.unit);
+        statPanel.UpdateStatValues();
+            /*inventory.AddItem(item);
             equippedItemsPanel.RemoveItem(item);
-        }
+        }*/
     }
 
     public void UpdateStatValues()
@@ -240,7 +290,7 @@ public class InBattleUnitInventoryManager : MonoBehaviour
         statPanel.UpdateStatValues();
     }
 
-    private void AfterRightClickEvent()
+   /* private void AfterRightClickEvent()
     {
         for (int i = 0; i < equippedItemsPanel.equippedItemSlots.Length; i++)
         {
@@ -270,7 +320,7 @@ public class InBattleUnitInventoryManager : MonoBehaviour
 
         destinationSlot.Amount += stacksToAdd;
         selectedItemSlot.Amount -= stacksToAdd;
-    }
+    }*/
 
     /*private ItemContainer openItemContainer;
 

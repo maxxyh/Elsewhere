@@ -17,6 +17,7 @@ public class CommonInventoryManager : MonoBehaviour
     [SerializeField] PreBattleUnitInventoryManager preBattleUnitInventoryManager;
     [SerializeField] UnitPersonalInventory personalInventory;
     [SerializeField] Text nameText;
+    [SerializeField] ItemSaveManager itemSaveManager;
 
     List<UnitData> unitData = new List<UnitData>();
     private JObject _unitStatConfig;
@@ -55,6 +56,13 @@ public class CommonInventoryManager : MonoBehaviour
         {
             SelectedUnitSlot currSlot = selectedUnitsPanel.selectedUnitSlots[i];
             currSlot.data = unitData[i];
+        }
+    }
+    private void OnDestroy()
+    {
+        foreach (UnitData data in unitData)
+        {
+            itemSaveManager.SaveUnit(data);
         }
     }
 

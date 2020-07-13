@@ -23,6 +23,8 @@ public class EquippableItem : Item
     [Space]
     public ItemType weaponType;
 
+    public bool equipped;
+
     public override Item GetCopy()
     {
         return Instantiate(this);
@@ -33,27 +35,28 @@ public class EquippableItem : Item
         Destroy(this);
     }
 
-    public void Equip(InBattleUnitInventoryManager inventoryManager)
+    public void Equip(Unit unit)
     {
         if (physicalAttackBonus != 0)
-            inventoryManager.unit.stats[StatString.PHYSICAL_DAMAGE].AddModifier(new StatModifier(physicalAttackBonus, StatModType.Flat, this));
+            unit.stats[StatString.PHYSICAL_DAMAGE].AddModifier(new StatModifier(physicalAttackBonus, StatModType.Flat, this));
         if (magicalAttackBonus != 0)
-            inventoryManager.unit.stats[StatString.MAGIC_DAMAGE].AddModifier(new StatModifier(magicalAttackBonus, StatModType.Flat, this));
+            unit.stats[StatString.MAGIC_DAMAGE].AddModifier(new StatModifier(magicalAttackBonus, StatModType.Flat, this));
         if (physicalAttackBonus != 0)
-            inventoryManager.unit.stats[StatString.ATTACK_RANGE].AddModifier(new StatModifier(attackRange, StatModType.Flat, this));
+            unit.stats[StatString.ATTACK_RANGE].AddModifier(new StatModifier(attackRange, StatModType.Flat, this));
         if (physicalAttackBonus != 0)
-            inventoryManager.unit.stats[StatString.CRIT_RATE].AddModifier(new StatModifier(critBonus, StatModType.Flat, this));
+            unit.stats[StatString.CRIT_RATE].AddModifier(new StatModifier(critBonus, StatModType.Flat, this));
         if (physicalAttackBonus != 0)
-            inventoryManager.unit.stats[StatString.HIT_RATE].AddModifier(new StatModifier(hitRate, StatModType.Flat, this));
+            unit.stats[StatString.HIT_RATE].AddModifier(new StatModifier(hitRate, StatModType.Flat, this));
     }
 
-    public void Unequip(InBattleUnitInventoryManager inventoryManager)
+    // prev: InBattleUnitInventoryManager
+    public void Unequip(Unit unit)
     {
-        inventoryManager.unit.stats[StatString.PHYSICAL_DAMAGE].RemoveAllModifiersFromSource(this);
-        inventoryManager.unit.stats[StatString.MAGIC_DAMAGE].RemoveAllModifiersFromSource(this);
-        inventoryManager.unit.stats[StatString.ATTACK_RANGE].RemoveAllModifiersFromSource(this);
-        inventoryManager.unit.stats[StatString.CRIT_RATE].RemoveAllModifiersFromSource(this);
-        inventoryManager.unit.stats[StatString.HIT_RATE].RemoveAllModifiersFromSource(this);
+        unit.stats[StatString.PHYSICAL_DAMAGE].RemoveAllModifiersFromSource(this);
+        unit.stats[StatString.MAGIC_DAMAGE].RemoveAllModifiersFromSource(this);
+        unit.stats[StatString.ATTACK_RANGE].RemoveAllModifiersFromSource(this);
+        unit.stats[StatString.CRIT_RATE].RemoveAllModifiersFromSource(this);
+        unit.stats[StatString.HIT_RATE].RemoveAllModifiersFromSource(this);
     }
 
     public override string GetItemType()

@@ -73,7 +73,10 @@ public class Unit : MonoBehaviour, IUnit
     private Dictionary<StatString, int> _classStatGrowth;
 
     [Header("Inventory")]
-    public InBattleUnitInventoryManager unitInventory; 
+    // public InBattleUnitInventoryManager unitInventoryManager; 
+    public UnitPersonalInventory unitInventory;
+
+    public Sprite unitSprite;
 
     #endregion
 
@@ -150,6 +153,13 @@ public class Unit : MonoBehaviour, IUnit
         myClass.SetText(characterClass);
     }
 
+    public void AssignInventory(List<Item> items)
+    {
+        foreach (Item item in items)
+        {
+            unitInventory.AddItem(item);
+        }
+    }
 
     public virtual void AssignAbilities(List<Ability> abilities)
     {

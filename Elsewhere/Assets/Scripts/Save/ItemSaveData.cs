@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using Newtonsoft.Json;
 using System;
 
 [Serializable]
@@ -22,5 +23,18 @@ public class ItemContainerSaveData
     public ItemContainerSaveData(int numItems)
     {
         SavedSlots = new ItemSlotSaveData[numItems];
+    }
+}
+
+[Serializable]
+public class UnitSaveData
+{
+    public string UnitName;
+    public ItemContainerSaveData UnitInventory;
+
+    public UnitSaveData(string name, int numItems)
+    {
+        UnitName = name;
+        UnitInventory = new ItemContainerSaveData(numItems);
     }
 }

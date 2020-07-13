@@ -54,6 +54,12 @@ public class PlayerUnitSelected : State
                 turnScheduler.playerActionPanel.SetActive(false);
                 turnScheduler.SetState(new PlayerAbilityMenu(turnScheduler));
             }
+            if (menuType == MenuType.INVENTORY)
+            {
+                map.RemoveSelectableTiles(turnScheduler.currUnit.currentTile, false);
+                turnScheduler.playerActionPanel.SetActive(false);
+                turnScheduler.SetState(new PlayerInventoryMenu(turnScheduler));
+            }
         }
         yield break;
     }
