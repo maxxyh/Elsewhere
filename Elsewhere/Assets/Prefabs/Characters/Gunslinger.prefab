@@ -178,8 +178,10 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 4498768073824462151}
-  inventory: {fileID: 0}
-  weapon: {fileID: 0}
+  unitInventoryPrefab: {fileID: 6456096091892639007, guid: 88f88883eb2a5e941a0a1c3545efa7a9,
+    type: 3}
+  unitInventory: {fileID: 0}
+  unitSprite: {fileID: 0}
   gridPosition: {x: 0, y: 0}
 --- !u!1 &6811365470197037736
 GameObject:

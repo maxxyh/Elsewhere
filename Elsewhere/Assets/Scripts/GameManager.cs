@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
@@ -6,6 +7,7 @@ using System.Linq;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject juliusGO;
     [SerializeField] GameObject keldaGO;
 
-    [SerializeField] ItemSaveManager itemSaveManager;
+    [SerializeField] UnitSaveManager unitSaveManager;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private UnitDatabase _unitDatabase;
 
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     
     public AudioClip levelMusic;
 
+    public Action<List<PlayerUnit>> OnSaveGame;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +49,9 @@ public class GameManager : MonoBehaviour
         // generatePlayers();
         generatePlayers2();
         GameAssets.MyInstance.turnScheduler.Init(players, enemies);
+
+        OnSaveGame += SavePlayerData;
+        GameAssets.MyInstance.turnScheduler.SetSaveEvent(OnSaveGame);
     }
 
     private void Update()
@@ -94,7 +100,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < selectedUnitIds.Count; i++)
         {
             UnitDataEntry unitDataEntry =  _unitDatabase.UnitDataEntries.Find(x => x.unitName == selectedUnitIds[i]);
-            playerInfo[i].UpdateUnit(unitDataEntry);
+            playerInfo[i].UpdateUnitIdAndPrefab(unitDataEntry);
         }
         int numPlayers = selectedUnitIds.Count != 0 ? selectedUnitIds.Count : playerInfo.Count; 
         StaticData.SelectedUnits.Clear();
@@ -143,119 +149,57 @@ public class GameManager : MonoBehaviour
 
     void generatePlayers2()
     {
-
-        //unitStatConfig = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(Application.streamingAssetsPath + "/characterConfig.json"));
-        _unitStatConfig = JObject.Parse(File.ReadAllText(_unitStatConfigPath));
         _classStatGrowthConfig = JObject.Parse(File.ReadAllText(_classStatGrowthConfigPath));
         _characterStatGrowthConfig = JObject.Parse(File.ReadAllText(_characterStatGrowthConfigPath));
+        _abilityConfig = JObject.Parse(File.ReadAllText(_abilityConfigPath));
 
-        // UnitInfo[] playerInfo = initialUnitInfo.playerList;
-
+        UnitInfo[] playerInfo = initialUnitInfo.playerList;
         UnitInfo[] enemyInfo = initialUnitInfo.enemyList;
         CrystalInfo[] crystalInfo = initialUnitInfo.crystalList;
-        // default abilities
-        List<Ability> AbilitiesSwordsman = new List<Ability>();
-        List<Ability> AbilitiesMage = new List<Ability>();
-        List<Ability> AbilitiesHealer = new List<Ability>();
-        AbilitiesHealer.Add(new AbilityHealingWave());
-        AbilitiesHealer.Add(new AbilityArcaneBoost());
-
-        AbilitiesSwordsman.Add(new AbilityWhirlwindSlash());
-        AbilitiesSwordsman.Add(new AbilityDoubleHit());
-
-        AbilitiesMage.Add(new AbilityHPReaver());
-        AbilitiesMage.Add(new AbilityAstralFlare());
-
-        Dictionary<string, List<Ability>> UnitAbilities = new Dictionary<string, List<Ability>>();
-        UnitAbilities.Add("Kelda", AbilitiesHealer);
-        UnitAbilities.Add("Julius", AbilitiesSwordsman);
-        UnitAbilities.Add("Esmeralda", AbilitiesMage);
 
         // enemy heal-testing abilities
         List<Ability> AbilitiesHarvesterGunslinger = new List<Ability>() { new AbilityHealingWave(), new AbilityDoubleHit() };
-        if (SceneManager.GetActiveScene().name == "Tutorial")
+       
+        // PLAYERS
+        // updating player units according to selected units 
+        List<string> selectedUnitIds = StaticData.SelectedUnits;
+        for (int i = 0; i < selectedUnitIds.Count; i++)
         {
-            UnitInfo[] playerInfo = initialUnitInfo.tutorialPlayerList;
-            for (int i = 0; i < initialUnitInfo.tutorialPlayerList.Length; i++)
-            {
-                PlayerUnit player = (Instantiate(playerInfo[i].UnitPrefab, playerInfo[i].UnitPositions,
-                Quaternion.Euler(new Vector3()))).GetComponent<PlayerUnit>();
-                //player.gridPosition = new Vector2(mapSize/2,mapSize/2);
-                player.tag = "player";
-                string unitID = playerInfo[i].unitID;
-
-                player.AssignStats(_unitStatConfig[unitID]["stats"].ToObject<Dictionary<StatString, float>>());
-                player.AssignMap(map);
-                player.AssignAbilities(UnitAbilities[unitID]);
-                string unitClass = (string)_unitStatConfig[unitID]["class"];
-                player.AssignIdentity((string)_unitStatConfig[unitID]["name"], unitClass,
-                    _characterStatGrowthConfig[unitID].ToObject<Dictionary<StatString, int>>(), _classStatGrowthConfig[unitClass].ToObject<Dictionary<StatString, int>>());
-                player.UpdateUI();
-                players.Add(player);
-            }
+            UnitDataEntry unitDataEntry =  _unitDatabase.UnitDataEntries.Find(x => x.unitName == selectedUnitIds[i]);
+            playerInfo[i].UpdateUnitIdAndPrefab(unitDataEntry);
         }
-        else
+        int numPlayers = selectedUnitIds.Count != 0 ? selectedUnitIds.Count : playerInfo.Length; 
+        StaticData.SelectedUnits.Clear();
+        
+        // instantiate player units 
+        for (int i = 0; i < numPlayers; i++)
         {
-
-            UnitData juliusData = itemSaveManager.LoadUnit("Julius");
-
-            PlayerUnit player = (Instantiate(juliusGO, new Vector3(-11, 1, 0), 
-            Quaternion.identity)).GetComponent<PlayerUnit>();
-
+            PlayerUnit player = Instantiate(playerInfo[i].UnitPrefab, playerInfo[i].UnitPositions,
+                Quaternion.identity).GetComponent<PlayerUnit>();
             player.tag = "player";
-            string unitID = "Julius";
-
-            player.AssignStats(_unitStatConfig[unitID]["stats"].ToObject<Dictionary<StatString, float>>());
-            // juliusData.stats = player.stats;
+            string unitId = playerInfo[i].unitID;
+            UnitLoadData unitLoadData = unitSaveManager.LoadUnit(unitId);
+            Dictionary<StatString, int> classStatGrowth = _classStatGrowthConfig[unitLoadData.unitClass].ToObject<Dictionary<StatString,int>>();
+            Dictionary<StatString, int> characterStatGrowth = _characterStatGrowthConfig[unitId].ToObject<Dictionary<StatString,int>>();
+            player.CreateUnit(unitLoadData, _abilityConfig, classStatGrowth, characterStatGrowth);
             player.AssignMap(map);
-            player.AssignAbilities(UnitAbilities[unitID]);
-
-            player.AssignInventory(juliusData.unitItems);
-
-            string unitClass = (string)_unitStatConfig[unitID]["class"];
-            player.AssignIdentity((string)_unitStatConfig[unitID]["name"], unitClass,
-                _characterStatGrowthConfig[unitID].ToObject<Dictionary<StatString, int>>(), _classStatGrowthConfig[unitClass].ToObject<Dictionary<StatString, int>>());
             player.UpdateUI();
             players.Add(player);
-
-
-
-            UnitData keldaData = itemSaveManager.LoadUnit("Kelda");
-
-            Debug.Log(keldaData.unitItems[0]);
-
-            PlayerUnit player1 = (Instantiate(keldaGO, new Vector3(-11, 3, 0),
-            Quaternion.identity)).GetComponent<PlayerUnit>();
-
-            player1.tag = "player";
-            string unitID1 = "Kelda";
-
-            player1.AssignStats(_unitStatConfig[unitID1]["stats"].ToObject<Dictionary<StatString, float>>());
-            // juliusData.stats = player1.stats;
-            player1.AssignMap(map);
-            player1.AssignAbilities(UnitAbilities[unitID1]);
-
-            player1.AssignInventory(keldaData.unitItems);
-
-            string unitClass1 = (string)_unitStatConfig[unitID1]["class"];
-            player.AssignIdentity((string)_unitStatConfig[unitID1]["name"], unitClass,
-                _characterStatGrowthConfig[unitID1].ToObject<Dictionary<StatString, int>>(), _classStatGrowthConfig[unitClass1].ToObject<Dictionary<StatString, int>>());
-            player.UpdateUI();
-            players.Add(player1);
         }
+        
+        // ENEMIES
 
         for (int i = 0; i < initialUnitInfo.enemyList.Length; i++)
         {
             EnemyUnit enemy = Instantiate(enemyInfo[i].UnitPrefab, enemyInfo[i].UnitPositions, Quaternion.identity).GetComponent<EnemyUnit>();
             //enemy.gridPosition = new Vector2(0,0);
             enemy.tag = "enemy";
-            string unitID = enemyInfo[i].unitID;
-
-            enemy.AssignStats(_unitStatConfig[unitID]["stats"].ToObject<Dictionary<StatString, float>>());
+            string unitId = enemyInfo[i].unitID;
+            UnitLoadData unitLoadData = unitSaveManager.LoadUnit(unitId);
+            Dictionary<StatString, int> classStatGrowth = _classStatGrowthConfig[unitLoadData.unitClass].ToObject<Dictionary<StatString,int>>();
+            Dictionary<StatString, int> characterStatGrowth = _characterStatGrowthConfig[unitId].ToObject<Dictionary<StatString,int>>();
+            enemy.CreateUnit(unitLoadData, _abilityConfig, classStatGrowth, characterStatGrowth);
             enemy.AssignMap(map);
-            string unitClass = (string)_unitStatConfig[unitID]["class"];
-            enemy.AssignIdentity((string)_unitStatConfig[unitID]["name"], unitClass,
-                    _characterStatGrowthConfig[unitID].ToObject<Dictionary<StatString, int>>(), _classStatGrowthConfig[unitClass].ToObject<Dictionary<StatString, int>>());
             enemy.UpdateUI();
             enemies.Add(enemy);
         }
@@ -265,6 +209,15 @@ public class GameManager : MonoBehaviour
             GameObject crystal = Instantiate(crystalInfo[i].UnitPrefab, crystalInfo[i].UnitPositions, Quaternion.identity);
             //enemy.gridPosition = new Vector2(0,0);
             crystal.tag = "crystal";
+        }
+    }
+    // convoy is something that we're overlooking!
+    public void SavePlayerData(List<PlayerUnit> units)
+    {
+        Debug.Log("Saving data");
+        foreach (Unit unit in units)
+        {
+            unitSaveManager.SaveUnit(unit);
         }
     }
 }

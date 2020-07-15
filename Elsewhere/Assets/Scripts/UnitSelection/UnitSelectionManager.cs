@@ -19,25 +19,21 @@ public class UnitSelectionManager : MonoBehaviour
     
     private JObject _unlockedCharacters;
     private readonly string _unlockedCharactersPath = Application.streamingAssetsPath + "/unlockedCharactersConfig.json";
-    private JObject _unitStatConfig;
-    private readonly string _unitStatConfigPath = Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json";
     private JObject _abilityConfig;
     private string _abilityConfigPath = Application.streamingAssetsPath + "/abilityConfig.json";
 
     
     [SerializeField] MajorStatPanel majorStatPanel;
     [SerializeField] private UnitSelectionPanelMaxx unitSelectionPanel;
-
+    [SerializeField] private UnitSaveManager unitSaveManager;
 
     private void Awake()
     {
-        _unitStatConfig = JObject.Parse(File.ReadAllText(_unitStatConfigPath));
         _unlockedCharacters = JObject.Parse(File.ReadAllText(_unlockedCharactersPath));
         _abilityConfig = JObject.Parse(File.ReadAllText(_abilityConfigPath));
 
         string[] unlockedCharacterIds = _unlockedCharacters["unlocked"].ToObject<string[]>();
-        limit = unlockedCharacterIds.Length; // TODO change this to be dependent on the level 
-        limit = 2;
+        limit = 2; // TODO change this to be dependent on the level 
         limitText.text = "             /" + limit + " units"; 
         unitSelectionPanel.OnSlotLeftClickEvent += OnToggleSelectUnit;
         unitSelectionPanel.OnSlotMouseEnterEvent += OnToggleUnitStats;
@@ -45,8 +41,7 @@ public class UnitSelectionManager : MonoBehaviour
         for (int i = 0; i < unlockedCharacterIds.Length; i++)
         {
             string unitId = unlockedCharacterIds[i];
-            Dictionary<StatString,UnitStat> stats = ConvertStats(_unitStatConfig[unitId]["stats"].ToObject<Dictionary<StatString,string>>());
-            UnitData unitData = new UnitData(unitId, stats, new List<Item>());
+            UnitData unitData = unitSaveManager.LoadUnitData(unitId);
             unitSelectionPanel.CreateUnitSelectionSlot(unitData);
         }
     }
@@ -110,7 +105,7 @@ public class UnitSelectionManager : MonoBehaviour
     {
         majorStatPanel.UpdateStatsUI(selectedUnit.data.stats);
         majorStatPanel.ClearAllAbilitiesFromPanel();
-        foreach (string abilityName in _unitStatConfig[selectedUnit.UnitName]["abilities"].ToObject<IEnumerable<string>>())
+        foreach (string abilityName in selectedUnit.data.unitAbilities)
         {
             majorStatPanel.AddAbilityToPanel((string) _abilityConfig[abilityName]["name"], 
                 (string) _abilityConfig[abilityName]["description"], StaticData.AbilityReference[abilityName].GetManaCost());

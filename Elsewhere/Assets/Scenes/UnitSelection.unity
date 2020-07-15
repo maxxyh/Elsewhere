@@ -3506,6 +3506,7 @@ MonoBehaviour:
   noOfUnits: {fileID: 727961187}
   majorStatPanel: {fileID: 1651498147}
   unitSelectionPanel: {fileID: 1110260150}
+  unitSaveManager: {fileID: 1821969784}
 --- !u!1 &971684367
 GameObject:
   m_ObjectHideFlags: 0
@@ -6190,6 +6191,7 @@ MonoBehaviour:
   noOfUnits: {fileID: 727961187}
   majorStatPanel: {fileID: 0}
   unitSelectionPanel: {fileID: 0}
+  unitSaveManager: {fileID: 0}
 --- !u!224 &1630203134
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7021,7 +7023,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821969782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -539, y: -1377, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 38357917}
@@ -7036,9 +7038,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1821969782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a28ba6d43254364c8d59ad038473833, type: 3}
+  m_Script: {fileID: 11500000, guid: 93b7410f47a612649bef84d01a4035e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDataBase: {fileID: 11400000, guid: e259511b0f5d3ab44ae71a17e4b40636, type: 2}
 --- !u!1 &1822209119
 GameObject:
   m_ObjectHideFlags: 0

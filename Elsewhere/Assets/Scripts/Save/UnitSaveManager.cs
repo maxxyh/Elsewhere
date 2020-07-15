@@ -1,69 +1,121 @@
 ﻿
+using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using UnityEngine;
 
 // converts players inventory and equipment panel into a saveable format and calls the responding methods to save them to file
-public class ItemSaveManager : MonoBehaviour
+public class UnitSaveManager : MonoBehaviour
 {
     [SerializeField] ItemDataBase itemDataBase;
 
-    private const string InventoryFileName = "Inventory";
+    private Dictionary<string, UnitSaveData> _saveDatabase;
+    
+    private const string UnitsSaveFileName = "unitsSaveData";
     private const string EquippedItemsFileName = "Equipped Item";
 
     private void SaveUnit(UnitData unit, string fileName)
     {
-        fileName += " " + unit.unitID;
-        var unitSaveData = new UnitSaveData(unit.unitID, unit.unitItems.Count);
+        // load the old database
+        _saveDatabase = JsonSaveLoadIO.LoadAllUnits(UnitsSaveFileName);
+        
+        // get old unitSaveData
+        UnitSaveData oldUnitSaveData = _saveDatabase[unit.unitID];
+        
+        // create new unitSaveData from old unitSaveData
+        var unitSaveData = new UnitSaveData(oldUnitSaveData, unit.unitItems, ConvertStatsToInt(unit.stats));
 
-        // probably index out of range exception
-        for (int i = 0; i < unitSaveData.UnitInventory.SavedSlots.Length; i++)
-        {
-            Item currItem = unit.unitItems[i];
-            unitSaveData.UnitInventory.SavedSlots[i] = new ItemSlotSaveData(currItem.ID, 1);
-        }
+        // update old database with new unitSaveData
+        _saveDatabase[unit.unitID] = unitSaveData;
+        
+        // write out to file
         // Debug.Log(JsonSaveLoadIO.SaveUnit(unitSaveData, fileName));
-        JsonSaveLoadIO.SaveUnit(unitSaveData, fileName);
+        JsonSaveLoadIO.SaveAllUnits(_saveDatabase, fileName);
+    }
+
+    private void SaveUnit(Unit unit, string fileName)
+    {
+        // load the old database
+        _saveDatabase = JsonSaveLoadIO.LoadAllUnits(UnitsSaveFileName);
+        
+        // create new unitSaveData
+        List<ItemSlotData> occupiedItemSlots = unit.unitInventory.Where(x => x.Item != null).ToList();
+        IEnumerable<string> unitAbilities = unit.abilities.Select(x =>
+        {
+            foreach(KeyValuePair<string,Ability> pair in StaticData.AbilityReference)
+            {
+                if (pair.Value.Equals(x))
+                {
+                    return pair.Key;
+                }
+            }
+            return null;
+        });
+        var unitSaveData = new UnitSaveData(unit.characterName, unit.characterClass, 
+            occupiedItemSlots, ConvertStatsToInt(unit.stats), unitAbilities.ToList());
+
+        // update old database with new unitSaveData
+        _saveDatabase[unit.characterName] = unitSaveData;
+        
+        // write out to file
+        // Debug.Log(JsonSaveLoadIO.SaveUnit(unitSaveData, fileName));
+        JsonSaveLoadIO.SaveAllUnits(_saveDatabase, fileName);
     }
 
     public void SaveUnit(UnitData unit)
     {
-        SaveUnit(unit, InventoryFileName);
+        SaveUnit(unit, UnitsSaveFileName);
     }
 
-    public UnitData LoadUnit(string unitName)
+    public void SaveUnit(Unit unit)
     {
-        UnitSaveData saveUnit = JsonSaveLoadIO.LoadUnit(InventoryFileName + " " + unitName);
-        
-        if (saveUnit == null) return null;
+        SaveUnit(unit, UnitsSaveFileName);
+    }
 
-        List<Item> items = new List<Item>();
+    public UnitLoadData LoadUnit(string unitId)
+    {
+        _saveDatabase = JsonSaveLoadIO.LoadAllUnits(UnitsSaveFileName);
+        UnitSaveData saveUnit = _saveDatabase[unitId];
 
-        for (int i = 0; i < saveUnit.UnitInventory.SavedSlots.Length; i++)
+        if (saveUnit == null)
         {
-            ItemSlotSaveData currItemData = saveUnit.UnitInventory.SavedSlots[i];
-            if (currItemData != null)
-            {
-                items.Add(itemDataBase.GetItemCopy(currItemData.ItemID));
-            }
+            Debug.LogError("Unit not found in database");
+            return null;
         }
-        UnitData loadedUnitData = new UnitData(unitName, new Dictionary<StatString, UnitStat>(), items);
+        
+        return new UnitLoadData(saveUnit, itemDataBase);
+    }
+    
+    public UnitData LoadUnitData(string unitId)
+    {
+        _saveDatabase = JsonSaveLoadIO.LoadAllUnits(UnitsSaveFileName);
+        UnitSaveData saveUnit = _saveDatabase[unitId];
+
+        if (saveUnit == null)
+        {
+            Debug.LogError("Unit not found in database");
+            return null;
+        }
+        List<Item> items = saveUnit.unitInventory.GetCopyOfItems(itemDataBase);
+        
+        UnitData loadedUnitData = new UnitData(saveUnit.unitName, ConvertStatsToUnitStat(saveUnit.unitStats), items, saveUnit.unitAbilities);
         return loadedUnitData;
     }
+    
 
 
-    public void LoadInventory(Unit unit)
+    /*public void LoadInventory(Unit unit)
     {
-        ItemContainerSaveData savedSlots = ItemSaveIO.LoadItems(InventoryFileName);
+        ItemContainerSaveData savedSlots = ItemSaveIO.LoadItems(UnitsSaveFileName);
 
         if (savedSlots == null) return;
         
         unit.unitInventory.Clear();
 
-        for(int i = 0; i < savedSlots.SavedSlots.Length; i++)
+        for(int i = 0; i < savedSlots.savedSlots.Length; i++)
         {
-            ItemSlot itemSlot = unit.unitInventory.ItemSlots[i];
-            ItemSlotSaveData savedSlot = savedSlots.SavedSlots[i];
+            ItemSlot itemSlot = unit.unitInventory[i];
+            ItemSlotSaveData savedSlot = savedSlots.savedSlots[i];
 
             if (savedSlot == null)
             {
@@ -72,12 +124,36 @@ public class ItemSaveManager : MonoBehaviour
             }
             else
             {
-                itemSlot.Item = itemDataBase.GetItemCopy(savedSlot.ItemID);
-                itemSlot.Amount = savedSlot.Amount;
+                itemSlot.Item = itemDataBase.GetItemCopy(savedSlot.itemId);
+                itemSlot.Amount = savedSlot.amount;
             }
         }
         
+    }*/
+    
+    
+    private static Dictionary<StatString, int> ConvertStatsToInt(Dictionary<StatString, UnitStat> stats)
+    {
+        Dictionary<StatString, int> output = new Dictionary<StatString, int>();
+        foreach (KeyValuePair<StatString, UnitStat> pair in stats)
+        {
+            output.Add(pair.Key, (int) pair.Value.baseValue);
+        }
+
+        return output;
     }
+    
+    private static Dictionary<StatString, UnitStat> ConvertStatsToUnitStat(Dictionary<StatString, int> stats)
+    {
+        Dictionary<StatString, UnitStat> output = new Dictionary<StatString, UnitStat>();
+        foreach (KeyValuePair<StatString, int> pair in stats)
+        {
+            bool hasLimit = pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA);
+            output.Add(pair.Key, new UnitStat(pair.Value, hasLimit));
+        }
+        return output;
+    }
+    
 
     #region deprecated
     

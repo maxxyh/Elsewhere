@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Runtime.CompilerServices;
 using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Unit : MonoBehaviour, IUnit
@@ -76,9 +78,12 @@ public class Unit : MonoBehaviour, IUnit
 
     [Header("Inventory")]
     // public InBattleUnitInventoryManager unitInventoryManager; 
-    public UnitPersonalInventory unitInventory;
+    [HideInInspector] public List<ItemSlotData> unitInventory = new List<ItemSlotData>();
 
-    public Sprite unitSprite;
+    [HideInInspector] public int equippedWeaponIndex = -1; 
+    private const int UnitInventorySize = 3;
+
+    [FormerlySerializedAs("unitSprite")] public Sprite closeUpImage;
 
     #endregion
 
@@ -122,6 +127,25 @@ public class Unit : MonoBehaviour, IUnit
         Debug.Log($"Stats increased: {increasedStats}");
     }
 
+    public void CreateUnit(UnitLoadData unitLoadData, JObject abilityConfig, 
+        Dictionary<StatString, int> classStatGrowth, Dictionary<StatString, int> characterStatGrowth)
+    {
+        AssignStats(unitLoadData.unitStats);
+        AssignAbilities(unitLoadData.unitAbilities, abilityConfig);
+        AssignIdentity(unitLoadData.unitName, unitLoadData.unitClass, characterStatGrowth, classStatGrowth);
+        AssignInventory(unitLoadData.unitInventory);
+    }
+    
+    private void AssignStats(Dictionary<StatString, int> input)
+    {
+        stats = new Dictionary<StatString, UnitStat>();
+        foreach (KeyValuePair<StatString, int> pair in input)
+        {
+            bool hasLimit = pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA);
+            this.stats[pair.Key] = new UnitStat(pair.Value, hasLimit);
+        }
+    }
+    
     // Dictionary style constructor 
     public void AssignStats(Dictionary<StatString, float> input)
     {
@@ -157,12 +181,55 @@ public class Unit : MonoBehaviour, IUnit
 
     public void AssignInventory(List<Item> items)
     {
-        foreach (Item item in items)
+        unitInventory.Clear();
+        for (int i = 0; i < items.Count && i+1 < UnitInventorySize ; i++)
         {
-            unitInventory.AddItem(item);
+            Item item = items[i];
+            ItemSlotData match = unitInventory.Find(x => x.Item == item);
+            if (match != null)
+            {
+                unitInventory.Find(x => x.Item == item).Amount++;
+            }
+            else
+            {
+                unitInventory.Add(new ItemSlotData(item, 1));
+            }
         }
+
+        equippedWeaponIndex = FindEquippedItemIndex(unitInventory);
     }
 
+    public void AssignInventory(List<ItemSlot> itemSlots)
+    {
+        unitInventory.Clear();
+        foreach (ItemSlot itemSlot in itemSlots)
+        {
+            unitInventory.Add(new ItemSlotData(itemSlot.Item, itemSlot.Amount));
+        }
+
+        equippedWeaponIndex = FindEquippedItemIndex(unitInventory);
+    }
+
+    private static int FindEquippedItemIndex(List<ItemSlotData> unitInventory)
+    {
+        ItemSlotData equippedItemSlotData = unitInventory.Find(x =>
+        {
+            if (x.Item is EquippableItem)
+            {
+                return ((EquippableItem) x.Item).equipped;
+            }
+
+            return false;
+        });
+        if (equippedItemSlotData != null)
+        {
+            return unitInventory.FindIndex(x => x == equippedItemSlotData);
+        }
+        else
+            return -1;
+    }
+    
+        
     public virtual void AssignAbilities(List<Ability> abilities)
     {
         this.abilities = abilities;
@@ -265,6 +332,17 @@ public class Unit : MonoBehaviour, IUnit
     public void TakeDamage(float damage)
     {
         stats[StatString.HP].AddModifier(new StatModifier(-damage, StatModType.Flat));
+    }
+
+    public void UseWeapon()
+    {
+        int index = FindEquippedItemIndex(unitInventory);
+        if (index != -1)
+        {
+            Debug.Log($"numUses before = {unitInventory[index].Item.itemNumUses}");
+            unitInventory[index].Item.itemNumUses--;
+            Debug.Log($"numUses after = {unitInventory[index].Item.itemNumUses}");
+        }
     }
 
     #region MOVEMENT

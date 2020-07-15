@@ -1064,7 +1064,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 35895404}
   valueText: {fileID: 335617071}
-  toolTip: {fileID: 1845253198}
 --- !u!114 &221072170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1331,7 +1330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &351077371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2003,7 +2002,7 @@ GameObject:
   - component: {fileID: 491863180}
   - component: {fileID: 491863179}
   m_Layer: 0
-  m_Name: Item Save Manager
+  m_Name: Unit Save Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2412,7 +2411,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1147099736}
   valueText: {fileID: 1021872337}
-  toolTip: {fileID: 1845253198}
 --- !u!114 &597712226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3438,7 +3436,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 375621720}
   valueText: {fileID: 1549120563}
-  toolTip: {fileID: 1845253198}
 --- !u!114 &858391895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4805,7 +4802,6 @@ MonoBehaviour:
   - {fileID: 915704182}
   - {fileID: 2069741546}
   - {fileID: 463375380}
-  unitStartingItems: []
   itemsParent: {fileID: 1264201001}
 --- !u!1 &1333741154
 GameObject:
@@ -5678,7 +5674,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1731679128}
   valueText: {fileID: 1990610895}
-  toolTip: {fileID: 1845253198}
 --- !u!1 &1544894511
 GameObject:
   m_ObjectHideFlags: 0
@@ -5966,7 +5961,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1100802539}
   valueText: {fileID: 1544894513}
-  toolTip: {fileID: 1845253198}
 --- !u!114 &1591696424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6333,16 +6327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f9d091a57dbae841aff1802635c3328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JuliusItems:
-  - {fileID: 11400000, guid: 62b52786954e2104db6fd2f2baad4e82, type: 2}
-  KeldaItems:
-  - {fileID: 11400000, guid: 89050062846591245bf9dc2f54a56010, type: 2}
-  - {fileID: 11400000, guid: 78558570483fff449a45adcf6e56a06b, type: 2}
   unitSelectionPanel: {fileID: 1599556803}
   preBattleUnitInventoryManager: {fileID: 2025271814}
   personalInventory: {fileID: 1264201003}
   nameText: {fileID: 707894616}
-  itemSaveManager: {fileID: 491863179}
+  unitSaveManager: {fileID: 491863179}
 --- !u!4 &1703728586
 Transform:
   m_ObjectHideFlags: 0
@@ -7374,7 +7363,7 @@ MonoBehaviour:
   inventory: {fileID: 1401448953}
   unitPersonalInventory: {fileID: 1264201003}
   inventoryItemTypesManager: {fileID: 1634249603}
-  itemSaveManager: {fileID: 491863179}
+  unitSaveManager: {fileID: 491863179}
   itemTooltip: {fileID: 393652806}
 --- !u!1 &2069741544
 GameObject:
@@ -7523,6 +7512,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1599556799}
     m_Modifications:
+    - target: {fileID: 4412874724679462703, guid: 05894a4b9e7dc2448bf6e56723a6dcec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4412874725494039541, guid: 05894a4b9e7dc2448bf6e56723a6dcec,
         type: 3}
       propertyPath: m_Name
@@ -7637,6 +7631,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412874726242382971, guid: 05894a4b9e7dc2448bf6e56723a6dcec,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05894a4b9e7dc2448bf6e56723a6dcec, type: 3}

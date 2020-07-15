@@ -74,10 +74,11 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
     {
         for (int i = 0; i < ItemSlots.Count; i++)
         {
-            if (ItemSlots[i].Item != null && Application.isPlaying)
+            /*if (ItemSlots[i].Item != null && Application.isPlaying)
             {
+                Debug.Log("destroying item");
                 ItemSlots[i].Item.Destroy();
-            }
+            }*/
             ItemSlots[i].Item = null;
             ItemSlots[i].Amount = 0;
         }
@@ -123,5 +124,32 @@ public abstract class ItemContainer : MonoBehaviour, IItemContainer
             }
         }
         return false;
+    }
+
+    public List<ItemSlot> GetOccupiedItemSlots()
+    {
+        List<ItemSlot> occupiedSlots = new List<ItemSlot>();
+        foreach (ItemSlot itemSlot in ItemSlots)
+        {
+            if (itemSlot.Item != null)
+            {
+                occupiedSlots.Add(itemSlot);
+            }
+        }
+
+        return occupiedSlots;
+    }
+
+    public void LoadOccupiedItemSlots(List<ItemSlotData> itemSlots)
+    {
+        Clear();
+        for (int i = 0; i < itemSlots.Count ; i++)
+        {
+            if (itemSlots[i].Item != null)
+            {
+                this.ItemSlots[i].Item = itemSlots[i].Item.GetCopy();
+                this.ItemSlots[i].Amount = itemSlots[i].Amount;
+            }
+        }
     }
 }

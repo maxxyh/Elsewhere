@@ -178,9 +178,10 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 5133980785669610318}
+  unitInventoryPrefab: {fileID: 6456096091892639007, guid: 88f88883eb2a5e941a0a1c3545efa7a9,
+    type: 3}
   unitInventory: {fileID: 6456096091892639001, guid: 88f88883eb2a5e941a0a1c3545efa7a9,
     type: 3}
-  ItemDatabase: {fileID: 11400000, guid: e259511b0f5d3ab44ae71a17e4b40636, type: 2}
   unitSprite: {fileID: 21300000, guid: 985efb8f7ef885548abce5d719ac7e6d, type: 3}
   gridPosition: {x: 0, y: 0}
 --- !u!1 &2870922879948342433
