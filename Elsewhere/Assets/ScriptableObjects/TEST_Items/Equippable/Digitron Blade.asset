@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938a4165b5b4e2548b5c9bc04a35f7ae, type: 3}
+  m_Name: Digitron Blade
+  m_EditorClassIdentifier: 
+  id: dd191785f6b789a4f98899de17d6cc01
+  itemName: Digitron Blade
+  itemIcon: {fileID: 21300000, guid: ada40e705460cf14aba820ccfdc41d3b, type: 3}
+  itemNumUses: 4
+  maxStack: 1
+  physicalAttackBonus: 4
+  magicalAttackBonus: 7
+  attackRange: 1
+  critBonus: 5
+  hitRate: 85
+  weaponType: 0
+  equipped: 0
