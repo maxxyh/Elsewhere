@@ -4,66 +4,49 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CommonInventoryManager : MonoBehaviour
 {
-    public List<Item> JuliusItems;
-    public List<Item> KeldaItems;
-
     // [SerializeField] UnitEquippedItemPanel unitInventoryPanel;
     [SerializeField] UnitSelectionPanelMaxx unitSelectionPanel;
     // [SerializeField] UnitInventoryManager inventoryManager;
     [SerializeField] PreBattleUnitInventoryManager preBattleUnitInventoryManager;
     [SerializeField] UnitPersonalInventory personalInventory;
     [SerializeField] Text nameText;
-    [SerializeField] ItemSaveManager itemSaveManager;
+    [SerializeField] UnitSaveManager unitSaveManager;
 
-    List<UnitData> unitData = new List<UnitData>();
-    UnitData chosenUnit;
-    private JObject _unitStatConfig;
-    private readonly string _unitStatConfigPath = Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json";
+    private List<UnitData> unitDataList = new List<UnitData>();
+    private UnitData _chosenUnitData;
 
     private void Awake ()
     {
         List<string> selectedUnitIds = StaticData.SelectedUnits;
-        _unitStatConfig = JObject.Parse(File.ReadAllText(_unitStatConfigPath));
         for (int i = 0; i < selectedUnitIds.Count; i++)
         {
             string unitId = selectedUnitIds[i];
-            Dictionary<StatString,UnitStat> stats = ConvertStats(_unitStatConfig[unitId]["stats"].ToObject<Dictionary<StatString,string>>());
-            List<Item> tempItems = i == 0 ? JuliusItems : KeldaItems;
-            UnitData currUnitData = new UnitData(unitId, stats, tempItems);
-            unitSelectionPanel.CreateSelectedUnitSlot(currUnitData);
+            UnitData unitData = unitSaveManager.LoadUnitData(unitId);
+            unitSelectionPanel.CreateSelectedUnitSlot(unitData);
+            unitDataList.Add(unitData);
         }
-        
+
         unitSelectionPanel.OnSlotLeftClickEvent += OnChoosingUnit;
     }
-
-    private static Dictionary<StatString, UnitStat> ConvertStats(Dictionary<StatString, string> input)
-    {
-        Dictionary<StatString, UnitStat> stats = new Dictionary<StatString, UnitStat>();
-        foreach (KeyValuePair<StatString, string> pair in input)
-        {
-            bool hasLimit = pair.Key.Equals(StatString.HP) || pair.Key.Equals(StatString.MANA);
-            stats[pair.Key] = new UnitStat(float.Parse(pair.Value), hasLimit);
-        }
-
-        return stats;
-    }
+    
     private void OnDestroy()
     {
-        foreach (UnitData data in unitData)
+        foreach (UnitData data in unitDataList)
         {
-            itemSaveManager.SaveUnit(data);
+            unitSaveManager.SaveUnit(data);
         }
     }
 
     private void Update()
     {
-        if (chosenUnit != null)
+        if (_chosenUnitData != null)
         {
-            nameText.text = chosenUnit.unitID;
+            nameText.text = _chosenUnitData.unitID;
         }
         else
         {
@@ -83,16 +66,16 @@ public class CommonInventoryManager : MonoBehaviour
     {
         ClearAllItemsInUnitInventoryPanel();
 
-        chosenUnit = selectedUnit.data;
+        _chosenUnitData = selectedUnit.data;
 
         if (preBattleUnitInventoryManager.unit == null)
         {
-            preBattleUnitInventoryManager.unit = chosenUnit;
+            preBattleUnitInventoryManager.unit = _chosenUnitData;
             // Debug.Log(chosenUnit.unitID);
         }
         else
         {
-            preBattleUnitInventoryManager.unit = chosenUnit;
+            preBattleUnitInventoryManager.unit = _chosenUnitData;
             
         }
 
@@ -103,12 +86,12 @@ public class CommonInventoryManager : MonoBehaviour
                                             chosenUnit.stats[StatString.ATTACK_RANGE]);
         preBattleUnitInventoryManager.statPanel.UpdateStatValues();*/
 
-        for (int i = 0; i < chosenUnit.unitItems.Count; i++)
+        for (int i = 0; i < _chosenUnitData.unitItems.Count; i++)
         {
             ItemSlot slot = personalInventory.ItemSlots[i];
-            if (chosenUnit.unitItems[i] != null)
+            if (_chosenUnitData.unitItems[i] != null)
             {
-                slot.Item = chosenUnit.unitItems[i];
+                slot.Item = _chosenUnitData.unitItems[i];
             }
         }
     }

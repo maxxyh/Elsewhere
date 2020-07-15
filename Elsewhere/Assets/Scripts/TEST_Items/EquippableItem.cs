@@ -47,6 +47,7 @@ public class EquippableItem : Item
             unit.stats[StatString.CRIT_RATE].AddModifier(new StatModifier(critBonus, StatModType.Flat, this));
         if (physicalAttackBonus != 0)
             unit.stats[StatString.HIT_RATE].AddModifier(new StatModifier(hitRate, StatModType.Flat, this));
+        equipped = true;
     }
 
     // prev: InBattleUnitInventoryManager
@@ -57,6 +58,7 @@ public class EquippableItem : Item
         unit.stats[StatString.ATTACK_RANGE].RemoveAllModifiersFromSource(this);
         unit.stats[StatString.CRIT_RATE].RemoveAllModifiersFromSource(this);
         unit.stats[StatString.HIT_RATE].RemoveAllModifiersFromSource(this);
+        equipped = false;
     }
 
     public override string GetItemType()

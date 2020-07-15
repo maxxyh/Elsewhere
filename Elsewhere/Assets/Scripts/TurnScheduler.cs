@@ -10,9 +10,11 @@ using UnityEngine.SceneManagement;
 public class TurnScheduler : StateMachine
 {
     #region Fields and References
+    public List<PlayerUnit> deadPlayers = new List<PlayerUnit>();
     public List<PlayerUnit> players;
     public List<EnemyUnit> enemies;
     public LinkedList<Unit> currTeamQueue = new LinkedList<Unit>();
+    public Action<List<PlayerUnit>> OnSaveGame;
     
     [Header("Panels")]
     public GameObject confirmationPanel;
@@ -81,6 +83,11 @@ public class TurnScheduler : StateMachine
         }        
     }
 
+    public void SetSaveEvent(Action<List<PlayerUnit>> OnSaveEvent)
+    {
+        OnSaveGame = OnSaveEvent;
+    }
+    
     public void OnCrystalCaptureCutSceneDone(bool allCrystalsCollected)
     {
         if (allCrystalsCollected && objectiveType == ObjectiveType.COLLECT_ALL_CRYSTALS)
@@ -242,6 +249,7 @@ public class TurnScheduler : StateMachine
 
 
         if (toRemove != null) {
+            deadPlayers.Add((PlayerUnit)deadUnit);
             players.Remove((PlayerUnit)deadUnit);
         }
         else {

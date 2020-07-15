@@ -14,7 +14,7 @@ public class UsableItem : Item
         return Instantiate(this);
     }
 
-    public virtual void Use(InBattleUnitInventoryManager unit)
+    public virtual void Use(Unit unit)
     {
         foreach (UsableItemEffect effect in effects)
         {

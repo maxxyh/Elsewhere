@@ -14,8 +14,8 @@ public class BattleManager
             // must take into account whether the main attack is magic or physical
             int attackDamage = CalculateBaseDamage(attacker, recipient); 
             recipient.TakeDamage(attackDamage);
+            attacker.UseWeapon();
             DamagePopUp.Create(recipient.transform.position, string.Format("- {0} HP", (int)attackDamage), PopupType.DAMAGE);
-
         }
 
         bool killed = false;

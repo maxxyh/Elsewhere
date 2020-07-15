@@ -24,7 +24,7 @@ public class UnitInfo
     [SerializeField]
     public Vector3Int UnitPositions;
 
-    public void UpdateUnit(UnitDataEntry unitDataEntry)
+    public void UpdateUnitIdAndPrefab(UnitDataEntry unitDataEntry)
     {
         unitID = unitDataEntry.unitName;
         UnitPrefab = unitDataEntry.unitPrefab;

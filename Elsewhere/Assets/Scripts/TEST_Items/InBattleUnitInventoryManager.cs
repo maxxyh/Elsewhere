@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class InBattleUnitInventoryManager : MonoBehaviour
 {
@@ -16,11 +14,16 @@ public class InBattleUnitInventoryManager : MonoBehaviour
 
     [Header("Serialize Field")]
     [SerializeField] public InventoryStatPanel statPanel;
-    // [SerializeField] public ItemSaveManager itemSaveManager;
     [SerializeField] ItemToolTip itemTooltip;
+    [SerializeField] private Text unitName;
+    [SerializeField] private Image unitSprite;
+    [SerializeField] private GameObject usableItemConfirmationPanel;
+    [SerializeField] private GameObject playerInventoryPanel;
+    
 
     private BaseItemSlot selectedItemSlot;
-    private BaseItemSlot previousItemSlot;
+    private Item previousItem;
+    private BaseItemSlot currUsableItemSlot;
 
     public static Action OnUsedUsableItem;
 
@@ -36,27 +39,26 @@ public class InBattleUnitInventoryManager : MonoBehaviour
 
     public void Awake()
     {
-        statPanel.SetStats(new UnitStat(0), new UnitStat(0), new UnitStat(0), new UnitStat(0), new UnitStat(0));
-        statPanel.UpdateStatValues();
-
-        // setup Events"
-        // RightClick
-        // inventory.OnRightClickEvent += InventoryRightClick;
-        
-        // equippedItemsPanel.OnRightClickEvent += EquippedItemPanelRightClick;
-
+        // setup Events
         // Pointer Enter
-        unitPersonalInventory.OnLeftClickEvent += ShowTooltip;
-        // equippedItemsPanel.OnPointerEnterEvent += ShowTooltip;
+        unitPersonalInventory.OnPointerEnterEvent += ShowTooltip;
 
         // Pointer Exit
-        unitPersonalInventory.OnLeftClickEvent += HideTooltip;
-        // equippedItemsPanel.OnPointerExitEvent += HideTooltip;
+        unitPersonalInventory.OnPointerExitEvent += HideTooltip;
 
         // Left Click
         unitPersonalInventory.OnLeftClickEvent += PersonalInventoryLeftClick;
-        // equippedItemsPanel.OnLeftClickEvent += EquippedItemsPanelLeftClick;
+    }
 
+    private static UnitStat[] GetStatsToDisplay(Unit unit)
+    {
+        UnitStat[] stats = new UnitStat[5];
+        stats[0] = unit.stats[StatString.PHYSICAL_DAMAGE];
+        stats[1] = unit.stats[StatString.MAGIC_DAMAGE];
+        stats[2] = unit.stats[StatString.HIT_RATE];
+        stats[3] = unit.stats[StatString.CRIT_RATE];
+        stats[4] = unit.stats[StatString.ATTACK_RANGE];
+        return stats;
     }
 
     private void Start()
@@ -68,180 +70,195 @@ public class InBattleUnitInventoryManager : MonoBehaviour
         }*/
     }
 
-    private void Update()
-    {
-        unit = GameAssets.MyInstance.turnScheduler.currUnit;
-    }
+    #region deprecated
 
-    private void OnDestroy()
-    {
-        
-        // itemSaveManager.SaveInventory(this.unit);
-        //itemSaveManager.SaveEquippedItems(this);
-    }
-
-/*    private bool IsInventoryNull()
-    {
-        for (int i = 0; i < inventory.ItemSlots.Count; i++)
+    /*    private bool IsInventoryNull()
         {
-            if (inventory.ItemSlots[i].Item != null)
+            for (int i = 0; i < inventory.ItemSlots.Count; i++)
             {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private bool IsEquippedPanelNull()
-    {
-        for (int i = 0; i < equippedItemsPanel.equippedItemSlots.Length; i++)
-        {
-            if (equippedItemsPanel.equippedItemSlots[i].Item != null)
-            {
-                return false;
-            }
-        }
-        return true; 
-    }*/
-
-/*    private void InventoryLeftClick(BaseItemSlot itemSlot)
-    {
-        if (unit != null)
-        {
-            selectedItemSlot = itemSlot;
-
-            if (itemSlot.Item != null)
-            {
-                if (itemSlot.Item is EquippableItem)
+                if (inventory.ItemSlots[i].Item != null)
                 {
-                    EquippableItem equippableItem = (EquippableItem)itemSlot.Item;
-                    if (inventory.RemoveItem(itemSlot.Item) && equippedItemsPanel.AddItem(equippableItem))
+                    return false;
+                }
+            }
+            return true;
+        }
+    
+        private bool IsEquippedPanelNull()
+        {
+            for (int i = 0; i < equippedItemsPanel.equippedItemSlots.Length; i++)
+            {
+                if (equippedItemsPanel.equippedItemSlots[i].Item != null)
+                {
+                    return false;
+                }
+            }
+            return true; 
+        }*/
+    
+    /*    private void InventoryLeftClick(BaseItemSlot itemSlot)
+        {
+            if (unit != null)
+            {
+                selectedItemSlot = itemSlot;
+    
+                if (itemSlot.Item != null)
+                {
+                    if (itemSlot.Item is EquippableItem)
                     {
-                        unit.unitItems.Add(equippableItem);
-                    }
-                    else
-                    {
-                        Debug.Log("No more space in unit");
-                        inventory.AddItem(equippableItem);
-                    }
-                }
-                else
-                {
-                    // add consumable to the unit inventory (dont use)
-                }
-            }
-        }
-        // AfterRightClickEvent();
-    }*/
-/*    private void EquippedItemsPanelLeftClick(BaseItemSlot itemSlot)
-    {
-        if (unit != null)
-        {
-            selectedItemSlot = itemSlot;
-            if (itemSlot.Item != null)
-            {
-                EquippableItem equippableItem = (EquippableItem)itemSlot.Item;
-                if (inventory.CanAddItem(itemSlot.Item) && equippedItemsPanel.RemoveItem(equippableItem))
-                {
-                    // equippedItemsPanel.RemoveItem(equippableItem);
-                    inventory.AddItem(equippableItem);
-                    equippedItemsPanel.RemoveItem(equippableItem);
-                    unit.unitItems.Remove(equippableItem);
-                }
-                else
-                {
-                    equippedItemsPanel.AddItem(equippableItem);
-                }
-            }
-        }
-    }
-
-    // item in inventory can be some other type, not nec equippable so need to check if its equippable only then will equip
-    private void InventoryRightClick(BaseItemSlot itemSlot)
-    {
-        selectedItemSlot = itemSlot;
-        // Debug.Log(itemSlot.Item);
-        // AfterInventoryRightClickEvent();
-        if (itemSlot.Item != null)
-        {
-            if (itemSlot.Item is EquippableItem)
-            {
-                Equip((EquippableItem)itemSlot.Item);
-            }
-            else if (itemSlot.Item is UsableItem)
-            {
-                UsableItem usableItem = (UsableItem)itemSlot.Item;
-                usableItem.Use(this);
-
-                if (usableItem.IsConsumable)
-                {
-                    itemSlot.Amount--;
-                    // inventory.RemoveItem(usableItem);
-                    usableItem.Destroy();
-                }
-            }
-        }
-        AfterRightClickEvent();
-    }*/
-
- /*   private void EquippedItemPanelRightClick(BaseItemSlot itemSlot)
-    {
-        selectedItemSlot = itemSlot;
-        if (itemSlot.Item != null)
-        {
-            if (itemSlot.Item is EquippableItem)
-            {
-                Unequip((EquippableItem)itemSlot.Item);
-            }
-        }
-        AfterRightClickEvent();
-    }*/
-
-    private void PersonalInventoryLeftClick(BaseItemSlot itemSlot)
-    {
-        selectedItemSlot = itemSlot;
-        previousItemSlot = selectedItemSlot;
-        if (unit != null)
-        {
-            if (itemSlot.Item != null)
-            {
-                if (itemSlot.Item is EquippableItem)
-                {
-                    EquippableItem currItem = (EquippableItem)itemSlot.Item;
-                    if (previousItemSlot.Item != null)
-                    {
-                        EquippableItem prevItem = (EquippableItem)previousItemSlot.Item;
-                        Unequip(prevItem);
-                        prevItem.equipped = false;
-                        if (!currItem.equipped)
+                        EquippableItem equippableItem = (EquippableItem)itemSlot.Item;
+                        if (inventory.RemoveItem(itemSlot.Item) && equippedItemsPanel.AddItem(equippableItem))
                         {
-                            Equip(currItem);
-                            currItem.equipped = true;
-                        } 
+                            unit.unitItems.Add(equippableItem);
+                        }
                         else
                         {
-                            Unequip(currItem);
-                            currItem.equipped = false;
+                            Debug.Log("No more space in unit");
+                            inventory.AddItem(equippableItem);
                         }
                     }
                     else
                     {
-                        Equip(currItem);
-                        currItem.equipped = true;
-                        itemSlot.Item = currItem;
+                        // add consumable to the unit inventory (dont use)
                     }
                 }
-                else if (itemSlot.Item is UsableItem)
+            }
+            // AfterRightClickEvent();
+        }*/
+    /*    private void EquippedItemsPanelLeftClick(BaseItemSlot itemSlot)
+        {
+            if (unit != null)
+            {
+                selectedItemSlot = itemSlot;
+                if (itemSlot.Item != null)
                 {
-                    UsableItem item = (UsableItem)itemSlot.Item;
-                    item.Use(this);
-                    UpdateStatValues();
-                    OnUsedUsableItem?.Invoke();
+                    EquippableItem equippableItem = (EquippableItem)itemSlot.Item;
+                    if (inventory.CanAddItem(itemSlot.Item) && equippedItemsPanel.RemoveItem(equippableItem))
+                    {
+                        // equippedItemsPanel.RemoveItem(equippableItem);
+                        inventory.AddItem(equippableItem);
+                        equippedItemsPanel.RemoveItem(equippableItem);
+                        unit.unitItems.Remove(equippableItem);
+                    }
+                    else
+                    {
+                        equippedItemsPanel.AddItem(equippableItem);
+                    }
                 }
             }
         }
+    
+        // item in inventory can be some other type, not nec equippable so need to check if its equippable only then will equip
+        private void InventoryRightClick(BaseItemSlot itemSlot)
+        {
+            selectedItemSlot = itemSlot;
+            // Debug.Log(itemSlot.Item);
+            // AfterInventoryRightClickEvent();
+            if (itemSlot.Item != null)
+            {
+                if (itemSlot.Item is EquippableItem)
+                {
+                    Equip((EquippableItem)itemSlot.Item);
+                }
+                else if (itemSlot.Item is UsableItem)
+                {
+                    UsableItem usableItem = (UsableItem)itemSlot.Item;
+                    usableItem.Use(this);
+    
+                    if (usableItem.IsConsumable)
+                    {
+                        itemSlot.Amount--;
+                        // inventory.RemoveItem(usableItem);
+                        usableItem.Destroy();
+                    }
+                }
+            }
+            AfterRightClickEvent();
+        }*/
+    
+     /*   private void EquippedItemPanelRightClick(BaseItemSlot itemSlot)
+        {
+            selectedItemSlot = itemSlot;
+            if (itemSlot.Item != null)
+            {
+                if (itemSlot.Item is EquippableItem)
+                {
+                    Unequip((EquippableItem)itemSlot.Item);
+                }
+            }
+            AfterRightClickEvent();
+        }*/
+
+
+    #endregion
+
+
+    private void PersonalInventoryLeftClick(BaseItemSlot itemSlot)
+    {
+        selectedItemSlot = itemSlot;
+        ItemSlotData previousItemSlotData = unit.unitInventory.Find(x =>
+        {
+            if (x.Item is EquippableItem)
+            {
+                return ((EquippableItem) x.Item).equipped;
+            }
+
+            return false;
+        });
+        if (unit == null || itemSlot.Item == null)
+        {
+            return;
+        }
+        
+        if (itemSlot.Item is EquippableItem)
+        {
+            EquippableItem currItem = (EquippableItem)itemSlot.Item;
+            if (previousItemSlotData != null)
+            {
+                EquippableItem prevItem = (EquippableItem)previousItemSlotData.Item;
+                Unequip(prevItem);
+                previousItem = prevItem;
+            }
+            if (!currItem.equipped && (previousItem == null || previousItem != currItem))
+            {
+                Equip(currItem);
+            } 
+            else
+            {
+                Unequip(currItem);
+            }
+            unit.UpdateUI();
+            unit.AssignInventory(unitPersonalInventory.GetOccupiedItemSlots());
+        }
+        else if (itemSlot.Item is UsableItem)
+        {
+            currUsableItemSlot = itemSlot;
+            usableItemConfirmationPanel.SetActive(true);
+            usableItemConfirmationPanel.GetComponent<RectTransform>().position = Input.mousePosition;
+        }
+
+        previousItem = null;
     }
 
+    public void OnUseItemButton()
+    {
+        usableItemConfirmationPanel.SetActive(false);
+        playerInventoryPanel.SetActive(false);
+        ((UsableItem)currUsableItemSlot.Item).Use(unit);
+        currUsableItemSlot.Amount--;
+        UpdateStatValues();
+        unit.UpdateUI();
+        unit.AssignInventory(unitPersonalInventory.GetOccupiedItemSlots());
+        currUsableItemSlot = null;
+        OnUsedUsableItem?.Invoke();
+    }
+
+    public void OnUsableItemCancelButton()
+    {
+        usableItemConfirmationPanel.SetActive(false);
+        currUsableItemSlot = null;
+    }
+    
     private void ShowTooltip(BaseItemSlot itemSlot)
     {
         if (itemSlot.Item != null)
@@ -282,6 +299,17 @@ public class InBattleUnitInventoryManager : MonoBehaviour
             /*inventory.AddItem(item);
             equippedItemsPanel.RemoveItem(item);
         }*/
+    }
+
+    public void OnInventoryButtonClick()
+    {
+        unit = GameAssets.MyInstance.turnScheduler.currUnit;
+        unitPersonalInventory.LoadOccupiedItemSlots(unit.unitInventory);
+        Debug.Log($"panelInventory first item null = {unitPersonalInventory.ItemSlots[0].Item == null}");
+        statPanel.SetStats(GetStatsToDisplay(unit));
+        unitSprite.sprite = unit.closeUpImage;
+        unitName.text = unit.characterName;
+        UpdateStatValues();
     }
 
     public void UpdateStatValues()

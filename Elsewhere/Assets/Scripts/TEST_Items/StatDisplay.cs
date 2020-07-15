@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class StatDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class StatDisplay : MonoBehaviour //, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] Text nameText;
     [SerializeField] Text valueText;
-    [SerializeField] StatToolTip toolTip;
-    private bool showingTooltip;
+    //[SerializeField] StatToolTip toolTip;
+    //private bool showingTooltip;
 
     private UnitStat _stat;
     public UnitStat Stat
@@ -27,19 +27,19 @@ public class StatDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         Text[] texts = GetComponentsInChildren<Text>();
         nameText = texts[0];
         valueText = texts[1];
-        if (toolTip == null)
+        /*if (toolTip == null)
         {
             toolTip = FindObjectOfType<StatToolTip>();
-        }
+        }*/
     }
 
     public void UpdateStatValue()
     {
         valueText.text = _stat.Value.ToString();
-        if (showingTooltip)
+        /*if (showingTooltip)
         {
             toolTip.ShowToolTip(Stat, Name);
-        }
+        }*/
     }
 
     private string _name;
@@ -53,7 +53,7 @@ public class StatDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    /*public void OnPointerEnter(PointerEventData eventData)
     {
         toolTip.ShowToolTip(Stat, Name);
         showingTooltip = true;
@@ -63,5 +63,5 @@ public class StatDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         toolTip.HideToolTip();
         showingTooltip = false;
-    }
+    }*/
 }

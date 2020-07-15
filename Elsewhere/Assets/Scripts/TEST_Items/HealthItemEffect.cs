@@ -6,9 +6,9 @@ using UnityEngine;
 public class HealthItemEffect : UsableItemEffect
 {
     public int healAmount;
-    public override void ExecuteEffect(UsableItem parentItem, InBattleUnitInventoryManager inventoryManager)
+    public override void ExecuteEffect(UsableItem parentItem, Unit unit)
     {
-        inventoryManager.unit.stats[StatString.HP].AddModifier(new StatModifier(healAmount, StatModType.Flat));
+        unit.stats[StatString.HP].AddModifier(new StatModifier(healAmount, StatModType.Flat));
     }
 
     public override string GetDescription()

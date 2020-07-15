@@ -178,7 +178,7 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 5133980785669610318}
-  unitInventory: {fileID: 0}
+  closeUpImage: {fileID: 21300000, guid: ceb05e04c143e544abd07b4d3fbdf620, type: 3}
   gridPosition: {x: 0, y: 0}
 --- !u!1 &2870922879948342433
 GameObject:

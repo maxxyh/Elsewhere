@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 6456096091892639000}
   - component: {fileID: 6456096091892639001}
   m_Layer: 5
-  m_Name: Unit Personal Inventory
+  m_Name: UnitPersonalInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,6 @@ MonoBehaviour:
   - {fileID: 6456096092908409036}
   - {fileID: 6456096093215980116}
   - {fileID: 6456096091972447613}
-  unitStartingItems: []
   itemsParent: {fileID: 6456096091892639006}
 --- !u!1 &6456096091972447603
 GameObject:

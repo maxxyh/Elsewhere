@@ -20,7 +20,7 @@ MonoBehaviour:
   - unitID: Esmeralda
     UnitPrefab: {fileID: 2870922879879798622, guid: 7161820e4206e6242bfd1f897d971232,
       type: 3}
-    UnitPositions: {x: -11, y: -2, z: 0}
+    UnitPositions: {x: -12, y: -3, z: 0}
   - unitID: Kelda
     UnitPrefab: {fileID: 2870922879879798622, guid: 65dccee9e9c20294292c3317e88ecf9f,
       type: 3}

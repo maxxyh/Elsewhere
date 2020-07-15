@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PreBattleUnitInventoryManager : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
     public UnitPersonalInventory unitPersonalInventory;
     public InventoryItemTypesManager inventoryItemTypesManager;
 
+    
     [Header("Serialize Field")]
-    [SerializeField] ItemSaveManager itemSaveManager;
+    [FormerlySerializedAs("itemSaveManager")] [SerializeField] UnitSaveManager unitSaveManager;
     [SerializeField] ItemToolTip itemTooltip;
 
     private BaseItemSlot selectedItemSlot;

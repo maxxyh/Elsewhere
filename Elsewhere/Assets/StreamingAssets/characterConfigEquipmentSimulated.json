@@ -3,7 +3,6 @@
         "name": "Julius",
         "class": "Swordsman",
         "abilities": ["WhirlwindSlash", "DoubleHit"],
-        "items": ["ddea3fecca368134e9962bb26fe79e5c"],
         "stats":{
             "HP": 25,
             "MANA": 20,
@@ -14,14 +13,13 @@
             "MOVEMENT_RANGE": 6,
             "HIT_RATE": 0,
             "ATTACK_RANGE": 1,
-            "CRIT_RATE": 0.25
+            "CRIT_RATE": 25
         }
     },
     "Esmeralda": {
         "name": "Esmeralda",
         "class": "Sage",
         "abilities": ["AstralFlare", "HpReaver"],
-        "items": ["89050062846591245bf9dc2f54a56010"],
         "stats": {
             "HP": 25,
             "MANA": 25,
@@ -32,7 +30,7 @@
             "MOVEMENT_RANGE": 4,
             "HIT_RATE": 0,
             "ATTACK_RANGE": 3,
-            "CRIT_RATE": 0.25
+            "CRIT_RATE": 25
         }
     },
 
@@ -40,7 +38,6 @@
         "name": "Kelda",
         "class": "Healer",
         "abilities": ["HealingWave", "ArcaneBoost"],
-        "items": ["89050062846591245bf9dc2f54a56010"],
         "stats": {
             "HP": 25,
             "MANA": 30,
@@ -51,7 +48,7 @@
             "MOVEMENT_RANGE": 4,
             "HIT_RATE": 0,
             "ATTACK_RANGE": 3,
-            "CRIT_RATE": 0.25
+            "CRIT_RATE": 25
         }
     },
 
@@ -69,7 +66,7 @@
             "MOVEMENT_RANGE": 4,
             "HIT_RATE": 0,
             "ATTACK_RANGE": 3,
-            "CRIT_RATE": 0.25
+            "CRIT_RATE": 25
         }
     },
 
@@ -87,7 +84,7 @@
             "MOVEMENT_RANGE": 5,
             "HIT_RATE": 0,
             "ATTACK_RANGE": 1,
-            "CRIT_RATE": 0.25
+            "CRIT_RATE": 25
         }
     }
 }
