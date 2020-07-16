@@ -7335,6 +7335,7 @@ Transform:
   m_Children:
   - {fileID: 105424489}
   - {fileID: 589020542}
+  - {fileID: 1697850525}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16143,6 +16144,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560583982}
   m_CullTransparentMesh: 0
+--- !u!1 &1578713410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4126169948300004754, guid: 59f06a62fda6def41993135eaf8dfc42,
+    type: 3}
+  m_PrefabInstance: {fileID: 795419941586785151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1595775640 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5968743123656453665, guid: 9de5d4eca1843bf4aa5c9a5343943fb9,
@@ -16652,6 +16659,50 @@ MonoBehaviour:
   portrait: {fileID: 342358187}
   fullName: {fileID: 314426434}
   dialogue: {fileID: 1982535243}
+--- !u!1 &1697850523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1697850525}
+  - component: {fileID: 1697850524}
+  m_Layer: 0
+  m_Name: UnitSaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1697850524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697850523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b7410f47a612649bef84d01a4035e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDataBase: {fileID: 11400000, guid: e259511b0f5d3ab44ae71a17e4b40636, type: 2}
+--- !u!4 &1697850525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697850523}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 619429513}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1699038974
 GameObject:
   m_ObjectHideFlags: 0
@@ -20486,6 +20537,7 @@ GameObject:
   - component: {fileID: 2127094680}
   - component: {fileID: 2127094679}
   - component: {fileID: 2127094678}
+  - component: {fileID: 2127094682}
   m_Layer: 5
   m_Name: 'Panel Canvas '
   m_TagString: Untagged
@@ -20579,6 +20631,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2127094682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127094677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d1c43af72ffd143ba9c99390654de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  captureButton: {fileID: 1578713410}
 --- !u!1 &2127186480
 GameObject:
   m_ObjectHideFlags: 0
@@ -23446,7 +23511,10 @@ MonoBehaviour:
   players: []
   enemies: []
   initialUnitInfo: {fileID: 11400000, guid: 41a3174b3b6542f499efe49576a352d8, type: 2}
+  unitSaveManager: {fileID: 1697850524}
+  levelDatabase: {fileID: 11400000, guid: 3dd30ef27cb3c37438367a6d655da962, type: 2}
   pauseMenu: {fileID: 1531294209}
+  _unitDatabase: {fileID: 11400000, guid: 13ef98ac7115d3e45b256d09edf634a6, type: 2}
   levelMusic: {fileID: 8300000, guid: 403e5364c7c93b64d8d77c4c9474b274, type: 3}
 --- !u!1001 &7757812188048609844
 PrefabInstance:

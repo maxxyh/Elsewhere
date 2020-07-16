@@ -12081,8 +12081,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7757812188013045440, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757812188013045440, guid: 457dd15edc265ef4c89c53be4e929ba6,
+        type: 3}
       propertyPath: m_Transition
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757812188013045440, guid: 457dd15edc265ef4c89c53be4e929ba6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757812188013045440, guid: 457dd15edc265ef4c89c53be4e929ba6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757812188013045440, guid: 457dd15edc265ef4c89c53be4e929ba6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 133770564}
+    - target: {fileID: 7757812188013045440, guid: 457dd15edc265ef4c89c53be4e929ba6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnlickChangeSceneButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757812188013045440, guid: 457dd15edc265ef4c89c53be4e929ba6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757812188013045440, guid: 457dd15edc265ef4c89c53be4e929ba6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: NavigationMap
       objectReference: {fileID: 0}
     - target: {fileID: 7757812188013045447, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
@@ -15825,10 +15860,8 @@ MonoBehaviour:
   players: []
   enemies: []
   initialUnitInfo: {fileID: 11400000, guid: 8380b358f79bfa24cb646ddb51a177f1, type: 2}
-  juliusGO: {fileID: 2870922879879798622, guid: ba5383cf5522ac74ea9a4336af10bc66,
-    type: 3}
-  keldaGO: {fileID: 2870922879879798622, guid: 65dccee9e9c20294292c3317e88ecf9f, type: 3}
   unitSaveManager: {fileID: 1166475583}
+  levelDatabase: {fileID: 11400000, guid: 3dd30ef27cb3c37438367a6d655da962, type: 2}
   pauseMenu: {fileID: 744788466}
   _unitDatabase: {fileID: 11400000, guid: 13ef98ac7115d3e45b256d09edf634a6, type: 2}
   levelMusic: {fileID: 8300000, guid: d36614415ca20654f8953e30b0291b38, type: 3}
@@ -28339,7 +28372,6 @@ MonoBehaviour:
   unit: {fileID: 1315062736122327609, guid: 65dccee9e9c20294292c3317e88ecf9f, type: 3}
   unitPersonalInventory: {fileID: 1987663020}
   statPanel: {fileID: 1996683740}
-  unitSaveManager: {fileID: 0}
   itemTooltip: {fileID: 1075065300}
   unitName: {fileID: 702201711}
   unitSprite: {fileID: 525078434}

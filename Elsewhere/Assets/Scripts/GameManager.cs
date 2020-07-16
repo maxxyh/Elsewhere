@@ -4,6 +4,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
+using LevelSelection;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using UnityEngine.SceneManagement;
@@ -16,11 +17,9 @@ public class GameManager : MonoBehaviour
     public List<PlayerUnit> players = new List<PlayerUnit>();
     public List<EnemyUnit> enemies = new List<EnemyUnit>();
     public InitialUnitInfo initialUnitInfo;
-
-    [SerializeField] GameObject juliusGO;
-    [SerializeField] GameObject keldaGO;
-
+    
     [SerializeField] UnitSaveManager unitSaveManager;
+    [SerializeField] private LevelDatabase levelDatabase;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private UnitDatabase _unitDatabase;
 
@@ -37,7 +36,8 @@ public class GameManager : MonoBehaviour
     
     public AudioClip levelMusic;
 
-    public Action<List<PlayerUnit>> OnSaveGame;
+    private Action<List<PlayerUnit>> _onSaveGame;
+    private Action _onWinUpdateLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -49,11 +49,13 @@ public class GameManager : MonoBehaviour
         // generatePlayers();
         generatePlayers2();
         GameAssets.MyInstance.turnScheduler.Init(players, enemies);
-
-        OnSaveGame += SavePlayerData;
-        GameAssets.MyInstance.turnScheduler.SetSaveEvent(OnSaveGame);
+        
+        _onWinUpdateLevel += WinUpdateLevelDatabase;
+        _onSaveGame += SavePlayerData;
+        GameAssets.MyInstance.turnScheduler.SetWinUpdateEvent(_onWinUpdateLevel);
+        GameAssets.MyInstance.turnScheduler.SetSaveEvent(_onSaveGame);
     }
-
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -212,7 +214,7 @@ public class GameManager : MonoBehaviour
         }
     }
     // convoy is something that we're overlooking!
-    public void SavePlayerData(List<PlayerUnit> units)
+    private void SavePlayerData(List<PlayerUnit> units)
     {
         Debug.Log("Saving data");
         foreach (Unit unit in units)
@@ -220,4 +222,10 @@ public class GameManager : MonoBehaviour
             unitSaveManager.SaveUnit(unit);
         }
     }
+
+    private void WinUpdateLevelDatabase()
+    {
+        LevelSelectManager.LevelCompleted(StaticData.LevelInformation.levelId, levelDatabase);
+    }
+    
 }

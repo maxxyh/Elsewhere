@@ -35,7 +35,15 @@ public class DialogueDisplay : MonoBehaviour
         {
             if (Input.GetKeyDown("space"))
             {
-                AdvanceConversation();
+                if (currentNumCharactersDisplayed < totalNumCharactersInLine)
+                {
+                    StopTypeWriterAndDisplayLineImmediately();
+                }
+
+                else
+                {
+                    AdvanceConversation();
+                }
             }
         } 
         else
@@ -51,15 +59,8 @@ public class DialogueDisplay : MonoBehaviour
     {
         if (activeLineIndex < conversation.lines.Length)
         {
-            if (currentNumCharactersDisplayed < totalNumCharactersInLine)
-            {
-                StopTypeWriterAndDisplayLineImmediately();
-            } 
-            else
-            {
-                DisplayLine();
-                activeLineIndex += 1;
-            }   
+            DisplayLine();
+            activeLineIndex += 1;
         }
         else
         {

@@ -15,6 +15,7 @@ public class TurnScheduler : StateMachine
     public List<EnemyUnit> enemies;
     public LinkedList<Unit> currTeamQueue = new LinkedList<Unit>();
     public Action<List<PlayerUnit>> OnSaveGame;
+    public Action OnWinUpdateLevelData;
     
     [Header("Panels")]
     public GameObject confirmationPanel;
@@ -86,6 +87,11 @@ public class TurnScheduler : StateMachine
     public void SetSaveEvent(Action<List<PlayerUnit>> OnSaveEvent)
     {
         OnSaveGame = OnSaveEvent;
+    }
+    
+    public void SetWinUpdateEvent(Action onWinUpdateLevel)
+    {
+        OnWinUpdateLevelData = onWinUpdateLevel;
     }
     
     public void OnCrystalCaptureCutSceneDone(bool allCrystalsCollected)

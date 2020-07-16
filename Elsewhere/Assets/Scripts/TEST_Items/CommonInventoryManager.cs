@@ -16,6 +16,7 @@ public class CommonInventoryManager : MonoBehaviour
     [SerializeField] UnitPersonalInventory personalInventory;
     [SerializeField] Text nameText;
     [SerializeField] UnitSaveManager unitSaveManager;
+    [SerializeField] private ChangeScene changeSceneManger;
 
     private List<UnitData> unitDataList = new List<UnitData>();
     private UnitData _chosenUnitData;
@@ -94,5 +95,10 @@ public class CommonInventoryManager : MonoBehaviour
                 slot.Item = _chosenUnitData.unitItems[i];
             }
         }
+    }
+
+    public void OnStartLevelButton()
+    {
+        changeSceneManger.OnlickChangeSceneButton(StaticData.LevelInformation.sceneName);
     }
 }

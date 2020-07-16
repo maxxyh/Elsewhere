@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LevelSelection;
 
 public static class StaticData
 {
@@ -19,4 +20,6 @@ public static class StaticData
     }
 
     public static List<string> SelectedUnits = new List<string>();
+
+    public static LevelDatabaseEntry LevelInformation;
 }

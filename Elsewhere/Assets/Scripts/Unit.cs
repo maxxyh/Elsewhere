@@ -530,6 +530,7 @@ public class Unit : MonoBehaviour, IUnit
     {
         if (other.CompareTag("crystal"))
         {
+            Debug.Log("Collide Crystal here");
             _crystalToCapture = other.GetComponent<Crystal>();
             _onCrystal = true;
         }

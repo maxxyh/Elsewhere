@@ -13,7 +13,6 @@ public class UnitSelectionManager : MonoBehaviour
 {
     private List<SelectedUnitSlot> _selectedUnitSlots = new List<SelectedUnitSlot>();
     public int limit;
-    private static int nextSceneBuildIndex = 10;
     public Text limitText;
     public Text noOfUnits;
     
@@ -33,7 +32,7 @@ public class UnitSelectionManager : MonoBehaviour
         _abilityConfig = JObject.Parse(File.ReadAllText(_abilityConfigPath));
 
         string[] unlockedCharacterIds = _unlockedCharacters["unlocked"].ToObject<string[]>();
-        limit = 2; // TODO change this to be dependent on the level 
+        limit = StaticData.LevelInformation.GetNumPlayers();
         limitText.text = "             /" + limit + " units"; 
         unitSelectionPanel.OnSlotLeftClickEvent += OnToggleSelectUnit;
         unitSelectionPanel.OnSlotMouseEnterEvent += OnToggleUnitStats;
@@ -75,7 +74,6 @@ public class UnitSelectionManager : MonoBehaviour
             StaticData.SelectedUnits = _selectedUnitSlots.Select(x => x.UnitName).ToList();
             //SceneManager.LoadScene(nextSceneBuildIndex);
             SceneManager.LoadScene("InventoryManagement");
-            nextSceneBuildIndex++;
         }
     }
     
