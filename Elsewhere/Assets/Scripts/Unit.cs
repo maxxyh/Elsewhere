@@ -534,7 +534,7 @@ public class Unit : MonoBehaviour, IUnit
             _crystalToCapture = other.GetComponent<Crystal>();
             _onCrystal = true;
         }
-        
+
         if (other.CompareTag("door") && this is PlayerUnit)
         {
             Debug.Log("Collide Door here");
