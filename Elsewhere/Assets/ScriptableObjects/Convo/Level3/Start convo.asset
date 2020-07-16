@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Start convo
+  m_EditorClassIdentifier: 
+  speakers:
+  - {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+  - {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+  lines:
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: No way!! KELDA look it's our high school! Oh the nostalgia, the golden
+      memories, so beautiful!
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: ' A school huh? Don''t get too excited, it looks like this place is swarming
+      with enemies. '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Be careful not to get cornered in the classrooms and walkways.
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: Sounds exciting! Let's geddit!!!

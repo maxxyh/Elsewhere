@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Scene4 convo
+  m_EditorClassIdentifier: 
+  speakers:
+  - {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+  - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  lines:
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: Okay. It's do or die. I'm taking it to the ultimate level!
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: O-okay...
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: Just walking around the classroom and WOW this stuff is REALLY UGLY!
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: ?? Rowan??
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: SO UGLY that I've gotta do something to make it look better!
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: Good thing I have my trusty penknife here! Just a slit here, and a slit
+      there...
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: 'AND THESE TABLES, looking a little plain! Good thing I have my marker
+      here. '
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: '** writing ** #$%@ @#%$ #@$!@# '
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: Rowan how could you...
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: All done! What are YOU staring at? Watchu gonna do about it?
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: Wow...
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: 'Wow? '
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: Rowan how'd you know that those kids were bullying me? I didn't even tell
+      anyone...
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: That's right I'm bad and- huh?
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: You must've been looking out for me all this while... you're so caring
+      // and nice // Rowan! Thank you!!
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: 'Right you''re welcome... '
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: '"Why am I still nice???"'
