@@ -535,7 +535,7 @@ public class Unit : MonoBehaviour, IUnit
             _onCrystal = true;
         }
         
-        if (other.tag == "door")
+        if (other.CompareTag("door") && this is PlayerUnit)
         {
             Debug.Log("Collide Door here");
             foreach(GameObject go in GameAssets.MyInstance.houseInterior)
