@@ -475,7 +475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 123.69006, y: 78.58795}
+  m_AnchoredPosition: {x: 123.68994, y: 78.58789}
   m_SizeDelta: {x: -247.3779, y: -157.18442}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72437430
@@ -641,7 +641,7 @@ MonoBehaviour:
   turnScheduler: {fileID: 346674795}
   highlightMap: {fileID: 23294546}
   houseInterior:
-  - {fileID: 0}
+  - {fileID: 709391344}
   - {fileID: 134278760}
 --- !u!212 &107640955
 SpriteRenderer:
@@ -927,7 +927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &134278761
 Transform:
   m_ObjectHideFlags: 0
@@ -1002,7 +1002,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1182,7 +1182,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1191,7 +1191,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1405,9 +1405,8 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 2925820931078268959, guid: 708ff860e6b4b9c4a97f637a71c4aefc,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 6032850572992421075, guid: 8424fc28f6d7e0b4c955525a11e5b4c5,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 1081298830968999233, guid: 708ff860e6b4b9c4a97f637a71c4aefc,
       type: 3}
@@ -1424,13 +1423,13 @@ Tilemap:
     m_Data: {fileID: 1210397587438855266, guid: 8424fc28f6d7e0b4c955525a11e5b4c5,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 5786154872278430158, guid: 8424fc28f6d7e0b4c955525a11e5b4c5,
+    m_Data: {fileID: 6032850572992421075, guid: 8424fc28f6d7e0b4c955525a11e5b4c5,
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -5594793561692972160, guid: 708ff860e6b4b9c4a97f637a71c4aefc,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 1594407803813303802, guid: 6716e1eaee7966e46821ce6d26c79cd4,
+    m_Data: {fileID: 5786154872278430158, guid: 8424fc28f6d7e0b4c955525a11e5b4c5,
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -2715787879159773070, guid: 708ff860e6b4b9c4a97f637a71c4aefc,
@@ -1447,8 +1446,9 @@ Tilemap:
   - m_RefCount: 4
     m_Data: {fileID: -4686457222777255812, guid: 8424fc28f6d7e0b4c955525a11e5b4c5,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1594407803813303802, guid: 6716e1eaee7966e46821ce6d26c79cd4,
+      type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -3252195025366631104, guid: 708ff860e6b4b9c4a97f637a71c4aefc,
       type: 3}
@@ -3163,7 +3163,7 @@ PrefabInstance:
     - target: {fileID: 4164886101120271221, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7.799988
+      value: -7.800049
       objectReference: {fileID: 0}
     - target: {fileID: 4164886101120271221, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
@@ -3173,7 +3173,7 @@ PrefabInstance:
     - target: {fileID: 4164886101120271221, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.6000366
+      value: 0.60009766
       objectReference: {fileID: 0}
     - target: {fileID: 4164886101159585306, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
@@ -3309,12 +3309,12 @@ PrefabInstance:
     - target: {fileID: 4164886101872703359, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 252.14384
+      value: 252.14404
       objectReference: {fileID: 0}
     - target: {fileID: 4164886101872703359, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -110.11207
+      value: -110.11206
       objectReference: {fileID: 0}
     - target: {fileID: 4164886101872703359, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
@@ -11563,7 +11563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &709391345
 Transform:
   m_ObjectHideFlags: 0
@@ -13830,7 +13830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &867373165
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24866,12 +24866,12 @@ PrefabInstance:
     - target: {fileID: 5968743123700005069, guid: 9de5d4eca1843bf4aa5c9a5343943fb9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 251.6365
+      value: 251.63672
       objectReference: {fileID: 0}
     - target: {fileID: 5968743123700005069, guid: 9de5d4eca1843bf4aa5c9a5343943fb9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -85.73994
+      value: -85.73999
       objectReference: {fileID: 0}
     - target: {fileID: 5968743123700005069, guid: 9de5d4eca1843bf4aa5c9a5343943fb9,
         type: 3}
@@ -27118,7 +27118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 50.625, y: -6.2960205}
+  m_AnchoredPosition: {x: 50.625, y: -6.2958984}
   m_SizeDelta: {x: -307.17273, y: -160.42531}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9221360841257724655
@@ -27536,7 +27536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.71452945, y: 0}
   m_AnchorMax: {x: 1, y: 0.67600006}
-  m_AnchoredPosition: {x: -272.48102, y: 78.16391}
+  m_AnchoredPosition: {x: -272.48096, y: 78.16382}
   m_SizeDelta: {x: 243, y: 62}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &9221360842130815663
