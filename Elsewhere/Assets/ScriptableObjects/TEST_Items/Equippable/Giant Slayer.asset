@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938a4165b5b4e2548b5c9bc04a35f7ae, type: 3}
+  m_Name: Giant Slayer
+  m_EditorClassIdentifier: 
+  id: f8f489518aa51844c891ed3087376635
+  itemName: Giant Slayer
+  itemIcon: {fileID: -2903913552203717909, guid: b2d9a4363c41f0a43925976ffa354fb9,
+    type: 3}
+  itemNumUses: 2
+  maxStack: 1
+  physicalAttackBonus: 14
+  magicalAttackBonus: 0
+  attackRange: 3
+  critBonus: 30
+  hitRate: 70
+  weaponType: 1
+  equipped: 0
