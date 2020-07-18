@@ -49,7 +49,6 @@
       ]
     }
   },
-
   "Kelda": {
     "unitName": "Kelda",
     "unitClass": "Healer",
@@ -80,15 +79,15 @@
     "unitClass": "Gunslinger",
     "unitAbilities": ["HealingWave", "ArcaneBoost"],
     "unitStats": {
-      "HP": 25,
+      "HP": 19,
       "MANA": 30,
-      "PHYSICAL_DAMAGE": 4,
-      "MAGIC_DAMAGE": 12,
-      "ARMOR": 3,
-      "MAGIC_RES": 5,
-      "MOVEMENT_RANGE": 4,
+      "PHYSICAL_DAMAGE": 14,
+      "MAGIC_DAMAGE": 2,
+      "ARMOR": 6,
+      "MAGIC_RES": 1,
+      "MOVEMENT_RANGE": 5,
       "HIT_RATE": 0,
-      "ATTACK_RANGE": 3,
+      "ATTACK_RANGE": 4,
       "CRIT_RATE": 25
     },
     "unitInventory" : {

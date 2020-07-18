@@ -178,10 +178,8 @@ MonoBehaviour:
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 4498768073824462151}
-  unitInventoryPrefab: {fileID: 6456096091892639007, guid: 88f88883eb2a5e941a0a1c3545efa7a9,
-    type: 3}
-  unitInventory: {fileID: 0}
-  unitSprite: {fileID: 0}
+  equippedWeaponIndex: -1
+  closeUpImage: {fileID: 21300000, guid: 3ab8c665ab0dad647a57d3e2baea85da, type: 3}
   gridPosition: {x: 0, y: 0}
 --- !u!1 &6811365470197037736
 GameObject:
@@ -862,6 +860,12 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5785139995956338755, guid: f4d24ff5f97830c4b8c039d718a9d22e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f794866d24ce5ca40a5ef25551031400,
+        type: 3}
     - target: {fileID: 8041053661164271464, guid: f4d24ff5f97830c4b8c039d718a9d22e,
         type: 3}
       propertyPath: unitPhysicalDamage
@@ -1021,7 +1025,7 @@ PrefabInstance:
     - target: {fileID: 764653012399675585, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.7668533
+      value: 1.7668552
       objectReference: {fileID: 0}
     - target: {fileID: 764653012399675585, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -1118,6 +1122,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -15.198265
       objectReference: {fileID: 0}
+    - target: {fileID: 764653012576316794, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ab8c665ab0dad647a57d3e2baea85da,
+        type: 3}
     - target: {fileID: 764653012577021724, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1143,6 +1153,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -41.594795
       objectReference: {fileID: 0}
+    - target: {fileID: 764653012688493687, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: Rowan
+      objectReference: {fileID: 0}
     - target: {fileID: 764653012896656252, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1166,7 +1181,7 @@ PrefabInstance:
     - target: {fileID: 764653013055201914, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.9662933
+      value: -3.9662895
       objectReference: {fileID: 0}
     - target: {fileID: 764653013055201914, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -1202,6 +1217,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -15.432579
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653013217053240, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: Gunslinger
       objectReference: {fileID: 0}
     - target: {fileID: 764653013244853095, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -1262,6 +1282,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -32.63201
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653013306948632, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: '
+
+
+        The troublemaker'
       objectReference: {fileID: 0}
     - target: {fileID: 764653013325892394, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}
@@ -1362,6 +1390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -751.0498
+      objectReference: {fileID: 0}
+    - target: {fileID: 764653014010207073, guid: 7cced2a90ff3fd041bc046586e496ed4,
+        type: 3}
+      propertyPath: m_Text
+      value: Nice and funny.
       objectReference: {fileID: 0}
     - target: {fileID: 764653014086388944, guid: 7cced2a90ff3fd041bc046586e496ed4,
         type: 3}

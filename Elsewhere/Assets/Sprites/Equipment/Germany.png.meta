@@ -1,0 +1,482 @@
+fileFormatVersion: 2
+guid: 5dcc0d70c3b0a9748b9b851d755217f8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7141822778105968951
+    second: Germany_0
+  - first:
+      213: 5905611060573061566
+    second: Germany_1
+  - first:
+      213: -6060326107345271968
+    second: Germany_2
+  - first:
+      213: 5718812099217191720
+    second: Germany_3
+  - first:
+      213: -3270748789923928055
+    second: Germany_4
+  - first:
+      213: -4451465859082164494
+    second: Germany_5
+  - first:
+      213: -231531722698200899
+    second: Germany_6
+  - first:
+      213: 7635698043396411326
+    second: Germany_7
+  - first:
+      213: 2145359853025010364
+    second: Germany_8
+  - first:
+      213: 5524859792605583876
+    second: Germany_9
+  - first:
+      213: 7596929911404220597
+    second: Germany_10
+  - first:
+      213: 3643599815645413735
+    second: Germany_11
+  - first:
+      213: -1090599774772375956
+    second: Germany_12
+  - first:
+      213: 6934591510717085080
+    second: Germany_13
+  - first:
+      213: 1883199159547297148
+    second: Germany_14
+  - first:
+      213: 2830614716784109041
+    second: Germany_15
+  - first:
+      213: -6157612987273923456
+    second: Germany_16
+  - first:
+      213: -4008553254869583444
+    second: Germany_17
+  - first:
+      213: 1043168869439995620
+    second: Germany_18
+  - first:
+      213: 6084505231220417123
+    second: Germany_19
+  - first:
+      213: 5015723455612924359
+    second: Germany_20
+  - first:
+      213: 2776452848533238742
+    second: Germany_21
+  - first:
+      213: -8362663640417431734
+    second: Germany_22
+  - first:
+      213: -4756236661133822464
+    second: Germany_23
+  - first:
+      213: 104032521662324394
+    second: Germany_24
+  - first:
+      213: 3742256217413372803
+    second: Germany_25
+  - first:
+      213: -6161965445172595417
+    second: Germany_26
+  - first:
+      213: 739848714876859647
+    second: Germany_27
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Germany_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 51
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 739bcc94af9dc1360800000000000000
+      internalID: 7141822778105968951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 51
+        width: 34
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 823fb0ffd4d4d5f40800000000000000
+      internalID: 5718812099217191720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_4
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 51
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 908ab030e47fb92d0800000000000000
+      internalID: -3270748789923928055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_7
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 51
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebfc9c03ae277f960800000000000000
+      internalID: 7635698043396411326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 34
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb2a0f27b69d5cd10800000000000000
+      internalID: 2145359853025010364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 34
+        width: 34
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b0d9c01187bd6960800000000000000
+      internalID: 7596929911404220597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_12
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 34
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e429878496dd0f0800000000000000
+      internalID: -1090599774772375956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_14
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 34
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7d712278a7722a10800000000000000
+      internalID: 1883199159547297148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 21
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 084b43dcc93cb8aa0800000000000000
+      internalID: -6157612987273923456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 21
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ee77bf4f841a7e00800000000000000
+      internalID: 1043168869439995620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 21
+        width: 34
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c1376f88ed6b9540800000000000000
+      internalID: 5015723455612924359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_23
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 21
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 006bd61d4f37efdb0800000000000000
+      internalID: -4756236661133822464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_24
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 2
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aae55caf609917100800000000000000
+      internalID: 104032521662324394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Germany_27
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 3
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4b3cd7c78744a00800000000000000
+      internalID: 739848714876859647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1b1aeeac40289164b8767a43cefc8f2a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

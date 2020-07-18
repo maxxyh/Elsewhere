@@ -8,8 +8,8 @@
     "name": "Double Hit"
   },
   "AstralFlare": {
-    "description":"Ranged AoE spell with 3-tile range. Deals x1.2 magic damage and 20% armor debuff on all targets",
-    "name": "Astral Flare"  
+    "description": "Ranged AoE spell with 3-tile range. Deals x1.2 magic damage and 20% armor debuff on all targets",
+    "name": "Astral Flare"
   },
   "HpReaver": {
     "description": "Steals an amount of HP equal to 40% of initiator’s magic damage from a single target",
@@ -22,5 +22,13 @@
   "ArcaneBoost": {
     "description": "Grants caster 20% armor and 20% magic damage buff",
     "name": "Arcane Boost"
+  },
+  "PiercingShot": {
+    "description": "Deals damage to all enemy champions in a straight line of 4 tiles",
+    "name": "Piercing Shot"
+  },
+  "DeadlyRicochet": {
+    "description": "Ranged AoE of 2-tile radius. Deals x1.5 physical damage to all targets in range",
+    "name": "Deadly Ricochet"
   }
 }
