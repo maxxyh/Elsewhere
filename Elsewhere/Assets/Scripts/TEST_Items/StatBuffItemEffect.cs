@@ -4,12 +4,12 @@ using System.Globalization;
 using System.Threading;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Usable Item Effects / Stat Buff")]
 public class StatBuffItemEffect : UsableItemEffect
 {
 	public int statBuff;
 	public StatModType statModType;
 	public StatString targetStat;
-	public float duration;
 
 	public override void ExecuteEffect(UsableItem parentItem, Unit unit)
 	{

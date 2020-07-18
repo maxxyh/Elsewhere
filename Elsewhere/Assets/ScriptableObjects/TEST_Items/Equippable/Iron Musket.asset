@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938a4165b5b4e2548b5c9bc04a35f7ae, type: 3}
-  m_Name: Death Whisperer
+  m_Name: Iron Musket
   m_EditorClassIdentifier: 
-  id: 9bbea6774943a164591c49abc0bfdfbf
-  itemName: Death Whisperer
-  itemIcon: {fileID: -5164292178780703601, guid: c773c91c3cb7d1a4f978d399e11a989d,
+  id: cb60ad6e906649a4193e29a087aaa04e
+  itemName: Iron Musket
+  itemIcon: {fileID: -3134521058783078905, guid: 51c279c09557eb3438875f8ea48b83c4,
     type: 3}
-  itemNumUses: 1
+  itemNumUses: 5
   maxStack: 1
-  physicalAttackBonus: 0
-  magicalAttackBonus: 20
-  attackRange: 1
-  critBonus: 30
-  hitRate: 60
-  weaponType: 2
+  physicalAttackBonus: 6
+  magicalAttackBonus: 0
+  attackRange: 2
+  critBonus: 0
+  hitRate: 85
+  weaponType: 1
   equipped: 0

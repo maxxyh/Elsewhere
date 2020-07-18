@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938a4165b5b4e2548b5c9bc04a35f7ae, type: 3}
-  m_Name: Death Whisperer
+  m_Name: Phantom Scepter
   m_EditorClassIdentifier: 
-  id: 9bbea6774943a164591c49abc0bfdfbf
-  itemName: Death Whisperer
-  itemIcon: {fileID: -5164292178780703601, guid: c773c91c3cb7d1a4f978d399e11a989d,
+  id: 935d2bf496dc6244895b550dc24c7416
+  itemName: Phantom Scepter
+  itemIcon: {fileID: 4007864022520773979, guid: b1a89cbd2423d2a4a97c4cb625596300,
     type: 3}
-  itemNumUses: 1
+  itemNumUses: 3
   maxStack: 1
-  physicalAttackBonus: 0
-  magicalAttackBonus: 20
-  attackRange: 1
-  critBonus: 30
-  hitRate: 60
+  physicalAttackBonus: 2
+  magicalAttackBonus: 12
+  attackRange: 3
+  critBonus: 25
+  hitRate: 45
   weaponType: 2
   equipped: 0

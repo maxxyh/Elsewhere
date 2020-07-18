@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938a4165b5b4e2548b5c9bc04a35f7ae, type: 3}
-  m_Name: Death Whisperer
+  m_Name: Might of the Lucid World
   m_EditorClassIdentifier: 
-  id: 9bbea6774943a164591c49abc0bfdfbf
-  itemName: Death Whisperer
-  itemIcon: {fileID: -5164292178780703601, guid: c773c91c3cb7d1a4f978d399e11a989d,
+  id: e804fa2a137dd194ba8cc88e462fc975
+  itemName: Might of the Lucid World
+  itemIcon: {fileID: -2243598818812790967, guid: c773c91c3cb7d1a4f978d399e11a989d,
     type: 3}
-  itemNumUses: 1
+  itemNumUses: 2
   maxStack: 1
-  physicalAttackBonus: 0
-  magicalAttackBonus: 20
-  attackRange: 1
-  critBonus: 30
-  hitRate: 60
-  weaponType: 2
+  physicalAttackBonus: 12
+  magicalAttackBonus: 6
+  attackRange: 2
+  critBonus: 50
+  hitRate: 45
+  weaponType: 0
   equipped: 0

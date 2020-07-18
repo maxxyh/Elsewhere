@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09466bf768cf4184da12c21a00f56ba2, type: 3}
-  m_Name: Green Potion
+  m_Name: Totally Bread
   m_EditorClassIdentifier: 
-  id: 78558570483fff449a45adcf6e56a06b
-  itemName: Green Potion
-  itemIcon: {fileID: -4057896849271182281, guid: 221415699be95b64394862bc1d1bbdd6,
+  id: 9285d336ac39af64eaf24181a758f853
+  itemName: Totally Bread
+  itemIcon: {fileID: 4488543362745833415, guid: 221415699be95b64394862bc1d1bbdd6,
     type: 3}
   itemNumUses: 1
   maxStack: 1
   IsConsumable: 1
   effects:
+  - {fileID: 11400000, guid: e62b2c6c3be9a554fbf0c29d3c8c84ca, type: 2}
   - {fileID: 11400000, guid: 9d2646f37c452e44d93ffa112212b948, type: 2}

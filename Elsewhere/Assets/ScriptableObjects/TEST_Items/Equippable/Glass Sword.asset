@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938a4165b5b4e2548b5c9bc04a35f7ae, type: 3}
-  m_Name: Death Whisperer
+  m_Name: Glass Sword
   m_EditorClassIdentifier: 
-  id: 9bbea6774943a164591c49abc0bfdfbf
-  itemName: Death Whisperer
-  itemIcon: {fileID: -5164292178780703601, guid: c773c91c3cb7d1a4f978d399e11a989d,
+  id: 9f170dd5ef97d4e4bbd3c3d645a0fa02
+  itemName: Glass Sword
+  itemIcon: {fileID: 3495713834309950518, guid: 221415699be95b64394862bc1d1bbdd6,
     type: 3}
-  itemNumUses: 1
+  itemNumUses: 3
   maxStack: 1
-  physicalAttackBonus: 0
-  magicalAttackBonus: 20
-  attackRange: 1
-  critBonus: 30
-  hitRate: 60
-  weaponType: 2
+  physicalAttackBonus: 11
+  magicalAttackBonus: 3
+  attackRange: 2
+  critBonus: 10
+  hitRate: 70
+  weaponType: 0
   equipped: 0

@@ -69,7 +69,7 @@ public class EquippableItem : Item
     public override string GetDescription()
     {
         sb.Length = 0;
-
+        
         AddStat(physicalAttackBonus, "Physical Attack");
         AddStat(magicalAttackBonus, "Magical Attack");
         AddStat(hitRate, "Hit Rate");

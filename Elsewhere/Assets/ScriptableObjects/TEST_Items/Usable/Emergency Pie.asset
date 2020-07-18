@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09466bf768cf4184da12c21a00f56ba2, type: 3}
-  m_Name: Green Potion
+  m_Name: Emergency Pie
   m_EditorClassIdentifier: 
-  id: 78558570483fff449a45adcf6e56a06b
-  itemName: Green Potion
-  itemIcon: {fileID: -4057896849271182281, guid: 221415699be95b64394862bc1d1bbdd6,
+  id: bdfcaf90a172fb04287b822db18945e9
+  itemName: Emergency Pie
+  itemIcon: {fileID: 1929469511134880159, guid: 221415699be95b64394862bc1d1bbdd6,
     type: 3}
   itemNumUses: 1
   maxStack: 1
   IsConsumable: 1
   effects:
-  - {fileID: 11400000, guid: 9d2646f37c452e44d93ffa112212b948, type: 2}
+  - {fileID: 11400000, guid: 8d28afeb24d8080409d55dc59fa76f94, type: 2}
+  - {fileID: 11400000, guid: e62b2c6c3be9a554fbf0c29d3c8c84ca, type: 2}
+  - {fileID: 11400000, guid: 8d3569b5a480e4745874303cb15b7554, type: 2}

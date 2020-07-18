@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09466bf768cf4184da12c21a00f56ba2, type: 3}
-  m_Name: Green Potion
+  m_Name: Mediocre Boots
   m_EditorClassIdentifier: 
-  id: 78558570483fff449a45adcf6e56a06b
-  itemName: Green Potion
-  itemIcon: {fileID: -4057896849271182281, guid: 221415699be95b64394862bc1d1bbdd6,
-    type: 3}
+  id: 73fd00afad1b414498b105da46f2585b
+  itemName: Mediocre Boots
+  itemIcon: {fileID: 21300000, guid: d28ef4f7e97f43c40a9cd165aef4715f, type: 3}
   itemNumUses: 1
   maxStack: 1
-  IsConsumable: 1
+  IsConsumable: 0
   effects:
-  - {fileID: 11400000, guid: 9d2646f37c452e44d93ffa112212b948, type: 2}
+  - {fileID: 11400000, guid: 157565849a6d429438650f2570ebe864, type: 2}
