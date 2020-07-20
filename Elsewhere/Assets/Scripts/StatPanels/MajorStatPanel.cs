@@ -12,6 +12,7 @@ public class MajorStatPanel : StatPanel
     public List<Text> skillManaCost = new List<Text>();
     [SerializeField] private GameObject skillPanel;
     [SerializeField] private GameObject abilitySlotPrefab;
+    [SerializeField] private ProgressBar progressBar;
 
     public void OnCloseButton()
     {
@@ -42,5 +43,10 @@ public class MajorStatPanel : StatPanel
         {
             Destroy(skillPanel.transform.GetChild(i).gameObject);
         }
+    }
+
+    public override void UpdateLevel(Level level)
+    {
+        progressBar.SetCurrentFill(level.currentExperience, level.requiredExperience, level.currentLevel);
     }
 }

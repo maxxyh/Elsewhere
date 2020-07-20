@@ -101,9 +101,10 @@ public class UnitSelectionManager : MonoBehaviour
 
     private void OnToggleUnitStats(SelectedUnitSlot selectedUnit)
     {
-        majorStatPanel.UpdateStatsUI(selectedUnit.data.stats);
+        UnitData unitData = selectedUnit.data;
+        majorStatPanel.UpdateStatsUI(unitData.stats, new Level(unitData.unitLevel, unitData.unitExp));
         majorStatPanel.ClearAllAbilitiesFromPanel();
-        foreach (string abilityName in selectedUnit.data.unitAbilities)
+        foreach (string abilityName in unitData.unitAbilities)
         {
             majorStatPanel.AddAbilityToPanel((string) _abilityConfig[abilityName]["name"], 
                 (string) _abilityConfig[abilityName]["description"], StaticData.AbilityReference[abilityName].GetManaCost());

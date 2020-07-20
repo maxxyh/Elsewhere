@@ -90,7 +90,6 @@ public class Unit : MonoBehaviour, IUnit
     private void Awake()
     {
         statPanel = statPanelGO.GetComponent<StatPanel>();
-        level = new Level(1, 0, OnLevelUp); // TODO make this loaded from script
         //inventory.Init(5,this);
     }
 
@@ -131,9 +130,15 @@ public class Unit : MonoBehaviour, IUnit
         Dictionary<StatString, int> classStatGrowth, Dictionary<StatString, int> characterStatGrowth)
     {
         AssignStats(unitLoadData.unitStats);
+        AssignLevel(unitLoadData.unitLevel, unitLoadData.unitExp);
         AssignAbilities(unitLoadData.unitAbilities, abilityConfig);
         AssignIdentity(unitLoadData.unitName, unitLoadData.unitClass, characterStatGrowth, classStatGrowth);
         AssignInventory(unitLoadData.unitInventory);
+    }
+
+    private void AssignLevel(int currLevel, int currExp)
+    {
+        level = new Level(currLevel, currExp, OnLevelUp);
     }
     
     private void AssignStats(Dictionary<StatString, int> input)
@@ -266,8 +271,8 @@ public class Unit : MonoBehaviour, IUnit
 
     public void UpdateUI()
     {
-        statPanel.UpdateStatsUI(this.stats);
-        majorStatPanel.UpdateStatsUI(this.stats);
+        statPanel.UpdateStatsUI(this.stats, this.level);
+        majorStatPanel.UpdateStatsUI(this.stats, this.level);
     }
 
     public bool isDead()
@@ -290,10 +295,19 @@ public class Unit : MonoBehaviour, IUnit
         CurrState = UnitState.ENDTURN;
         this.spriteRenderer.material.SetFloat("_GrayscaleAmount", 0.75f);
         this.statPanelGO.SetActive(false);
+        LookFront();
         DecrementAllStatDuration();
         UpdateUI();
     }
 
+    private void LookFront()
+    {
+        lastMove.x = 0;
+        lastMove.y = -1;
+        anim.SetFloat("lastMoveX", lastMove.x);
+        anim.SetFloat("lastMoveY", lastMove.y);
+    }
+    
     // Reset state to end turn without registering as an end turn
     public void MakeInactive()
     {

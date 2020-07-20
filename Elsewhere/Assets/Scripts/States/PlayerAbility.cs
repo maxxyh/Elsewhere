@@ -40,6 +40,7 @@ public class PlayerAbility : State
             exp += Level.CalculateExp(target.level, currUnit.level, killed, _ability.targetsSameTeam);
         }
         currUnit.level.AddExp(exp);
+        currUnit.UpdateUI();
 
         turnScheduler.currUnit.chosenAbility = null;
         targetUnits.Clear();

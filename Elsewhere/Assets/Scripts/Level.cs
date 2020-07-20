@@ -11,9 +11,9 @@ public class Level
     public int currentLevel;
     public Action OnLevelUp;
 
-    private readonly int BASE_EXP = 100;
-    private readonly float EXPONENT = 1.1f;
-    public readonly int MAX_LEVEL = 50;
+    private static readonly int BASE_EXP = 100;
+    private static readonly float EXPONENT = 1.1f;
+    public static readonly int MAX_LEVEL = 50;
 
     public Level(int level, int currentExperience, Action OnLevelUp)
     {
@@ -22,8 +22,15 @@ public class Level
         this.currentExperience = currentExperience;
         this.OnLevelUp = OnLevelUp;
     }
+    
+    public Level(int level, int currentExperience)
+    {
+        currentLevel = level;
+        requiredExperience = GetLevelExpRequired(level);
+        this.currentExperience = currentExperience;
+    }
 
-    private int GetLevelExpRequired(int level)
+    private static int GetLevelExpRequired(int level)
     {
         if (level >= MAX_LEVEL)
         {

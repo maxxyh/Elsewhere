@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class StatPanel : MonoBehaviour
@@ -17,7 +18,7 @@ public class StatPanel : MonoBehaviour
     public Text unitMovementRange;
     public Text unitAttackRange;
 
-    public void UpdateStatsUI(Dictionary<StatString, UnitStat> stats)
+    public void UpdateStatsUI(Dictionary<StatString, UnitStat> stats, Level level)
     {
         unitHP.text = stats[StatString.HP].Value.ToString() + "/" + stats[StatString.HP].baseValue.ToString();
         unitMana.text = stats[StatString.MANA].Value.ToString() + "/" + stats[StatString.MANA].baseValue.ToString(); ;
@@ -27,8 +28,13 @@ public class StatPanel : MonoBehaviour
         unitMagicRes.text = stats[StatString.MAGIC_RES].Value.ToString() + DisplayBuff(stats[StatString.MAGIC_RES].GetPercentageModifierAmount());
         unitMovementRange.text = stats[StatString.MOVEMENT_RANGE].Value.ToString();
         unitAttackRange.text = stats[StatString.ATTACK_RANGE].Value.ToString();
+        UpdateLevel(level);
     }
 
+    public virtual void UpdateLevel(Level level)
+    {
+        
+    }
 
     private static string DisplayBuff(float amount)
     {

@@ -2,6 +2,8 @@
   "Julius": {
     "unitName": "Julius",
     "unitClass": "Swordsman",
+    "unitLevel": 1,
+    "unitExp": 0,
     "unitAbilities": ["WhirlwindSlash", "DoubleHit"],
     "unitStats":{
       "HP": 25,
@@ -27,6 +29,8 @@
   "Esmeralda": {
     "unitName": "Esmeralda",
     "unitClass": "Sage",
+    "unitLevel": 1,
+    "unitExp": 0,
     "unitAbilities": ["AstralFlare", "HpReaver"],
     "unitStats": {
       "HP": 25,
@@ -52,6 +56,8 @@
   "Kelda": {
     "unitName": "Kelda",
     "unitClass": "Healer",
+    "unitLevel": 1,
+    "unitExp": 0,
     "unitAbilities": ["HealingWave", "ArcaneBoost"],
     "unitStats": {
       "HP": 25,
@@ -77,6 +83,8 @@
   "Rowan": {
     "unitName": "Rowan",
     "unitClass": "Gunslinger",
+    "unitLevel": 1,
+    "unitExp": 0,
     "unitAbilities": ["HealingWave", "ArcaneBoost"],
     "unitStats": {
       "HP": 19,
@@ -103,6 +111,8 @@
   "EnemyGunslinger": {
     "unitName": "HazeBringer",
     "unitClass": "Gunslinger",
+    "unitLevel": 1,
+    "unitExp": 0,
     "unitAbilities": [],
     "unitStats": {
       "HP": 25,
@@ -124,6 +134,8 @@
   "EnemyTank": {
     "unitName": "HazeBringer",
     "unitClass": "Tank",
+    "unitLevel": 1,
+    "unitExp": 0,
     "unitAbilities": [],
     "unitStats": {
       "HP": 28,

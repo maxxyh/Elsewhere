@@ -10,13 +10,17 @@ public class UnitData
     public Dictionary<StatString, UnitStat> stats;
     public List<string> unitAbilities;
     public List<Item> unitItems;
+    public int unitLevel;
+    public int unitExp;
     
-    public UnitData(string unitID, Dictionary<StatString, UnitStat> stats, List<Item> unitItems, List<string> unitAbilities)
+    public UnitData(string unitID, Dictionary<StatString, UnitStat> stats, List<Item> unitItems, List<string> unitAbilities, int unitLevel, int unitExp)
     {
         this.unitID = unitID;
         this.unitSprite = Resources.Load<Sprite>("Sprites/" + unitID);
         this.stats = stats;
         this.unitItems = unitItems;
         this.unitAbilities = unitAbilities;
+        this.unitLevel = unitLevel;
+        this.unitExp = unitExp;
     }
 }

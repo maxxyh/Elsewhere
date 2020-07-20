@@ -32,6 +32,7 @@ public class BattleManager
         // add exp
         int exp = Level.CalculateExp(recipient.level, attacker.level, killed);
         attacker.level.AddExp(exp);
+        attacker.UpdateUI();
     }
 
     public static int CalculateBaseDamage(IUnit attacker, IUnit recipient)
