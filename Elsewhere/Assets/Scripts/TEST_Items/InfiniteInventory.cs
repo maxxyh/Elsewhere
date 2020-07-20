@@ -17,10 +17,26 @@ public class InfiniteInventory : CommonInventory
     {
         SetMaxSlots(maxSlots);
         base.Awake();
+        Debug.Log(this.ItemSlots.Count);
+    }
+
+    public override bool CanAddItem(Item item, int amount = 1)
+    {
+        return true;
+    }
+
+    public override bool AddItem(Item item)
+    {
+        while (!base.CanAddItem(item))
+        {
+            MaxSlots += 1;
+        }
+        return base.AddItem(item);
     }
 
     private void SetMaxSlots(int value)
     {
+        base.Awake();
         if (value <= 0)
         {
             maxSlots = 1;
@@ -46,7 +62,7 @@ public class InfiniteInventory : CommonInventory
             for (int i = 0; i < diff; i++)
             {
                 ItemSlot slot = Instantiate(itemSlotPrefab).GetComponent<ItemSlot>();
-                gameObject.transform.SetParent(itemsParent, worldPositionStays: false);
+                slot.transform.SetParent(itemsParent, worldPositionStays: false);
                 ItemSlots.Add(slot);
             }
         }

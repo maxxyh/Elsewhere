@@ -188,7 +188,7 @@ public class Unit : MonoBehaviour, IUnit
     public void AssignInventory(List<Item> items)
     {
         unitInventory.Clear();
-        for (int i = 0; i < items.Count && i+1 < UnitInventorySize ; i++)
+        for (int i = 0; i < items.Count && i < UnitInventorySize ; i++)
         {
             Item item = items[i];
             ItemSlotData match = unitInventory.Find(x => x.Item == item);

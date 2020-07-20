@@ -9,7 +9,7 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
     public UnitData unit;
 
     [Header("Public")]
-    public CommonInventory inventory;
+    public InfiniteInventory inventory;
     public UnitPersonalInventory unitPersonalInventory;
     public InventoryItemTypesManager inventoryItemTypesManager;
 
@@ -96,15 +96,15 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
 
     private void InventoryLeftClick(BaseItemSlot itemSlot)
     {
+        Debug.Log("CLICKED");
         if (unit != null)
         {
             selectedItemSlot = itemSlot;
-
             if (itemSlot.Item != null)
             {
                 Item currItem = itemSlot.Item;
                 if (inventory.RemoveItem(itemSlot.Item) && unitPersonalInventory.AddItem(currItem))
-                {
+                { 
                     unit.unitItems.Add(currItem);
                     inventoryItemTypesManager.currInventoryItemsList.Remove(currItem);
                 }
@@ -125,7 +125,7 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
             if (itemSlot.Item != null)
             {
                 Item item = itemSlot.Item;
-                if (inventory.AddItem(item) && unitPersonalInventory.RemoveItem(item))
+                if (unitPersonalInventory.RemoveItem(item) && inventory.AddItem(item)) //
                 {
                     // equippedItemsPanel.RemoveItem(equippableItem);
                     // inventory.AddItem(item);
