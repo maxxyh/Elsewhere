@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09466bf768cf4184da12c21a00f56ba2, type: 3}
-  m_Name: Hyped Sweet
+  m_Name: Hyped Drop
   m_EditorClassIdentifier: 
   id: 6ebd920ebe6eaab42b1e0bcfacd7eb22
-  itemName: Hyped Sweet
+  itemName: Hyped Drop
   itemIcon: {fileID: 3362789639699432236, guid: 221415699be95b64394862bc1d1bbdd6,
     type: 3}
   itemNumUses: 1

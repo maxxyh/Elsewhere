@@ -62,3 +62,6 @@ TagManager:
   - name: Text
     uniqueID: 538128835
     locked: 0
+  - name: Bubble
+    uniqueID: 2742813403
+    locked: 0

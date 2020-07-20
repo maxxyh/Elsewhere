@@ -11,11 +11,13 @@ public class Crystal : MonoBehaviour
     private int _captureProgress;
     public Unit CapturingUnit;
     public Unit OwnerUnit;
+    public GameObject crystalBubble;
     public static Action<Crystal> OnPlayerCrystalCollected;
     public static Action ReturnControlToState;
 
     private void Awake()
     {
+        crystalBubble.SetActive(false);
         Unit.OnCaptureCrystal += Capture;
     }
     
@@ -30,9 +32,12 @@ public class Crystal : MonoBehaviour
         // fresh capture
         if (CapturingUnit == null || !CapturingUnit.Equals(capturingUnit))
         {
+            Debug.Log("here");
+            Debug.Log($"Bubble active 1 = {crystalBubble.activeSelf}");
+            crystalBubble.SetActive(true);
             _captureProgress = 0;
-        } 
-        
+        }
+
         CapturingUnit = capturingUnit;
         CapturingTeam = (CapturingUnit is PlayerUnit) ? Team.PLAYER : Team.ENEMY;
 
@@ -40,6 +45,7 @@ public class Crystal : MonoBehaviour
 
         if (_captureProgress >= CAPTURE_REQUIREMENT)
         {
+            crystalBubble.SetActive(false);
             OwnerTeam = CapturingTeam;
             // change crystal sprite 
             OwnerUnit?.ToggleCrystalBoost(false); 
