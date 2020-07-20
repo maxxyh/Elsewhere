@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Diagnostics;
@@ -7,7 +8,8 @@ using UnityEngine.UIElements;
 
 public class DamagePopUp : MonoBehaviour
 {
-
+    [SerializeField] TMP_FontAsset damageFont;
+    [SerializeField] TMP_FontAsset levelUpFont;
     private TextMeshPro textMesh;
     private float disappearTimer;
     private Color textColor;
@@ -33,22 +35,31 @@ public class DamagePopUp : MonoBehaviour
         textMesh.SetText(popupText);
         if (isCriticalHit)
         {
+            textMesh.font = damageFont;
             textMesh.fontSize = 6;
             textColor = Color.red;
         }
         else if (popupType == PopupType.BUFF || popupType == PopupType.HEAL)
         {
+            textMesh.font = damageFont;
             textMesh.fontSize = 3;
             //textColor = new Color(0.961f, 0.808f, 0.039f);
             textColor = Color.white;
         }
         else if (popupType == PopupType.DAMAGE || popupType == PopupType.DEBUFF)
         {
+            textMesh.font = damageFont;
             textMesh.fontSize = 3;
             //textColor = new Color(0.80392f, 0.36078f, 0.36078f);
             textColor = Color.red;
         }
-
+        else if (popupType == PopupType.LEVEL_UP)
+        {
+            textMesh.font = levelUpFont;
+            textMesh.fontSize = 5;
+            textColor = new Color(0, 0.19921f, 0.19921f);
+        }
+        
         textMesh.color = textColor;
         disappearTimer = DISAPPEAR_TIMER_MAX;
 
@@ -94,5 +105,6 @@ public enum PopupType
     DAMAGE,
     BUFF,
     DEBUFF,
-    HEAL
+    HEAL,
+    LEVEL_UP
 }

@@ -96,6 +96,7 @@ public class Unit : MonoBehaviour, IUnit
     public void OnLevelUp()
     {
         StartCoroutine(LevelUp());
+        DamagePopUp.Create(this.transform.position, "LEVEL UP", PopupType.LEVEL_UP);
     }
     private IEnumerator LevelUp()
     {
@@ -546,6 +547,7 @@ public class Unit : MonoBehaviour, IUnit
         {
             Debug.Log("Collide Crystal here");
             _crystalToCapture = other.GetComponent<Crystal>();
+            // _crystalToCapture.crystalBubble.SetActive(true);
             _onCrystal = true;
         }
 
@@ -566,6 +568,7 @@ public class Unit : MonoBehaviour, IUnit
     {
         if (other.CompareTag("crystal"))
         {
+            _crystalToCapture.crystalBubble.SetActive(false);
             ToggleCaptureButton(false);
             _onCrystal = false;
         }
