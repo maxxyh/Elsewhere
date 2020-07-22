@@ -17,13 +17,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
   lines:
   - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
-    text: Where are we this time?
+    text: What is this place?
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: I can't believe it... It's Meredith Mansion - I used to stay here as a
       kid... I think...?
   - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
-    text: I guess we'll find out. Those pink crystals. They hold the key to unlocking
-      your stolen memory.
+    text: 'I guess we''ll find out.  '
   - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
-    text: Glad you're here, Kelda, we'll definitely be needing your healing with 
-      this many enemies around.
+    text: Glad you're here, Kelda. Your healing would be useful with  this many enemies
+      around.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: ' This mission should be an easy one.'

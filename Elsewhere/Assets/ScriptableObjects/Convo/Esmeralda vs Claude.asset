@@ -31,6 +31,6 @@ MonoBehaviour:
     text: 'We wouldn''t have discovered the Lucid World without you repairing our
       Gate. Your contributions are valued. '
   - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
-    text: Meh.
+    text: Meh. I'm just here for the money.
   - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
     text: Okay team, let's not stay longer than needed. We shall head back to base.

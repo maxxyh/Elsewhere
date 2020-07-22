@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TutorialEnemy - Kelda
   m_EditorClassIdentifier: 
   speakers:
-  - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-  - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+  - {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
   lines:
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-    text: Now it's the HazeBringers' turn to take action. Be careful out there...!
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: Now it's the HazeBringers' turn to take action. Be careful!
