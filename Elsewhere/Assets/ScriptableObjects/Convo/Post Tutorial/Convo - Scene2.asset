@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - Scene2
+  m_EditorClassIdentifier: 
+  lines:
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'Claude, you seem to have lost most of your memories. '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: The fact that you remember your name and your skills is quite the miracle.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: 'I don''t really mind that. '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: 'The past is useless. The present is all we should be concerned about. '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Nostalgia? Sentimentalism? Simply a waste of time.
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: <i>Who hurt him...
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'Regardless, your technical expertise makes you essential for our operations. '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: I know my skills never disappoint. Worth every cent you're paying.
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: Yes, indeed. Now, you may be wondering what Iris is.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: <i>Not really, but...
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: I guess.

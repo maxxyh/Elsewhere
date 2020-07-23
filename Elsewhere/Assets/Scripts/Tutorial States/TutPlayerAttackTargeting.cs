@@ -7,7 +7,7 @@ public class TutPlayerAttackTargeting : PlayerAttackTargeting
 
     public override IEnumerator Execute()
     {
-        turnScheduler.moveDiaglogue.SetActive(false);
+        turnScheduler.moveDialogue.SetActive(false);
         turnScheduler.attackDialogue.SetActive(true);
         turnScheduler.playerActionPanel.SetActive(false);
         turnScheduler.cancelPanel.SetActive(true);

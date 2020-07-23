@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - Scene2
+  m_EditorClassIdentifier: 
+  lines:
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Esmeralda, I've been thinking about the 0% reflected in the Soul Scanner.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: 'In my opinion, your results seem too good to be true. '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: What do you mean?
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: I don't see why the Hazebringers would avoid your memories, even more so
+      since you're a threat.
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: You have a point.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: So I've been looking into it, and I found signs of tampering in the Soul
+      Scanner's database.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: In short, your ID's been intentionally modified to appear as an empty profile.
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: Claude, are you sure about this?
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: 'Not completely certain, but most of what I''ve found seems to suggest
+      this. '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: 'Your actual memory loss percentage seems to be closer to 45%. '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'What?... What could possibly be missing? I...I- '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Wait, one of your memories is being breached right now!
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'We''ll talk about this later then. Team, let''s go! '

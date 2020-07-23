@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - Scene3Pt2
+  m_EditorClassIdentifier: 
+  lines:
+  - character: {fileID: 11400000, guid: 05ea23e56b46d5c4f9e2b81fd89071c6, type: 2}
+    text: Ah yes... we meet again... little rebel group leader Esmeralda. All calmed
+      down?
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: ZWEI! I'LL KILL YOU!
+  - character: {fileID: 11400000, guid: 05ea23e56b46d5c4f9e2b81fd89071c6, type: 2}
+    text: Don't take it personally dear. You're an important person in our plans.
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: Why do you have to do this? How did you even find us???
+  - character: {fileID: 11400000, guid: 05ea23e56b46d5c4f9e2b81fd89071c6, type: 2}
+    text: 'Well, dear, you really should be more careful with what you bring back
+      to your base. '
+  - character: {fileID: 11400000, guid: 05ea23e56b46d5c4f9e2b81fd89071c6, type: 2}
+    text: You made it so easy for me this time!
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: This time? What are you talking about?
+  - character: {fileID: 11400000, guid: 05ea23e56b46d5c4f9e2b81fd89071c6, type: 2}
+    text: Ah...it appears I've said too much. Take her away, burn the place down.
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: THALIA! NORMAN! HANS! NO!!! No please... don't do it...

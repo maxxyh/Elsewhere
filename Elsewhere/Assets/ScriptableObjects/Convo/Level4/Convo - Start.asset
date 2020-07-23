@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - Start
+  m_EditorClassIdentifier: 
+  lines:
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: "Oh my...woah! It\u2019s so dark here! Where are we...?"
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: Capt! Wait for us! You're too fast! How can you even see anything in this
+      rabbit hole??
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: '<i>No human eyes can see in this kind of darkness. '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: <i>It's almost as if... Esmeralda's navigating by sheer muscle memory.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: '<i>And I smell soot. And this residue on the walls. '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: <i>An explosion? A Dracaena Blast? What happened here?
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Have you been here before, Esmeralda?
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: It feels... really familiar... ahh my head hurts...I'm sorry. I don't remember...

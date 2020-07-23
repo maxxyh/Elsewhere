@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - Scene2
+  m_EditorClassIdentifier: 
+  lines:
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: Capt, you mentioned yesterday that we should run the Soul Scanner on Claude
+      as well?
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: Ah, yes, go ahead Julius.
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: I'm on it Capt.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: HEY! What's going on? Who said you could-
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'Calm down, Claude. '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'This is the Soul Scanner - it can detect and find crystallised or corrupted
+      memories within a person. '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: All members of Iris are scanned to find out the extent of memory loss we're
+      dealing with.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: By forcing it on them without consent? But fine. I guess it's a rational
+      move.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: But like I keep saying, I'm don't want to be a member of Iris. I'm just
+      here for the money.
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: 'And... all done. Your memory loss percentage is... what??! '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Let me guess. Really high? You really think I wouldn't be able to gauge
+      my own memory loss?
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: 'But still... 90%?? That''s unheard of! '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Huh. Esmeralda, what about you?
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: Capt's really lucky! Not a single one of her memories have been lost -
+      a strong 0% for a a strong leader!
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Hmm...

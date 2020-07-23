@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - Scene4
+  m_EditorClassIdentifier: 
+  lines:
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Hmm... how exactly do the HazeBringers we met cause memory loss?
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: Well, we think that memories are lost when they are CRYSTALLISED by the
+      HazeBringers,
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: condensing the memories into memory fragments that look like pink crystals.
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'Then, if the HazeBringers get their hands on these memory fragments, '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: they can delink the memory from its owner and make it CORRUPTED.
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: Once a memory has been crystallised, we can only access it when the Hazebringers
+      are trying to corrupt it.
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: I still wonder after all this time why they are doing these horrible things...
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: "Gaining control over all our memories? \t"
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: Maybe it's the government trying to brainwash us into subservient sheeple.

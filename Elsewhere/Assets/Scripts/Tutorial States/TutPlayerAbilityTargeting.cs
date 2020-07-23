@@ -14,7 +14,7 @@ public class TutPlayerAbilityTargeting : PlayerAbilityTargeting
 
     public override IEnumerator Execute() 
     {
-        turnScheduler.moveDiaglogue.SetActive(false);
+        turnScheduler.moveDialogue.SetActive(false);
         turnScheduler.abilityChoosingDialogue.SetActive(true);
         turnScheduler.abilitiesPanel.SetActive(false);
         turnScheduler.cancelPanel.SetActive(true);

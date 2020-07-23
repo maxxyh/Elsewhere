@@ -12,29 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
   m_Name: Convo - Scene 1
   m_EditorClassIdentifier: 
-  speakers:
-  - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-  - {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
   lines:
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - character: {fileID: 11400000, guid: 2231648965edb8142a534478a90e2bf2, type: 2}
     text: '*looks around*'
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - character: {fileID: 11400000, guid: 2231648965edb8142a534478a90e2bf2, type: 2}
     text: Phew... I think the coast is finally clear! It's sooo difficult to get
       away from mom and dad...
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - character: {fileID: 11400000, guid: 2231648965edb8142a534478a90e2bf2, type: 2}
     text: BUT IT LOOKS LIKE TODAY'S THE DAY I FINALLY GET TO GO OUT ONTO THE LAKE!!!
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - character: {fileID: 11400000, guid: 2231648965edb8142a534478a90e2bf2, type: 2}
     text: And about time! I'm already 8! But mom and dad keep saying it's "too dangerous"...
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - character: {fileID: 11400000, guid: 2231648965edb8142a534478a90e2bf2, type: 2}
     text: Hmph! What's a girl gotta do for some fun??
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: Alright... Just a little step here and... Woaaaaah this boat's shaky hehe...
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - character: {fileID: 11400000, guid: 2231648965edb8142a534478a90e2bf2, type: 2}
     text: 'Silly me! Of course the boat''s not moving, it''s still docked! Just gotta
       reach a bit to untie the... '
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - character: {fileID: 11400000, guid: 2231648965edb8142a534478a90e2bf2, type: 2}
     text: Woah... Little bit dizzy what's going-
   - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
     text: '*SPLASH*'
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: ec0a8f1a21ee5c242957ac876992ac2e, type: 2}
     text: OH MY- KELDA DARLING NO...

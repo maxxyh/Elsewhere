@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - Scene1Pt2
+  m_EditorClassIdentifier: 
+  lines:
+  - character: {fileID: 11400000, guid: ccff61b4596ae48479aa5b404f8e6ade, type: 2}
+    text: Sooooooo I was fiddling with Spatial Dilation and Lucid Essence in the
+      Big Portal v7...
+  - character: {fileID: 11400000, guid: ccff61b4596ae48479aa5b404f8e6ade, type: 2}
+    text: 'And BOOM this portal appeared! '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: Where exactly does it lead to?
+  - character: {fileID: 11400000, guid: ccff61b4596ae48479aa5b404f8e6ade, type: 2}
+    text: Not sure, but what's MORE IMPORTANT is that I'm gonna call it the Lucid
+      Gate! Dope name right Esmee!
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: Hmm...I'll check it out with Hans. This might be important.

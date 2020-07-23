@@ -12,36 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
   m_Name: Scene3 convo
   m_EditorClassIdentifier: 
-  speakers:
-  - {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-  - {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: Alright, that didn't go too well, but this definitely will.
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: Legs up on the table, body tilted to the side, watching videos on my phone
-      without a care in the world. Classic. This would definitely do.
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: Legs up on the table, body tilted to the side, using my phone blatantly
+      during class. Classic. I'm killing it.
+  - character: {fileID: 11400000, guid: d19ef79bcb3b6274ebc8334c9fb15f7f, type: 2}
     text: ROWAN! Such unbecoming behaviour! Explain yourself!
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: '"Gotta be bad gotta be bad..."'
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: Well Ms Sophia, I thought you know that your lesson is BORING and I DON'T
-      WANNA LISTEN!
+    text: Well Mr. Feathers, I'll have you know that your lesson is BORING and I
+      DON'T WANNA LISTEN!
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: I mean, textbooks, whiteboards and writing are SO 10 YEARS AGO! Get on
-      with the times, we're in the DIGITAL AGE!
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: 'I mean, textbooks, whiteboards and writing are SO 10 YEARS AGO! '
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: Get on with the times, we're in the DIGITAL AGE!
+  - character: {fileID: 11400000, guid: d19ef79bcb3b6274ebc8334c9fb15f7f, type: 2}
     text: Wow...
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: Wow?
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
-    text: 'I''ve always had doubts about the curriculum, but this is the first time
-      a student''s been so honest with his feedback. '
+  - character: {fileID: 11400000, guid: d19ef79bcb3b6274ebc8334c9fb15f7f, type: 2}
+    text: 'In all my years of teaching, this is the first time a student''s been
+      so honest with his feedback. '
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: ...Eh?
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: d19ef79bcb3b6274ebc8334c9fb15f7f, type: 2}
     text: ' I''m proud of you Rowan! You must really care deeply about the future
-      of education and the school! You''re // so kind //! '
+      of education and the school!'
+  - character: {fileID: 11400000, guid: d19ef79bcb3b6274ebc8334c9fb15f7f, type: 2}
+    text: You're // so kind //! Truly EXAMPLARY!
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: Right... Not this again...

@@ -3,29 +3,23 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class DialogueDisplay : MonoBehaviour
 {
     public Conversation conversation;
 
-    public GameObject[] speakers;
-    public SpeakerUI[] speakerUIs;
+    [SerializeField] private SpeakerUI speakerUI;
 
-    private int activeLineIndex = 0;
+    private int _activeLineIndex = 0;
     public bool endConvo = false;
     public string nextScene;
 
-    private int totalNumCharactersInLine;
-    private int currentNumCharactersDisplayed;
+    private int _totalNumCharactersInLine;
+    private int _currentNumCharactersDisplayed;
 
     private void Start()
     {
-        speakerUIs[0] = speakers[0].GetComponent<SpeakerUI>();
-        speakerUIs[1] = speakers[1].GetComponent<SpeakerUI>();
-
-        speakerUIs[0].ActiveSpeaker = conversation.speakers[0];
-        speakerUIs[1].ActiveSpeaker = conversation.speakers[1];
-
         AdvanceConversation();
     }
 
@@ -35,7 +29,7 @@ public class DialogueDisplay : MonoBehaviour
         {
             if (Input.GetKeyDown("space"))
             {
-                if (currentNumCharactersDisplayed < totalNumCharactersInLine)
+                if (_currentNumCharactersDisplayed < _totalNumCharactersInLine)
                 {
                     StopTypeWriterAndDisplayLineImmediately();
                 }
@@ -48,82 +42,74 @@ public class DialogueDisplay : MonoBehaviour
         } 
         else
         {
-            if (SceneManager.GetActiveScene().name != "Tutorial" && SceneManager.GetActiveScene().name != "Level1")
+            if (SceneManager.GetActiveScene().name != "Tutorial")
             {
                 SceneManager.LoadScene(nextScene);
             }
         }
     }
 
-    public void AdvanceConversation()
+    private void AdvanceConversation()
     {
-        if (activeLineIndex < conversation.lines.Length)
+        if (_activeLineIndex < conversation.lines.Length)
         {
             DisplayLine();
-            activeLineIndex += 1;
+            _activeLineIndex += 1;
         }
         else
         {
-            foreach (SpeakerUI speakerUI in speakerUIs)
-            {
-                speakerUI.Hide();
-            }
-            activeLineIndex = 0;
+            speakerUI.Hide();
+            _activeLineIndex = 0;
             endConvo = true;
         }
     }    
 
-    void DisplayLine()
+    private void DisplayLine()
     {
-        Line line = conversation.lines[activeLineIndex];
-        Character character = line.character;
+        Line line = conversation.lines[_activeLineIndex];
 
-        if (speakerUIs[0].SpeakerIs(character))
+        SetDialog(line.character, line.text);
+    }
+
+    private void SetDialog(Character character, string text)
+    {
+        speakerUI.ActiveSpeaker = character;
+        speakerUI.Dialog = "";
+        StopAllCoroutines();
+        _totalNumCharactersInLine = text.Length;
+        _currentNumCharactersDisplayed = 0;
+        StartCoroutine(EffectTypewriter(text));
+    }
+    
+
+    private IEnumerator EffectTypewriter(string text)
+    {
+        if (text.Length > 2 && text.Substring(0, 3).Equals("<i>"))
         {
-            SetDialog(speakerUIs[0], speakerUIs[1], line.text);
-        } 
+            speakerUI.SetItalic(true);
+            text = text.Substring(3);
+        }
         else
         {
-            SetDialog(speakerUIs[1], speakerUIs[0], line.text);
-        }    
-    }
-
-    void SetDialog(SpeakerUI activeSpeakerUI, SpeakerUI inactiveSpeakerUI, string text)
-    {
-        activeSpeakerUI.Show();
-        inactiveSpeakerUI.Hide();
-        activeSpeakerUI.Dialog = "";
-        StopAllCoroutines();
-        totalNumCharactersInLine = text.Length;
-        currentNumCharactersDisplayed = 0;
-        StartCoroutine(EffectTypewriter(text, activeSpeakerUI));
-    }
-
-    private IEnumerator EffectTypewriter(string text, SpeakerUI speakerUI)
-    {
-        foreach (char c in text.ToCharArray())
+            speakerUI.SetItalic(false);
+        }
+        
+        foreach (char c in text)
         {
             speakerUI.Dialog += c;
-            currentNumCharactersDisplayed+=1;
+            _currentNumCharactersDisplayed+=1;
             yield return new WaitForSeconds(0.001f);
         }
     }
 
     void StopTypeWriterAndDisplayLineImmediately()
     {
-        Line line = conversation.lines[activeLineIndex-1];
-        Character character = line.character;
+        Line line = conversation.lines[_activeLineIndex-1];
         StopAllCoroutines();
+
+        speakerUI.Dialog = line.text;
         
-        if (speakerUIs[0].SpeakerIs(character))
-        {
-            speakerUIs[0].Dialog = line.text;
-        }
-        else
-        {
-            speakerUIs[1].Dialog = line.text;
-        }
-        currentNumCharactersDisplayed = totalNumCharactersInLine;
+        _currentNumCharactersDisplayed = _totalNumCharactersInLine;
     }
 
 }

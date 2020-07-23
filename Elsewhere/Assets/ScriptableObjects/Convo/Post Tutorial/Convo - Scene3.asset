@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - Scene3
+  m_EditorClassIdentifier: 
+  lines:
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'Iris was formed two years ago, in 2142. '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'We seek the truth behind the amnesia sweeping across Erynver. '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: We've all personally witnessed its devastating effects.
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: Yeah, it definitely can't be natural. I used to know a brilliant Hexatron
+      Inventor - Alexandre.
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: One day, out of the blue, he started experiencing short episodes of memory
+      loss.
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: And in a few weeks, Alexandre ended up with permanent amnesia, becoming
+      one of The Forgotten.
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: 'Rumour has it he ended up in a mental institution because he tried to
+      end his life. '
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+    text: Said he didn't have a reason to live anymore or something like that.
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: That still sounds scary every time I hear it...

@@ -12,48 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
   m_Name: Convo - Scene 3
   m_EditorClassIdentifier: 
-  speakers:
-  - {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-  - {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: 'NO! Mom! Dad! You can''t go!  '
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: 'Chuckle... Kelda, let me tell you a story. '
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: A long time ago, there was a great disease which was so strong that it
       threatened to wipe out all humans on Earth.
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: There was a girl, not much older than you are, who saw the hurt and pain
       around her.
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: Why are you telling me-
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: So...the girl prayed very hard everyday to the Goddess of Light, asking
       her to heal the world.
-  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
+  - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: Seeing her sincerity,  the Goddess of Light blessed her with the power
       of healing.
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: Kinda cool, but again, what does this girl have to to do with you leaving
       me??
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: 'Well Kelda... This girl''s name was Arlene Grace, and she''s our grand-ancestor. '
   - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
     text: The blessing of the Goddess of Light has been passed down in the Grace
       family from generation to generation,
   - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
     text: ' from grandma, to me, and to you as well.'
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: ec0a8f1a21ee5c242957ac876992ac2e, type: 2}
     text: Dad and I are going to the Wickham disaster zone to heal people, because
       that's our calling as Grace's.
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: But... You'll be away for so long...
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: ec0a8f1a21ee5c242957ac876992ac2e, type: 2}
     text: 'Oh darling... You''re a big girl now! You have to be strong! '
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: Kelda, we have an important task for you. Only you can do it!
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: This pendant is the Grace family's sacred treasure. Can you keep it safe
       for mom and dad?
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}

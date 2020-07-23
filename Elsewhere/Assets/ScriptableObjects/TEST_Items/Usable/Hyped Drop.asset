@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hyped Drop
   m_EditorClassIdentifier: 
   id: 6ebd920ebe6eaab42b1e0bcfacd7eb22
-  itemName: Hyped Drop
+  itemName: Hyped Sweet
   itemIcon: {fileID: 3362789639699432236, guid: 221415699be95b64394862bc1d1bbdd6,
     type: 3}
   itemNumUses: 1

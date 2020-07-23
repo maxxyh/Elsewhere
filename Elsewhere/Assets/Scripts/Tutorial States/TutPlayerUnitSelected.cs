@@ -10,7 +10,7 @@ public class TutPlayerUnitSelected : PlayerUnitSelected
     {
         if (turnScheduler.TutTurn == 1)
         {
-            turnScheduler.moveDiaglogue.SetActive(true);
+            turnScheduler.moveDialogue.SetActive(true);
         }
         // This supports cancel functionality - if came from endTurn then it's normal, otherwise it came from another state
         if (currUnit.CurrState == UnitState.ENDTURN)

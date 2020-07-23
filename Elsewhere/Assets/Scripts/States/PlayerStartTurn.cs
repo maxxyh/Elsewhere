@@ -38,7 +38,6 @@ public class PlayerStartTurn : State
 
     public override IEnumerator DuringDialogue()
     {
-        Debug.Log("in 'DuringDialogue()' ienum in 'StartPlayerTurn'");
         yield return new WaitUntil(() => turnScheduler.openingDialogue.endConvo);
         turnScheduler.openingDialogue.gameObject.SetActive(false);
     }

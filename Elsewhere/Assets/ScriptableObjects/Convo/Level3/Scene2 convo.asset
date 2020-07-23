@@ -12,19 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
   m_Name: Scene2 convo
   m_EditorClassIdentifier: 
-  speakers:
-  - {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-  - {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: Alright. 'A bad boy is confident and asserts his dominance'. Cool cool
+    text: Alright. 'A bad guy is confident and asserts his dominance'. Cool cool
       cool cool cool...
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: 'Well, I''m asserting my dominance... over this... the main entrance! '
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: I'm gonna be here in front of this door, so EVERYONE has to use the other
-      door. I'm getting chills at how good I am at being bad.
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: 'I''m gonna be here in front of this door, so EVERYONE has to use the other
+      door. '
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: I'm getting chills at how GOOD I am at being BAD.
+  - character: {fileID: 11400000, guid: 0d3675538b385c740ba72c76a20f46ee, type: 2}
     text: Excuse me? Can you move out of the way? You're blocking the entrance and
       class is going to start soon.
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
@@ -32,16 +31,18 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: And right now, I want to have my breakfast in front of this door. What
       are you gonna do about it?
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
-    text: Seriously? This guy's crazy... Does he even hear himself?? * agreement
-      * We should just OH MY -
+  - character: {fileID: 11400000, guid: 0d3675538b385c740ba72c76a20f46ee, type: 2}
+    text: 'Seriously? This guy''s crazy... Does he even hear himself?? '
+  - character: {fileID: 11400000, guid: 0d3675538b385c740ba72c76a20f46ee, type: 2}
+    text: '* agreement * We should just OH MY -'
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
-    text: WOAH HELP- I mean, Oh. Looks like the door collapsed. Glass everywhere.
-      No big deal.
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+    text: 'WOAH HELP- I mean, '
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: Oh. Looks like the door collapsed. Glass everywhere. No big deal.
+  - character: {fileID: 11400000, guid: 0d3675538b385c740ba72c76a20f46ee, type: 2}
     text: 'Maybe he knew the door was unstable and was trying to protect us from
       it! '
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 0d3675538b385c740ba72c76a20f46ee, type: 2}
     text: ' Yeah! Wow Rowan you''re // so nice // thank you!!'
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: Err... You're welcome...?

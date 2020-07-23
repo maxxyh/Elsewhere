@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class TurnScheduler : StateMachine
 {
@@ -32,7 +33,7 @@ public class TurnScheduler : StateMachine
     [Header("Dialogue")]
     public DialogueDisplay openingDialogue;
     public GameObject startPlayerTurnDialogue;
-    public GameObject moveDiaglogue;
+    [FormerlySerializedAs("moveDiaglogue")] public GameObject moveDialogue;
     public GameObject attackDialogue;
     public GameObject nextChooseDialogue;
     public GameObject abilityClickDialogue;

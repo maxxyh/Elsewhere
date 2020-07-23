@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
+  m_Name: Convo - Scene1
+  m_EditorClassIdentifier: 
+  lines:
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: 'Claude, you''re a genius!!! I can''t believe we can undo memory crystallisation
+      now! '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'Rowan''s right, this truly is a gamechanger for Iris. '
+  - character: {fileID: 11400000, guid: c6501bc7a2ffd7e4ea61cfad995a3efb, type: 2}
+    text: 'You''ve made a much bigger contribution than you can imagine, Claude. '
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: It's almost as game-changing as when Astra Corp discovered Etherium energy!!
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: Give me a break Rowan. Astra and their slimy crystal monolith power plant
+      in the centre of the city.
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: No one even knows how it's being powered. Clearly a red flag.
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: 'Oiiiii don''t talk about Astra Corp like that! '
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: 'They''re doing an amazing job saving us from this energy crisis... '
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
+    text: '"Solution to the energy crisis", "Near infinite renewable source of energy"?
+      Too good to be true.'
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: Agreed. I too have my own doubts about Astra.
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: 'Anyways... You are all welcome, I''m perfectly clear of how valuable my
+      services are. '
+  - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
+    text: The real question is, am I getting paid more for this?
+  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+    text: Sigh...and I here I was thinking if we should him become a full-time Iris
+      member...
