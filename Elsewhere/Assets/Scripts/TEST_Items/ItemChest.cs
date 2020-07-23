@@ -12,6 +12,7 @@ public class ItemChest : MonoBehaviour
     // Set the empty colour in inspector
     [SerializeField] Color emptyColour;
     [SerializeField] KeyCode itemPickupKeyCode = KeyCode.E;
+    [SerializeField] GameObject openChestPanel;
     
     private bool isInRange;
     private bool isEmpty;
