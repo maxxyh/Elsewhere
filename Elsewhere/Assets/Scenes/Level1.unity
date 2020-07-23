@@ -511,6 +511,7 @@ MonoBehaviour:
   houseInterior:
   - {fileID: 709391344}
   - {fileID: 134278760}
+  changeSceneManagerGO: {fileID: 133770563}
 --- !u!212 &107640955
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2591,7 +2592,7 @@ PrefabInstance:
     - target: {fileID: 4164886101120271221, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7.8000565
+      value: -7.800049
       objectReference: {fileID: 0}
     - target: {fileID: 4164886101120271221, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
@@ -8899,7 +8900,7 @@ PrefabInstance:
     - target: {fileID: 7757812188013045440, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: NavigationMap
+      value: PostLevel1
       objectReference: {fileID: 0}
     - target: {fileID: 7757812188013045447, guid: 457dd15edc265ef4c89c53be4e929ba6,
         type: 3}
@@ -15759,6 +15760,7 @@ MonoBehaviour:
   - cutSceneGO:
     - {fileID: 1328478375}
     index: 2
+  startDialogueGameObject: {fileID: 1422209883}
 --- !u!1 &1547554949
 GameObject:
   m_ObjectHideFlags: 0

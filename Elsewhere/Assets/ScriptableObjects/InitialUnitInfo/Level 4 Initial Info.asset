@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c922d53cfbc342478464c082ec9361b, type: 3}
+  m_Name: Level 4 Initial Info
+  m_EditorClassIdentifier: 
+  playerList:
+  - unitID: Julius
+    UnitPrefab: {fileID: 2870922879879798622, guid: ba5383cf5522ac74ea9a4336af10bc66,
+      type: 3}
+    UnitPositions: {x: -16, y: -5, z: 0}
+  - unitID: Esmeralda
+    UnitPrefab: {fileID: 2870922879879798622, guid: 7161820e4206e6242bfd1f897d971232,
+      type: 3}
+    UnitPositions: {x: -16, y: -3, z: 0}
+  - unitID: Kelda
+    UnitPrefab: {fileID: 2870922879879798622, guid: 65dccee9e9c20294292c3317e88ecf9f,
+      type: 3}
+    UnitPositions: {x: 17, y: 0, z: 0}
+  - unitID: Rowan
+    UnitPrefab: {fileID: 6811365470129529175, guid: eeef3b27ad37cef47a4340517ea3f940,
+      type: 3}
+    UnitPositions: {x: 17, y: 2, z: 0}
+  enemyList:
+  - unitID: EnemyTank
+    UnitPrefab: {fileID: 2897327392223700814, guid: df7846522d417a043a6c844e36c8e3f7,
+      type: 3}
+    UnitPositions: {x: -5, y: -7, z: 0}
+  - unitID: EnemyGunslinger
+    UnitPrefab: {fileID: 2897327392223700814, guid: f4fbd421b0f58f9408007e94fbd01382,
+      type: 3}
+    UnitPositions: {x: -5, y: -5, z: 0}
+  - unitID: EnemyTank
+    UnitPrefab: {fileID: 2897327392223700814, guid: df7846522d417a043a6c844e36c8e3f7,
+      type: 3}
+    UnitPositions: {x: 1, y: -5, z: 0}
+  - unitID: EnemyGunslinger
+    UnitPrefab: {fileID: 2897327392223700814, guid: f4fbd421b0f58f9408007e94fbd01382,
+      type: 3}
+    UnitPositions: {x: 1, y: -7, z: 0}
+  - unitID: EnemyTank
+    UnitPrefab: {fileID: 2897327392223700814, guid: df7846522d417a043a6c844e36c8e3f7,
+      type: 3}
+    UnitPositions: {x: -15, y: 4, z: 0}
+  - unitID: EnemyGunslinger
+    UnitPrefab: {fileID: 2897327392223700814, guid: f4fbd421b0f58f9408007e94fbd01382,
+      type: 3}
+    UnitPositions: {x: 14, y: -7, z: 0}
+  - unitID: EnemyTank
+    UnitPrefab: {fileID: 2897327392223700814, guid: df7846522d417a043a6c844e36c8e3f7,
+      type: 3}
+    UnitPositions: {x: 10, y: 0, z: 0}
+  - unitID: EnemyGunslinger
+    UnitPrefab: {fileID: 2897327392223700814, guid: f4fbd421b0f58f9408007e94fbd01382,
+      type: 3}
+    UnitPositions: {x: 10, y: 2, z: 0}
+  crystalList:
+  - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
+      type: 3}
+    UnitPositions: {x: 5, y: 3, z: 0}
+  - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
+      type: 3}
+    UnitPositions: {x: -14, y: 4, z: 0}
+  - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
+      type: 3}
+    UnitPositions: {x: -7, y: -4, z: 0}
+  - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
+      type: 3}
+    UnitPositions: {x: 8, y: -7, z: 0}

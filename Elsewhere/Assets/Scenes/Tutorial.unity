@@ -3985,7 +3985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &386697503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6161,6 +6161,7 @@ MonoBehaviour:
   turnScheduler: {fileID: 105424488}
   highlightMap: {fileID: 32760337}
   houseInterior: []
+  changeSceneManagerGO: {fileID: 386697502}
 --- !u!1 &880066913
 GameObject:
   m_ObjectHideFlags: 0

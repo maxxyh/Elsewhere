@@ -30,4 +30,10 @@ public class ChangeScene : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(sceneName);
     }
+
+    public IEnumerator CrossFade()
+    {
+        loadEffect.SetTrigger("Start");
+        yield return new WaitForSeconds(0.4f);
+    }
 }

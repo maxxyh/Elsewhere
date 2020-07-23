@@ -6,8 +6,6 @@ using System.Collections.Generic;
 public class InitialUnitInfo : ScriptableObject
 {
     [SerializeField] public UnitInfo[] playerList;
-    // private List<SelectableUnitTest> playerList = UnitSelectionManager.selectedUnitListTest;
-    public UnitInfo[] tutorialPlayerList;
     [SerializeField]
     public UnitInfo[] enemyList;
     [SerializeField]

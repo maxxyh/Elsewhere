@@ -17,7 +17,8 @@ public class DialogueDisplay : MonoBehaviour
 
     private int _totalNumCharactersInLine;
     private int _currentNumCharactersDisplayed;
-
+    private string _currentDialogText;
+    
     private void Start()
     {
         AdvanceConversation();
@@ -87,14 +88,15 @@ public class DialogueDisplay : MonoBehaviour
         if (text.Length > 2 && text.Substring(0, 3).Equals("<i>"))
         {
             speakerUI.SetItalic(true);
-            text = text.Substring(3);
+            _currentDialogText = text.Substring(3);
         }
         else
         {
             speakerUI.SetItalic(false);
+            _currentDialogText = text;
         }
         
-        foreach (char c in text)
+        foreach (char c in _currentDialogText)
         {
             speakerUI.Dialog += c;
             _currentNumCharactersDisplayed+=1;
@@ -104,10 +106,9 @@ public class DialogueDisplay : MonoBehaviour
 
     void StopTypeWriterAndDisplayLineImmediately()
     {
-        Line line = conversation.lines[_activeLineIndex-1];
         StopAllCoroutines();
 
-        speakerUI.Dialog = line.text;
+        speakerUI.Dialog = _currentDialogText;
         
         _currentNumCharactersDisplayed = _totalNumCharactersInLine;
     }

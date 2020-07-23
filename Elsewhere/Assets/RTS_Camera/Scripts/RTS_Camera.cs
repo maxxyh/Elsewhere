@@ -180,6 +180,7 @@ namespace RTS_Cam
             m_Transform = transform;
             mainCamera = this.GetComponent<Camera>();
             m_orthographicSize = mainCamera.orthographicSize;
+            zoomPos = Mathf.Clamp01((float) (m_orthographicSize - minHeight) / (float)(maxHeight - minHeight));
         }
 
         private void Update()
