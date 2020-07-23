@@ -1,0 +1,3659 @@
+fileFormatVersion: 2
+guid: 20f2dc001db6fd94d824ec46adab46bf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -471306334798833684
+    second: scifi_space_rpg_tiles00000000_0
+  - first:
+      213: 7939732531134127241
+    second: scifi_space_rpg_tiles00000000_1
+  - first:
+      213: 1986131010173043957
+    second: scifi_space_rpg_tiles00000000_2
+  - first:
+      213: -6156005160301511085
+    second: scifi_space_rpg_tiles00000000_3
+  - first:
+      213: -3495736615929176989
+    second: scifi_space_rpg_tiles00000000_4
+  - first:
+      213: -2681132231502546462
+    second: scifi_space_rpg_tiles00000000_5
+  - first:
+      213: 8787663485317857832
+    second: scifi_space_rpg_tiles00000000_6
+  - first:
+      213: -4649598945707266366
+    second: scifi_space_rpg_tiles00000000_7
+  - first:
+      213: 4857705284111007960
+    second: scifi_space_rpg_tiles00000000_8
+  - first:
+      213: -5350341698303854649
+    second: scifi_space_rpg_tiles00000000_9
+  - first:
+      213: -5711619425286462689
+    second: scifi_space_rpg_tiles00000000_10
+  - first:
+      213: 2543120254186338102
+    second: scifi_space_rpg_tiles00000000_11
+  - first:
+      213: -9204688263731167464
+    second: scifi_space_rpg_tiles00000000_12
+  - first:
+      213: 736640483145403787
+    second: scifi_space_rpg_tiles00000000_13
+  - first:
+      213: 2220313134381178240
+    second: scifi_space_rpg_tiles00000000_14
+  - first:
+      213: 4297792538358159333
+    second: scifi_space_rpg_tiles00000000_15
+  - first:
+      213: -5415504846818325689
+    second: scifi_space_rpg_tiles00000000_16
+  - first:
+      213: -5432233377907925718
+    second: scifi_space_rpg_tiles00000000_17
+  - first:
+      213: 2987826314224655315
+    second: scifi_space_rpg_tiles00000000_18
+  - first:
+      213: 1822868111927104827
+    second: scifi_space_rpg_tiles00000000_19
+  - first:
+      213: 5487971587910773468
+    second: scifi_space_rpg_tiles00000000_20
+  - first:
+      213: -4448073754625127781
+    second: scifi_space_rpg_tiles00000000_21
+  - first:
+      213: 3000546222612681890
+    second: scifi_space_rpg_tiles00000000_22
+  - first:
+      213: -4545626558706297698
+    second: scifi_space_rpg_tiles00000000_23
+  - first:
+      213: -8259575564878136628
+    second: scifi_space_rpg_tiles00000000_24
+  - first:
+      213: -6980171565357007235
+    second: scifi_space_rpg_tiles00000000_25
+  - first:
+      213: -9042396754121579405
+    second: scifi_space_rpg_tiles00000000_26
+  - first:
+      213: -8827568414509331856
+    second: scifi_space_rpg_tiles00000000_27
+  - first:
+      213: 5240114576741026850
+    second: scifi_space_rpg_tiles00000000_28
+  - first:
+      213: -5389819069632012428
+    second: scifi_space_rpg_tiles00000000_29
+  - first:
+      213: 3381531086701364361
+    second: scifi_space_rpg_tiles00000000_30
+  - first:
+      213: 7852779483481638071
+    second: scifi_space_rpg_tiles00000000_31
+  - first:
+      213: -4268087512887153584
+    second: scifi_space_rpg_tiles00000000_32
+  - first:
+      213: 3501550606499441546
+    second: scifi_space_rpg_tiles00000000_33
+  - first:
+      213: -6067839387288630523
+    second: scifi_space_rpg_tiles00000000_34
+  - first:
+      213: -2981326478922057341
+    second: scifi_space_rpg_tiles00000000_35
+  - first:
+      213: -5630068639152824927
+    second: scifi_space_rpg_tiles00000000_36
+  - first:
+      213: -7591375583807238364
+    second: scifi_space_rpg_tiles00000000_37
+  - first:
+      213: -280709381651611461
+    second: scifi_space_rpg_tiles00000000_38
+  - first:
+      213: 5169939337962170743
+    second: scifi_space_rpg_tiles00000000_39
+  - first:
+      213: -6191543851715339582
+    second: scifi_space_rpg_tiles00000000_40
+  - first:
+      213: 7320582638869483811
+    second: scifi_space_rpg_tiles00000000_41
+  - first:
+      213: 929538181364149463
+    second: scifi_space_rpg_tiles00000000_42
+  - first:
+      213: 3023183779684238888
+    second: scifi_space_rpg_tiles00000000_43
+  - first:
+      213: -1588676657394503116
+    second: scifi_space_rpg_tiles00000000_44
+  - first:
+      213: 5414117809038491474
+    second: scifi_space_rpg_tiles00000000_45
+  - first:
+      213: 6281205025755714351
+    second: scifi_space_rpg_tiles00000000_46
+  - first:
+      213: -7707692428391210027
+    second: scifi_space_rpg_tiles00000000_47
+  - first:
+      213: -6695927697441864126
+    second: scifi_space_rpg_tiles00000000_48
+  - first:
+      213: 8302473727787249651
+    second: scifi_space_rpg_tiles00000000_49
+  - first:
+      213: 1671356145064858148
+    second: scifi_space_rpg_tiles00000000_50
+  - first:
+      213: 4015282813044409368
+    second: scifi_space_rpg_tiles00000000_51
+  - first:
+      213: -8100360585756023642
+    second: scifi_space_rpg_tiles00000000_52
+  - first:
+      213: -7584621428690565298
+    second: scifi_space_rpg_tiles00000000_53
+  - first:
+      213: 2830203638013479038
+    second: scifi_space_rpg_tiles00000000_54
+  - first:
+      213: 6106469285272273029
+    second: scifi_space_rpg_tiles00000000_55
+  - first:
+      213: -7577123899286820852
+    second: scifi_space_rpg_tiles00000000_56
+  - first:
+      213: 1768988522054299257
+    second: scifi_space_rpg_tiles00000000_57
+  - first:
+      213: 1507143585172541748
+    second: scifi_space_rpg_tiles00000000_58
+  - first:
+      213: 7436497139176957317
+    second: scifi_space_rpg_tiles00000000_59
+  - first:
+      213: 3648883107682727042
+    second: scifi_space_rpg_tiles00000000_60
+  - first:
+      213: -4187483726803753697
+    second: scifi_space_rpg_tiles00000000_61
+  - first:
+      213: 6532801998361534652
+    second: scifi_space_rpg_tiles00000000_62
+  - first:
+      213: 500586189654192546
+    second: scifi_space_rpg_tiles00000000_63
+  - first:
+      213: 7512192828514584942
+    second: scifi_space_rpg_tiles00000000_64
+  - first:
+      213: -1812373310770911931
+    second: scifi_space_rpg_tiles00000000_65
+  - first:
+      213: 8946566618273421946
+    second: scifi_space_rpg_tiles00000000_66
+  - first:
+      213: 2501855290993138840
+    second: scifi_space_rpg_tiles00000000_67
+  - first:
+      213: -2491574310794431528
+    second: scifi_space_rpg_tiles00000000_68
+  - first:
+      213: -8809200934579695158
+    second: scifi_space_rpg_tiles00000000_69
+  - first:
+      213: -7422878025474224044
+    second: scifi_space_rpg_tiles00000000_70
+  - first:
+      213: -8396783278616985897
+    second: scifi_space_rpg_tiles00000000_71
+  - first:
+      213: -6867318783232281863
+    second: scifi_space_rpg_tiles00000000_72
+  - first:
+      213: 9162903074206024494
+    second: scifi_space_rpg_tiles00000000_73
+  - first:
+      213: -8105617513987357605
+    second: scifi_space_rpg_tiles00000000_74
+  - first:
+      213: 377992069377326574
+    second: scifi_space_rpg_tiles00000000_75
+  - first:
+      213: -4498206233916710776
+    second: scifi_space_rpg_tiles00000000_76
+  - first:
+      213: 4288521709969418059
+    second: scifi_space_rpg_tiles00000000_77
+  - first:
+      213: 2380456844067315792
+    second: scifi_space_rpg_tiles00000000_78
+  - first:
+      213: -5848578637411515068
+    second: scifi_space_rpg_tiles00000000_79
+  - first:
+      213: -6193196237680333518
+    second: scifi_space_rpg_tiles00000000_80
+  - first:
+      213: -5849452151242599034
+    second: scifi_space_rpg_tiles00000000_81
+  - first:
+      213: 7951810145079332277
+    second: scifi_space_rpg_tiles00000000_82
+  - first:
+      213: -1432612757553544537
+    second: scifi_space_rpg_tiles00000000_83
+  - first:
+      213: -3023355317825149355
+    second: scifi_space_rpg_tiles00000000_84
+  - first:
+      213: -7288531951129823501
+    second: scifi_space_rpg_tiles00000000_85
+  - first:
+      213: 6630025282244669317
+    second: scifi_space_rpg_tiles00000000_86
+  - first:
+      213: -8538784347705339808
+    second: scifi_space_rpg_tiles00000000_87
+  - first:
+      213: -2696376401197082932
+    second: scifi_space_rpg_tiles00000000_88
+  - first:
+      213: 3928085224093684690
+    second: scifi_space_rpg_tiles00000000_89
+  - first:
+      213: -7232972037601095185
+    second: scifi_space_rpg_tiles00000000_90
+  - first:
+      213: -4211868965707977440
+    second: scifi_space_rpg_tiles00000000_91
+  - first:
+      213: -5219918458827964096
+    second: scifi_space_rpg_tiles00000000_92
+  - first:
+      213: 4344857275892079212
+    second: scifi_space_rpg_tiles00000000_93
+  - first:
+      213: -6312270906427423806
+    second: scifi_space_rpg_tiles00000000_94
+  - first:
+      213: 8639028758633218340
+    second: scifi_space_rpg_tiles00000000_95
+  - first:
+      213: -5959239034196998148
+    second: scifi_space_rpg_tiles00000000_96
+  - first:
+      213: -6335032238793554972
+    second: scifi_space_rpg_tiles00000000_97
+  - first:
+      213: 4967334377927766566
+    second: scifi_space_rpg_tiles00000000_98
+  - first:
+      213: -1570362859558709851
+    second: scifi_space_rpg_tiles00000000_99
+  - first:
+      213: -7360024961602506956
+    second: scifi_space_rpg_tiles00000000_100
+  - first:
+      213: -5765006887390506649
+    second: scifi_space_rpg_tiles00000000_101
+  - first:
+      213: -1381616716608656150
+    second: scifi_space_rpg_tiles00000000_102
+  - first:
+      213: -3578317901692827208
+    second: scifi_space_rpg_tiles00000000_103
+  - first:
+      213: 4326690229339918180
+    second: scifi_space_rpg_tiles00000000_104
+  - first:
+      213: 7482956604914810387
+    second: scifi_space_rpg_tiles00000000_105
+  - first:
+      213: 3541267248127410797
+    second: scifi_space_rpg_tiles00000000_106
+  - first:
+      213: 8536488513950403048
+    second: scifi_space_rpg_tiles00000000_107
+  - first:
+      213: 1153904171155688613
+    second: scifi_space_rpg_tiles00000000_108
+  - first:
+      213: 7411173726077322300
+    second: scifi_space_rpg_tiles00000000_109
+  - first:
+      213: -3570932469453100384
+    second: scifi_space_rpg_tiles00000000_110
+  - first:
+      213: -3532939531226748261
+    second: scifi_space_rpg_tiles00000000_111
+  - first:
+      213: -1116807357801618034
+    second: scifi_space_rpg_tiles00000000_112
+  - first:
+      213: 3592176331870386609
+    second: scifi_space_rpg_tiles00000000_113
+  - first:
+      213: -4507188699077036401
+    second: scifi_space_rpg_tiles00000000_114
+  - first:
+      213: 252669502797903664
+    second: scifi_space_rpg_tiles00000000_115
+  - first:
+      213: -8658815779689597620
+    second: scifi_space_rpg_tiles00000000_116
+  - first:
+      213: -2732701370103625767
+    second: scifi_space_rpg_tiles00000000_117
+  - first:
+      213: 2529489645072296412
+    second: scifi_space_rpg_tiles00000000_118
+  - first:
+      213: -220090078699411035
+    second: scifi_space_rpg_tiles00000000_119
+  - first:
+      213: -4351985519514170554
+    second: scifi_space_rpg_tiles00000000_120
+  - first:
+      213: -8735949137068602293
+    second: scifi_space_rpg_tiles00000000_121
+  - first:
+      213: -3748301849650600494
+    second: scifi_space_rpg_tiles00000000_122
+  - first:
+      213: -5588063536537750965
+    second: scifi_space_rpg_tiles00000000_123
+  - first:
+      213: -9111959442007032431
+    second: scifi_space_rpg_tiles00000000_124
+  - first:
+      213: -3027582226112532857
+    second: scifi_space_rpg_tiles00000000_125
+  - first:
+      213: -1781674733453164306
+    second: scifi_space_rpg_tiles00000000_126
+  - first:
+      213: -6042135118728702769
+    second: scifi_space_rpg_tiles00000000_127
+  - first:
+      213: 3156311865167810234
+    second: scifi_space_rpg_tiles00000000_128
+  - first:
+      213: 2186965290519516450
+    second: scifi_space_rpg_tiles00000000_129
+  - first:
+      213: 2749235486349191798
+    second: scifi_space_rpg_tiles00000000_130
+  - first:
+      213: -7895581796713074271
+    second: scifi_space_rpg_tiles00000000_131
+  - first:
+      213: -1015205232412586211
+    second: scifi_space_rpg_tiles00000000_132
+  - first:
+      213: 7634311546733644621
+    second: scifi_space_rpg_tiles00000000_133
+  - first:
+      213: -6520687392802260162
+    second: scifi_space_rpg_tiles00000000_134
+  - first:
+      213: 8054628913966026000
+    second: scifi_space_rpg_tiles00000000_135
+  - first:
+      213: 6594364940054958874
+    second: scifi_space_rpg_tiles00000000_136
+  - first:
+      213: 3880561562159370340
+    second: scifi_space_rpg_tiles00000000_137
+  - first:
+      213: -7813964136825438637
+    second: scifi_space_rpg_tiles00000000_138
+  - first:
+      213: 5426037325061052949
+    second: scifi_space_rpg_tiles00000000_139
+  - first:
+      213: 2083691198171985027
+    second: scifi_space_rpg_tiles00000000_140
+  - first:
+      213: -8872259242381927730
+    second: scifi_space_rpg_tiles00000000_141
+  - first:
+      213: -1107962817163886459
+    second: scifi_space_rpg_tiles00000000_142
+  - first:
+      213: 2328690159830041384
+    second: scifi_space_rpg_tiles00000000_143
+  - first:
+      213: 2852947053343534259
+    second: scifi_space_rpg_tiles00000000_144
+  - first:
+      213: -5260250934289947061
+    second: scifi_space_rpg_tiles00000000_145
+  - first:
+      213: 2149782172929082384
+    second: scifi_space_rpg_tiles00000000_146
+  - first:
+      213: -5850714152049105448
+    second: scifi_space_rpg_tiles00000000_147
+  - first:
+      213: -1799389327063269506
+    second: scifi_space_rpg_tiles00000000_148
+  - first:
+      213: -7362287507309353
+    second: scifi_space_rpg_tiles00000000_149
+  - first:
+      213: 7015952065114025363
+    second: scifi_space_rpg_tiles00000000_150
+  - first:
+      213: -2049424076553529189
+    second: scifi_space_rpg_tiles00000000_151
+  - first:
+      213: 3174830651178782218
+    second: scifi_space_rpg_tiles00000000_152
+  - first:
+      213: -6635245945390138170
+    second: scifi_space_rpg_tiles00000000_153
+  - first:
+      213: 7576932759345302344
+    second: scifi_space_rpg_tiles00000000_154
+  - first:
+      213: -8870748739511945246
+    second: scifi_space_rpg_tiles00000000_155
+  - first:
+      213: 821711464858355239
+    second: scifi_space_rpg_tiles00000000_156
+  - first:
+      213: -2908046675628813862
+    second: scifi_space_rpg_tiles00000000_157
+  - first:
+      213: 7792298122386920221
+    second: scifi_space_rpg_tiles00000000_158
+  - first:
+      213: 4266395200396553730
+    second: scifi_space_rpg_tiles00000000_159
+  - first:
+      213: 312318196045289738
+    second: scifi_space_rpg_tiles00000000_160
+  - first:
+      213: 5489738103731824054
+    second: scifi_space_rpg_tiles00000000_161
+  - first:
+      213: 2263253105225458726
+    second: scifi_space_rpg_tiles00000000_162
+  - first:
+      213: 4272338670534277462
+    second: scifi_space_rpg_tiles00000000_163
+  - first:
+      213: 8099755430370352588
+    second: scifi_space_rpg_tiles00000000_164
+  - first:
+      213: -4799701051506849528
+    second: scifi_space_rpg_tiles00000000_165
+  - first:
+      213: -3538292583047071156
+    second: scifi_space_rpg_tiles00000000_166
+  - first:
+      213: -6473347899613922455
+    second: scifi_space_rpg_tiles00000000_167
+  - first:
+      213: 7151853350969122329
+    second: scifi_space_rpg_tiles00000000_168
+  - first:
+      213: -3125815312513347327
+    second: scifi_space_rpg_tiles00000000_169
+  - first:
+      213: -2790563306180972551
+    second: scifi_space_rpg_tiles00000000_170
+  - first:
+      213: 8372194275151387118
+    second: scifi_space_rpg_tiles00000000_171
+  - first:
+      213: -1390526676640972181
+    second: scifi_space_rpg_tiles00000000_172
+  - first:
+      213: -3407740207550265719
+    second: scifi_space_rpg_tiles00000000_173
+  - first:
+      213: -7591383015186918956
+    second: scifi_space_rpg_tiles00000000_174
+  - first:
+      213: -7490963065070777812
+    second: scifi_space_rpg_tiles00000000_175
+  - first:
+      213: -2052795265385295674
+    second: scifi_space_rpg_tiles00000000_176
+  - first:
+      213: 7861234414694643056
+    second: scifi_space_rpg_tiles00000000_177
+  - first:
+      213: -4428255165138962772
+    second: scifi_space_rpg_tiles00000000_178
+  - first:
+      213: 8206176734881227954
+    second: scifi_space_rpg_tiles00000000_179
+  - first:
+      213: 8544023181629041341
+    second: scifi_space_rpg_tiles00000000_180
+  - first:
+      213: 2098543089942558114
+    second: scifi_space_rpg_tiles00000000_181
+  - first:
+      213: -348288593308962629
+    second: scifi_space_rpg_tiles00000000_182
+  - first:
+      213: 8611911253012157913
+    second: scifi_space_rpg_tiles00000000_183
+  - first:
+      213: -8317612435821688623
+    second: scifi_space_rpg_tiles00000000_184
+  - first:
+      213: 8034699502167130901
+    second: scifi_space_rpg_tiles00000000_185
+  - first:
+      213: 4642624368508975793
+    second: scifi_space_rpg_tiles00000000_186
+  - first:
+      213: 3609999683065034891
+    second: scifi_space_rpg_tiles00000000_187
+  - first:
+      213: 9095645405373435100
+    second: scifi_space_rpg_tiles00000000_188
+  - first:
+      213: 7462411130413329626
+    second: scifi_space_rpg_tiles00000000_189
+  - first:
+      213: -7014530177209302825
+    second: scifi_space_rpg_tiles00000000_190
+  - first:
+      213: 9043985591038069605
+    second: scifi_space_rpg_tiles00000000_191
+  - first:
+      213: 7709868441550474475
+    second: scifi_space_rpg_tiles00000000_192
+  - first:
+      213: 6390305913112091024
+    second: scifi_space_rpg_tiles00000000_193
+  - first:
+      213: 8255468228683205206
+    second: scifi_space_rpg_tiles00000000_194
+  - first:
+      213: 2092109870200256434
+    second: scifi_space_rpg_tiles00000000_195
+  - first:
+      213: -8990424292351748531
+    second: scifi_space_rpg_tiles00000000_196
+  - first:
+      213: 2043573608822237606
+    second: scifi_space_rpg_tiles00000000_197
+  - first:
+      213: 3884602040390638406
+    second: scifi_space_rpg_tiles00000000_198
+  - first:
+      213: 7126784494011241846
+    second: scifi_space_rpg_tiles00000000_199
+  - first:
+      213: -3965353314159409100
+    second: scifi_space_rpg_tiles00000000_200
+  - first:
+      213: 5864143085372699301
+    second: scifi_space_rpg_tiles00000000_201
+  - first:
+      213: -5529810069839834670
+    second: scifi_space_rpg_tiles00000000_202
+  - first:
+      213: 8373794173555712856
+    second: scifi_space_rpg_tiles00000000_203
+  - first:
+      213: -5095609023493759060
+    second: scifi_space_rpg_tiles00000000_204
+  - first:
+      213: 1815740143888913900
+    second: scifi_space_rpg_tiles00000000_205
+  - first:
+      213: 5974714755557848058
+    second: scifi_space_rpg_tiles00000000_206
+  - first:
+      213: 3962465099996189735
+    second: scifi_space_rpg_tiles00000000_207
+  - first:
+      213: -6104734308570613808
+    second: scifi_space_rpg_tiles00000000_208
+  - first:
+      213: 3442136617276115323
+    second: scifi_space_rpg_tiles00000000_209
+  - first:
+      213: -8477375052116109874
+    second: scifi_space_rpg_tiles00000000_210
+  - first:
+      213: -1772708770759814281
+    second: scifi_space_rpg_tiles00000000_211
+  - first:
+      213: 3218789394504888218
+    second: scifi_space_rpg_tiles00000000_212
+  - first:
+      213: -5463555550422305189
+    second: scifi_space_rpg_tiles00000000_213
+  - first:
+      213: 6692143118301826739
+    second: scifi_space_rpg_tiles00000000_214
+  - first:
+      213: 3076645621249369563
+    second: scifi_space_rpg_tiles00000000_215
+  - first:
+      213: 5524815340137141082
+    second: scifi_space_rpg_tiles00000000_216
+  - first:
+      213: 6733727860151903245
+    second: scifi_space_rpg_tiles00000000_217
+  - first:
+      213: -3674524305665311778
+    second: scifi_space_rpg_tiles00000000_218
+  - first:
+      213: 2145430198323797006
+    second: scifi_space_rpg_tiles00000000_219
+  - first:
+      213: 7343274292530447011
+    second: scifi_space_rpg_tiles00000000_220
+  - first:
+      213: -6480470112786097141
+    second: scifi_space_rpg_tiles00000000_221
+  - first:
+      213: 4020097410583969179
+    second: scifi_space_rpg_tiles00000000_222
+  - first:
+      213: -8414553436972754295
+    second: scifi_space_rpg_tiles00000000_223
+  - first:
+      213: 5132575119080224077
+    second: scifi_space_rpg_tiles00000000_224
+  - first:
+      213: -4222914252181882472
+    second: scifi_space_rpg_tiles00000000_225
+  - first:
+      213: -193706851838104859
+    second: scifi_space_rpg_tiles00000000_226
+  - first:
+      213: 378759958298672672
+    second: scifi_space_rpg_tiles00000000_227
+  - first:
+      213: 5985358361595787652
+    second: scifi_space_rpg_tiles00000000_228
+  - first:
+      213: 1855259428274581706
+    second: scifi_space_rpg_tiles00000000_229
+  - first:
+      213: 2032088112244992109
+    second: scifi_space_rpg_tiles00000000_230
+  - first:
+      213: -4869399126327589133
+    second: scifi_space_rpg_tiles00000000_231
+  - first:
+      213: 5376532659945906927
+    second: scifi_space_rpg_tiles00000000_232
+  - first:
+      213: 2849003405960089244
+    second: scifi_space_rpg_tiles00000000_233
+  - first:
+      213: -147121520401967143
+    second: scifi_space_rpg_tiles00000000_234
+  - first:
+      213: -492001430573156972
+    second: scifi_space_rpg_tiles00000000_235
+  - first:
+      213: 2843397062219543206
+    second: scifi_space_rpg_tiles00000000_236
+  - first:
+      213: -5526282946159648945
+    second: scifi_space_rpg_tiles00000000_237
+  - first:
+      213: -6929803001869052836
+    second: scifi_space_rpg_tiles00000000_238
+  - first:
+      213: -3051392896371258012
+    second: scifi_space_rpg_tiles00000000_239
+  - first:
+      213: -9117078116915430029
+    second: scifi_space_rpg_tiles00000000_240
+  - first:
+      213: -2359894429252088667
+    second: scifi_space_rpg_tiles00000000_241
+  - first:
+      213: 2378204856776738979
+    second: scifi_space_rpg_tiles00000000_242
+  - first:
+      213: 6594043055799936415
+    second: scifi_space_rpg_tiles00000000_243
+  - first:
+      213: 1320743171714371336
+    second: scifi_space_rpg_tiles00000000_244
+  - first:
+      213: -4590644102047998732
+    second: scifi_space_rpg_tiles00000000_245
+  - first:
+      213: 792671572683514135
+    second: scifi_space_rpg_tiles00000000_246
+  - first:
+      213: -6000083092488057582
+    second: scifi_space_rpg_tiles00000000_247
+  - first:
+      213: -381814795920513086
+    second: scifi_space_rpg_tiles00000000_248
+  - first:
+      213: 6618416224898648114
+    second: scifi_space_rpg_tiles00000000_249
+  - first:
+      213: -5411679627397772217
+    second: scifi_space_rpg_tiles00000000_250
+  - first:
+      213: -8230373489230579894
+    second: scifi_space_rpg_tiles00000000_251
+  - first:
+      213: 3941885405122601751
+    second: scifi_space_rpg_tiles00000000_252
+  - first:
+      213: -2418294077880351672
+    second: scifi_space_rpg_tiles00000000_253
+  - first:
+      213: 7453755089501799121
+    second: scifi_space_rpg_tiles00000000_254
+  - first:
+      213: -6655235892530278226
+    second: scifi_space_rpg_tiles00000000_255
+  - first:
+      213: -8176744682998625461
+    second: scifi_space_rpg_tiles00000000_256
+  - first:
+      213: -2889567498623675762
+    second: scifi_space_rpg_tiles00000000_257
+  - first:
+      213: 9077959497290068457
+    second: scifi_space_rpg_tiles00000000_258
+  - first:
+      213: 6055280918990659269
+    second: scifi_space_rpg_tiles00000000_259
+  - first:
+      213: 6221782867507451174
+    second: scifi_space_rpg_tiles00000000_260
+  - first:
+      213: -725593369240846490
+    second: scifi_space_rpg_tiles00000000_261
+  - first:
+      213: 2401611112208785751
+    second: scifi_space_rpg_tiles00000000_262
+  - first:
+      213: -3771360895004953833
+    second: scifi_space_rpg_tiles00000000_263
+  - first:
+      213: -5930537120925157951
+    second: scifi_space_rpg_tiles00000000_264
+  - first:
+      213: -2705896824086974067
+    second: scifi_space_rpg_tiles00000000_265
+  - first:
+      213: 5808543699546601299
+    second: scifi_space_rpg_tiles00000000_266
+  - first:
+      213: 8245232612962737283
+    second: scifi_space_rpg_tiles00000000_267
+  - first:
+      213: 3785896749596300340
+    second: scifi_space_rpg_tiles00000000_268
+  - first:
+      213: -5193955205569454242
+    second: scifi_space_rpg_tiles00000000_269
+  - first:
+      213: 8996256219712645733
+    second: scifi_space_rpg_tiles00000000_270
+  - first:
+      213: -2912679280676390670
+    second: scifi_space_rpg_tiles00000000_271
+  - first:
+      213: 2244717859228431617
+    second: scifi_space_rpg_tiles00000000_272
+  - first:
+      213: 4263438743061807576
+    second: scifi_space_rpg_tiles00000000_273
+  - first:
+      213: -6016274775154691990
+    second: scifi_space_rpg_tiles00000000_274
+  - first:
+      213: -3708164853528314622
+    second: scifi_space_rpg_tiles00000000_275
+  - first:
+      213: -5765044741658763481
+    second: scifi_space_rpg_tiles00000000_276
+  - first:
+      213: -2271773372059646822
+    second: scifi_space_rpg_tiles00000000_277
+  - first:
+      213: -5306286239129085993
+    second: scifi_space_rpg_tiles00000000_278
+  - first:
+      213: 4221130050813515042
+    second: scifi_space_rpg_tiles00000000_279
+  - first:
+      213: 6427226077785777159
+    second: scifi_space_rpg_tiles00000000_280
+  - first:
+      213: 2271248560481726272
+    second: scifi_space_rpg_tiles00000000_281
+  - first:
+      213: 8688500447153802914
+    second: scifi_space_rpg_tiles00000000_282
+  - first:
+      213: 6101423444055174094
+    second: scifi_space_rpg_tiles00000000_283
+  - first:
+      213: 6361826951359674360
+    second: scifi_space_rpg_tiles00000000_284
+  - first:
+      213: -2184923134143267849
+    second: scifi_space_rpg_tiles00000000_285
+  - first:
+      213: -5415871931344756876
+    second: scifi_space_rpg_tiles00000000_286
+  - first:
+      213: 1789798499891054341
+    second: scifi_space_rpg_tiles00000000_287
+  - first:
+      213: 6628243008866845973
+    second: scifi_space_rpg_tiles00000000_288
+  - first:
+      213: -5815290619852077003
+    second: scifi_space_rpg_tiles00000000_289
+  - first:
+      213: -229278361782573244
+    second: scifi_space_rpg_tiles00000000_290
+  - first:
+      213: 5523568542738656701
+    second: scifi_space_rpg_tiles00000000_291
+  - first:
+      213: 7511994467898420480
+    second: scifi_space_rpg_tiles00000000_292
+  - first:
+      213: -2006985672083263315
+    second: scifi_space_rpg_tiles00000000_293
+  - first:
+      213: 1659048461639037298
+    second: scifi_space_rpg_tiles00000000_294
+  - first:
+      213: 1878640715371954652
+    second: scifi_space_rpg_tiles00000000_295
+  - first:
+      213: -7356165402769339501
+    second: scifi_space_rpg_tiles00000000_296
+  - first:
+      213: 1527904444813546856
+    second: scifi_space_rpg_tiles00000000_297
+  - first:
+      213: 8631655901191478289
+    second: scifi_space_rpg_tiles00000000_298
+  - first:
+      213: -863118402187878590
+    second: scifi_space_rpg_tiles00000000_299
+  - first:
+      213: 3806650039165423235
+    second: scifi_space_rpg_tiles00000000_300
+  - first:
+      213: -1286351642242173778
+    second: scifi_space_rpg_tiles00000000_301
+  - first:
+      213: 552790745746787023
+    second: scifi_space_rpg_tiles00000000_302
+  - first:
+      213: 7247169889995548362
+    second: scifi_space_rpg_tiles00000000_303
+  - first:
+      213: 6377426054078803261
+    second: scifi_space_rpg_tiles00000000_304
+  - first:
+      213: -3375721627014400533
+    second: scifi_space_rpg_tiles00000000_305
+  - first:
+      213: 7281318704269613274
+    second: scifi_space_rpg_tiles00000000_306
+  - first:
+      213: -7951968572399086862
+    second: scifi_space_rpg_tiles00000000_307
+  - first:
+      213: -7510394849285156672
+    second: scifi_space_rpg_tiles00000000_308
+  - first:
+      213: 887275726528746339
+    second: scifi_space_rpg_tiles00000000_309
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1314
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce79ce5b2659579f0800000000000000
+      internalID: -471306334798833684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1314
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98cdcd9aba89f2e60800000000000000
+      internalID: 7939732531134127241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1314
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f480ca71a7209b10800000000000000
+      internalID: 1986131010173043957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1314
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35eb1c03ce9719aa0800000000000000
+      internalID: -6156005160301511085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1314
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c173ba116ac7fc0800000000000000
+      internalID: -3495736615929176989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1314
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e9b071d074bacad0800000000000000
+      internalID: -2681132231502546462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1314
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822ca00816d04f970800000000000000
+      internalID: 8787663485317857832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1314
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ce661db46e497fb0800000000000000
+      internalID: -4649598945707266366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1266
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d089faf7390a6340800000000000000
+      internalID: 4857705284111007960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1266
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c773ad9294cfb5b0800000000000000
+      internalID: -5350341698303854649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1266
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f136497e4604cb0b0800000000000000
+      internalID: -5711619425286462689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_11
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1266
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 637b0eba56afa4320800000000000000
+      internalID: 2543120254186338102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1266
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81fb81ceac0624080800000000000000
+      internalID: -9204688263731167464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_13
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1266
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8dcd05dd92193a00800000000000000
+      internalID: 736640483145403787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1266
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d9ce0380320de10800000000000000
+      internalID: 2220313134381178240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_15
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1266
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e7992ffa83d4ab30800000000000000
+      internalID: 4297792538358159333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1218
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74bccfdc80348d4b0800000000000000
+      internalID: -5415504846818325689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_17
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1218
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d17c42684dc94b0800000000000000
+      internalID: -5432233377907925718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_18
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1218
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dbdcedd334e67920800000000000000
+      internalID: 2987826314224655315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_19
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1218
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b355dcbc3e02c4910800000000000000
+      internalID: 1822868111927104827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_20
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1218
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdaabda2511392c40800000000000000
+      internalID: 5487971587910773468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_21
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1218
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ac4d0bc744542c0800000000000000
+      internalID: -4448073754625127781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_22
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1218
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a418f254e414a920800000000000000
+      internalID: 3000546222612681890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_23
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1218
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e94dab68ab0bae0c0800000000000000
+      internalID: -4545626558706297698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1170
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca31fbe8c7106d80800000000000000
+      internalID: -8259575564878136628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_25
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1170
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7efc9f91f2712f90800000000000000
+      internalID: -6980171565357007235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_26
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1170
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37420709f04f28280800000000000000
+      internalID: -9042396754121579405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_27
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1170
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a86b62c4d2e7580800000000000000
+      internalID: -8827568414509331856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_28
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1170
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ccef8b170a8b840800000000000000
+      internalID: 5240114576741026850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_29
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1170
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47f15f6dc148335b0800000000000000
+      internalID: -5389819069632012428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_30
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1170
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98486c37b9c9dee20800000000000000
+      internalID: 3381531086701364361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_31
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1170
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b4066c955daafc60800000000000000
+      internalID: 7852779483481638071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1122
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ca4143505b4c4c0800000000000000
+      internalID: -4268087512887153584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_33
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1122
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8be37f79b1089030800000000000000
+      internalID: 3501550606499441546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_34
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1122
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50b898ed934bacba0800000000000000
+      internalID: -6067839387288630523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_35
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1122
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3897268fc5330a6d0800000000000000
+      internalID: -2981326478922057341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_36
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1122
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad9a3ee66afdd1b0800000000000000
+      internalID: -5630068639152824927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_37
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1122
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f889a902406a690800000000000000
+      internalID: -7591375583807238364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_38
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1122
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb0498dfd48ba1cf0800000000000000
+      internalID: -280709381651611461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_39
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1122
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 779ad85bf605fb740800000000000000
+      internalID: 5169939337962170743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1074
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cad04bcba7331aa0800000000000000
+      internalID: -6191543851715339582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_41
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1074
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32115babf1fe79560800000000000000
+      internalID: 7320582638869483811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_42
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1074
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc6f511d0266ec00800000000000000
+      internalID: 929538181364149463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_43
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1074
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8264dce41a184f920800000000000000
+      internalID: 3023183779684238888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_44
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1074
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 432bb0d4ff2e3f9e0800000000000000
+      internalID: -1588676657394503116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_45
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1074
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ffadb467fc22b40800000000000000
+      internalID: 5414117809038491474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_46
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1026
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23519111b25b2750800000000000000
+      internalID: 6281205025755714351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_47
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1026
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d326cfc296c80590800000000000000
+      internalID: -7707692428391210027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_48
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1026
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24647485c394313a0800000000000000
+      internalID: -6695927697441864126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_49
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1026
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ffa5c5fddf483370800000000000000
+      internalID: 8302473727787249651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_50
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1026
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422d1c70f89d13710800000000000000
+      internalID: 1671356145064858148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_51
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1026
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8144e30d17629b730800000000000000
+      internalID: 4015282813044409368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 978
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a4ef6df6fcb59f80800000000000000
+      internalID: -8100360585756023642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_53
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 978
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e474513eef20eb690800000000000000
+      internalID: -7584621428690565298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_54
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 978
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78cfc5b637e64720800000000000000
+      internalID: 2830203638013479038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_55
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 978
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 580cc7426798eb450800000000000000
+      internalID: 6106469285272273029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_56
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 978
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c08e2eb75f5a8d690800000000000000
+      internalID: -7577123899286820852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_57
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 978
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97e2ac430b5bc8810800000000000000
+      internalID: 1768988522054299257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_58
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 978
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 431d7b30b137ae410800000000000000
+      internalID: 1507143585172541748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_59
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 978
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 585e9d17fbeb33760800000000000000
+      internalID: 7436497139176957317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 930
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2843a549adf63a230800000000000000
+      internalID: 3648883107682727042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_61
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 930
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1522299cb113e5c0800000000000000
+      internalID: -4187483726803753697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_62
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 930
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb02d442ecc29aa50800000000000000
+      internalID: 6532801998361534652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_63
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 930
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a1fdcdbc7072f600800000000000000
+      internalID: 500586189654192546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_64
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 930
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6949d3839ba04860800000000000000
+      internalID: 7512192828514584942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_65
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 930
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 545e913831829d6e0800000000000000
+      internalID: -1812373310770911931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_66
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 930
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a1e8930f6982c70800000000000000
+      internalID: 8946566618273421946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_67
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 930
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89cd31bb12068b220800000000000000
+      internalID: 2501855290993138840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_68
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 882
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d3fb918d562c6dd0800000000000000
+      internalID: -2491574310794431528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_69
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 882
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac196535c6e6fb580800000000000000
+      internalID: -8809200934579695158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_70
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 882
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4505e8093c3acf890800000000000000
+      internalID: -7422878025474224044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_71
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 882
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7de381e9812a87b80800000000000000
+      internalID: -8396783278616985897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_72
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 882
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f2721683f162b0a0800000000000000
+      internalID: -6867318783232281863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_73
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 882
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2382618ccb292f70800000000000000
+      internalID: 9162903074206024494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_74
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 834
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b54499101df038f80800000000000000
+      internalID: -8105617513987357605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_75
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 834
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eed762fc8c5ee3500800000000000000
+      internalID: 377992069377326574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_76
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 834
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88062f443492391c0800000000000000
+      internalID: -4498206233916710776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_77
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 834
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47274e06c3e38b30800000000000000
+      internalID: 4288521709969418059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_78
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 834
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 050a7c133e4190120800000000000000
+      internalID: 2380456844067315792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_79
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 834
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 445062467bca5dea0800000000000000
+      internalID: -5848578637411515068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_80
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 786
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d27c4b5d85d0aa0800000000000000
+      internalID: -6193196237680333518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_81
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 786
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6855a8a924292dea0800000000000000
+      internalID: -5849452151242599034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_82
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 786
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bd0dca42318a5e60800000000000000
+      internalID: 7951810145079332277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_83
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 786
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a2045d89465e1ce0800000000000000
+      internalID: -1432612757553544537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_84
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 786
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5566e3b5b52ea06d0800000000000000
+      internalID: -3023355317825149355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_85
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 786
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f672d68ecee9da90800000000000000
+      internalID: -7288531951129823501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_86
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 738
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58f6d08edd4920c50800000000000000
+      internalID: 6630025282244669317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_87
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 738
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0609b5d40e4208980800000000000000
+      internalID: -8538784347705339808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_88
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 738
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc6d6e9f2fb849ad0800000000000000
+      internalID: -2696376401197082932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_89
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 738
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d3909d03bc538630800000000000000
+      internalID: 3928085224093684690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_90
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 738
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe11474f0425f9b90800000000000000
+      internalID: -7232972037601095185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_91
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 690
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02deb7abd7f6c85c0800000000000000
+      internalID: -4211868965707977440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_92
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 690
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0410e0961df1f87b0800000000000000
+      internalID: -5219918458827964096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_93
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 642
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a91512ca80c4c30800000000000000
+      internalID: 4344857275892079212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_94
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 642
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c34c50fd0f4668a0800000000000000
+      internalID: -6312270906427423806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_95
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 546
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42187ba62eef3e770800000000000000
+      internalID: 8639028758633218340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_96
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 546
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf7cb0bfba78c4da0800000000000000
+      internalID: -5959239034196998148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_97
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 546
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e300164eb17518a0800000000000000
+      internalID: -6335032238793554972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_98
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 546
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62278f47c448fe440800000000000000
+      internalID: 4967334377927766566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_99
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 546
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a55983ac43f43ae0800000000000000
+      internalID: -1570362859558709851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_100
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 498
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43faca1ea40fbd990800000000000000
+      internalID: -7360024961602506956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_101
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 498
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 761986db7c49effa0800000000000000
+      internalID: -5765006887390506649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_102
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 498
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aecacc69ae283dce0800000000000000
+      internalID: -1381616716608656150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_103
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 498
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b98d20c3d2475ec0800000000000000
+      internalID: -3578317901692827208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_104
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 498
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46f85fcf6dd7b0c30800000000000000
+      internalID: 4326690229339918180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_105
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 450
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31e3c91c26dc8d760800000000000000
+      internalID: 7482956604914810387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_106
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 450
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d620c5bbccb152130800000000000000
+      internalID: 3541267248127410797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_107
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 450
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9473f3313b77670800000000000000
+      internalID: 8536488513950403048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_108
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 450
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ac8392eabd730010800000000000000
+      internalID: 1153904171155688613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_109
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 450
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c340c8fdc37c9d660800000000000000
+      internalID: 7411173726077322300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_110
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 450
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aae651b6df717ec0800000000000000
+      internalID: -3570932469453100384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_111
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 402
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9a6b44f63a78fec0800000000000000
+      internalID: -3532939531226748261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_112
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 402
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8521bb00ad4080f0800000000000000
+      internalID: -1116807357801618034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_113
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 402
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b933b77759f9d130800000000000000
+      internalID: 3592176331870386609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_114
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 354
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f86bbdf12cf3371c0800000000000000
+      internalID: -4507188699077036401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_115
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 354
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037f7d7f299a18300800000000000000
+      internalID: 252669502797903664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_116
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 354
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c45fd0cbce4b5d780800000000000000
+      internalID: -8658815779689597620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_117
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 114
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d700c5159e731ad0800000000000000
+      internalID: -2732701370103625767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_118
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 114
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd9209d2e6d8a1320800000000000000
+      internalID: 2529489645072296412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_119
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 114
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a9a8805d3512fcf0800000000000000
+      internalID: -220090078699411035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_120
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 66
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64bc6b15a34aa93c0800000000000000
+      internalID: -4351985519514170554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_121
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 66
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4c452d7b8ca3c680800000000000000
+      internalID: -8735949137068602293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_122
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 66
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d5e2acb35b5bfbc0800000000000000
+      internalID: -3748301849650600494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_123
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 18
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b42ba5202d53372b0800000000000000
+      internalID: -5588063536537750965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scifi_space_rpg_tiles00000000_124
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 18
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19d776b2a21db8180800000000000000
+      internalID: -9111959442007032431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4ba6714fcf6932642847d2c41c7f15d0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
