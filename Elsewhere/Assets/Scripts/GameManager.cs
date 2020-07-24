@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         map.GenerateMap();
         highlightMap.generateUIMap();
         // generatePlayers();
-        generatePlayers2();
+        GenerateUnits();
         GameAssets.MyInstance.turnScheduler.Init(players, enemies);
         
         _onWinUpdateLevel += WinUpdateLevelDatabase;
@@ -78,78 +78,8 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
     }
-
-    void generatePlayers()
-    {
-
-        _unitStatConfig = JObject.Parse(File.ReadAllText(_unitStatConfigPath));
-        _classStatGrowthConfig = JObject.Parse(File.ReadAllText(_classStatGrowthConfigPath));
-        _characterStatGrowthConfig = JObject.Parse(File.ReadAllText(_characterStatGrowthConfigPath));
-        _abilityConfig = JObject.Parse(File.ReadAllText(_abilityConfigPath));
-
-        // UnitInfo[] playerInfo = initialUnitInfo.playerList;
-
-
-        UnitInfo[] enemyInfo = initialUnitInfo.enemyList;
-        CrystalInfo[] crystalInfo = initialUnitInfo.crystalList;
-
-        // enemy heal-testing abilities
-        List<Ability> AbilitiesHarvesterGunslinger = new List<Ability>() { new AbilityHealingWave(), new AbilityDoubleHit() };
-       
-        // PLAYERS
-        List<string> selectedUnitIds = StaticData.SelectedUnits;
-        List<UnitInfo> playerInfo = initialUnitInfo.playerList.ToList();
-        for (int i = 0; i < selectedUnitIds.Count; i++)
-        {
-            UnitDataEntry unitDataEntry =  _unitDatabase.UnitDataEntries.Find(x => x.unitName == selectedUnitIds[i]);
-            playerInfo[i].UpdateUnitIdAndPrefab(unitDataEntry);
-        }
-        int numPlayers = selectedUnitIds.Count != 0 ? selectedUnitIds.Count : playerInfo.Count; 
-        StaticData.SelectedUnits.Clear();
-        for (int i = 0; i < numPlayers; i++)
-        {
-            PlayerUnit player = Instantiate(playerInfo[i].UnitPrefab, playerInfo[i].UnitPositions,
-                Quaternion.identity).GetComponent<PlayerUnit>();
-            player.tag = "player";
-            string unitID = playerInfo[i].unitID;
-
-            player.AssignStats(_unitStatConfig[unitID]["stats"].ToObject<Dictionary<StatString, float>>());
-            player.AssignMap(map);
-            player.AssignAbilities(_unitStatConfig[unitID]["abilities"].ToObject<IEnumerable<string>>(), _abilityConfig);
-            string unitClass = (string)_unitStatConfig[unitID]["class"];
-            player.AssignIdentity((string)_unitStatConfig[unitID]["name"], unitClass,
-                _characterStatGrowthConfig[unitID].ToObject<Dictionary<StatString, int>>(), _classStatGrowthConfig[unitClass].ToObject<Dictionary<StatString, int>>());
-            player.UpdateUI();
-            players.Add(player);
-        }
-        
-        // ENEMIES
-
-        for (int i = 0; i < initialUnitInfo.enemyList.Length; i++)
-        {
-            EnemyUnit enemy = Instantiate(enemyInfo[i].UnitPrefab, enemyInfo[i].UnitPositions, Quaternion.identity).GetComponent<EnemyUnit>();
-            //enemy.gridPosition = new Vector2(0,0);
-            enemy.tag = "enemy";
-            string unitID = enemyInfo[i].unitID;
-
-            enemy.AssignStats(_unitStatConfig[unitID]["stats"].ToObject<Dictionary<StatString, float>>());
-            enemy.AssignMap(map);
-            string unitClass = (string)_unitStatConfig[unitID]["class"];
-            enemy.AssignIdentity((string)_unitStatConfig[unitID]["name"], unitClass,
-                    _characterStatGrowthConfig[unitID].ToObject<Dictionary<StatString, int>>(), _classStatGrowthConfig[unitClass].ToObject<Dictionary<StatString, int>>());
-            enemy.UpdateUI();
-            enemies.Add(enemy);
-        }
-
-        for (int i = 0; i < initialUnitInfo.crystalList.Length; i++)
-        {
-            GameObject crystal = Instantiate(crystalInfo[i].UnitPrefab, crystalInfo[i].UnitPositions, Quaternion.identity);
-            //enemy.gridPosition = new Vector2(0,0);
-            crystal.tag = "crystal";
-        }
-    }
-
-    void generatePlayers2()
+    
+    void GenerateUnits()
     {
         _classStatGrowthConfig = JObject.Parse(File.ReadAllText(_classStatGrowthConfigPath));
         _characterStatGrowthConfig = JObject.Parse(File.ReadAllText(_characterStatGrowthConfigPath));
@@ -197,7 +127,7 @@ public class GameManager : MonoBehaviour
             //enemy.gridPosition = new Vector2(0,0);
             enemy.tag = "enemy";
             string unitId = enemyInfo[i].unitID;
-            UnitLoadData unitLoadData = unitSaveManager.LoadUnit(unitId);
+            UnitLoadData unitLoadData = unitSaveManager.LoadUnit(unitId, initialUnitInfo.enemyStatsFilename, true);
             Dictionary<StatString, int> classStatGrowth = _classStatGrowthConfig[unitLoadData.unitClass].ToObject<Dictionary<StatString,int>>();
             Dictionary<StatString, int> characterStatGrowth = _characterStatGrowthConfig[unitId].ToObject<Dictionary<StatString,int>>();
             enemy.CreateUnit(unitLoadData, _abilityConfig, classStatGrowth, characterStatGrowth);

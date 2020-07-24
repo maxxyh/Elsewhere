@@ -24,11 +24,19 @@
     "name": "Arcane Boost"
   },
   "PiercingShot": {
-    "description": "Deals damage to all enemy champions in a straight line of 4 tiles",
+    "description": "Deals damage to all enemies in a straight line of 4 tiles",
     "name": "Piercing Shot"
   },
   "DeadlyRicochet": {
     "description": "Ranged AoE of 2-tile radius. Deals x1.5 physical damage to all targets in range",
     "name": "Deadly Ricochet"
+  },
+  "WallShatter": {
+    "description": "Breaks an obstacle within melee range.",
+    "name": "Wall Shatter"
+  },
+  "IonicStrike": {
+    "description": "Ranged single target attack with 3 tile range. Deals x0.8 physical damage and has a 60% chance of a 2-turn stun",
+    "name": "Ionic Strike"
   }
 }

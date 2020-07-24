@@ -24,9 +24,15 @@ public class Unit : MonoBehaviour, IUnit
     [Header("Abilities")]
     public List<Ability> abilities = new List<Ability>();
     public Ability chosenAbility;
+    private int _stunDuration = 0;
+    [SerializeField] private ParticleSystem stunEffect;
+    public bool isStunned => _stunDuration > 0;
+    public List<Unit> abilityTargetUnits = new List<Unit>();
+    public Tile abilityTargetTile;
+    
+    public Unit attackingTargetUnit;
 
-    [Header("Identifiers")]
-    public int unitID;
+    [Header("Identifiers")]    public int unitID;
     public string characterName;
     public string characterClass { get; set; }
 
@@ -45,10 +51,6 @@ public class Unit : MonoBehaviour, IUnit
 
         set => _currState = value;
     }
-
-    [Header("References")]
-    public Unit attackingTargetUnit;
-    public List<Unit> abilityTargetUnits = new List<Unit>();
 
 
     // Movement Variables
@@ -298,6 +300,7 @@ public class Unit : MonoBehaviour, IUnit
         this.statPanelGO.SetActive(false);
         LookFront();
         DecrementAllStatDuration();
+        DecrementStun();
         UpdateUI();
     }
 
@@ -586,6 +589,24 @@ public class Unit : MonoBehaviour, IUnit
         {
             stats[StatString.MANA].RemoveModifier(_crystalBoost);
         }
+    }
+
+    public void Stun()
+    {
+        _stunDuration = 2;
+    }
+
+    private void DecrementStun()
+    {
+        _stunDuration--;
+    }
+
+    public IEnumerator StunAnimation()
+    {
+        Debug.Log("Stun animation");
+        stunEffect.Play();
+        DamagePopUp.Create(transform.position, "Stunned!", PopupType.DAMAGE);
+        yield return new WaitForSeconds(1.1f);
     }
 }
 

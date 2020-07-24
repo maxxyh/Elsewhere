@@ -17,7 +17,7 @@ public class ProgressBar : MonoBehaviour
 
     public void SetCurrentFill(int current, int maximum, int currLevel)
     {
-        Debug.Log("setting progress bar fill");
+        //Debug.Log("setting progress bar fill");
         float fillAmount = (float) current / (float) maximum;
         mask.fillAmount = fillAmount;
         levelLabel.text = $"Level {currLevel}";

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InfiniteInventory : CommonInventory
 {
@@ -63,6 +64,8 @@ public class InfiniteInventory : CommonInventory
             {
                 ItemSlot slot = Instantiate(itemSlotPrefab).GetComponent<ItemSlot>();
                 slot.transform.SetParent(itemsParent, worldPositionStays: false);
+                slot.transform.SetAsLastSibling();
+                LayoutRebuilder.ForceRebuildLayoutImmediate(itemsParent.GetComponent<RectTransform>());
                 ItemSlots.Add(slot);
             }
         }

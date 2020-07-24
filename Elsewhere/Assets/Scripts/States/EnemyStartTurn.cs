@@ -43,6 +43,15 @@ public class EnemyStartTurn : EnemyState
         turnScheduler.currTeamQueue.RemoveFirst();
         currUnit.StartTurn();
 
+        if (currUnit.isStunned)
+        {
+            yield return currUnit.StunAnimation();
+            yield return new WaitForSeconds(1f);
+            turnScheduler.SetState(new EnemyEndTurn(turnScheduler));
+            yield break;
+        }
+
+
         /* WORKING BUT DISABLED VERSION OF RECOVERY AI
         enemyUnit.CheckIfRecoveryMode();
         if (enemyUnit.inRecoveryMode)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +6,7 @@ using UnityEngine.Serialization;
 
 public class CommonInventory : ItemContainer
 {
-    [FormerlySerializedAs("items")]
-    [SerializeField] protected List<Item> inventoryStartingItems;
+    [SerializeField] protected List<Item> inventoryStartingItems;  // purely for convenient testing
     [SerializeField] protected Transform itemsParent;
 
     // public event Action<TEST_Item> OnItemRightClickedEvent;
@@ -17,19 +16,19 @@ public class CommonInventory : ItemContainer
         if (itemsParent != null)
             itemsParent.GetComponentsInChildren(includeInactive: true, result: ItemSlots);
 
-        if (!Application.isPlaying)
+        /*if (!Application.isPlaying)
         {
             SetStartingItems();
-        }
+        }*/
     }
 
     protected override void Awake()
     {
         base.Awake();
-        SetStartingItems();
+        //SetStartingItems(inventoryStartingItems);
     }
 
-    private void SetStartingItems()
+    public void SetStartingItems(List<Item> inventoryStartingItems)
     {
         Clear();
         foreach (Item item in inventoryStartingItems)

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Map : MonoBehaviour
 {
@@ -193,7 +194,6 @@ public class Map : MonoBehaviour
         #region Basic Targeting
         if (targetingStyle == TargetingStyle.SINGLE || targetingStyle == TargetingStyle.MULTI || targetingStyle == TargetingStyle.SELFSINGLE)
         {
-
             int[] hor = { -1, 0, 1, 0 };
             int[] vert = { 0, 1, 0, -1 };
 
@@ -275,6 +275,44 @@ public class Map : MonoBehaviour
             }
         }    
         #endregion
+
+        #region Obstacle Targeting
+        if (targetingStyle == TargetingStyle.OBSTACLES)
+        {
+            int[] hor = { -1, 0, 1, 0 };
+            int[] vert = { 0, 1, 0, -1 };
+
+            int currX = startTile.gridPosition.x, currY = startTile.gridPosition.y;
+
+            bool[] passable = new bool[4];
+            for (int i = 0; i < 4; i++)
+            {
+                passable[i] = true;
+            }
+
+            for (int i = 1; i <= attackRange; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    int newX = currX + i * hor[j];
+                    int newY = currY + i * vert[j];
+
+                    if (newX >= 0 && newX < mapSize.x && newY >= 0 && newY < mapSize.y)
+                    {
+                        if (!tileList[newX][newY].walkable)
+                        {
+                            tileList[newX][newY].attackable = true;
+                            attackableTiles.Add(tileList[newX][newY]);
+                        }
+                        else
+                        {
+                            passable[j] = false;
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
         
     }
 
@@ -328,8 +366,19 @@ public class Map : MonoBehaviour
         }
         attackableTiles.Clear();
     }
-}
+    public void RemoveAllObstaclesFromTile(Tile toBreak)
+    {
+        Vector3Int toBreakVector = Vector3Int.RoundToInt(toBreak.transform.position);
 
+        foreach (Tilemap tilemap in tileCostReference.obstacles)
+        {
+            tilemap.SetTile(toBreakVector, null);
+        }
+
+        toBreak.walkable = true;
+        toBreak.movementCost = tileCostReference.GetTileCost(toBreak.transform.position);
+    }
+}
 
 class TileDistancePair : IComparable<TileDistancePair>
 {

@@ -55,7 +55,8 @@ public enum TargetingStyle
     RADIUS, 
     CONE, 
     SELF,
-    SELFSINGLE
+    SELFSINGLE,
+    OBSTACLES
 }
 
 public enum AbilityType

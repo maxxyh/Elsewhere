@@ -41,12 +41,11 @@ public class EquippableItem : Item
             unit.stats[StatString.PHYSICAL_DAMAGE].AddModifier(new StatModifier(physicalAttackBonus, StatModType.Flat, this));
         if (magicalAttackBonus != 0)
             unit.stats[StatString.MAGIC_DAMAGE].AddModifier(new StatModifier(magicalAttackBonus, StatModType.Flat, this));
-        if (physicalAttackBonus != 0)
-            unit.stats[StatString.ATTACK_RANGE].AddModifier(new StatModifier(attackRange, StatModType.Flat, this));
-        if (physicalAttackBonus != 0)
-            unit.stats[StatString.CRIT_RATE].AddModifier(new StatModifier(critBonus, StatModType.Flat, this));
-        if (physicalAttackBonus != 0)
-            unit.stats[StatString.HIT_RATE].AddModifier(new StatModifier(hitRate, StatModType.Flat, this));
+
+        unit.stats[StatString.ATTACK_RANGE].AddModifier(new StatModifier(attackRange, StatModType.Flat, this));
+        unit.stats[StatString.CRIT_RATE].AddModifier(new StatModifier(critBonus, StatModType.Flat, this));
+        unit.stats[StatString.HIT_RATE].AddModifier(new StatModifier(hitRate, StatModType.Flat, this));
+        
         equipped = true;
     }
 

@@ -21,8 +21,16 @@ public class PlayerAbility : State
         turnScheduler.StartCoroutine(turnScheduler.AbilityAnimation(currUnit));
         yield return new WaitUntil(() => currUnit.anim.GetBool("isAbility") == false);
 
-        yield return turnScheduler.StartCoroutine(_ability.Execute(turnScheduler.currUnit, targetUnits));
-
+        if (_ability is AbilityWallShatter)
+        {
+            yield return turnScheduler.StartCoroutine(
+                ((AbilityWallShatter) _ability).Execute(turnScheduler.currUnit, currUnit.abilityTargetTile, map));
+        }
+        else
+        {
+            yield return turnScheduler.StartCoroutine(_ability.Execute(turnScheduler.currUnit, targetUnits));    
+        }
+        
         int exp = 0;
         foreach (Unit target in targetUnits)
         {

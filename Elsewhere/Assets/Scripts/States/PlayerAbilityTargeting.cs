@@ -61,7 +61,7 @@ public class PlayerAbilityTargeting : State
 
 
         List<Unit> targetUnits = new List<Unit>();
-
+        
 
         #region Single Targeting Style
 
@@ -163,6 +163,17 @@ public class PlayerAbilityTargeting : State
             }
         }
 
+        #endregion
+
+        #region Obstacle Targeting Style
+        if (ability.targetingStyle == TargetingStyle.OBSTACLES)
+        {
+            if (map.tileCostReference.IsObstacle(tile.transform.position))
+            {
+                currUnit.abilityTargetTile = tile;
+                targetsFound = true;
+            }
+        }
         #endregion
 
         if (targetsFound)

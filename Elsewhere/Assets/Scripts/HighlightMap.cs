@@ -135,6 +135,14 @@ public class HighlightMap : MonoBehaviour
                 }
             }
         }
+        
+        else if (targetingStyle == TargetingStyle.OBSTACLES)
+        {
+            if (map.tileCostReference.IsObstacle(mainTile.transform.position))
+            {
+                selectedTiles.Add(mainTile);
+            }
+        }
 
         foreach (HighlightTile tile in selectedTiles)
         {

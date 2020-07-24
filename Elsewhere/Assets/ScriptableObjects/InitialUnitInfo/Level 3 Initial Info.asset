@@ -29,7 +29,6 @@ MonoBehaviour:
     UnitPrefab: {fileID: 6811365470129529175, guid: eeef3b27ad37cef47a4340517ea3f940,
       type: 3}
     UnitPositions: {x: -15, y: -6, z: 0}
-  tutorialPlayerList: []
   enemyList:
   - unitID: EnemyTank
     UnitPrefab: {fileID: 2897327392223700814, guid: df7846522d417a043a6c844e36c8e3f7,
@@ -76,3 +75,4 @@ MonoBehaviour:
   - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
       type: 3}
     UnitPositions: {x: -7, y: 1, z: 0}
+  enemyStatsFilename: level2EnemyStats

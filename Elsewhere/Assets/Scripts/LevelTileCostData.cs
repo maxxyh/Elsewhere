@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ public class LevelTileCostData : MonoBehaviour
 
     private Dictionary<int, Tilemap[]> reference = new Dictionary<int, Tilemap[]>();
 
-    public int GetTileCost(Vector3 position)
+    private void Start()
     {
         if (reference.Count == 0)
         {
@@ -34,7 +35,10 @@ public class LevelTileCostData : MonoBehaviour
             reference.Add(3, movementCost2);
             reference.Add(4, movementCost1);
         }
+    }
 
+    public int GetTileCost(Vector3 position)
+    {
         for (int i = 0; i < 5; i++) 
         {
             foreach (Tilemap tilemap in reference[i])
@@ -46,6 +50,19 @@ public class LevelTileCostData : MonoBehaviour
             }
         }
         return -1;
+    }
+
+    public bool IsObstacle(Vector3 position)
+    {
+        foreach (Tilemap tilemap in obstacles)
+        {
+            if (tilemap.GetTile(Vector3Int.RoundToInt(position)) != null)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

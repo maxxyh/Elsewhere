@@ -10,7 +10,9 @@ public static class StaticData
         {"HpReaver", new AbilityHPReaver()},
         {"AstralFlare", new AbilityAstralFlare()},
         {"DoubleHit", new AbilityDoubleHit()},
-        {"WhirlwindSlash", new AbilityWhirlwindSlash()}
+        {"WhirlwindSlash", new AbilityWhirlwindSlash()},
+        {"IonicStrike", new AbilityIonicStrike()},
+        {"WallShatter", new AbilityWallShatter()}
     };
 
     public static Dictionary<string, Ability> AbilityReference

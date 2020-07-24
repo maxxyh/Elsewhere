@@ -16,15 +16,20 @@ MonoBehaviour:
   - levelId: Tutorial
     sceneName: Tutorial
     initialUnitInfo: {fileID: 11400000, guid: 41a3174b3b6542f499efe49576a352d8, type: 2}
+    enemyStatFileName: tutorialEnemyStats
   - levelId: Level1
     sceneName: Level1
     initialUnitInfo: {fileID: 11400000, guid: 8380b358f79bfa24cb646ddb51a177f1, type: 2}
+    enemyStatFileName: level1EnemyStats
   - levelId: Level2
     sceneName: Level2
     initialUnitInfo: {fileID: 11400000, guid: 4aba3902f5bd8584880fd906836353c5, type: 2}
+    enemyStatFileName: level2EnemyStats
   - levelId: Level3
     sceneName: Level3
     initialUnitInfo: {fileID: 11400000, guid: febcbe515f67aac479d4a7ce8eff0529, type: 2}
+    enemyStatFileName: level3EnemyStats
   - levelId: Level4
     sceneName: Level4
     initialUnitInfo: {fileID: 11400000, guid: 8380b358f79bfa24cb646ddb51a177f1, type: 2}
+    enemyStatFileName: 

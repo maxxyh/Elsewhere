@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -9,7 +10,7 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
     public UnitData unit;
 
     [Header("Public")]
-    public InfiniteInventory inventory;
+    public InfiniteInventory commonInventory;
     public UnitPersonalInventory unitPersonalInventory;
     public InventoryItemTypesManager inventoryItemTypesManager;
 
@@ -22,24 +23,26 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
 
     private void OnValidate()
     {
-
         if (itemTooltip == null)
             itemTooltip = FindObjectOfType<ItemToolTip>();
+        commonInventory.SetStartingItems(unitSaveManager.LoadInventory());
     }
 
     public void Awake()
     {
+        commonInventory.SetStartingItems(unitSaveManager.LoadInventory());
+
         // Setup Events
         // Pointer Enter
-        inventory.OnPointerEnterEvent += ShowTooltip;
+        commonInventory.OnPointerEnterEvent += ShowTooltip;
         unitPersonalInventory.OnPointerEnterEvent += ShowTooltip;
 
         // Pointer Exit
-        inventory.OnPointerExitEvent += HideTooltip;
+        commonInventory.OnPointerExitEvent += HideTooltip;
         unitPersonalInventory.OnPointerExitEvent += HideTooltip;
 
         // Left Click
-        inventory.OnLeftClickEvent += InventoryLeftClick;
+        commonInventory.OnLeftClickEvent += InventoryLeftClick;
         unitPersonalInventory.OnLeftClickEvent += UnitPersonalInventoryLeftClick;
 
     }
@@ -52,9 +55,15 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
         }*/
     }
 
+    private void OnDestroy()
+    {
+        unitSaveManager.SaveInventory(commonInventory.ItemSlots);
+    }
+
+
     /*private void OnDestroy()
     {
-        *//*if (!IsInventoryNull() && !IsEquippedPanelNull())
+        if (!IsInventoryNull() && !IsEquippedPanelNull())
         {
             itemSaveManager.SaveInventory(this);
             itemSaveManager.SaveEquippedItems(this);
@@ -62,19 +71,14 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
         else
         {
             Debug.Log("Null destroy inventory");
-        }*//*
+        }
     }*/
-
-    private void OnDestroy()
-    {
-        
-    }
 
     private bool IsInventoryNull()
     {
-        for (int i = 0; i < inventory.ItemSlots.Count; i++)
+        for (int i = 0; i < commonInventory.ItemSlots.Count; i++)
         {
-            if (inventory.ItemSlots[i].Item != null)
+            if (commonInventory.ItemSlots[i].Item != null)
             {
                 return false;
             }
@@ -103,7 +107,7 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
             if (itemSlot.Item != null)
             {
                 Item currItem = itemSlot.Item;
-                if (inventory.RemoveItem(itemSlot.Item) && unitPersonalInventory.AddItem(currItem))
+                if (commonInventory.RemoveItem(itemSlot.Item) && unitPersonalInventory.AddItem(currItem))
                 { 
                     unit.unitItems.Add(currItem);
                     inventoryItemTypesManager.currInventoryItemsList.Remove(currItem);
@@ -111,7 +115,7 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
                 else
                 {
                     Debug.Log("No more space in unit");
-                    inventory.AddItem(currItem);
+                    commonInventory.AddItem(currItem);
                 }
             }
         }
@@ -125,7 +129,7 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
             if (itemSlot.Item != null)
             {
                 Item item = itemSlot.Item;
-                if (unitPersonalInventory.RemoveItem(item) && inventory.AddItem(item)) //
+                if (unitPersonalInventory.RemoveItem(item) && commonInventory.AddItem(item)) //
                 {
                     // equippedItemsPanel.RemoveItem(equippableItem);
                     // inventory.AddItem(item);

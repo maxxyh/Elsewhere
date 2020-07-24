@@ -12,6 +12,8 @@ public class UnitSaveManager : MonoBehaviour
     private Dictionary<string, UnitSaveData> _saveDatabase;
     
     private const string UnitsSaveFileName = "unitsSaveData";
+
+    private const string CommonInventorySaveFileName = "commonInventorySaveData";
     private void SaveUnit(UnitData unit, string fileName)
     {
         // load the old database
@@ -72,7 +74,14 @@ public class UnitSaveManager : MonoBehaviour
 
     public UnitLoadData LoadUnit(string unitId)
     {
-        _saveDatabase = JsonSaveLoadIO.LoadAllUnits(UnitsSaveFileName);
+        return LoadUnit(unitId, UnitsSaveFileName);
+    }
+    
+    public UnitLoadData LoadUnit(string unitId, string filename, bool enemy = false)
+    {
+        // minor difference for loading enemy units
+        _saveDatabase = enemy ? JsonSaveLoadIO.LoadAllEnemyUnits(filename) : JsonSaveLoadIO.LoadAllUnits(filename);    
+        
         UnitSaveData saveUnit = _saveDatabase[unitId];
 
         if (saveUnit == null)
@@ -103,6 +112,48 @@ public class UnitSaveManager : MonoBehaviour
             saveUnit.unitAbilities, saveUnit.unitLevel, saveUnit.unitExp);
         return loadedUnitData;
     }
+    
+    private void SaveItems(IList<ItemSlot> itemSlots, string fileName)
+    {
+        var saveData = new ItemContainerSaveData(itemSlots.Count);
+
+        for (int i = 0; i < saveData.savedSlots.Length; i++)
+        {
+            ItemSlot currSlot = itemSlots[i];
+
+            if (currSlot.Item == null)
+            {
+                saveData.savedSlots[i] = null;
+            }
+            else
+            {
+                saveData.savedSlots[i] = new ItemSlotSaveData(currSlot.Item.ID, currSlot.Amount);
+            }
+        }
+        JsonSaveLoadIO.SaveItems(saveData, fileName);
+    }
+
+    public void SaveInventory(IList<ItemSlot> items)
+    {
+        SaveItems(items, CommonInventorySaveFileName);
+    }
+    
+    public List<Item> LoadInventory()
+    {
+        ItemContainerSaveData itemContainer = JsonSaveLoadIO.LoadItems(CommonInventorySaveFileName);
+
+        List<Item> items = new List<Item>();
+        
+        foreach (ItemSlotSaveData itemSlotSave in itemContainer.savedSlots)
+        {
+            if (itemSlotSave != null)
+            {
+                items.Add(itemDataBase.GetItemCopy(itemSlotSave.itemId));
+            }
+        }
+        return items;
+    }
+    
     
     // removal of stat bonuses is done here.
     private static Dictionary<StatString, int> ConvertStatsToBaseInt(Dictionary<StatString, UnitStat> stats)

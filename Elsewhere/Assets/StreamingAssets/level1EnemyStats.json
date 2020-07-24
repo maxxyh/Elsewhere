@@ -1,0 +1,46 @@
+﻿{
+  "EnemyGunslinger": {
+    "unitName": "HazeBringer",
+    "unitClass": "Gunslinger",
+    "unitLevel": 1,
+    "unitExp": 0,
+    "unitAbilities": [],
+    "unitStats": {
+      "HP": 25,
+      "MANA": 25,
+      "PHYSICAL_DAMAGE": 13,
+      "MAGIC_DAMAGE": 6,
+      "ARMOR": 5,
+      "MAGIC_RES": 2,
+      "MOVEMENT_RANGE": 4,
+      "HIT_RATE": 0,
+      "ATTACK_RANGE": 3,
+      "CRIT_RATE": 25
+    },
+    "unitInventory" : {
+      "savedSlots" : [ ]
+    }
+  },
+  "EnemyTank": {
+    "unitName": "HazeBringer",
+    "unitClass": "Tank",
+    "unitLevel": 1,
+    "unitExp": 0,
+    "unitAbilities": [],
+    "unitStats": {
+      "HP": 28,
+      "MANA": 25,
+      "PHYSICAL_DAMAGE": 11,
+      "MAGIC_DAMAGE": 6,
+      "ARMOR": 6,
+      "MAGIC_RES": 1,
+      "MOVEMENT_RANGE": 5,
+      "HIT_RATE": 0,
+      "ATTACK_RANGE": 1,
+      "CRIT_RATE": 25
+    },
+    "unitInventory" : {
+      "savedSlots" : [ ]
+    }
+  }
+}

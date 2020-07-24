@@ -10,6 +10,7 @@ public class InitialUnitInfo : ScriptableObject
     public UnitInfo[] enemyList;
     [SerializeField]
     public CrystalInfo[] crystalList;
+    public string enemyStatsFilename;
 }
 
 [System.Serializable]
