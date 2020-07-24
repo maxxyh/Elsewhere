@@ -8,12 +8,11 @@ public class ItemChest : MonoBehaviour
     // RMB TO ADD A COLLIDER AND A RIGIDBODY TO THE GAME OBJECT && CHECK ISTRIGGERBOX
     [SerializeField] Item item;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] CommonInventory inventory;
+    private CommonInventory inventory;
     // Set the empty colour in inspector
     [SerializeField] Color emptyColour;
-    [SerializeField] KeyCode itemPickupKeyCode = KeyCode.E;
     [SerializeField] GameObject openChestPanel;
-    
+ 
     private bool isInRange;
     private bool isEmpty;
 
@@ -29,11 +28,16 @@ public class ItemChest : MonoBehaviour
         }
         spriteRenderer.sprite = item.itemIcon;
         spriteRenderer.enabled = false;
+        openChestPanel.SetActive(false);
     }
 
-    private void Update()
+    private void Awake()
     {
-        if (isInRange && Input.GetKeyDown(itemPickupKeyCode))
+        inventory = GameAssets.MyInstance.commonInventory;
+    }
+    /*private void Update()
+    {
+        if (isInRange)
         {
             if(!isEmpty)
             {
@@ -42,23 +46,63 @@ public class ItemChest : MonoBehaviour
                 spriteRenderer.color = emptyColour;
             }
         }
+    }*/
+
+    private void SetPanelPosition()
+    {
+        // Offset position above object bbox (in world space)
+        float offsetPosY = gameObject.transform.position.y + 1f;
+
+        // Final position of marker above GO in world space
+        Vector3 offsetPos = new Vector3(gameObject.transform.position.x, offsetPosY, gameObject.transform.position.z);
+
+        // Calculate *screen* position (note, not a canvas/recttransform position)
+        Vector2 canvasPos;
+        
+        Vector2 screenPoint = Camera.main.WorldToScreenPoint(offsetPos);
+
+        RectTransform panelRect = openChestPanel.transform.parent.GetComponent<RectTransform>();
+
+        // Convert screen position to Canvas / RectTransform space <- leave camera null if Screen Space Overlay
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(panelRect, screenPoint, null, out canvasPos);
+        Debug.Log(canvasPos);
+        // Set
+        openChestPanel.GetComponent<RectTransform>().localPosition = canvasPos;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CheckCollision(collision.gameObject, true);
+        if (collision.CompareTag("player"))
+        {
+            Debug.Log(item.itemName);
+            if (!isEmpty)
+            {
+                SetPanelPosition();
+                openChestPanel.SetActive(true);
+            }
+        }
+    }
+
+    public void OnOpenButton()
+    {
+        Debug.Log($"Chest empty: {isEmpty}");
+        if (!isEmpty)
+        {
+            inventory.AddItem(Instantiate(item));
+            openChestPanel.SetActive(false);
+            Debug.Log($"Added {item.itemName} to inventory");
+            DamagePopUp.Create(gameObject.transform.position, $"{item.itemName} added to convoy", PopupType.ITEM_COLLECT);
+            isEmpty = true;
+        }
+    }
+
+    public void OnCancelButton()
+    {
+        openChestPanel.SetActive(false);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        CheckCollision(collision.gameObject, false);
-    }
-
-    private void CheckCollision(GameObject go, bool state)
-    {
-        if (gameObject.CompareTag("player"))
-        {
-            isInRange = state;
-            spriteRenderer.enabled = state;
-        }
+        openChestPanel.SetActive(false);
     }
 }

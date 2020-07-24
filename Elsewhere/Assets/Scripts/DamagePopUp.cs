@@ -4,6 +4,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Diagnostics;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class DamagePopUp : MonoBehaviour
@@ -59,6 +60,12 @@ public class DamagePopUp : MonoBehaviour
             textMesh.fontSize = 5;
             textColor = new Color(0, 0.19921f, 0.19921f);
         }
+        else if (popupType == PopupType.ITEM_COLLECT)
+        {
+            textMesh.font = levelUpFont;
+            textMesh.fontSize = 3;
+            textColor = Color.white;
+        }
         
         textMesh.color = textColor;
         disappearTimer = DISAPPEAR_TIMER_MAX;
@@ -106,5 +113,6 @@ public enum PopupType
     BUFF,
     DEBUFF,
     HEAL,
-    LEVEL_UP
+    LEVEL_UP,
+    ITEM_COLLECT
 }

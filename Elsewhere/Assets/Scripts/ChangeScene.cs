@@ -24,6 +24,11 @@ public class ChangeScene : MonoBehaviour
         Application.Quit();
     }
 
+    public void OnFeedbackButton()
+    {
+        Application.OpenURL("https://forms.gle/HCzFuG7pJXH3ed2K7");
+    }
+
     IEnumerator LoadScene(string sceneName)
     {
         loadEffect.SetTrigger("Start");
