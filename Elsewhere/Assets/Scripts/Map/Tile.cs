@@ -199,7 +199,7 @@ public class Tile : MonoBehaviour, ITile
         GameAssets.MyInstance.turnScheduler.OnClickCheckForValidTarget(this);
     }
 
-    public void OnMouseOver()
+    /*public void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(1))
         {
@@ -215,6 +215,13 @@ public class Tile : MonoBehaviour, ITile
                 Unit test = GameAssets.MyInstance.turnScheduler.players.Find(x => x.currentTile == this);
                 test.OnLevelUp();
             }
+        }
+    }*/
+    public void RightClick()
+    {
+        if (occupied)
+        {
+            CheckAndActivateMajorStatPanel();
         }
     }
 

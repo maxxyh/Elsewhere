@@ -19,6 +19,6 @@ public interface ITile
     void FindNeighbours(List<List<Tile>> tileList, bool includeDiagonals);
     void MouseDown();
     void OnMouseExit();
-    void OnMouseOver();
+    void RightClick();
     void Reset();
 }

@@ -8,7 +8,7 @@ public class ItemChest : MonoBehaviour
     // RMB TO ADD A COLLIDER AND A RIGIDBODY TO THE GAME OBJECT && CHECK ISTRIGGERBOX
     [SerializeField] Item item;
     [SerializeField] SpriteRenderer spriteRenderer;
-    private CommonInventory inventory;
+    private SkeletonCommonInventory inventory;
     // Set the empty colour in inspector
     [SerializeField] Color emptyColour;
     [SerializeField] GameObject openChestPanel;
@@ -18,10 +18,6 @@ public class ItemChest : MonoBehaviour
 
     private void OnValidate()
     {
-        if (inventory == null)
-        {
-            inventory = FindObjectOfType<CommonInventory>();
-        }
         if (spriteRenderer == null)
         {
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -33,7 +29,7 @@ public class ItemChest : MonoBehaviour
 
     private void Awake()
     {
-        inventory = GameAssets.MyInstance.commonInventory;
+        inventory = SkeletonCommonInventory.Instance;
     }
 
     private void SetPanelPosition()

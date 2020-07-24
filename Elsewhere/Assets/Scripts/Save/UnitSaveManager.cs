@@ -138,6 +138,30 @@ public class UnitSaveManager : MonoBehaviour
         SaveItems(items, CommonInventorySaveFileName);
     }
     
+    // DANGEROUS BUT EASY DEFAULT TO AMOUNT = 1
+    private void SaveItems(IList<Item> items, string fileName)
+    {
+        var saveData = new ItemContainerSaveData(items.Count);
+
+        for (int i = 0; i < saveData.savedSlots.Length; i++)
+        {
+            if (items[i] == null)
+            {
+                saveData.savedSlots[i] = null;
+            }
+            else
+            {
+                saveData.savedSlots[i] = new ItemSlotSaveData(items[i].ID, 1);
+            }
+        }
+        JsonSaveLoadIO.SaveItems(saveData, fileName);
+    }
+    
+    public void SaveInventory(IList<Item> items)
+    {
+        SaveItems(items, CommonInventorySaveFileName);
+    }
+    
     public List<Item> LoadInventory()
     {
         ItemContainerSaveData itemContainer = JsonSaveLoadIO.LoadItems(CommonInventorySaveFileName);

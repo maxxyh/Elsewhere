@@ -13,11 +13,12 @@ public class AbilityDoubleHit : Ability
         foreach (Unit target in targets)
         {
             float attackDamage = BattleManager.CalculateBaseDamage(attacker, target);
-            for (int i = 0; i < 2; i++)
-            {
-                target.stats[StatString.HP].AddModifier(new StatModifier(-attackDamage, StatModType.Flat));
-                DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", attackDamage), PopupType.DAMAGE);
-            }
+            target.stats[StatString.HP].AddModifier(new StatModifier(-2 * attackDamage, StatModType.Flat));
+            
+            DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", attackDamage), PopupType.DAMAGE);
+            yield return new WaitForSeconds(1f);
+            DamagePopUp.Create(target.transform.position, string.Format("- {0} HP", attackDamage), PopupType.DAMAGE);
+            
         }
 
         UpdateStats(attacker, targets);

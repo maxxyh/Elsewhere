@@ -31,12 +31,16 @@
     "description": "Ranged AoE of 2-tile radius. Deals x1.5 physical damage to all targets in range",
     "name": "Deadly Ricochet"
   },
+  "FinalHour": {
+  "description": "Single target attack with 10 tile range. Damage starts at base attack and increases by 0.2x per tile-increase in distance.",
+  "name": "Final Hour"
+},
   "WallShatter": {
     "description": "Breaks an obstacle within melee range.",
     "name": "Wall Shatter"
   },
   "IonicStrike": {
-    "description": "Ranged single target attack with 3 tile range. Deals x0.8 physical damage and has a 60% chance of a 2-turn stun",
+    "description": "Single target attack with 3 tile range. Deals x0.8 physical damage and has a 60% chance of a 2-turn stun",
     "name": "Ionic Strike"
   }
 }

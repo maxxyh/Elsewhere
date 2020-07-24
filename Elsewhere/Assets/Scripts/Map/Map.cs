@@ -191,8 +191,8 @@ public class Map : MonoBehaviour
 
     public void FindAttackableTiles(Tile startTile, float attackRange, TargetingStyle targetingStyle = TargetingStyle.SINGLE)
     {
-        #region Basic Targeting
-        if (targetingStyle == TargetingStyle.SINGLE || targetingStyle == TargetingStyle.MULTI || targetingStyle == TargetingStyle.SELFSINGLE)
+        #region Basic Targeting (Deprecated)
+        /*if (targetingStyle == TargetingStyle.SINGLE || targetingStyle == TargetingStyle.MULTI || targetingStyle == TargetingStyle.SELFSINGLE)
         {
             int[] hor = { -1, 0, 1, 0 };
             int[] vert = { 0, 1, 0, -1 };
@@ -226,9 +226,47 @@ public class Map : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
         #endregion
 
+        #region Basic Targeting
+        if (targetingStyle == TargetingStyle.SINGLE || targetingStyle == TargetingStyle.MULTI ||
+            targetingStyle == TargetingStyle.SELFSINGLE)
+        {
+            PriorityQueue<TileDistancePair> processing = new PriorityQueue<TileDistancePair>();
+            
+            // Compute Adjacency List and reset all distances.
+            InitPathFinding(startTile);
+
+            attackableTiles.Add(startTile);
+
+            processing.Enqueue(new TileDistancePair(0, startTile));
+
+            // relax edges with minimum SP estimate
+            while (processing.Count() > 0)
+            {
+                TileDistancePair temp = processing.Dequeue();
+                float distanceEstimate = temp.d;
+                Tile node = temp.t;
+                if ((int) Math.Round(distanceEstimate) == node.distance)
+                {
+                    foreach (Tile neighbour in node.adjacencyList)
+                    {
+                        int newEstimate = node.distance + 1;
+
+                        if (neighbour.walkable && neighbour.distance > newEstimate && newEstimate <= attackRange)
+                        {
+                            neighbour.attackable = true;
+                            attackableTiles.Add(neighbour);
+                            neighbour.distance = newEstimate;
+                            processing.Enqueue(new TileDistancePair(newEstimate, neighbour));
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
+        
         #region Self Targeting
         if (targetingStyle == TargetingStyle.SELF || targetingStyle == TargetingStyle.SELFSINGLE)
         {
@@ -319,7 +357,7 @@ public class Map : MonoBehaviour
     // Need to write for all the targeting styles
     public bool PlayerTargetInRange(Tile startTile, float attackRange, Unit player)
     {
-        int[] hor = { -1, 0, 1, 0 };
+        /*int[] hor = { -1, 0, 1, 0 };
         int[] vert = { 0, 1, 0, -1 };
 
         int currX = startTile.gridPosition.x, currY = startTile.gridPosition.y;
@@ -351,6 +389,42 @@ public class Map : MonoBehaviour
                     else
                     {
                         passable[j] = false;
+                    }
+                }
+            }
+        }*/
+        
+        PriorityQueue<TileDistancePair> processing = new PriorityQueue<TileDistancePair>();
+            
+        // Compute Adjacency List and reset all distances.
+        InitPathFinding(startTile);
+
+        attackableTiles.Add(startTile);
+
+        processing.Enqueue(new TileDistancePair(0, startTile));
+
+        // relax edges with minimum SP estimate
+        while (processing.Count() > 0)
+        {
+            TileDistancePair temp = processing.Dequeue();
+            float distanceEstimate = temp.d;
+            Tile node = temp.t;
+            if ((int) Math.Round(distanceEstimate) == node.distance)
+            {
+                foreach (Tile neighbour in node.adjacencyList)
+                {
+                    int newEstimate = node.distance + 1;
+
+                    if (neighbour.walkable && neighbour.distance > newEstimate && newEstimate <= attackRange)
+                    {
+                        if (neighbour == player.currentTile)
+                        {
+                            return true;
+                        }
+                        neighbour.attackable = true;
+                        attackableTiles.Add(neighbour);
+                        neighbour.distance = newEstimate;
+                        processing.Enqueue(new TileDistancePair(newEstimate, neighbour));
                     }
                 }
             }
