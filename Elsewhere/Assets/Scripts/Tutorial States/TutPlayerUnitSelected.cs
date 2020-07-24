@@ -91,6 +91,13 @@ public class TutPlayerUnitSelected : PlayerUnitSelected
             turnScheduler.currUnit = switchUnit;
             turnScheduler.SetState(new TutPlayerUnitSelected(turnScheduler));
         }
+        else 
+        {
+            if (tile.selectable && currUnit.CurrState == UnitState.IDLING)
+            {
+            currUnit.GetPathToTile(tile);
+            }
+        }
         yield break;
     }
     public override IEnumerator EndTurn()

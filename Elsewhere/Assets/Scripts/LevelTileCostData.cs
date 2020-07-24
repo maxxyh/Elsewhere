@@ -25,7 +25,7 @@ public class LevelTileCostData : MonoBehaviour
 
     private Dictionary<int, Tilemap[]> reference = new Dictionary<int, Tilemap[]>();
 
-    private void Start()
+    public int GetTileCost(Vector3 position)
     {
         if (reference.Count == 0)
         {
@@ -35,10 +35,6 @@ public class LevelTileCostData : MonoBehaviour
             reference.Add(3, movementCost2);
             reference.Add(4, movementCost1);
         }
-    }
-
-    public int GetTileCost(Vector3 position)
-    {
         for (int i = 0; i < 5; i++) 
         {
             foreach (Tilemap tilemap in reference[i])

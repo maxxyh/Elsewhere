@@ -17,9 +17,11 @@ public class PlayerStartTurn : State
     }
     public override IEnumerator CheckTargeting(Tile tile)
     {
+        Debug.Log("PlayerStartTurn check targeting");
         Unit switchUnit = null;
         foreach (Unit unit in turnScheduler.currTeamQueue)
         {
+            Debug.Log($"unit currentTile is null = {unit.currentTile == null}");
             if (unit.currentTile == tile)
             {
                 switchUnit = unit;

@@ -133,6 +133,7 @@ public class TurnScheduler : StateMachine
 
     public void OnClickCheckForValidTarget(Tile tile)
     {
+        Debug.Log("Onclickcheckforvalidtarget TurnScheduler");
         StartCoroutine(State.CheckTargeting(tile));
     }
 
