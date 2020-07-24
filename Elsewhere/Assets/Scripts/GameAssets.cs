@@ -29,6 +29,8 @@ public class GameAssets : MonoBehaviour
 
     public GameObject changeSceneManagerGO;
 
+    public CommonInventory commonInventory;
+
     private void Start()
     {
         changeSceneManagerGO.SetActive(true);
