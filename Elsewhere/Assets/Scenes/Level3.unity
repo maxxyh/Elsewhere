@@ -20504,7 +20504,7 @@ MonoBehaviour:
   levelDatabase: {fileID: 11400000, guid: 3dd30ef27cb3c37438367a6d655da962, type: 2}
   pauseMenu: {fileID: 1852957681}
   _unitDatabase: {fileID: 11400000, guid: 13ef98ac7115d3e45b256d09edf634a6, type: 2}
-  levelMusic: {fileID: 8300000, guid: d36614415ca20654f8953e30b0291b38, type: 3}
+  levelMusic: {fileID: 8300000, guid: 01602d4949ad53c4c848340592f6e097, type: 3}
 --- !u!1 &1740182142
 GameObject:
   m_ObjectHideFlags: 0
