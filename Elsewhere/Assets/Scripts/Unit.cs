@@ -361,6 +361,15 @@ public class Unit : MonoBehaviour, IUnit
             unitInventory[index].Item.itemNumUses--;
             Debug.Log($"numUses after = {unitInventory[index].Item.itemNumUses}");
         }
+
+        if (unitInventory[index].Item.itemNumUses == 0)
+        {
+            if (unitInventory[index].Item is EquippableItem)
+            {
+                EquippableItem equippableItem = (EquippableItem) unitInventory[index].Item;
+                equippableItem.Unequip(this);
+            }
+        }
     }
 
     #region MOVEMENT

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AbilityWallShatter : Ability
 {
-    public AbilityWallShatter() : base("Wall Shatter", 1, 15, false, TargetingStyle.OBSTACLES, 
+    public AbilityWallShatter() : base("Wall Shatter", 1, 10, false, TargetingStyle.OBSTACLES, 
         new[] {AbilityType.BUFF})
     {
     }

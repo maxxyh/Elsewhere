@@ -85,7 +85,7 @@
     "unitClass": "Gunslinger",
     "unitLevel": 1,
     "unitExp": 0,
-    "unitAbilities": ["HealingWave", "ArcaneBoost"],
+    "unitAbilities": ["DeadlyRicochet", "ArcaneBoost"],
     "unitStats": {
       "HP": 19,
       "MANA": 30,

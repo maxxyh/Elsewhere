@@ -35,18 +35,6 @@ public class ItemChest : MonoBehaviour
     {
         inventory = GameAssets.MyInstance.commonInventory;
     }
-    /*private void Update()
-    {
-        if (isInRange)
-        {
-            if(!isEmpty)
-            {
-                inventory.AddItem(Instantiate(item));
-                isEmpty = true;
-                spriteRenderer.color = emptyColour;
-            }
-        }
-    }*/
 
     private void SetPanelPosition()
     {
@@ -74,7 +62,6 @@ public class ItemChest : MonoBehaviour
     {
         if (collision.CompareTag("player"))
         {
-            Debug.Log(item.itemName);
             if (!isEmpty)
             {
                 SetPanelPosition();
@@ -85,7 +72,7 @@ public class ItemChest : MonoBehaviour
 
     public void OnOpenButton()
     {
-        Debug.Log($"Chest empty: {isEmpty}");
+        // Debug.Log($"Chest empty: {isEmpty}");
         if (!isEmpty)
         {
             inventory.AddItem(Instantiate(item));

@@ -71,7 +71,7 @@ MonoBehaviour:
     UnitPositions: {x: -14, y: 4, z: 0}
   - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
       type: 3}
-    UnitPositions: {x: -7, y: -4, z: 0}
+    UnitPositions: {x: 21, y: -7, z: 0}
   - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
       type: 3}
     UnitPositions: {x: 8, y: -7, z: 0}

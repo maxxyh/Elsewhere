@@ -888,7 +888,7 @@ PrefabInstance:
     - target: {fileID: 7909084041370234581, guid: 65d2530f7418d8a4eaa799c851310b1a,
         type: 3}
       propertyPath: m_Text
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7909084043210369466, guid: 65d2530f7418d8a4eaa799c851310b1a,
         type: 3}
@@ -898,7 +898,7 @@ PrefabInstance:
     - target: {fileID: 7909084043210369466, guid: 65d2530f7418d8a4eaa799c851310b1a,
         type: 3}
       propertyPath: m_Text
-      value: Might of the Lucid World
+      value: Hyped Drop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65d2530f7418d8a4eaa799c851310b1a, type: 3}
@@ -1723,7 +1723,7 @@ PrefabInstance:
     - target: {fileID: 7909084041370234581, guid: 65d2530f7418d8a4eaa799c851310b1a,
         type: 3}
       propertyPath: m_Text
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7909084043210369466, guid: 65d2530f7418d8a4eaa799c851310b1a,
         type: 3}
@@ -1733,7 +1733,7 @@ PrefabInstance:
     - target: {fileID: 7909084043210369466, guid: 65d2530f7418d8a4eaa799c851310b1a,
         type: 3}
       propertyPath: m_Text
-      value: Hyped Sweet
+      value: Dagger
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65d2530f7418d8a4eaa799c851310b1a, type: 3}
