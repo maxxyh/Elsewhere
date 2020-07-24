@@ -25,5 +25,4 @@ public class ItemToolTip : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-        
 }

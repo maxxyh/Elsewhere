@@ -38,16 +38,19 @@ public class EquippableItem : Item
 
     public void Equip(Unit unit)
     {
-        if (physicalAttackBonus != 0)
-            unit.stats[StatString.PHYSICAL_DAMAGE].AddModifier(new StatModifier(physicalAttackBonus, StatModType.Flat, this));
-        if (magicalAttackBonus != 0)
-            unit.stats[StatString.MAGIC_DAMAGE].AddModifier(new StatModifier(magicalAttackBonus, StatModType.Flat, this));
+        if (itemNumUses > 0)
+        {
+            if (physicalAttackBonus != 0)
+                unit.stats[StatString.PHYSICAL_DAMAGE].AddModifier(new StatModifier(physicalAttackBonus, StatModType.Flat, this));
+            if (magicalAttackBonus != 0)
+                unit.stats[StatString.MAGIC_DAMAGE].AddModifier(new StatModifier(magicalAttackBonus, StatModType.Flat, this));
 
-        unit.stats[StatString.ATTACK_RANGE].AddModifier(new StatModifier(attackRange, StatModType.Flat, this));
-        unit.stats[StatString.CRIT_RATE].AddModifier(new StatModifier(critBonus, StatModType.Flat, this));
-        unit.stats[StatString.HIT_RATE].AddModifier(new StatModifier(hitRate, StatModType.Flat, this));
-        
-        equipped = true;
+            unit.stats[StatString.ATTACK_RANGE].AddModifier(new StatModifier(attackRange, StatModType.Flat, this));
+            unit.stats[StatString.CRIT_RATE].AddModifier(new StatModifier(critBonus, StatModType.Flat, this));
+            unit.stats[StatString.HIT_RATE].AddModifier(new StatModifier(hitRate - 30, StatModType.Flat, this));
+
+            equipped = true;
+        }
     }
 
     // prev: InBattleUnitInventoryManager
@@ -72,7 +75,7 @@ public class EquippableItem : Item
         
         AddStat(physicalAttackBonus, "Physical Attack");
         AddStat(magicalAttackBonus, "Magical Attack");
-        AddStat(hitRate, "Hit Rate");
+        AddStat(hitRate - 30, "Hit Rate");
         AddStat(critBonus, "Crit Rate");
         AddStat(attackRange, "Attack Range");
         AddStat(itemNumUses, "Durability");

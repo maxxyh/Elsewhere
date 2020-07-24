@@ -8,7 +8,7 @@
     "unitStats": {
       "HP": 25,
       "MANA": 25,
-      "PHYSICAL_DAMAGE": 13,
+      "PHYSICAL_DAMAGE": 18,
       "MAGIC_DAMAGE": 6,
       "ARMOR": 5,
       "MAGIC_RES": 2,
@@ -31,10 +31,10 @@
       "HP": 28,
       "MANA": 25,
       "PHYSICAL_DAMAGE": 11,
-      "MAGIC_DAMAGE": 6,
-      "ARMOR": 6,
-      "MAGIC_RES": 1,
-      "MOVEMENT_RANGE": 5,
+      "MAGIC_DAMAGE": 8,
+      "ARMOR": 8,
+      "MAGIC_RES": 6,
+      "MOVEMENT_RANGE": 7,
       "HIT_RATE": 0,
       "ATTACK_RANGE": 1,
       "CRIT_RATE": 25

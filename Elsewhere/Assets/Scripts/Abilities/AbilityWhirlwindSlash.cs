@@ -5,7 +5,7 @@ using UnityEngine.PlayerLoop;
 
 public class AbilityWhirlwindSlash : Ability
 {
-    public AbilityWhirlwindSlash() : base("Whirlwind Slash", 1, 4, false, TargetingStyle.RADIUS, new AbilityType[] { AbilityType.DAMAGE })
+    public AbilityWhirlwindSlash() : base("Whirlwind Slash", 1, 7, false, TargetingStyle.RADIUS, new AbilityType[] { AbilityType.DAMAGE })
     {
     }
 
