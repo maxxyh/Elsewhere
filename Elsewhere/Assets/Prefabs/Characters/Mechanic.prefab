@@ -168,12 +168,14 @@ MonoBehaviour:
   statPanel: {fileID: 0}
   majorStatPanel: {fileID: 5814373332352482315}
   spriteRenderer: {fileID: 2870922880512250332}
+  stunEffect: {fileID: 0}
+  abilityTargetUnits: []
+  abilityTargetTile: {fileID: 0}
+  attackingTargetUnit: {fileID: 0}
   unitID: 0
   characterName: 
   anim: {fileID: 6029520780938894478}
   moveSpeed: 5
-  attackingTargetUnit: {fileID: 0}
-  abilityTargetUnits: []
   map: {fileID: 0}
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
@@ -281,7 +283,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1902437181
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 1bea971dc92def04ea6a42a8a28b3ba4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -301,7 +303,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2870922880512250334}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

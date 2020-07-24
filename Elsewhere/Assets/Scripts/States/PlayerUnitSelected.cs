@@ -67,6 +67,7 @@ public class PlayerUnitSelected : State
     // used to change active player
     public override IEnumerator CheckTargeting(Tile tile)
     {
+        Debug.Log("CheckTargeting in UnitSelected");
         Unit switchUnit = null;
         foreach(Unit unit in turnScheduler.currTeamQueue)
         {
@@ -86,7 +87,14 @@ public class PlayerUnitSelected : State
             turnScheduler.currTeamQueue.Remove(switchUnit);
             turnScheduler.currUnit = switchUnit;
             turnScheduler.SetState(new PlayerUnitSelected(turnScheduler));
-        }    
+        }
+        else
+        {
+            if (tile.selectable && currUnit.CurrState == UnitState.IDLING)
+            {
+                currUnit.GetPathToTile(tile);
+            }
+        }
         yield break;
     }
 

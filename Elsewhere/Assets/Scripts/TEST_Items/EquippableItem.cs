@@ -24,7 +24,8 @@ public class EquippableItem : Item
     public ItemType weaponType;
 
     public bool equipped;
-
+    
+    
     public override Item GetCopy()
     {
         return Instantiate(this);
