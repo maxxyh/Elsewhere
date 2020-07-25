@@ -5,7 +5,6 @@ using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.XR;
 
 public class Unit : MonoBehaviour, IUnit
 {
@@ -476,23 +475,6 @@ public class Unit : MonoBehaviour, IUnit
     void SetHorizontalVelocity()
     {
         velocity = heading * moveSpeed;
-    }
-
-    // only works with character thats in the scene b4 runtime
-    // need to integrate with the turn manager
-    public void OnMouseDown()
-    {
-        if (statPanelGO != null)
-        {
-            if (!statPanelGO.activeSelf)
-            {
-                statPanelGO.SetActive(true);
-            }
-            else
-            {
-                statPanelGO.SetActive(false);
-            }
-        }
     }
 
     public void MovementAnimation()

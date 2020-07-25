@@ -51,7 +51,7 @@ namespace Tests
 
             Assert.IsTrue(unit.majorStatPanel.gameObject.activeInHierarchy);
 
-            tile.OnMouseEnter();
+            tile.MouseOver();
             
             Assert.IsTrue(unit.statPanelGO.activeInHierarchy);
 

@@ -24,7 +24,6 @@ public interface IUnit
     void MakeInactive();
     void Move();
     void MovementAnimation();
-    void OnMouseDown();
     void RemoveGrayscale();
     void ReturnToStartTile();
     void Start();

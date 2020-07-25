@@ -43,6 +43,10 @@ public class InputManager : MonoBehaviour
                 {
                     hit.collider.gameObject.GetComponent<HighlightTile>().MouseOver();
                 }
+                if (hit.collider.gameObject.CompareTag("tile"))
+                {
+                    hit.collider.gameObject.GetComponent<Tile>().MouseOver();
+                }
             }
         }
         

@@ -18,7 +18,7 @@ public interface ITile
     void CheckTile(Vector3 direction);
     void FindNeighbours(List<List<Tile>> tileList, bool includeDiagonals);
     void MouseDown();
-    void OnMouseExit();
+    void MouseExit();
     void RightClick();
     void Reset();
 }

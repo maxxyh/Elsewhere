@@ -14,7 +14,6 @@ public class PlayerAbility : State
 
     public override IEnumerator Execute()
     {
-
         List<Unit> targetUnits = turnScheduler.currUnit.abilityTargetUnits;
         map.RemoveAttackableTiles();
 

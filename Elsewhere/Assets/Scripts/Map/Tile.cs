@@ -14,6 +14,7 @@ public class Tile : MonoBehaviour, ITile
     public bool occupied { get; set; }
 
     private bool hover;
+    private int hoverInt;
 
     private Unit toDisplay;
 
@@ -32,11 +33,15 @@ public class Tile : MonoBehaviour, ITile
 
     private void Update()
     {
-        /*
-        if (hover && walkable)
+        if (hover)
         {
-            GetComponent<Renderer>().material.color = new Color(0.43f, 0.76f, 0.86f, 0.3f);
-        }*/
+            hoverInt--;
+            if (hoverInt < 0)
+            {
+                MouseExit();
+            }
+        }
+
         if (attackable)
         {
             spriteRenderer.color = new Color(0.65f, 0.17f, 0.17f, 0.3f);
@@ -168,7 +173,7 @@ public class Tile : MonoBehaviour, ITile
         }
     }
 
-    public void OnMouseEnter()
+    /*public void OnMouseEnter()
     {
         if (occupied)
         {
@@ -182,10 +187,33 @@ public class Tile : MonoBehaviour, ITile
                 toDisplay.SetStatPanelActive();
             }
         }
-    }
+    }*/
 
-    public void OnMouseExit()
+    public void MouseOver()
     {
+        hover = true;
+        hoverInt = 1;
+        if (occupied)
+        {
+            if (toDisplay == null)
+            {
+                toDisplay = GameAssets.MyInstance.turnScheduler.players.Find(x => x.currentTile == this);
+                if (toDisplay == null)
+                {
+                    toDisplay = GameAssets.MyInstance.turnScheduler.enemies.Find(x => x.currentTile == this);
+                }
+            }
+
+            if (toDisplay != null)
+            {
+                toDisplay.SetStatPanelActive();
+            }
+        }
+    }
+    
+    public void MouseExit()
+    {
+        hover = false;
         if (occupied && toDisplay != null)
         {
             toDisplay.SetStatPanelInActive();
