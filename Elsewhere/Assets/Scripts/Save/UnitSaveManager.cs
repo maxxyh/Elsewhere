@@ -18,9 +18,21 @@ public class UnitSaveManager : MonoBehaviour
     {
         // load the old database
         _saveDatabase = JsonSaveLoadIO.LoadAllUnits(UnitsSaveFileName);
-        
+
+
+
         // get old unitSaveData
-        UnitSaveData oldUnitSaveData = _saveDatabase[unit.unitID];
+        UnitSaveData oldUnitSaveData;
+        if (!_saveDatabase.ContainsKey(unit.unitID))
+        {
+            Debug.LogError("Unit not found in database. Updating with firstSave info.");
+            _saveDatabase = JsonSaveLoadIO.LoadAllUnits("firstSave");
+            oldUnitSaveData = _saveDatabase[unit.unitID];
+        }
+        else
+        {
+            oldUnitSaveData = _saveDatabase[unit.unitID];
+        }
         
         // create new unitSaveData from old unitSaveData
         var unitSaveData = new UnitSaveData(oldUnitSaveData, unit.unitItems, ConvertStatsToBaseInt(unit.stats));
@@ -86,7 +98,7 @@ public class UnitSaveManager : MonoBehaviour
 
         if (!_saveDatabase.ContainsKey(unitId))
         {
-            Debug.LogError("Unit not found in database. Updating with firstSave info.");
+            Debug.LogError($"{unitId} Unit not found in database. Updating with firstSave info.");
             _saveDatabase = JsonSaveLoadIO.LoadAllUnits("firstSave");
             saveUnit = _saveDatabase[unitId];
         }
@@ -105,7 +117,7 @@ public class UnitSaveManager : MonoBehaviour
 
         if (!_saveDatabase.ContainsKey(unitId))
         {
-            Debug.LogError("Unit not found in database. Updating with firstSave info.");
+            Debug.LogError($"{unitId} Unit not found in database. Updating with firstSave info.");
             _saveDatabase = JsonSaveLoadIO.LoadAllUnits("firstSave");
             saveUnit = _saveDatabase[unitId];
         }

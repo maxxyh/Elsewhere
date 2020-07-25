@@ -22,3 +22,9 @@ MonoBehaviour:
   - unitName: Esmeralda
     unitPrefab: {fileID: 2870922879879798622, guid: 7161820e4206e6242bfd1f897d971232,
       type: 3}
+  - unitName: Rowan
+    unitPrefab: {fileID: 6811365470129529175, guid: eeef3b27ad37cef47a4340517ea3f940,
+      type: 3}
+  - unitName: Claude
+    unitPrefab: {fileID: 2870922879879798622, guid: 8cc43db156b7cf143a55c36092c80966,
+      type: 3}
