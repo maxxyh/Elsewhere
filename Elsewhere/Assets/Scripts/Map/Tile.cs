@@ -195,7 +195,6 @@ public class Tile : MonoBehaviour, ITile
 
     public void MouseDown()
     {
-        Debug.Log("Tile Clicked");
         GameAssets.MyInstance.turnScheduler.OnClickCheckForValidTarget(this);
     }
 

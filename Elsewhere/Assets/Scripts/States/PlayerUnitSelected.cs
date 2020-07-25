@@ -67,7 +67,6 @@ public class PlayerUnitSelected : State
     // used to change active player
     public override IEnumerator CheckTargeting(Tile tile)
     {
-        Debug.Log("CheckTargeting in UnitSelected");
         Unit switchUnit = null;
         foreach(Unit unit in turnScheduler.currTeamQueue)
         {

@@ -28,7 +28,10 @@ public class SkeletonCommonInventory : MonoBehaviour
             instance = value;
         }
     }
-
+    private void OnValidate()
+    {
+        unitSaveManager = FindObjectOfType<UnitSaveManager>();
+    }
     private void Awake()
     {
         InitializeItems();

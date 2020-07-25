@@ -360,14 +360,14 @@ public class Unit : MonoBehaviour, IUnit
             Debug.Log($"numUses before = {unitInventory[index].Item.itemNumUses}");
             unitInventory[index].Item.itemNumUses--;
             Debug.Log($"numUses after = {unitInventory[index].Item.itemNumUses}");
-        }
-        
-        if (unitInventory[index].Item.itemNumUses == 0)
-        {
-            if (unitInventory[index].Item is EquippableItem)
+            
+            if (unitInventory[index].Item.itemNumUses == 0)
             {
-                EquippableItem equippableItem = (EquippableItem) unitInventory[index].Item;
-                equippableItem.Unequip(this);
+                if (unitInventory[index].Item is EquippableItem)
+                {
+                    EquippableItem equippableItem = (EquippableItem) unitInventory[index].Item;
+                    equippableItem.Unequip(this);
+                }
             }
         }
     }
