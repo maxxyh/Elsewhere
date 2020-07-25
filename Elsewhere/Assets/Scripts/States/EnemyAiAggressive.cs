@@ -19,16 +19,16 @@ public class EnemyAiAggressive : State
         Unit targetPlayer = turnScheduler.players.Find(x => x.currentTile == targetTile);
 
         // check if target tile is selectable, and also go as far from movement range as possible 
-        /*int distanceFromTarget = 0, attackRange = (int) currUnit.stats[StatString.ATTACK_RANGE].Value;
-        while (!targetTile.selectable || distanceFromTarget < attackRange)
+        int distanceFromTarget = 0, attackRange = (int) currUnit.stats[StatString.ATTACK_RANGE].Value;
+        while ((!targetTile.selectable || distanceFromTarget < attackRange) && targetTile != currUnit.currentTile)
         {
             distanceFromTarget++;
             targetTile = targetTile.parent;
-        }*/
-        while (!targetTile.selectable )
+        }
+        /*while (!targetTile.selectable )
         {
             targetTile = targetTile.parent;
-        }
+        }*/
 
         // A star movement towards the target 
         currUnit.GetPathToTile(targetTile);
