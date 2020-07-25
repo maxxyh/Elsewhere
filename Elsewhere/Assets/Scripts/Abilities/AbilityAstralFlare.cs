@@ -5,7 +5,7 @@ using UnityEngine.PlayerLoop;
 
 public class AbilityAstralFlare : Ability
 {
-    public AbilityAstralFlare() : base("Astral Flare", 3, 5, false, TargetingStyle.MULTI, new AbilityType[] { AbilityType.DEBUFF, AbilityType.DAMAGE}, 2, 4)
+    public AbilityAstralFlare() : base("Astral Flare", 3, 8, false, TargetingStyle.MULTI, new AbilityType[] { AbilityType.DEBUFF, AbilityType.DAMAGE}, 2, 4)
     {
     }
 

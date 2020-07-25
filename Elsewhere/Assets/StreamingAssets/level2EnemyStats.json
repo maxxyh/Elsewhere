@@ -13,7 +13,7 @@
       "ARMOR": 5,
       "MAGIC_RES": 2,
       "MOVEMENT_RANGE": 4,
-      "HIT_RATE": 0,
+      "HIT_RATE": 80,
       "ATTACK_RANGE": 3,
       "CRIT_RATE": 25
     },
@@ -35,7 +35,7 @@
       "ARMOR": 8,
       "MAGIC_RES": 6,
       "MOVEMENT_RANGE": 7,
-      "HIT_RATE": 0,
+      "HIT_RATE": 80,
       "ATTACK_RANGE": 1,
       "CRIT_RATE": 25
     },

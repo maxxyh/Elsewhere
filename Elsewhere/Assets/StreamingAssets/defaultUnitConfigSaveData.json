@@ -13,7 +13,7 @@
       "ARMOR": 6,
       "MAGIC_RES": 3,
       "MOVEMENT_RANGE": 6,
-      "HIT_RATE": 0,
+      "HIT_RATE": 30,
       "ATTACK_RANGE": 1,
       "CRIT_RATE": 25
     },
@@ -40,7 +40,7 @@
       "ARMOR": 3,
       "MAGIC_RES": 5,
       "MOVEMENT_RANGE": 4,
-      "HIT_RATE": 0,
+      "HIT_RATE": 30,
       "ATTACK_RANGE": 3,
       "CRIT_RATE": 25
     },
@@ -67,7 +67,7 @@
       "ARMOR": 3,
       "MAGIC_RES": 5,
       "MOVEMENT_RANGE": 4,
-      "HIT_RATE": 0,
+      "HIT_RATE": 30,
       "ATTACK_RANGE": 3,
       "CRIT_RATE": 25
     },
@@ -94,7 +94,7 @@
       "ARMOR": 6,
       "MAGIC_RES": 1,
       "MOVEMENT_RANGE": 5,
-      "HIT_RATE": 0,
+      "HIT_RATE": 30,
       "ATTACK_RANGE": 4,
       "CRIT_RATE": 25
     },
@@ -121,7 +121,7 @@
       "ARMOR": 6,
       "MAGIC_RES": 4,
       "MOVEMENT_RANGE": 5,
-      "HIT_RATE": 0,
+      "HIT_RATE": 30,
       "ATTACK_RANGE": 4,
       "CRIT_RATE": 25
     },
@@ -150,7 +150,7 @@
       "ARMOR": 5,
       "MAGIC_RES": 2,
       "MOVEMENT_RANGE": 4,
-      "HIT_RATE": 0,
+      "HIT_RATE": 80,
       "ATTACK_RANGE": 3,
       "CRIT_RATE": 25
     },
@@ -173,7 +173,7 @@
       "ARMOR": 6,
       "MAGIC_RES": 1,
       "MOVEMENT_RANGE": 5,
-      "HIT_RATE": 0,
+      "HIT_RATE": 80,
       "ATTACK_RANGE": 1,
       "CRIT_RATE": 25
     },
