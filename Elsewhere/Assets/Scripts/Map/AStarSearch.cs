@@ -53,7 +53,9 @@ public class AStarSearch
             }
         }
     }
-
+    
+    // selectable means that only selectable tiles will be added (for walking within the selectable tile zone)
+    // playerTargeting means that the only occupied tile allowed will be the goal tile (to allow targeting of units)
     public static Tile GeneratePathToNearestTarget(Map map, Tile start, List<Tile> targets, bool selectable = false, bool playerTargeting = false)
     {
         // use distance to determine closest player

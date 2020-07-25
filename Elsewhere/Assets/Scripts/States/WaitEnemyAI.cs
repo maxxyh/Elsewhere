@@ -57,7 +57,7 @@ public class WaitEnemyAI : EnemyState
 
         if (targetInRange)
         {
-            turnScheduler.SetState(new AggressiveEnemyAI(turnScheduler));
+            turnScheduler.SetState(new EnemyAiAggressive(turnScheduler));
         }
         else
         {

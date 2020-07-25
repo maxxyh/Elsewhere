@@ -2593,7 +2593,7 @@ PrefabInstance:
     - target: {fileID: 4164886101120271221, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7.8003006
+      value: -7.800293
       objectReference: {fileID: 0}
     - target: {fileID: 4164886101120271221, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
@@ -7982,6 +7982,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 522949220}
+  - component: {fileID: 522949221}
   m_Layer: 0
   m_Name: Convoy
   m_TagString: Untagged
@@ -8003,6 +8004,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &522949221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522949219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8a2d1e350b42158f0815a4924d8a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  unitSaveManager: {fileID: 1166475583}
 --- !u!1 &525078432
 GameObject:
   m_ObjectHideFlags: 0

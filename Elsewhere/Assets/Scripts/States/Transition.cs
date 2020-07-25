@@ -17,7 +17,7 @@ public class Transition : State
         // check if game has ended.
         if (turnScheduler.players.Count == 0)
         {
-            turnScheduler.SetState(new Lose(turnScheduler));
+            turnScheduler.SetState(new PlayerLose(turnScheduler));
             yield break;
         }
         else if (turnScheduler.enemies.Count == 0)
@@ -30,7 +30,7 @@ public class Transition : State
 
         if (turnScheduler.objectiveCompleted)
         {
-            turnScheduler.SetState(new Win(turnScheduler));
+            turnScheduler.SetState(new PlayerWin(turnScheduler));
             yield break;
         }
 

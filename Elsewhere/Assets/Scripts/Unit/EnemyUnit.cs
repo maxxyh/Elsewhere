@@ -17,6 +17,9 @@ public class EnemyUnit : Unit
     public float recoveryExitPercentage;
     public bool hasWaitingMode = true;
 
+    public EnemyUnit medicTarget;
+    public int distanceToMedicTarget = int.MaxValue;
+
     #endregion
 
     public bool HasWaitingMode()
@@ -59,7 +62,7 @@ public class EnemyUnit : Unit
         if (inRecoveryMode)
         {
             // check that is above recoveryExitPercentage
-            if (this.stats[StatString.HP].Value > recoveryExitPercentage * this.stats[StatString.HP].baseValue)
+            if (stats[StatString.HP].Value > recoveryExitPercentage * stats[StatString.HP].baseValue)
             {
                 inRecoveryMode = false;
             }
@@ -68,14 +71,19 @@ public class EnemyUnit : Unit
         else
         {
             // check that is below recoveryEntrancePercentage
-            if (this.stats[StatString.HP].Value < recoveryEntrancePercentage * this.stats[StatString.HP].baseValue)
+            if (stats[StatString.HP].Value < recoveryEntrancePercentage * stats[StatString.HP].baseValue)
             {
-                this.inRecoveryMode = true;
+                inRecoveryMode = true;
             }
         }
     }
 
-
+    public void ResetMedicStatus()
+    {
+        medicTarget = null;
+        distanceToMedicTarget = int.MaxValue;
+    }
+    
 
 
 

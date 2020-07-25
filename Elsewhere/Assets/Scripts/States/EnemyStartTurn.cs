@@ -70,7 +70,7 @@ public class EnemyStartTurn : EnemyState
         }
         else
         {
-            turnScheduler.SetState(new AggressiveEnemyAI(turnScheduler));
+            turnScheduler.SetState(new EnemyAiAggressive(turnScheduler));
         }
         
 

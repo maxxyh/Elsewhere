@@ -41,14 +41,14 @@ MonoBehaviour:
   - unitID: EnemyTank
     UnitPrefab: {fileID: 2897327392223700814, guid: df7846522d417a043a6c844e36c8e3f7,
       type: 3}
-    UnitPositions: {x: 6, y: -3, z: 0}
+    UnitPositions: {x: -1, y: -2, z: 0}
   crystalList:
   - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
       type: 3}
-    UnitPositions: {x: -11, y: -1, z: 0}
+    UnitPositions: {x: -6, y: -1, z: 0}
   - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
       type: 3}
-    UnitPositions: {x: 12, y: -1, z: 0}
+    UnitPositions: {x: 5, y: -3, z: 0}
   - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
       type: 3}
     UnitPositions: {x: 7, y: 2, z: 0}
