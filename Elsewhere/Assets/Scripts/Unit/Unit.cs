@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Runtime.CompilerServices;
 using Newtonsoft.Json.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Serialization;
-using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class Unit : MonoBehaviour, IUnit
 {
@@ -110,6 +107,8 @@ public class Unit : MonoBehaviour, IUnit
         Debug.Log("LEVEL UP");
         string increasedStats = "";
 
+        bool statIncreased = false;
+        
         foreach(KeyValuePair<StatString, int> entry in _characterStatGrowth)
         {
             int growthRate = entry.Value + _classStatGrowth[entry.Key];
@@ -117,13 +116,37 @@ public class Unit : MonoBehaviour, IUnit
             growthRate = growthRate - toAdd * 100;
             int random = new System.Random().Next(0, 100);
             if (random <= growthRate)
-                toAdd++;
-            
-            if (toAdd>0)
+                toAdd += new System.Random().Next(2, 4);
+
+
+            if (toAdd > 0)
+            {
                 increasedStats += $"{entry.Key} ({toAdd}), ";
+                statIncreased = true;
+            }
 
             stats[entry.Key].IncreaseBaseValue(toAdd);
         }
+    
+        // to ensure always increase stats on level up
+        if (!statIncreased)
+        {
+            List<StatString> statStrings = new List<StatString>() {
+                StatString.HP,
+                StatString.MANA,
+                StatString.PHYSICAL_DAMAGE,
+                StatString.MAGIC_DAMAGE,
+                StatString.ARMOR,
+                StatString.MAGIC_RES};
+            
+            for (int i = 0; i < 2; i++)
+            {
+                int index = new System.Random().Next(0, statStrings.Count-1);
+                int amount = new System.Random().Next(2, 4);
+                stats[statStrings[index]].IncreaseBaseValue(amount);
+            }
+        }
+        
         UpdateUI();
 
         Debug.Log($"Stats increased: {increasedStats}");

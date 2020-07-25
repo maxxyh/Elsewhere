@@ -48,7 +48,7 @@ public class Level
         }
         
         bool levelUp = false;
-        currentExperience += amount;
+        currentExperience += 3 * amount;   // TODO ACTUALLY BALANCE IT INSTEAD OF HAVING THIS MULTIPLIER
         while (currentExperience >= requiredExperience)
         {
             levelUp = true;
