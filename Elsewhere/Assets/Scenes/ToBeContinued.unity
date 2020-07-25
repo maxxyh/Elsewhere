@@ -640,10 +640,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Thank you so much for playing our game!
+  m_Text: 'Oh the truth! How expensive it might be...!
 
-    We hope you enjoyed playing
-    as much as we did developing, and we''d love to know what you think of Elsewhere!'
+    But is this all the truth
+    that lies behind Astra?
+
+    What revelation can even be more shocking?
+
+    Play
+    on, and find out about it for yourself...'
 --- !u!222 &1010864597
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1062,10 +1067,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Thank you so much for playing our game!
+  m_Text: 'Oh the truth! How expensive it might be...!
 
-    We hope you enjoyed playing
-    as much as we did developing, and we''d love to know what you think of Elsewhere!'
+    But is this all the truth
+    that lies behind Astra?
+
+    What revelation can even be more shocking?
+
+    Play
+    on, and find out about it for yourself...'
 --- !u!222 &1749529560
 CanvasRenderer:
   m_ObjectHideFlags: 0

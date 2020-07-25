@@ -21,16 +21,18 @@ public class PreBattleUnitInventoryManager : MonoBehaviour
 
     private BaseItemSlot selectedItemSlot;
 
-    private void OnValidate()
+    /*private void OnValidate()
+    {
+        
+    }*/
+
+    public void Awake()
     {
         if (itemTooltip == null)
             itemTooltip = FindObjectOfType<ItemToolTip>();
         commonInventory.SetStartingItems(unitSaveManager.LoadInventory());
-    }
 
-    public void Awake()
-    {
-        commonInventory.SetStartingItems(unitSaveManager.LoadInventory());
+        // commonInventory.SetStartingItems(unitSaveManager.LoadInventory());
 
         // Setup Events
         // Pointer Enter

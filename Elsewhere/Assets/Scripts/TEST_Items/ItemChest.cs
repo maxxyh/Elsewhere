@@ -49,7 +49,7 @@ public class ItemChest : MonoBehaviour
 
         // Convert screen position to Canvas / RectTransform space <- leave camera null if Screen Space Overlay
         RectTransformUtility.ScreenPointToLocalPointInRectangle(panelRect, screenPoint, null, out canvasPos);
-        Debug.Log(canvasPos);
+
         // Set
         openChestPanel.GetComponent<RectTransform>().localPosition = canvasPos;
     }

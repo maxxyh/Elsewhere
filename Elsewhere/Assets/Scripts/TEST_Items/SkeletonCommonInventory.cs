@@ -44,6 +44,8 @@ public class SkeletonCommonInventory : MonoBehaviour
 
     private void InitializeItems()
     {
+        Debug.Log($"items list null: {items == null}");
+        Debug.Log($"unitSaveManager is null: {unitSaveManager == null}");
         items = unitSaveManager.LoadInventory();
     }
 

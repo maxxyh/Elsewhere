@@ -234,7 +234,9 @@ public class Unit : MonoBehaviour, IUnit
             return unitInventory.FindIndex(x => x == equippedItemSlotData);
         }
         else
+        {
             return -1;
+        }
     }
     
         
@@ -355,6 +357,7 @@ public class Unit : MonoBehaviour, IUnit
     public void UseWeapon()
     {
         int index = FindEquippedItemIndex(unitInventory);
+        Debug.Log($"index: {index}");
         if (index != -1)
         {
             Debug.Log($"numUses before = {unitInventory[index].Item.itemNumUses}");

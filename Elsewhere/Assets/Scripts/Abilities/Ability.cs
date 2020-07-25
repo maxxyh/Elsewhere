@@ -38,7 +38,6 @@ public abstract class Ability
 
     public void UpdateStats(Unit initiator, List<Unit> targets)
     {
-        Debug.Log("in ability base");
         foreach (Unit unit in targets)
         {
             unit.UpdateUI();

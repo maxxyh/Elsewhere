@@ -45,6 +45,9 @@ EditorBuildSettings:
     path: Assets/Scenes/NavigationMap.unity
     guid: b625cde5ebe06194abab52054320cced
   - enabled: 1
+    path: Assets/Scenes/ToBeContinued.unity
+    guid: a0e64518b07245249af0b0b438476b02
+  - enabled: 1
     path: Assets/Scenes/Post Level/PostTutorial.unity
     guid: 5df1d850156e301429cce3d79d5cd8b3
   - enabled: 1

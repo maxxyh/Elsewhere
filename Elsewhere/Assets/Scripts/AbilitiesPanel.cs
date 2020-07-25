@@ -23,7 +23,6 @@ public class AbilitiesPanel : MonoBehaviour
     
     public void OnSkill1Button()
     {
-        Debug.Log("skill1 pressed");
 
         Ability ability = turnScheduler.currUnit.abilities[0];
         CheckEnoughMana(turnScheduler.currUnit, ability);
@@ -36,7 +35,6 @@ public class AbilitiesPanel : MonoBehaviour
 
     public void OnSkill2Button()
     {
-        Debug.Log("skill2 pressed");
 
         Ability ability = turnScheduler.currUnit.abilities[1];
         CheckEnoughMana(turnScheduler.currUnit, ability);

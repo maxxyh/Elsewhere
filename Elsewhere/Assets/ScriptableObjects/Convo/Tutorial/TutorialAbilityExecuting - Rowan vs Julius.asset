@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe5a467d3df7db49b08225a52f38bb1, type: 3}
   m_Name: TutorialAbilityExecuting - Rowan vs Julius
   m_EditorClassIdentifier: 
-  speakers:
-  - {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
-  - {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: Anyways, see those blue tiles? That's your ability range!
@@ -24,5 +21,5 @@ MonoBehaviour:
     text: The best part is, you can change your mind any time! Just click "No" instead!
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: See? I know the developers are so considerate!
-  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+  - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
     text: How can you not be tired of talking, Rowan...

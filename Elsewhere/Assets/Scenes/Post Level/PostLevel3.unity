@@ -831,7 +831,7 @@ MonoBehaviour:
   conversation: {fileID: 11400000, guid: 3d2a9bc13367e764eb02edc7987faa11, type: 2}
   speakerUI: {fileID: 538558415}
   endConvo: 0
-  nextScene: 
+  nextScene: ToBeContinued
 --- !u!114 &1048612900
 MonoBehaviour:
   m_ObjectHideFlags: 0
