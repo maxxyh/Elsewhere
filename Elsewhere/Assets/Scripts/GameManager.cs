@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public List<PlayerUnit> players = new List<PlayerUnit>();
     public List<EnemyUnit> enemies = new List<EnemyUnit>();
     public InitialUnitInfo initialUnitInfo;
+    public bool enemiesRecoveryMode;
+    public bool enemiesWaitingMode;
     
     [SerializeField] UnitSaveManager unitSaveManager;
     [SerializeField] private LevelDatabase levelDatabase;
@@ -25,8 +27,8 @@ public class GameManager : MonoBehaviour
 
     [JsonConverter(typeof(StringEnumConverter))]
     //private Dictionary<string, Dictionary<StatString, string>> unitStatConfig;
-    private JObject _unitStatConfig;
-    private string _unitStatConfigPath = Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json";
+    /*private JObject _unitStatConfig;
+    private string _unitStatConfigPath = Application.streamingAssetsPath + "/characterConfigEquipmentSimulated.json";*/
     private JObject _classStatGrowthConfig;
     private string _classStatGrowthConfigPath = Application.streamingAssetsPath + "/classStatGrowthConfig.json";
     private JObject _characterStatGrowthConfig;
@@ -89,9 +91,6 @@ public class GameManager : MonoBehaviour
         UnitInfo[] enemyInfo = initialUnitInfo.enemyList;
         CrystalInfo[] crystalInfo = initialUnitInfo.crystalList;
 
-        // enemy heal-testing abilities
-        List<Ability> AbilitiesHarvesterGunslinger = new List<Ability>() { new AbilityHealingWave(), new AbilityDoubleHit() };
-       
         // PLAYERS
         // updating player units according to selected units 
         List<string> selectedUnitIds = StaticData.SelectedUnits;
@@ -132,6 +131,7 @@ public class GameManager : MonoBehaviour
             Dictionary<StatString, int> characterStatGrowth = _characterStatGrowthConfig[unitId].ToObject<Dictionary<StatString,int>>();
             enemy.CreateUnit(unitLoadData, _abilityConfig, classStatGrowth, characterStatGrowth);
             enemy.AssignMap(map);
+            enemy.AssignWaitAndRecovery(enemiesWaitingMode, enemiesRecoveryMode);
             enemy.UpdateUI();
             enemies.Add(enemy);
         }

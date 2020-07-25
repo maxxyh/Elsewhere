@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-
+using System.Linq;
+using UnityEngine;
 
 /** responsibilities - mainly for recovery
  * iterate through all enemies and check for recovery, then assign medics
@@ -11,38 +12,38 @@ public class EnemyAiManager
     public List<EnemyUnit> enemies;
     public Map map;
     public List<EnemyUnit> medics;
-    
+
     // TODO can also do the assignment of modes for each enemyUnit
     // Must be called only after all the enemies have been created 
-    public EnemyAiManager(TurnScheduler turnScheduler)
+    public EnemyAiManager(List<PlayerUnit> players, List<EnemyUnit> enemies, Map map)
     {
-        players = turnScheduler.players;
-        enemies = turnScheduler.enemies;
-        map = turnScheduler.map;
+        this.players = players;
+        this.enemies = enemies;
+        this.map = map;
         medics = enemies.FindAll(unit => unit.teamHealingAbilities.Count > 0);
     }
 
-    private void UpdateGameState(TurnScheduler turnScheduler)
+    private void UpdateGameState(List<PlayerUnit> players, List<EnemyUnit> enemies, Map map)
     {
-        players = turnScheduler.players;
-        enemies = turnScheduler.enemies;
-        map = turnScheduler.map;
+        this.players = players;
+        this.enemies = enemies;
+        this.map = map;
+        medics = enemies.FindAll(unit => unit.teamHealingAbilities.Count > 0);
     }
     
     // decide order of movement
     // decide who is in recovery mode
     // decide who is going to heal those in recovery mode
-    public void StartTurn(TurnScheduler turnScheduler)
+    public LinkedList<Unit> StartTurn(List<PlayerUnit> players, List<EnemyUnit> enemies, Map map, LinkedList<Unit> currTeamQueue)
     {
-        UpdateGameState(turnScheduler);
+        UpdateGameState(players, enemies, map);
 
         List<EnemyUnit> unitsInRecoveryMode = new List<EnemyUnit>();
 
         // Assign recovery mode
         foreach (EnemyUnit enemyUnit in enemies)
         {
-            enemyUnit.CheckIfRecoveryMode();
-            if (enemyUnit.inRecoveryMode && enemyUnit.selfHealingAbilities.Count == 0)
+            if (enemyUnit.IsRecoveryMode() && enemyUnit.selfHealingAbilities.Count == 0)
             {
                 unitsInRecoveryMode.Add(enemyUnit);
             }
@@ -53,13 +54,14 @@ public class EnemyAiManager
         medics.ForEach(unit => unit.ResetMedicStatus());
 
         // Assign targets to medics = will keep running as long as there are there are both unassignedHurtUnits and unassignedMedics
-        while (remainingHurtUnits.Count > 0 && unassignedMedics.Count > 0)
+        // TODO WRONG PERSON BEING ASSIGNED
+        while (unitsInRecoveryMode.Count > 0 && unassignedMedics.Count > 0)
         {
             EnemyUnit currMedic = unassignedMedics.Dequeue();
             bool foundTarget = false;
             List<EnemyUnit> remainingHurtUnitsToSearch = new List<EnemyUnit>(unitsInRecoveryMode);
             
-            while (!foundTarget)
+            while (!foundTarget && remainingHurtUnitsToSearch.Count > 0)
             {
                 // Find closest target
                 Tile targetTile = AStarSearch.GeneratePathToNearestTarget(map, currMedic.currentTile,
@@ -74,6 +76,7 @@ public class EnemyAiManager
                     {
                         currMedic.medicTarget = medicTarget;
                         currMedic.distanceToMedicTarget = targetTile.distance;
+                        oldMedic.ResetMedicStatus();
                         unassignedMedics.Enqueue(oldMedic);
                         foundTarget = true;
                     }
@@ -94,13 +97,15 @@ public class EnemyAiManager
             }
         }
         
-        
+        LinkedList<Unit> updatedCurrTeamQueue = new LinkedList<Unit>(currTeamQueue);
         // Reorder the queue: hurt people first, then medics
         foreach (Unit hurtUnit in unitsInRecoveryMode.FindAll(unit => !remainingHurtUnits.Contains(unit)))
         {
-            turnScheduler.currTeamQueue.Remove(hurtUnit);
-            turnScheduler.currTeamQueue.AddFirst(hurtUnit);
+            updatedCurrTeamQueue.Remove(hurtUnit);
+            updatedCurrTeamQueue.AddFirst(hurtUnit);
         }
+
+        return updatedCurrTeamQueue;
     }
 
 }

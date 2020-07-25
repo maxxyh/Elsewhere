@@ -20,7 +20,6 @@ public class EnemyAiRecovery : EnemyState
 
     public override IEnumerator Execute()
     {
-
         // if can self heal
         if (enemyUnit.CanSelfHeal())
         {
@@ -95,8 +94,9 @@ public class EnemyAiRecovery : EnemyState
 
 
                 // loop through all the healers and players and rank heuristic 
-                foreach (EnemyUnit healer in healers)
+                for (int i = 0; i < healers.Count; i++)
                 {
+                    EnemyUnit healer = healers[i];
                     AStarSearch.GeneratePath(map, enemyUnit.currentTile, healer.currentTile, false, true);
                     allyDistances.Add(healer.currentTile.distance);
 
@@ -116,7 +116,11 @@ public class EnemyAiRecovery : EnemyState
                     foreach (Unit player in players)
                     {
                         AStarSearch.GeneratePath(map, player.currentTile, moveTo, false, true);
-                        minPlayerDistance = Math.Min(minPlayerDistance, (int)(moveTo.distance - player.stats[StatString.MOVEMENT_RANGE].Value));
+                        var playerEffectiveAttackRange = player.stats[StatString.ATTACK_RANGE].Value +
+                                                   player.stats[StatString.MOVEMENT_RANGE].Value;
+                        int currPlayerDistance = (int) (moveTo.distance - playerEffectiveAttackRange);
+                        currPlayerDistance = currPlayerDistance < 1 ? 1 : currPlayerDistance;
+                        minPlayerDistance = Math.Min(minPlayerDistance, currPlayerDistance);
                     }
                     minPlayerDistances.Add(1.0f / minPlayerDistance);
                 }
@@ -145,7 +149,7 @@ public class EnemyAiRecovery : EnemyState
 
                 AStarSearch.GeneratePath(map, enemyUnit.currentTile, targetTile, false, true);
 
-                map.FindSelectableTiles(enemyUnit.currentTile, enemyUnit.stats[StatString.MOVEMENT_RANGE].Value);
+                map.FindSelectableTiles(currUnit.currentTile, enemyUnit.stats[StatString.MOVEMENT_RANGE].Value);
 
                 yield return new WaitForSecondsRealtime(0.5f);
 
@@ -159,7 +163,7 @@ public class EnemyAiRecovery : EnemyState
                 {
                     targetTile = targetTile.parent;
                 }
-                enemyUnit.GetPathToTile(targetTile);
+                currUnit.GetPathToTile(targetTile);
 
                 yield return new WaitUntil(() => currUnit.CurrState == UnitState.IDLING);
 

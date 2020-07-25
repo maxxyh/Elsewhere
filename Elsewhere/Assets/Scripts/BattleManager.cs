@@ -1,6 +1,5 @@
-﻿using Boo.Lang;
-using System;
-using System.Threading;
+﻿using System;
+using System.Collections.Generic;
 
 public class BattleManager
 {

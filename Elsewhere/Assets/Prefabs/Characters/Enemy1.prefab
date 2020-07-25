@@ -85,22 +85,25 @@ MonoBehaviour:
   majorStatPanel: {fileID: 7283061722249686676}
   spriteRenderer: {fileID: 347565865485393676}
   stunEffect: {fileID: 1337731829093619407}
+  abilityTargetUnits: []
+  abilityTargetTile: {fileID: 0}
+  attackingTargetUnit: {fileID: 0}
   unitID: 0
   characterName: 
   anim: {fileID: 197015750048725509}
-  moveSpeed: 5
-  attackingTargetUnit: {fileID: 0}
-  abilityTargetUnits: []
+  moveSpeed: 7
   map: {fileID: 0}
   currentTile: {fileID: 0}
   startTile: {fileID: 0}
   sparkle: {fileID: 1706582832302019884}
   equippedWeaponIndex: -1
   closeUpImage: {fileID: 21300000, guid: 67666a4a5e974ef45972b8bf564b7fc3, type: 3}
-  inRecoveryMode: 0
   recoveryEntrancePercentage: 0
   recoveryExitPercentage: 0
-  hasWaitingMode: 1
+  hasWaitingMode: 0
+  hasRecoveryMode: 0
+  medicTarget: {fileID: 0}
+  distanceToMedicTarget: 2147483647
 --- !u!70 &5529168833830160356
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

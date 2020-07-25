@@ -11,6 +11,7 @@ using UnityEngine.Serialization;
 public class TurnScheduler : StateMachine
 {
     #region Fields and References
+    public EnemyAiManager enemyAiManager;
     public List<PlayerUnit> deadPlayers = new List<PlayerUnit>();
     public List<PlayerUnit> players;
     public List<EnemyUnit> enemies;
@@ -82,7 +83,8 @@ public class TurnScheduler : StateMachine
         {
             currTurn = Team.ENEMY;
             SetState(new Transition(this));
-        }        
+        }
+        enemyAiManager = new EnemyAiManager(players, enemies, map);
     }
 
     public void SetSaveEvent(Action<List<PlayerUnit>> OnSaveEvent)

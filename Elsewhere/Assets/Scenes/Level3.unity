@@ -20563,6 +20563,8 @@ MonoBehaviour:
   players: []
   enemies: []
   initialUnitInfo: {fileID: 11400000, guid: febcbe515f67aac479d4a7ce8eff0529, type: 2}
+  enemiesRecoveryMode: 1
+  enemiesWaitingMode: 1
   unitSaveManager: {fileID: 71057114}
   levelDatabase: {fileID: 11400000, guid: 3dd30ef27cb3c37438367a6d655da962, type: 2}
   pauseMenu: {fileID: 1852957681}

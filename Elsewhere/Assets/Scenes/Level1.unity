@@ -2593,7 +2593,7 @@ PrefabInstance:
     - target: {fileID: 4164886101120271221, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7.800293
+      value: -7.8003006
       objectReference: {fileID: 0}
     - target: {fileID: 4164886101120271221, guid: 5323404ab06173e4fba6ab8a4d28f7ae,
         type: 3}
@@ -12902,6 +12902,8 @@ MonoBehaviour:
   players: []
   enemies: []
   initialUnitInfo: {fileID: 11400000, guid: 8380b358f79bfa24cb646ddb51a177f1, type: 2}
+  enemiesRecoveryMode: 0
+  enemiesWaitingMode: 1
   unitSaveManager: {fileID: 1166475583}
   levelDatabase: {fileID: 11400000, guid: 3dd30ef27cb3c37438367a6d655da962, type: 2}
   pauseMenu: {fileID: 744788466}

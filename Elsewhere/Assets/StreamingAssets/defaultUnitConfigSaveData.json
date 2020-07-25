@@ -85,7 +85,7 @@
     "unitClass": "Gunslinger",
     "unitLevel": 1,
     "unitExp": 0,
-    "unitAbilities": ["DeadlyRicochet", "ArcaneBoost"],
+    "unitAbilities": ["DeadlyRicochet", "FinalHour"],
     "unitStats": {
       "HP": 19,
       "MANA": 30,

@@ -10,7 +10,7 @@ public class EnemyAiMedic : EnemyState
     {
     }
 
-    // try to heal the person, but if too far, screw it go for aggressive instead
+    // try to heal the person, but if too far, screw it go for wait instead
     public override IEnumerator Execute()
     {
         map.FindSelectableTiles(currUnit.currentTile, currUnit.stats[StatString.MOVEMENT_RANGE].Value);
@@ -23,13 +23,21 @@ public class EnemyAiMedic : EnemyState
         
         // check if target tile is selectable, and also go as far from movement range as possible.
         int distanceFromTarget = 0, minHealingRange = (int) enemyUnit.teamHealingAbilities.Min(ability => ability.attackRange);
-        while (!targetTile.selectable || distanceFromTarget < minHealingRange)
+        while (!targetTile.selectable || distanceFromTarget < minHealingRange && targetTile != currUnit.currentTile)
         {
             distanceFromTarget++;
             targetTile = targetTile.parent;
         }
 
+        // if cannot reach in 2 turns, screw it change to Wait()
         int maxHealingRange = (int) enemyUnit.teamHealingAbilities.Max(ability => ability.attackRange);
+        var maxPermissibleRange = (int)
+            (currUnit.stats[StatString.MOVEMENT_RANGE].Value +
+             enemyUnit.medicTarget.stats[StatString.MOVEMENT_RANGE].Value) * 2 + maxHealingRange;
+        if (targetTile.distance > maxPermissibleRange)
+        {
+            turnScheduler.SetState(new EnemyAiWait(turnScheduler));
+        }
 
         // A star movement towards the target 
         currUnit.GetPathToTile(targetTile);
@@ -51,7 +59,7 @@ public class EnemyAiMedic : EnemyState
         
         if (!canHeal)
         {
-            turnScheduler.SetState(new WaitEnemyAI(turnScheduler));
+            turnScheduler.SetState(new EnemyAiWait(turnScheduler));
         }
     }
 }

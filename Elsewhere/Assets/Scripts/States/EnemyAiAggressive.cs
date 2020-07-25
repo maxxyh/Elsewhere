@@ -25,10 +25,6 @@ public class EnemyAiAggressive : State
             distanceFromTarget++;
             targetTile = targetTile.parent;
         }
-        /*while (!targetTile.selectable )
-        {
-            targetTile = targetTile.parent;
-        }*/
 
         // A star movement towards the target 
         currUnit.GetPathToTile(targetTile);
