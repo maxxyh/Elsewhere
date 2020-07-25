@@ -82,12 +82,16 @@ public class UnitSaveManager : MonoBehaviour
         // minor difference for loading enemy units
         _saveDatabase = enemy ? JsonSaveLoadIO.LoadAllEnemyUnits(filename) : JsonSaveLoadIO.LoadAllUnits(filename);    
         
-        UnitSaveData saveUnit = _saveDatabase[unitId];
+        UnitSaveData saveUnit;
 
-        if (saveUnit == null)
+        if (!_saveDatabase.ContainsKey(unitId))
         {
             Debug.LogError("Unit not found in database. Updating with firstSave info.");
             _saveDatabase = JsonSaveLoadIO.LoadAllUnits("firstSave");
+            saveUnit = _saveDatabase[unitId];
+        }
+        else
+        {
             saveUnit = _saveDatabase[unitId];
         }
         
@@ -97,12 +101,16 @@ public class UnitSaveManager : MonoBehaviour
     public UnitData LoadUnitData(string unitId)
     {
         _saveDatabase = JsonSaveLoadIO.LoadAllUnits(UnitsSaveFileName);
-        UnitSaveData saveUnit = _saveDatabase[unitId];
+        UnitSaveData saveUnit;
 
-        if (saveUnit == null)
+        if (!_saveDatabase.ContainsKey(unitId))
         {
             Debug.LogError("Unit not found in database. Updating with firstSave info.");
             _saveDatabase = JsonSaveLoadIO.LoadAllUnits("firstSave");
+            saveUnit = _saveDatabase[unitId];
+        }
+        else
+        {
             saveUnit = _saveDatabase[unitId];
         }
 
