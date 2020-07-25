@@ -14,7 +14,8 @@ public static class StaticData
         {"IonicStrike", new AbilityIonicStrike()},
         {"WallShatter", new AbilityWallShatter()},
         {"DeadlyRicochet", new AbilityDeadlyRicochet()},
-        {"FinalHour", new AbilityFinalHour()}
+        {"FinalHour", new AbilityFinalHour()},
+        {"BloodShot", new AbilityBloodShot()}
     };
 
     public static Dictionary<string, Ability> AbilityReference

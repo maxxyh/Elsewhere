@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using System;
+using System.Linq;
 
 public class PlayerAbility : State
 {
@@ -28,6 +29,13 @@ public class PlayerAbility : State
         else
         {
             yield return turnScheduler.StartCoroutine(_ability.Execute(turnScheduler.currUnit, targetUnits));    
+        }
+
+        if (_ability.abilityTypes.Contains(AbilityType.DAMAGE) ||
+            _ability.abilityTypes.Contains(AbilityType.HEAL_SELF) ||
+            _ability.abilityTypes.Contains(AbilityType.HEAL_TEAM))
+        {
+            currUnit.UseWeapon();
         }
         
         int exp = 0;

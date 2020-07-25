@@ -2,7 +2,7 @@
   "EnemyGunslinger": {
     "unitName": "HazeBringer",
     "unitClass": "Gunslinger",
-    "unitLevel": 1,
+    "unitLevel": 3,
     "unitExp": 0,
     "unitAbilities": [],
     "unitStats": {
@@ -24,7 +24,7 @@
   "EnemyTank": {
     "unitName": "HazeBringer",
     "unitClass": "Tank",
-    "unitLevel": 1,
+    "unitLevel": 3,
     "unitExp": 0,
     "unitAbilities": [],
     "unitStats": {

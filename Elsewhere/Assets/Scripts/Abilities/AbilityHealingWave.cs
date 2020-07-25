@@ -12,7 +12,7 @@ public class AbilityHealingWave : Ability
     {
         foreach(Unit target in targets)
         {
-            int healingAmount = 10;
+            int healingAmount = Mathf.CeilToInt(0.9f * initiator.stats[StatString.MAGIC_DAMAGE].Value);
             target.stats[StatString.HP].AddModifier(new StatModifier(healingAmount, StatModType.Flat));
             DamagePopUp.Create(target.transform.position, string.Format("+ {0} HP", healingAmount), PopupType.HEAL);
         }

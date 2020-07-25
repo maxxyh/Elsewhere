@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1835865638325092839}
   - component: {fileID: 5529168833830160356}
   m_Layer: 0
-  m_Name: Enemy3
+  m_Name: EnemyHealer
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,8 +191,9 @@ SpriteRenderer:
   m_SortingLayerID: -1902437181
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 64a8affa39c984a4c8be52fb2893396c, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.6524255, a: 1}
+  m_Sprite: {fileID: 3328914537634941813, guid: 91017cb5a71d10747975baf17f0552e1,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

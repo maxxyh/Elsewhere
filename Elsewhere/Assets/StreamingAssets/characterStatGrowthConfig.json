@@ -63,7 +63,7 @@
         "ARMOR": 30,
         "MAGIC_RES": 40
     },
-    "EnemySage" : {
+    "EnemyHealer" : {
         "HP": 40,
         "MANA": 25,
         "PHYSICAL_DAMAGE": 25,

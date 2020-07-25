@@ -2,9 +2,9 @@
   "EnemyGunslinger": {
     "unitName": "HazeBringer",
     "unitClass": "Gunslinger",
-    "unitLevel": 1,
+    "unitLevel": 8,
     "unitExp": 0,
-    "unitAbilities": ["HealingWave"],
+    "unitAbilities": [],
     "unitStats": {
       "HP": 28,
       "MANA": 25,
@@ -21,10 +21,32 @@
       "savedSlots" : [ ]
     }
   },
+  "EnemyHealer": {
+    "unitName": "HazeBringer",
+    "unitClass": "Healer",
+    "unitLevel": 8,
+    "unitExp": 0,
+    "unitAbilities": ["BloodShot"],
+    "unitStats": {
+      "HP": 24,
+      "MANA": 20,
+      "PHYSICAL_DAMAGE": 8,
+      "MAGIC_DAMAGE": 16,
+      "ARMOR": 3,
+      "MAGIC_RES": 5,
+      "MOVEMENT_RANGE": 4,
+      "HIT_RATE": 80,
+      "ATTACK_RANGE": 3,
+      "CRIT_RATE": 25
+    },
+    "unitInventory" : {
+      "savedSlots" : [ ]
+    }
+  },
   "EnemyTank": {
     "unitName": "HazeBringer",
     "unitClass": "Tank",
-    "unitLevel": 1,
+    "unitLevel": 8,
     "unitExp": 0,
     "unitAbilities": [],
     "unitStats": {

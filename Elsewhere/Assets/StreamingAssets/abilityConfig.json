@@ -16,7 +16,7 @@
     "name": "HP Reaver"
   },
   "HealingWave": {
-    "description": "Heals 30HP for a single teammate (including self) within range of 3",
+    "description": "Single target heal with 3 tile range. Heals a single teammate (including self) for 1.5x caster's magic damage",
     "name": "Healing Wave"
   },
   "ArcaneBoost": {
@@ -42,5 +42,9 @@
   "IonicStrike": {
     "description": "Single target attack with 3 tile range. Deals x0.8 physical damage and has a 60% chance of a 2-turn stun",
     "name": "Ionic Strike"
+  },
+  "BloodShot": {
+    "description": "Single target heal with 3 tile range. Heals a single teammate (including self) for 1.5x caster's magic damage",
+    "name": "Blood Shot"
   }
 }
