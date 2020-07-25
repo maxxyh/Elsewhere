@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Level 4 Initial Info
   m_EditorClassIdentifier: 
   playerList:
-  - unitID: Julius
-    UnitPrefab: {fileID: 2870922879879798622, guid: ba5383cf5522ac74ea9a4336af10bc66,
-      type: 3}
-    UnitPositions: {x: -16, y: -5, z: 0}
   - unitID: Esmeralda
     UnitPrefab: {fileID: 2870922879879798622, guid: 7161820e4206e6242bfd1f897d971232,
+      type: 3}
+    UnitPositions: {x: -16, y: -5, z: 0}
+  - unitID: Claude
+    UnitPrefab: {fileID: 2870922879879798622, guid: 8cc43db156b7cf143a55c36092c80966,
       type: 3}
     UnitPositions: {x: -16, y: -3, z: 0}
   - unitID: Kelda
@@ -37,7 +37,7 @@ MonoBehaviour:
   - unitID: EnemyGunslinger
     UnitPrefab: {fileID: 2897327392223700814, guid: f1733fd177a20ad47953a5bcd12ed595,
       type: 3}
-    UnitPositions: {x: -5, y: -5, z: 0}
+    UnitPositions: {x: -11, y: -2, z: 0}
   - unitID: EnemyTank
     UnitPrefab: {fileID: 2897327392223700814, guid: 3c886c608c6d84544a1df9dd067d48cc,
       type: 3}
@@ -45,7 +45,7 @@ MonoBehaviour:
   - unitID: EnemyGunslinger
     UnitPrefab: {fileID: 2897327392223700814, guid: f1733fd177a20ad47953a5bcd12ed595,
       type: 3}
-    UnitPositions: {x: 1, y: -7, z: 0}
+    UnitPositions: {x: 10, y: -4, z: 0}
   - unitID: EnemyTank
     UnitPrefab: {fileID: 2897327392223700814, guid: 3c886c608c6d84544a1df9dd067d48cc,
       type: 3}
