@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AbilityFinalHour : Ability
 {
-    public AbilityFinalHour() : base("Final Hour", 10, 15, false, TargetingStyle.SINGLE, new [] {AbilityType.DAMAGE})
+    public AbilityFinalHour() : base("Final Hour", 10, 8, false, TargetingStyle.SINGLE, new [] {AbilityType.DAMAGE})
     {}
 
     public override IEnumerator Execute(Unit initiator, List<Unit> targets)

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PanelManagerStandalone : MonoBehaviour
 {
@@ -54,7 +55,14 @@ public class PanelManagerStandalone : MonoBehaviour
             _scenePanels[i].SetActive(false);
             if (i+1 != _numScenes) yield return changeSceneManager.CrossFade();
         }
-        changeSceneManager.OnlickChangeSceneButton("NavigationMap");
+        if (SceneManager.GetActiveScene().name != "PostLevel3")
+        {
+            changeSceneManager.OnlickChangeSceneButton("NavigationMap");
+        }
+        else
+        {
+            changeSceneManager.OnlickChangeSceneButton("ToBeContinued");
+        }
     }
 
     private IEnumerator Flashbacks()

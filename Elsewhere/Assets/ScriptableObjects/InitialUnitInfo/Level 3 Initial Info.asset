@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: Level 3 Initial Info
   m_EditorClassIdentifier: 
   playerList:
-  - unitID: Julius
-    UnitPrefab: {fileID: 2870922879879798622, guid: ba5383cf5522ac74ea9a4336af10bc66,
+  - unitID: Rowan
+    UnitPrefab: {fileID: 6811365470129529175, guid: eeef3b27ad37cef47a4340517ea3f940,
       type: 3}
     UnitPositions: {x: 18, y: -1, z: 0}
-  - unitID: Esmeralda
-    UnitPrefab: {fileID: 2870922879879798622, guid: 7161820e4206e6242bfd1f897d971232,
+  - unitID: Claude
+    UnitPrefab: {fileID: 2870922879879798622, guid: 8cc43db156b7cf143a55c36092c80966,
       type: 3}
     UnitPositions: {x: 18, y: -3, z: 0}
   - unitID: Kelda
     UnitPrefab: {fileID: 2870922879879798622, guid: 65dccee9e9c20294292c3317e88ecf9f,
       type: 3}
-    UnitPositions: {x: -15, y: -8, z: 0}
-  - unitID: Rowan
-    UnitPrefab: {fileID: 6811365470129529175, guid: eeef3b27ad37cef47a4340517ea3f940,
+    UnitPositions: {x: 3, y: -9, z: 0}
+  - unitID: Julius
+    UnitPrefab: {fileID: 2870922879879798622, guid: ba5383cf5522ac74ea9a4336af10bc66,
       type: 3}
-    UnitPositions: {x: -15, y: -6, z: 0}
+    UnitPositions: {x: 2, y: -9, z: 0}
   enemyList:
   - unitID: EnemyTank
     UnitPrefab: {fileID: 2897327392223700814, guid: f725228dc9a9a2f478f83c2e63b2f871,
@@ -68,7 +68,7 @@ MonoBehaviour:
     UnitPositions: {x: 11, y: -8, z: 0}
   - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
       type: 3}
-    UnitPositions: {x: -12, y: -6, z: 0}
+    UnitPositions: {x: 1, y: -9, z: 0}
   - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
       type: 3}
     UnitPositions: {x: 9, y: 7, z: 0}

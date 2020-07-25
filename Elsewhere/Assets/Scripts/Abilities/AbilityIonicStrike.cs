@@ -5,7 +5,7 @@ using Random = System.Random;
 
 public class AbilityIonicStrike : Ability
 {
-    public AbilityIonicStrike() : base("Ionic Strike", 3, 10, false, TargetingStyle.SINGLE, new[] {AbilityType.DAMAGE},
+    public AbilityIonicStrike() : base("Ionic Strike", 3, 5, false, TargetingStyle.SINGLE, new[] {AbilityType.DAMAGE},
         0, 2)
     {
         

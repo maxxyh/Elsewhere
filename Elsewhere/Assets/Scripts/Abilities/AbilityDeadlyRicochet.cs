@@ -4,7 +4,7 @@ using TMPro;
 
 public class AbilityDeadlyRicochet : Ability
 {
-    public AbilityDeadlyRicochet() : base("Deadly Ricochet", 4, 5, false,
+    public AbilityDeadlyRicochet() : base("Deadly Ricochet", 4, 3, false,
         TargetingStyle.MULTI, new AbilityType[] {AbilityType.DAMAGE}, 2, 1)
     {
     }

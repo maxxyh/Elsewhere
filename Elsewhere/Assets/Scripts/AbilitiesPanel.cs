@@ -25,24 +25,30 @@ public class AbilitiesPanel : MonoBehaviour
     {
 
         Ability ability = turnScheduler.currUnit.abilities[0];
-        CheckEnoughMana(turnScheduler.currUnit, ability);
-
+        if (CheckEnoughMana(turnScheduler.currUnit, ability))
+        {
+            turnScheduler.OnAbilityButton(ability);
+        }
+        else
+        {
+            Debug.LogError("Not enough mana");
+        }
         //abilitiesPanel.SetActive(false);
         //undoPanel.SetActive(true);
-
-        turnScheduler.OnAbilityButton(ability);
     }
 
     public void OnSkill2Button()
     {
 
         Ability ability = turnScheduler.currUnit.abilities[1];
-        CheckEnoughMana(turnScheduler.currUnit, ability);
-
-        //abilitiesPanel.SetActive(false);
-        //undoPanel.SetActive(true);
-
-        turnScheduler.OnAbilityButton(ability);
+        if (CheckEnoughMana(turnScheduler.currUnit, ability))
+        {
+            turnScheduler.OnAbilityButton(ability);
+        }
+        else
+        {
+            Debug.LogError("Not enough mana");
+        }
     }
     
 
