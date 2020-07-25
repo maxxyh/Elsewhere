@@ -20,12 +20,15 @@ public class EnemyAiAggressive : State
 
         // check if target tile is selectable, and also go as far from movement range as possible 
         int distanceFromTarget = 0, attackRange = (int) currUnit.stats[StatString.ATTACK_RANGE].Value;
-
-        while (!targetTile.selectable || distanceFromTarget < attackRange)
+        while ((!targetTile.selectable || distanceFromTarget < attackRange) && targetTile != currUnit.currentTile)
         {
             distanceFromTarget++;
             targetTile = targetTile.parent;
         }
+        /*while (!targetTile.selectable )
+        {
+            targetTile = targetTile.parent;
+        }*/
 
         // A star movement towards the target 
         currUnit.GetPathToTile(targetTile);
