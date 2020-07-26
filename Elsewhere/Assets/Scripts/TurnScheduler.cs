@@ -205,7 +205,7 @@ public class TurnScheduler : StateMachine
     public IEnumerator AbilityAnimation(Unit currUnit)
     { 
         yield return StartCoroutine(currUnit.AbilityAnimation());
-        if (!currUnit.chosenAbility.abilityTypes.Contains(AbilityType.HEAL_SELF) &&
+        if (currUnit.chosenAbility == null || !currUnit.chosenAbility.abilityTypes.Contains(AbilityType.HEAL_SELF) &&
             !currUnit.chosenAbility.abilityTypes.Contains(AbilityType.HEAL_TEAM))
         {
             StartCoroutine(camShakeInducer.Shake());

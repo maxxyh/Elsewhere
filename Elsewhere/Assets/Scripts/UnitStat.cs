@@ -188,6 +188,12 @@ public class UnitStat
         baseValue += gain;
         _value += gain;
     }
+
+    public void ReduceBaseValue(int decrement)
+    {
+        baseValue -= decrement;
+        _value -= decrement;
+    }
 }
 
 public enum StatString

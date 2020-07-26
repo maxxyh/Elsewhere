@@ -28,6 +28,8 @@ public class CommonInventoryManager : MonoBehaviour
         }
 
         unitSelectionPanel.OnSlotLeftClickEvent += OnChoosingUnit;
+        
+        changeSceneManger.gameObject.SetActive(true);
     }
     
     private void OnDestroy()

@@ -67,7 +67,7 @@ public class Unit : MonoBehaviour, IUnit
     public static Action<Unit> OnCaptureCrystal;
     private bool _onCrystal = false;
     private Crystal _crystalToCapture;
-    private StatModifier _crystalBoost = new StatModifier(0.5f, StatModType.PercentAdd);
+    private int _crystalBoost;
 
     [Header("Levelling")]
     public Level level;
@@ -600,11 +600,12 @@ public class Unit : MonoBehaviour, IUnit
     {
         if (apply)
         {
-            stats[StatString.MANA].AddModifier(_crystalBoost);
+            _crystalBoost = Mathf.CeilToInt(stats[StatString.MANA].Value);
+            stats[StatString.MANA].IncreaseBaseValue(_crystalBoost);
         }
         else
         {
-            stats[StatString.MANA].RemoveModifier(_crystalBoost);
+            stats[StatString.MANA].ReduceBaseValue(_crystalBoost);
         }
     }
 

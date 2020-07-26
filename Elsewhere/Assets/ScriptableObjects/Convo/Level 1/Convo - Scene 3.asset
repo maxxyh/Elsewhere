@@ -36,10 +36,10 @@ MonoBehaviour:
       me??
   - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: 'Well Kelda... This girl''s name was Arlene Grace, and she''s our grand-ancestor. '
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: The blessing of the Goddess of Light has been passed down in the Grace
       family from generation to generation,
-  - character: {fileID: 11400000, guid: e88701e601b9d0e4780d84dd1d30395d, type: 2}
+  - character: {fileID: 11400000, guid: 453ca5ffa99963e47820a35ff9aad70f, type: 2}
     text: ' from grandma, to me, and to you as well.'
   - character: {fileID: 11400000, guid: ec0a8f1a21ee5c242957ac876992ac2e, type: 2}
     text: Dad and I are going to the Wickham disaster zone to heal people, because
