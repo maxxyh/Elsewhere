@@ -34542,7 +34542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef8c68bade09b41aca258d42a632f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastTab: 2
+  lastTab: 0
   movementSettingsFoldout: 0
   zoomingSettingsFoldout: 0
   rotationSettingsFoldout: 0
@@ -34574,8 +34574,8 @@ MonoBehaviour:
   m_orthographicSize: 10.999999
   targetFollow: {fileID: 0}
   targetOffset: {x: 0, y: 0, z: 0}
-  useScreenEdgeInput: 0
-  screenEdgePercentage: 0.25
+  useScreenEdgeInput: 1
+  screenEdgePercentage: 0.15
   useKeyboardInput: 0
   horizontalAxis: Horizontal
   verticalAxis: Vertical
@@ -40823,7 +40823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.33984375, y: 0.52001953}
+  m_AnchoredPosition: {x: -0.33984375, y: 0.519989}
   m_SizeDelta: {x: 85.915054, y: 37.393192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1961826222

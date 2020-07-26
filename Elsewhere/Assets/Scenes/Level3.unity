@@ -1923,8 +1923,8 @@ MonoBehaviour:
   m_orthographicSize: 10.999999
   targetFollow: {fileID: 0}
   targetOffset: {x: 0, y: 0, z: 0}
-  useScreenEdgeInput: 0
-  screenEdgePercentage: 0.25
+  useScreenEdgeInput: 1
+  screenEdgePercentage: 0.15
   useKeyboardInput: 0
   horizontalAxis: Horizontal
   verticalAxis: Vertical
