@@ -54,11 +54,14 @@ TagManager:
   - name: UI
     uniqueID: 3603597407
     locked: 0
-  - name: Character
-    uniqueID: 2392530115
-    locked: 0
   - name: Crystal Layer
     uniqueID: 4198585607
+    locked: 0
+  - name: House
+    uniqueID: 2131235303
+    locked: 0
+  - name: Character
+    uniqueID: 2392530115
     locked: 0
   - name: Highlight
     uniqueID: 3592732879
