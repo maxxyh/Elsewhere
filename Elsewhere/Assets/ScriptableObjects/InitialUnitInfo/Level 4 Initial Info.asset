@@ -30,8 +30,8 @@ MonoBehaviour:
       type: 3}
     UnitPositions: {x: 17, y: 2, z: 0}
   enemyList:
-  - unitID: EnemyTank
-    UnitPrefab: {fileID: 2897327392223700814, guid: 3c886c608c6d84544a1df9dd067d48cc,
+  - unitID: EnemyHealer
+    UnitPrefab: {fileID: 2897327392223700814, guid: 5d91a966e5b4e674a885b8bb244462db,
       type: 3}
     UnitPositions: {x: -5, y: -7, z: 0}
   - unitID: EnemyGunslinger
@@ -50,16 +50,16 @@ MonoBehaviour:
     UnitPrefab: {fileID: 2897327392223700814, guid: 3c886c608c6d84544a1df9dd067d48cc,
       type: 3}
     UnitPositions: {x: -15, y: 4, z: 0}
-  - unitID: EnemyGunslinger
-    UnitPrefab: {fileID: 2897327392223700814, guid: f1733fd177a20ad47953a5bcd12ed595,
+  - unitID: EnemyHealer
+    UnitPrefab: {fileID: 2897327392223700814, guid: 5d91a966e5b4e674a885b8bb244462db,
       type: 3}
     UnitPositions: {x: 14, y: -7, z: 0}
   - unitID: EnemyTank
     UnitPrefab: {fileID: 2897327392223700814, guid: 3c886c608c6d84544a1df9dd067d48cc,
       type: 3}
     UnitPositions: {x: 10, y: 0, z: 0}
-  - unitID: EnemyGunslinger
-    UnitPrefab: {fileID: 2897327392223700814, guid: 8f4172ce46b9df242b4760d74508cab4,
+  - unitID: EnemyHealer
+    UnitPrefab: {fileID: 2897327392223700814, guid: 5d91a966e5b4e674a885b8bb244462db,
       type: 3}
     UnitPositions: {x: 10, y: 2, z: 0}
   crystalList:
@@ -71,7 +71,7 @@ MonoBehaviour:
     UnitPositions: {x: -14, y: 4, z: 0}
   - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
       type: 3}
-    UnitPositions: {x: 21, y: -7, z: 0}
+    UnitPositions: {x: 17, y: -7, z: 0}
   - UnitPrefab: {fileID: 7074187496226061219, guid: 1997f37af3bd8624bbbc56fb0e1832f3,
       type: 3}
     UnitPositions: {x: 8, y: -7, z: 0}
