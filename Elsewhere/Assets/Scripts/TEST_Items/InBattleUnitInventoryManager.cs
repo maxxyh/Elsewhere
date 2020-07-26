@@ -209,7 +209,7 @@ public class InBattleUnitInventoryManager : MonoBehaviour
         {
             return;
         }
-        
+
         if (itemSlot.Item is EquippableItem)
         {
             EquippableItem currItem = (EquippableItem)itemSlot.Item;
@@ -218,14 +218,23 @@ public class InBattleUnitInventoryManager : MonoBehaviour
                 EquippableItem prevItem = (EquippableItem)previousItemSlotData.Item;
                 Unequip(prevItem);
                 previousItem = prevItem;
+                foreach (ItemSlot _itemSlot in unitPersonalInventory.ItemSlots)
+                {
+                    if (_itemSlot.Item == previousItem)
+                    {
+                        _itemSlot.itemName.color = Color.white;
+                    }
+                }
             }
             if (!currItem.equipped && (previousItem == null || previousItem != currItem))
             {
                 Equip(currItem);
+                itemSlot.itemName.color = itemSlot.equippedColor;
             } 
             else
             {
                 Unequip(currItem);
+                itemSlot.itemName.color = Color.white;
             }
             unit.UpdateUI();
             unit.AssignInventory(unitPersonalInventory.GetOccupiedItemSlots());

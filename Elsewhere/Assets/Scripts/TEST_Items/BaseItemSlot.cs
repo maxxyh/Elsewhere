@@ -7,7 +7,7 @@ public class BaseItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 {
     [SerializeField] protected Text amountText;
     [SerializeField] public Image icon;
-    [SerializeField] Text itemName;
+    [SerializeField] public Text itemName;
     [SerializeField] Text itemNumUses;
 
     protected bool isPointerOver;
@@ -19,6 +19,7 @@ public class BaseItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
     protected Color normalColor = Color.white;
     protected Color disabledColor = new Color(1, 1, 1, 0);
+    public Color equippedColor = Color.green;
 
     private Item _item;
     public Item Item
@@ -115,8 +116,6 @@ public class BaseItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
             itemName = texts[0];
             itemNumUses = texts[1];
         }
-            
-
 
         Item = _item;
         Amount = _amount;

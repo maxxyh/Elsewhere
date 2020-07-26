@@ -500,6 +500,7 @@ MonoBehaviour:
   abilityName: {fileID: 82741557428501010}
   abilityDescription: {fileID: 82741558366434252}
   manaCost: {fileID: 82741559089571282}
+  abilitySprite: {fileID: 82741557916058328}
 --- !u!1 &82741559089571280
 GameObject:
   m_ObjectHideFlags: 0

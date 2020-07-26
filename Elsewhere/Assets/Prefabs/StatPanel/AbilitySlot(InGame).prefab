@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 4328356027101151818}
   - component: {fileID: 6979758868816420980}
   m_Layer: 5
-  m_Name: Skill Slot
+  m_Name: AbilitySlot(InGame)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,6 +427,7 @@ MonoBehaviour:
   abilityName: {fileID: 4751273242949168057}
   abilityDescription: {fileID: 6188607213778080851}
   manaCost: {fileID: 7357928965192438011}
+  abilitySprite: {fileID: 1158804225338883228}
 --- !u!1 &7378159289399441468
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,14 +566,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
