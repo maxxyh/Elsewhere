@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7634120686923681450}
   - component: {fileID: 7634120686923681452}
   m_Layer: 0
-  m_Name: Hyped Drop Chest 1
+  m_Name: Crossfire Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,10 +512,10 @@ RectTransform:
   m_Father: {fileID: 8469999450894135832}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -106.54004, y: 3.8500977}
-  m_SizeDelta: {x: -301.9854, y: -163.35313}
+  m_SizeDelta: {x: 18.014587, y: 16.646866}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8469999450208665457
 CanvasRenderer:

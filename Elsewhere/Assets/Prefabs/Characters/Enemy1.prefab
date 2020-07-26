@@ -189,7 +189,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1902437181
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 64a8affa39c984a4c8be52fb2893396c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -454,7 +454,7 @@ PrefabInstance:
     - target: {fileID: 417180914441162560, guid: cf18696c4106486488944ceef80be4e8,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 417180914441162560, guid: cf18696c4106486488944ceef80be4e8,
         type: 3}
@@ -637,6 +637,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8926608518497943579}
     m_Modifications:
+    - target: {fileID: 6803744995479791154, guid: 60af12357c78e9645a3b7674acb397ab,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6803744995492662150, guid: 60af12357c78e9645a3b7674acb397ab,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -671,6 +676,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: physicalDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803744995594901861, guid: 60af12357c78e9645a3b7674acb397ab,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803744995775771745, guid: 60af12357c78e9645a3b7674acb397ab,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6803744995801828448, guid: 60af12357c78e9645a3b7674acb397ab,
         type: 3}
@@ -757,6 +772,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6803744996215680511, guid: 60af12357c78e9645a3b7674acb397ab,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6803744996483597655, guid: 60af12357c78e9645a3b7674acb397ab,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -785,6 +805,11 @@ PrefabInstance:
     - target: {fileID: 6803744996483597655, guid: 60af12357c78e9645a3b7674acb397ab,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803744996518236718, guid: 60af12357c78e9645a3b7674acb397ab,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6803744996552320146, guid: 60af12357c78e9645a3b7674acb397ab,
@@ -865,6 +890,16 @@ PrefabInstance:
     - target: {fileID: 6803744996626067479, guid: 60af12357c78e9645a3b7674acb397ab,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803744996650025338, guid: 60af12357c78e9645a3b7674acb397ab,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803744996705329043, guid: 60af12357c78e9645a3b7674acb397ab,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6803744996926074977, guid: 60af12357c78e9645a3b7674acb397ab,
@@ -1036,6 +1071,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy StatPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803744997157770283, guid: 60af12357c78e9645a3b7674acb397ab,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6803744997176038195, guid: 60af12357c78e9645a3b7674acb397ab,
         type: 3}
