@@ -16,7 +16,7 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
     text: (looks at Kelda) I think I didn't see you during the battle just now?
   - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
-    text: Hi Sir, I'm Kelda! Nice to meet you!
+    text: Hi there, I'm Kelda! Nice to meet you!
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
     text: Hey Kelda, don't get too familiar with strangers! No offense tho, Claudie.
   - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
@@ -30,7 +30,7 @@ MonoBehaviour:
       care of her okay!! '
   - character: {fileID: 11400000, guid: 6afe87506cb9d2141b2204529e4f3f19, type: 2}
     text: 'Sure sure... '
-  - character: {fileID: 11400000, guid: 46a8e5780ac23ab49942e0e173a43185, type: 2}
+  - character: {fileID: 11400000, guid: 56573228173b49c4aafad1c466d11f01, type: 2}
     text: Anyways, I'm a healer! Hope to be of help!
   - character: {fileID: 11400000, guid: a710349f066631f4b9b20cac89af132c, type: 2}
     text: <i>What? Healers actually exist? I thought they were just an urban legend...

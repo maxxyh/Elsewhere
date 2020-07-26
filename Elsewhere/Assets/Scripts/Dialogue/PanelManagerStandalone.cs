@@ -53,7 +53,11 @@ public class PanelManagerStandalone : MonoBehaviour
             currentDisplay = _scenePanels[i].GetComponent<DialogueDisplay>();
             yield return new WaitUntil(() => currentDisplay.endConvo);
             _scenePanels[i].SetActive(false);
-            if (i+1 != _numScenes) yield return changeSceneManager.CrossFade();
+            if (i + 1 != _numScenes)
+            {
+                yield return changeSceneManager.CrossFade();
+                yield return new WaitForSecondsRealtime(0.5f);
+            }
         }
         if (SceneManager.GetActiveScene().name != "PostLevel3")
         {

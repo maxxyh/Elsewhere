@@ -12,14 +12,14 @@ public class AudioManager : MonoBehaviour
     {
         get
         {
-            if (instance == null)
+            /*if (instance == null)
             {
                 instance = FindObjectOfType<AudioManager>();
                 if (instance == null)
                 {
                     instance = new GameObject("Spawned AudioManager", typeof(AudioManager)).GetComponent<AudioManager>();
                 }
-            }
+            }*/
             return instance;
         }
         private set
@@ -49,8 +49,16 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        // Make sure we don't destroy this instance
+        
+        if (instance != null && instance != this) 
+        { 
+            Destroy(this.gameObject);
+            return;
+        }
+
+        instance = this;
         DontDestroyOnLoad(this.gameObject);
+        // Make sure we don't destroy this instance
 
         // Create audio sources, save as references
         musicSource = this.gameObject.AddComponent<AudioSource>();
