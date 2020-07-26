@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BattleManager
 {
-    private static List<string> physicalClasses = new List<string>() { "Tank", "Swordsman", "Gunslinger" };
+    private static List<string> physicalClasses = new List<string>() { "Tank", "Swordsman", "Gunslinger", "Strategist"};
     private static List<string> magicClasses = new List<string>() { "Healer", "Sage"};
     private static readonly int CritMultiplier = 2;
     public static void Battle(Unit attacker, Unit recipient) 

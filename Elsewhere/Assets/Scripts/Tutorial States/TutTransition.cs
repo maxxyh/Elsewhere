@@ -51,7 +51,6 @@ public class TutTransition : Transition
         // start next turn/next unit
         if (turnScheduler.currTurn == Team.ENEMY)
         {
-            turnScheduler.currTeamQueue.RemoveFirst();
             turnScheduler.SetState(new EnemyStartTurn(turnScheduler));
         }
         else
