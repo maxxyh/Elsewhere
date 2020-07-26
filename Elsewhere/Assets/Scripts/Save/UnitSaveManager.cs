@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 
 // converts players inventory and equipment panel into a savable format and calls the responding methods to save them to file
@@ -14,12 +15,19 @@ public class UnitSaveManager : MonoBehaviour
     private const string UnitsSaveFileName = "unitsSaveData";
 
     private const string CommonInventorySaveFileName = "commonInventorySaveData";
+    
+    public void ResetUnitAndInventorySaveData()
+    {
+        _saveDatabase = JsonSaveLoadIO.LoadAllUnits("first");
+        JsonSaveLoadIO.SaveAllUnits(_saveDatabase, UnitsSaveFileName);
+        List<Item> defaultItems = LoadInventory("first");
+        SaveInventory(defaultItems);
+    }
+    
     private void SaveUnit(UnitData unit, string fileName)
     {
         // load the old database
         _saveDatabase = JsonSaveLoadIO.LoadAllUnits(UnitsSaveFileName);
-
-
 
         // get old unitSaveData
         UnitSaveData oldUnitSaveData;
@@ -181,10 +189,15 @@ public class UnitSaveManager : MonoBehaviour
     {
         SaveItems(items, CommonInventorySaveFileName);
     }
-    
+
     public List<Item> LoadInventory()
     {
-        ItemContainerSaveData itemContainer = JsonSaveLoadIO.LoadItems(CommonInventorySaveFileName);
+        return LoadInventory(CommonInventorySaveFileName);
+    }
+    
+    public List<Item> LoadInventory(string fileName)
+    {
+        ItemContainerSaveData itemContainer = JsonSaveLoadIO.LoadItems(fileName);
 
         List<Item> items = new List<Item>();
         
@@ -370,5 +383,5 @@ public class UnitSaveManager : MonoBehaviour
     
     
     #endregion
-
+    
 }

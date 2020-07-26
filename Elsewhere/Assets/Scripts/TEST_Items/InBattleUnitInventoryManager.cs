@@ -39,6 +39,8 @@ public class InBattleUnitInventoryManager : MonoBehaviour
 
     public void Awake()
     {
+        if (itemTooltip == null)
+            itemTooltip = FindObjectOfType<ItemToolTip>();
         // setup Events
         // Pointer Enter
         unitPersonalInventory.OnPointerEnterEvent += ShowTooltip;

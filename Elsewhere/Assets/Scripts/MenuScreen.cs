@@ -7,6 +7,7 @@ namespace DefaultNamespace
     {
         [SerializeField] private LevelDatabase levelDatabase;
         [SerializeField] private ChangeScene changeSceneManager;
+        [SerializeField] private UnitSaveManager unitSaveManager;
 
         public void OnSavedGameButton()
         {
@@ -18,6 +19,7 @@ namespace DefaultNamespace
 
         public void OnStartNewGame()
         {
+            unitSaveManager.ResetUnitAndInventorySaveData();
             LevelSelectManager.StartNewGame(levelDatabase);
         }
     }
