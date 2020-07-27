@@ -8,7 +8,7 @@
     "name": "Double Hit"
   },
   "AstralFlare": {
-    "description": "Ranged AoE spell with 3-tile range. Deals x1.2 magic damage and 20% armor debuff on all targets",
+    "description": "Ranged AoE spell with 3-tile range. Deals x1.2 magic damage and 20% armor debuff on all targets lasting 4 turns",
     "name": "Astral Flare"
   },
   "HpReaver": {
@@ -20,7 +20,7 @@
     "name": "Healing Wave"
   },
   "ArcaneBoost": {
-    "description": "Grants caster 20% armor and 20% magic damage buff",
+    "description": "Grants caster 20% armor and 20% magic damage buff, lasting for 3 turns",
     "name": "Arcane Boost"
   },
   "PiercingShot": {

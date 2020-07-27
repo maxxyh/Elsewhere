@@ -54,7 +54,6 @@ public class EnemyAiManager
         medics.ForEach(unit => unit.ResetMedicStatus());
 
         // Assign targets to medics = will keep running as long as there are there are both unassignedHurtUnits and unassignedMedics
-        // TODO WRONG PERSON BEING ASSIGNED
         while (unitsInRecoveryMode.Count > 0 && unassignedMedics.Count > 0)
         {
             EnemyUnit currMedic = unassignedMedics.Dequeue();
